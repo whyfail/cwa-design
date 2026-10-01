@@ -1,0 +1,24 @@
+{
+  "name": "@cwa-design/tokens",
+  "version": "0.1.0-alpha.0",
+  "description": "Design tokens for CWA Design: framework-agnostic JSON source and generated CSS variables.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./dist/tokens.json",
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/generate.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "zod": "4.6.5"
+  }
+}

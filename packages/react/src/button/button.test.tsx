@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { Button } from "./button";
 
@@ -50,5 +51,41 @@ describe("Button", () => {
     expect(button).toHaveAttribute("data-pressed", "true");
     await user.pointer({ target: button, keys: "[/MouseLeft]" });
     expect(button).not.toHaveAttribute("data-pressed");
+  });
+
+  it("forwards ref to the native button element (React 19 ref prop)", () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(<Button ref={ref}>引用</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(ref.current?.textContent).toBe("引用");
+  });
+
+  it("type=submit submits the surrounding native form", async () => {
+    const user = userEvent.setup();
+    const onSubmit = vi.fn((event: { preventDefault(): void }) => event.preventDefault());
+    render(
+      <form onSubmit={onSubmit}>
+        <Button type="submit">提交表单</Button>
+      </form>,
+    );
+    await user.click(screen.getByRole("button", { name: "提交表单" }));
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it("activates via keyboard Enter/Space like a native button", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>键盘激活</Button>);
+    const button = screen.getByRole("button", { name: "键盘激活" });
+    button.focus();
+    await user.keyboard("[Enter]");
+    await user.keyboard("[Space]");
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it("external controlled loading update disables the button", () => {
+    const { rerender } = render(<Button>开始</Button>);
+    rerender(<Button loading>开始</Button>);
+    expect(screen.getByRole("button", { name: "开始" })).toBeDisabled();
   });
 });

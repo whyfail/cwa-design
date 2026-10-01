@@ -1,61 +1,91 @@
-/* Button spike 样式。正式 Token 体系由 T04 生成后替换内联值。 */
+/* Button。颜色/圆角/动效全部来自 @cwa-design/tokens（禁止硬编码）。 */
 .cwa-design-button {
-  --_cwa-button-bg: var(--cwa-design-color-accent, #0066cc);
-  --_cwa-button-fg: #ffffff;
-  font-family: var(--cwa-design-font-family, system-ui, -apple-system, 'PingFang SC', 'Segoe UI', sans-serif);
-  font-size: 0.9375rem;
-  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cwa-design-space-2);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  font-weight: 510;
   border: 1px solid transparent;
-  border-radius: var(--cwa-design-radius-control, 0.75rem);
+  border-radius: var(--cwa-design-radius-control);
   cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
   transition:
-    transform 100ms ease,
-    background-color 100ms ease,
-    opacity 100ms ease;
+    transform var(--cwa-design-motion-control) ease,
+    background-color var(--cwa-design-motion-control) ease,
+    opacity var(--cwa-design-motion-control) ease;
 }
 .cwa-design-button:focus-visible {
-  outline: var(--cwa-design-focus-width, 2px) solid var(--cwa-design-color-accent, #0066cc);
-  outline-offset: var(--cwa-design-focus-offset, 3px);
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline-offset: var(--cwa-design-focus-offset);
 }
 .cwa-design-button[disabled] {
   cursor: default;
   opacity: 0.5;
 }
 
+/* 变体 */
 .cwa-design-button--primary {
-  background: var(--_cwa-button-bg);
-  color: var(--_cwa-button-fg);
+  background: var(--cwa-design-color-accent);
+  color: var(--cwa-design-color-on-accent);
+}
+.cwa-design-button--primary:not([disabled]):hover {
+  background: color-mix(in srgb, var(--cwa-design-color-accent) 88%, var(--cwa-design-color-on-accent));
 }
 .cwa-design-button--secondary {
-  background: var(--cwa-design-color-fill-secondary, rgba(120, 120, 128, 0.12));
-  color: var(--cwa-design-color-text, #17181c);
-  border-color: var(--cwa-design-color-border, rgba(0, 0, 0, 0.12));
+  background: color-mix(in srgb, var(--cwa-design-color-text) 8%, transparent);
+  color: var(--cwa-design-color-text);
+  border-color: var(--cwa-design-color-border-subtle);
 }
 .cwa-design-button--ghost {
   background: transparent;
-  color: var(--cwa-design-color-accent, #0066cc);
+  color: var(--cwa-design-color-accent);
 }
 .cwa-design-button--danger {
-  background: var(--cwa-design-color-danger, #d70015);
+  background: var(--cwa-design-color-danger);
   color: #ffffff;
 }
 
+/* 尺寸：md 为 44px 常规点击目标（design-rules §6）。 */
 .cwa-design-button--sm {
   min-height: 2rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem var(--cwa-design-space-3);
 }
 .cwa-design-button--md {
   min-height: 2.75rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem var(--cwa-design-space-4);
 }
 .cwa-design-button--lg {
   min-height: 3.25rem;
-  padding: 0.625rem 1.25rem;
-  font-size: 1rem;
+  padding: 0.625rem var(--cwa-design-space-5);
+  font-size: var(--cwa-design-font-size-title);
 }
 
 /* pointer-down 即时反馈；只动 transform/opacity。 */
-.cwa-design-button[data-pressed='true']:not([disabled]) {
+.cwa-design-button[data-pressed="true"]:not([disabled]) {
   transform: scale(0.97);
   opacity: 0.9;
+}
+
+/* 加载指示器：旋转表达进行中（进度语义，reduced-motion 下保留但降速）。 */
+.cwa-design-button__spinner {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  animation: cwa-design-button-spin 0.9s linear infinite;
+}
+@keyframes cwa-design-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cwa-design-button__spinner {
+    animation-duration: 2.4s;
+  }
+  .cwa-design-button[data-pressed="true"]:not([disabled]) {
+    transform: none;
+  }
 }

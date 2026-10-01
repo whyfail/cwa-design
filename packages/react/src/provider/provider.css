@@ -1,0 +1,4 @@
+/* Provider 根：仅承载属性作用域，不参与布局。 */
+.cwa-design-provider {
+  display: contents;
+}

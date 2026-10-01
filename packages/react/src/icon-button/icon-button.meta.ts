@@ -1,0 +1,32 @@
+import type { ComponentRecord } from "@cwa-design/registry";
+
+export const iconButtonMeta = {
+  schemaVersion: "1.0.0",
+  libraryVersion: "0.1.0-alpha.0",
+  framework: "react",
+  id: "icon-button",
+  name: "IconButton",
+  status: "stable-in-alpha",
+  package: "@cwa-design/react",
+  exports: ["IconButton"],
+  importPath: "@cwa-design/react",
+  stylePath: "@cwa-design/react/styles.css",
+  props: {
+    label: { type: "string", required: true },
+    variant: {
+      type: "enum",
+      values: ["primary", "secondary", "ghost", "danger"],
+      default: "secondary",
+    },
+    size: { type: "enum", values: ["sm", "md", "lg"], default: "md" },
+    loading: { type: "boolean", default: false },
+    children: { type: "node", summary: "图标内容" },
+    ref: { type: "ref", summary: "HTMLButtonElement" },
+  },
+  extends: ["native-button-attributes"],
+  materialPolicy: "inherit-parent-surface",
+  a11y: ["name-required", "native-button", "visible-focus", "44px-target-md"],
+  examples: ["icon-button-basic"],
+  runtimeDependencies: [],
+  deprecated: false,
+} satisfies ComponentRecord;

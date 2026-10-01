@@ -1,59 +1,22 @@
 {
   "planVersion": "1.1.0",
   "frameworkPhase": "react-alpha",
-  "activeTask": "T03",
+  "activeTask": "T14",
   "tasks": [
-    {
-      "id": "T00",
-      "status": "verified",
-      "dependsOn": [],
-      "report": "reports/tasks/T00.md",
-      "checks": [
-        { "command": "curl registry.npmjs.org/<pkg>/latest × 32", "exitCode": 0, "artifact": "versions.json" },
-        { "command": "nvmd install 24.21.0 && nvmd use 24.21.0 && node -v", "exitCode": 0, "artifact": "reports/environment.md" }
-      ],
-      "reviewRequired": true
-    },
-    {
-      "id": "T01",
-      "status": "verified",
-      "dependsOn": ["T00"],
-      "report": "reports/tasks/T01.md",
-      "checks": [
-        { "command": "corepack pnpm -v", "exitCode": 0, "artifact": "pnpm-lock.yaml" },
-        { "command": "corepack pnpm install", "exitCode": 0, "artifact": "pnpm-lock.yaml" },
-        { "command": "corepack pnpm exec tsc --version", "exitCode": 0, "stdout": "Version 7.0.2" },
-        { "command": "corepack pnpm exec tsc6 --version", "exitCode": 0, "stdout": "Version 6.0.3" }
-      ],
-      "reviewRequired": true
-    },
-    {
-      "id": "T02",
-      "status": "verified",
-      "dependsOn": ["T01"],
-      "report": "reports/tasks/T02.md",
-      "checks": [
-        { "command": "pnpm --filter @cwa-design/react run typecheck (TS7)", "exitCode": 0 },
-        { "command": "pnpm --filter @cwa-design/react run build", "exitCode": 0, "artifact": "packages/react/dist" },
-        { "command": "pnpm --filter @cwa-design/react run test", "exitCode": 0, "stdout": "4 passed" },
-        { "command": "eslint packages apps examples --max-warnings 0", "exitCode": 0 },
-        { "command": "pnpm --filter @cwa-design/react pack", "exitCode": 0, "artifact": "cwa-design-react-0.1.0-alpha.0.tgz" },
-        { "command": "/tmp/cwa-consumer-vite: pnpm@12.8.1 install + vite build (tarball)", "exitCode": 0 },
-        { "command": "/tmp/cwa-consumer-vite: tsc(TS7) + tsc6(TS6) typecheck", "exitCode": 0 },
-        { "command": "pnpm --filter @cwa-design/mcp run build", "exitCode": 0 },
-        { "command": "pnpm --filter @cwa-design/mcp run test (current+legacy MCP clients)", "exitCode": 0, "stdout": "MCP SPIKE PASS" },
-        { "command": "pnpm --filter @cwa-design/storybook run build", "exitCode": 0, "artifact": "apps/storybook/storybook-static" },
-        { "command": "pnpm --filter @cwa-design/examples-react-next run build", "exitCode": 0, "stdout": "3/3 static pages" }
-      ],
-      "reviewRequired": true
-    },
-    {
-      "id": "T03",
-      "status": "planned",
-      "dependsOn": ["T02"],
-      "report": "reports/tasks/T03.md",
-      "checks": [],
-      "reviewRequired": true
-    }
+    { "id": "T00", "status": "verified", "dependsOn": [], "report": "reports/tasks/T00.md", "reviewRequired": true },
+    { "id": "T01", "status": "verified", "dependsOn": ["T00"], "report": "reports/tasks/T01.md", "reviewRequired": true },
+    { "id": "T02", "status": "verified", "dependsOn": ["T01"], "report": "reports/tasks/T02.md", "reviewRequired": true },
+    { "id": "T03", "status": "implemented", "dependsOn": ["T02"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true, "note": "design-rules 完成；playground 原型汇编与五背景视觉评审待浏览器" },
+    { "id": "T04", "status": "verified", "dependsOn": ["T03"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true },
+    { "id": "T05", "status": "verified", "dependsOn": ["T03"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true },
+    { "id": "T06", "status": "verified", "dependsOn": ["T04", "T05"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
+    { "id": "T07", "status": "verified", "dependsOn": ["T06"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
+    { "id": "T08", "status": "verified", "dependsOn": ["T06"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
+    { "id": "T09", "status": "verified", "dependsOn": ["T06"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
+    { "id": "T10", "status": "verified", "dependsOn": ["T06", "T07"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true },
+    { "id": "T11", "status": "verified", "dependsOn": ["T10"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true },
+    { "id": "T12", "status": "implemented", "dependsOn": ["T10", "T11"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true, "note": "拖拽手感/中断/滚动冲突待真实浏览器与指针（T12-B/C/D 子卡）" },
+    { "id": "T13", "status": "verified", "dependsOn": ["T07", "T09", "T11", "T12"], "report": "reports/tasks/T13.md", "reviewRequired": true, "note": "分链路预算精测与帧稳定性留专项" },
+    { "id": "T14", "status": "planned", "dependsOn": ["T08"], "report": "reports/tasks/T14.md", "reviewRequired": true }
   ]
 }

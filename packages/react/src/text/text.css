@@ -1,0 +1,16 @@
+.cwa-design-text {
+  font-family: var(--cwa-design-font-family);
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.cwa-design-text--body {
+  font-size: var(--cwa-design-font-size-body);
+  line-height: var(--cwa-design-font-leading-body);
+}
+.cwa-design-text--caption {
+  font-size: var(--cwa-design-font-size-caption);
+  line-height: var(--cwa-design-font-leading-body);
+}
+.cwa-design-text--muted {
+  color: var(--cwa-design-color-text-muted);
+}

@@ -1,0 +1,42 @@
+/* Input / Textarea 共用控件外观。 */
+.cwa-design-input,
+.cwa-design-textarea {
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text);
+  background: var(--cwa-design-color-surface);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  border-radius: var(--cwa-design-radius-control);
+  min-width: 0;
+  transition:
+    border-color var(--cwa-design-motion-control) ease,
+    box-shadow var(--cwa-design-motion-control) ease;
+}
+.cwa-design-input {
+  min-height: 2.75rem;
+  padding: 0 var(--cwa-design-space-3);
+}
+.cwa-design-textarea {
+  padding: var(--cwa-design-space-2) var(--cwa-design-space-3);
+  line-height: var(--cwa-design-font-leading-body);
+  resize: vertical;
+}
+.cwa-design-input::placeholder,
+.cwa-design-textarea::placeholder {
+  color: var(--cwa-design-color-text-muted);
+  opacity: 1;
+}
+.cwa-design-input:focus-visible,
+.cwa-design-textarea:focus-visible {
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline-offset: var(--cwa-design-focus-offset);
+}
+.cwa-design-input[aria-invalid="true"],
+.cwa-design-textarea[aria-invalid="true"] {
+  border-color: var(--cwa-design-color-danger);
+}
+.cwa-design-input:disabled,
+.cwa-design-textarea:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

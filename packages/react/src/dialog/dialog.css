@@ -1,0 +1,76 @@
+/* Dialog：glass-thick（默认）或 solid 材质；进出只动 transform/opacity。 */
+.cwa-design-dialog-backdrop {
+  background: var(--cwa-design-color-scrim);
+  transition: opacity 200ms ease;
+}
+.cwa-design-dialog-backdrop[data-starting-style],
+.cwa-design-dialog-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.cwa-design-dialog {
+  position: fixed;
+  inset-inline: 0;
+  top: 50%;
+  margin: 0 auto;
+  width: min(32rem, calc(100vw - 2 * var(--cwa-design-space-6)));
+  max-height: min(85dvh, 48rem);
+  display: flex;
+  flex-direction: column;
+  padding: var(--cwa-design-space-5);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  border-radius: var(--cwa-design-radius-sheet);
+  color: var(--cwa-design-color-text);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  transform: translateY(-50%);
+  box-shadow: 0 24px 64px var(--cwa-design-color-scrim);
+  outline: none;
+}
+.cwa-design-dialog--glass-thick {
+  background: var(--cwa-design-color-glass-thick-fill);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .cwa-design-dialog--glass-thick {
+    backdrop-filter: blur(var(--cwa-design-blur-glass-thick)) saturate(var(--cwa-design-saturation-glass));
+  }
+}
+.cwa-design-dialog--solid {
+  background: var(--cwa-design-color-surface-raised);
+}
+
+/* 进出动效：scale + opacity 从当前位置可中断（Base UI 重挂/重开继续）。 */
+.cwa-design-dialog[data-starting-style],
+.cwa-design-dialog[data-ending-style] {
+  opacity: 0;
+  transform: translateY(-50%) scale(0.96);
+}
+
+.cwa-design-dialog__title {
+  margin: 0 0 var(--cwa-design-space-2);
+  font-size: var(--cwa-design-font-size-title);
+  font-weight: 590;
+  line-height: var(--cwa-design-font-leading-body);
+}
+.cwa-design-dialog__description {
+  margin: 0 0 var(--cwa-design-space-4);
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-text-muted);
+}
+.cwa-design-dialog__close {
+  align-self: flex-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cwa-design-dialog[data-starting-style],
+  .cwa-design-dialog[data-ending-style] {
+    transform: translateY(-50%);
+  }
+}
+@media (prefers-contrast: more) {
+  .cwa-design-dialog--glass-thick {
+    background: var(--cwa-design-color-surface-raised);
+    backdrop-filter: none;
+    border-color: var(--cwa-design-color-border-strong);
+  }
+}

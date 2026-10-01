@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "wulei/cwa-design" }],
+  "commit": false,
+  "fixed": [["@cwa-design/tokens", "@cwa-design/react", "@cwa-design/registry", "@cwa-design/mcp"]],
+  "linked": [],
+  "access": "restricted",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

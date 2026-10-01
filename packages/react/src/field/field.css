@@ -1,0 +1,29 @@
+.cwa-design-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cwa-design-space-1);
+  min-width: 0;
+}
+.cwa-design-field__label {
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  font-weight: 510;
+  color: var(--cwa-design-color-text);
+}
+.cwa-design-field__required {
+  margin-inline-start: var(--cwa-design-space-1);
+  color: var(--cwa-design-color-danger);
+}
+.cwa-design-field__description {
+  margin: 0;
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-text-muted);
+}
+.cwa-design-field__error {
+  margin: 0;
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-danger);
+  font-weight: 510;
+}

@@ -1,0 +1,60 @@
+/* IconButton：圆形图标按钮；颜色来自 tokens。 */
+.cwa-design-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: var(--cwa-design-font-family);
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition:
+    transform var(--cwa-design-motion-control) ease,
+    background-color var(--cwa-design-motion-control) ease,
+    opacity var(--cwa-design-motion-control) ease;
+}
+.cwa-design-icon-button:focus-visible {
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline-offset: var(--cwa-design-focus-offset);
+}
+.cwa-design-icon-button[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.cwa-design-icon-button--primary {
+  background: var(--cwa-design-color-accent);
+  color: var(--cwa-design-color-on-accent);
+}
+.cwa-design-icon-button--secondary {
+  background: color-mix(in srgb, var(--cwa-design-color-text) 8%, transparent);
+  color: var(--cwa-design-color-text);
+  border-color: var(--cwa-design-color-border-subtle);
+}
+.cwa-design-icon-button--ghost {
+  background: transparent;
+  color: var(--cwa-design-color-text);
+}
+.cwa-design-icon-button--danger {
+  background: var(--cwa-design-color-danger);
+  color: #ffffff;
+}
+
+.cwa-design-icon-button--sm {
+  width: 2rem;
+  height: 2rem;
+}
+.cwa-design-icon-button--md {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.cwa-design-icon-button--lg {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+.cwa-design-icon-button:not([disabled]):active {
+  transform: scale(0.95);
+}

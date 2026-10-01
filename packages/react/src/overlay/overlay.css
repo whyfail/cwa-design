@@ -1,0 +1,4 @@
+/* Overlay portal 作用域容器：仅承载主题属性，不产生布局。 */
+.cwa-design-portal-scope {
+  display: contents;
+}

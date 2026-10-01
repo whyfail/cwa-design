@@ -1,0 +1,53 @@
+/* Surface：四种语义材质。玻璃只动 transform/opacity；blur 固定。 */
+.cwa-design-surface {
+  border-radius: var(--cwa-design-radius-panel);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+}
+.cwa-design-surface:focus-visible {
+  outline: var(--cwa-design-focus-width, 2px) solid var(--cwa-design-color-accent);
+  outline-offset: var(--cwa-design-focus-offset, 3px);
+}
+
+.cwa-design-surface--solid {
+  background: var(--cwa-design-color-surface);
+}
+
+.cwa-design-surface--frosted {
+  background: var(--cwa-design-color-glass-thick-fill);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .cwa-design-surface--frosted {
+    backdrop-filter: blur(var(--cwa-design-blur-glass-thick)) saturate(var(--cwa-design-saturation-glass));
+  }
+}
+
+.cwa-design-surface--glass {
+  background: var(--cwa-design-color-glass-regular-fill);
+  box-shadow: 0 8px 32px var(--cwa-design-color-scrim);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .cwa-design-surface--glass {
+    backdrop-filter: blur(var(--cwa-design-blur-glass-regular)) saturate(var(--cwa-design-saturation-glass));
+  }
+}
+
+/* clear 仅媒体控件 opt-in；不叠在另一玻璃层上（组合约束在文档强制）。 */
+.cwa-design-surface--glass-clear {
+  background: var(--cwa-design-color-glass-clear-fill);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .cwa-design-surface--glass-clear {
+    backdrop-filter: blur(var(--cwa-design-blur-glass-clear)) saturate(var(--cwa-design-saturation-glass));
+  }
+}
+
+/* 更高对比：表面接近实色。 */
+@media (prefers-contrast: more) {
+  .cwa-design-surface--frosted,
+  .cwa-design-surface--glass,
+  .cwa-design-surface--glass-clear {
+    background: var(--cwa-design-color-surface);
+    backdrop-filter: none;
+    border-color: var(--cwa-design-color-border-strong);
+  }
+}

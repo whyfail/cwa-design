@@ -1,6 +1,6 @@
+import { pathToFileURL } from "node:url";
 import { McpServer } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
-import { pathToFileURL } from "node:url";
 import { z } from "zod";
 
 const LIBRARY_VERSION = "0.1.0-alpha.0";

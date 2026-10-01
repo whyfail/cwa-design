@@ -4,6 +4,7 @@ import {
   type ButtonHTMLAttributes,
   type PointerEvent,
   type ReactNode,
+  type Ref,
   useCallback,
   useState,
 } from "react";
@@ -14,16 +15,18 @@ export type ButtonSize = "sm" | "md" | "lg";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** 视觉变体。primary 为页面主操作。 */
   variant?: ButtonVariant;
-  /** 尺寸；compact 密度由 CwaProvider 控制，不在 size 上重复表达。 */
+  /** 尺寸；md 常规点击目标 44px 高，sm 用于紧凑/玻璃层场景。 */
   size?: ButtonSize;
-  /** 加载中：按钮不可交互，保留宽度并声明 aria-busy。 */
+  /** 加载中：不可交互、aria-busy、显示指示器；保留宽度。 */
   loading?: boolean;
+  ref?: Ref<HTMLButtonElement>;
   children?: ReactNode;
 }
 
 /**
- * Button：原生 <button> 语义，pointer-down 立即反馈，click 才提交动作。
- * Spike 版本（T02 兼容性验证用）；完整切片在 T07 交付。
+ * Button：原生 <button> 语义（保留 type/submit/表单提交）。
+ * pointer-down 立即反馈，click 提交动作；loading 期间不触发 onClick。
+ * 键盘 Space/Enter 激活由原生控件提供，不做代理。
  */
 export function Button(props: ButtonProps) {
   const {
@@ -34,6 +37,7 @@ export function Button(props: ButtonProps) {
     type = "button",
     className,
     children,
+    ref,
     onPointerDown,
     onPointerUp,
     onPointerLeave,
@@ -69,6 +73,7 @@ export function Button(props: ButtonProps) {
   return (
     <button
       {...rest}
+      ref={ref}
       type={type}
       className={classNames.join(" ")}
       data-variant={variant}
@@ -92,6 +97,25 @@ export function Button(props: ButtonProps) {
         onClick?.(event);
       }}
     >
+      {loading ? (
+        <svg
+          className="cwa-design-button__spinner"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle
+            cx="8"
+            cy="8"
+            r="6.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeDasharray="28 14"
+            strokeLinecap="round"
+          />
+        </svg>
+      ) : null}
       {children}
     </button>
   );
