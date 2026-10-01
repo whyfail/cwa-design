@@ -1,0 +1,27 @@
+{
+  "name": "@cwa-design/mcp",
+  "version": "0.1.0-alpha.0",
+  "description": "Read-only MCP server for the CWA Design registry (local stdio).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "bin": {
+    "cwa-design-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node test/mcp-client-test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.2.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "@types/node": "24.19.0"
+  }
+}

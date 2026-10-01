@@ -1,0 +1,12 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "files": {
+    "includes": ["**/*.ts", "**/*.tsx", "**/*.mjs", "**/*.json", "!**/dist/**", "!**/node_modules/**", "!**/.next/**", "!**/storybook-static/**"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  }
+}

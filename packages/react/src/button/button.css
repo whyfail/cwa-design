@@ -1,0 +1,61 @@
+/* Button spike 样式。正式 Token 体系由 T04 生成后替换内联值。 */
+.cwa-design-button {
+  --_cwa-button-bg: var(--cwa-design-color-accent, #0066cc);
+  --_cwa-button-fg: #ffffff;
+  font-family: var(--cwa-design-font-family, system-ui, -apple-system, 'PingFang SC', 'Segoe UI', sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: var(--cwa-design-radius-control, 0.75rem);
+  cursor: pointer;
+  transition:
+    transform 100ms ease,
+    background-color 100ms ease,
+    opacity 100ms ease;
+}
+.cwa-design-button:focus-visible {
+  outline: var(--cwa-design-focus-width, 2px) solid var(--cwa-design-color-accent, #0066cc);
+  outline-offset: var(--cwa-design-focus-offset, 3px);
+}
+.cwa-design-button[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.cwa-design-button--primary {
+  background: var(--_cwa-button-bg);
+  color: var(--_cwa-button-fg);
+}
+.cwa-design-button--secondary {
+  background: var(--cwa-design-color-fill-secondary, rgba(120, 120, 128, 0.12));
+  color: var(--cwa-design-color-text, #17181c);
+  border-color: var(--cwa-design-color-border, rgba(0, 0, 0, 0.12));
+}
+.cwa-design-button--ghost {
+  background: transparent;
+  color: var(--cwa-design-color-accent, #0066cc);
+}
+.cwa-design-button--danger {
+  background: var(--cwa-design-color-danger, #d70015);
+  color: #ffffff;
+}
+
+.cwa-design-button--sm {
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+}
+.cwa-design-button--md {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+}
+.cwa-design-button--lg {
+  min-height: 3.25rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+}
+
+/* pointer-down 即时反馈；只动 transform/opacity。 */
+.cwa-design-button[data-pressed='true']:not([disabled]) {
+  transform: scale(0.97);
+  opacity: 0.9;
+}

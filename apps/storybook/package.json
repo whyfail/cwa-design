@@ -1,0 +1,23 @@
+{
+  "name": "@cwa-design/storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "storybook build",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@cwa-design/react": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "10.6.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "storybook": "10.6.1",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vite": "8.3.2"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "cwa-design-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "typecheck:compat": "pnpm -r --if-present run typecheck:compat",
+    "lint": "eslint packages apps examples --max-warnings 0",
+    "format:check": "biome check --formatter-enabled=true --linter-enabled=false .",
+    "build": "pnpm -r --if-present run build",
+    "test": "pnpm -r --if-present run test",
+    "test:mcp": "pnpm --filter @cwa-design/mcp run test",
+    "test:consumers": "pnpm --filter @cwa-design/examples-react-vite run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@eslint/js": "10.0.1",
+    "pnpm": "12.8.1",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "eslint": "10.11.0",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "typescript-eslint": "8.71.0",
+    "vitest": "5.0.3"
+  }
+}

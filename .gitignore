@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tgz
+.storybook-out/
+storybook-static/
+.next/
+.vite/
+coverage/
+*.tsbuildinfo
+.DS_Store
+reports/screenshots/
+corepack.cache/
