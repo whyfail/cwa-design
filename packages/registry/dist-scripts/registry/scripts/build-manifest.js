@@ -81,7 +81,9 @@ function compileExamples(files) {
     catch (error) {
         const err = error;
         const detail = [err.stdout, err.stderr].filter(Boolean).join("\n").trim();
-        throw new Error(`示例编译失败 (exit ${err.status}): ${detail || String(error)}`, { cause: error });
+        throw new Error(`示例编译失败 (exit ${err.status}): ${detail || String(error)}`, {
+            cause: error,
+        });
     }
 }
 export function buildManifest() {

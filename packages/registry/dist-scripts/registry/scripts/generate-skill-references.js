@@ -46,7 +46,8 @@ for (const c of components) {
     const json = `${JSON.stringify(c, null, 2)}\n`;
     const digest = `sha256:${createHash("sha256").update(json, "utf8").digest("hex")}`;
     writeFileSync(path.join(refDir, "contracts", `${c.id}.json`), json);
-    if (digest !== manifest.examples.find((e) => e.componentId === c.id)?.contentDigest && c.examples.length > 0) {
+    if (digest !== manifest.examples.find((e) => e.componentId === c.id)?.contentDigest &&
+        c.examples.length > 0) {
         // 示例 digest 属于示例文件而非契约文件；此处仅校验契约 JSON 可解析与 id 一致。
     }
     if (!json.includes(`"id": "${c.id}"`)) {
