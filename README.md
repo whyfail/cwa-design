@@ -38,13 +38,12 @@ Storybook 10.6 · Vitest 5 · ESLint 10 + typescript-eslint（typed）· Biome�
 ```bash
 corepack pnpm install
 corepack pnpm -r --if-present run build   # 全仓构建
-corepack pnpm -r --if-present run test    # 71 个行为/schema 测试
+corepack pnpm -r --if-present run test    # 98 个行为/schema/契约测试
 corepack pnpm lint                        # typed lint
 ```
 
-## 状态（2026-10-02）
+## 状态（2026-10-03）
 
-T00–T23 已执行（详见 `reports/tasks/`），P0 30 组件完成。Alpha 剩余：
-T24 Registry 全量构建、T25 文档/Storybook 成品、T26–T30 CLI/MCP 正式化、T31–T34 recipes/评测/发布候选。
+T00–T24、T26–T29 已执行（详见 `reports/tasks/` 与 `reports/PHASE-S3.md`），P0 30 组件 + recipes + manifest + CLI + MCP + Skill 完成。Alpha 剩余：T25 文档站成品页、T30 宿主矩阵、T32 AI 评测、T33 人工 a11y、T34 正式发布（候选物料已备）。
 
 许可证 UNLICENSED（待维护者决定）；`@cwa-design/*` 为暂定名。未发布到 npm。
