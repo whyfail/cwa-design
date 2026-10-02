@@ -1,12 +1,13 @@
 {
   "planVersion": "1.1.0",
   "frameworkPhase": "react-alpha",
-  "activeTask": "T14",
+  "activeTask": "T24",
+  "p0PublicComponents": 30,
   "tasks": [
     { "id": "T00", "status": "verified", "dependsOn": [], "report": "reports/tasks/T00.md", "reviewRequired": true },
     { "id": "T01", "status": "verified", "dependsOn": ["T00"], "report": "reports/tasks/T01.md", "reviewRequired": true },
     { "id": "T02", "status": "verified", "dependsOn": ["T01"], "report": "reports/tasks/T02.md", "reviewRequired": true },
-    { "id": "T03", "status": "implemented", "dependsOn": ["T02"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true, "note": "design-rules 完成；playground 原型汇编与五背景视觉评审待浏览器" },
+    { "id": "T03", "status": "implemented", "dependsOn": ["T02"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true, "note": "playground 原型汇编与五背景视觉评审待浏览器" },
     { "id": "T04", "status": "verified", "dependsOn": ["T03"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true },
     { "id": "T05", "status": "verified", "dependsOn": ["T03"], "report": "reports/tasks/T03-T05.md", "reviewRequired": true },
     { "id": "T06", "status": "verified", "dependsOn": ["T04", "T05"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
@@ -15,8 +16,18 @@
     { "id": "T09", "status": "verified", "dependsOn": ["T06"], "report": "reports/tasks/T06-T09.md", "reviewRequired": true },
     { "id": "T10", "status": "verified", "dependsOn": ["T06", "T07"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true },
     { "id": "T11", "status": "verified", "dependsOn": ["T10"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true },
-    { "id": "T12", "status": "implemented", "dependsOn": ["T10", "T11"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true, "note": "拖拽手感/中断/滚动冲突待真实浏览器与指针（T12-B/C/D 子卡）" },
-    { "id": "T13", "status": "verified", "dependsOn": ["T07", "T09", "T11", "T12"], "report": "reports/tasks/T13.md", "reviewRequired": true, "note": "分链路预算精测与帧稳定性留专项" },
-    { "id": "T14", "status": "planned", "dependsOn": ["T08"], "report": "reports/tasks/T14.md", "reviewRequired": true }
+    { "id": "T12", "status": "implemented", "dependsOn": ["T10", "T11"], "report": "reports/tasks/T10-T12.md", "reviewRequired": true, "note": "拖拽手感/中断/滚动冲突待真实浏览器（T12-B/C/D）" },
+    { "id": "T13", "status": "verified", "dependsOn": ["T07", "T09", "T11", "T12"], "report": "reports/tasks/T13.md", "reviewRequired": true },
+    { "id": "T14", "status": "verified", "dependsOn": ["T08"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T15", "status": "verified", "dependsOn": ["T06", "T08"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T16", "status": "verified", "dependsOn": ["T06", "T08"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T17", "status": "verified", "dependsOn": ["T09"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T18", "status": "verified", "dependsOn": ["T10", "T17"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T19", "status": "verified", "dependsOn": ["T06", "T12"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T20", "status": "verified", "dependsOn": ["T06", "T08"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T21", "status": "verified", "dependsOn": ["T10"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T22", "status": "verified", "dependsOn": ["T10", "T21"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T23", "status": "verified", "dependsOn": ["T08", "T10"], "report": "reports/tasks/T14-T23.md", "reviewRequired": true },
+    { "id": "T24", "status": "planned", "dependsOn": ["T05", "T07", "T08", "T09", "T10", "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20", "T21", "T22", "T23"], "report": "reports/tasks/T24.md", "reviewRequired": true, "note": "public-api.test.ts 已就位（30 组件 API 计数 + meta 一致性校验）" }
   ]
 }

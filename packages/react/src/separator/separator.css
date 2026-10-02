@@ -1,0 +1,15 @@
+.cwa-design-separator {
+  border: 0;
+  margin: 0;
+  background: var(--cwa-design-color-border-subtle);
+  flex: none;
+}
+.cwa-design-separator--horizontal {
+  width: 100%;
+  height: 1px;
+}
+.cwa-design-separator--vertical {
+  width: 1px;
+  align-self: stretch;
+  min-height: 1rem;
+}

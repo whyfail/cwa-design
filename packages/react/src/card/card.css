@@ -1,0 +1,33 @@
+/* Card：内容容器。标题/正文/操作有固定节奏；交互按钮是真实 Button，不是整卡。 */
+.cwa-design-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cwa-design-space-2);
+  padding: var(--cwa-design-space-5);
+  min-width: 0;
+}
+.cwa-design-card__title {
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-title);
+  font-weight: 590;
+  line-height: var(--cwa-design-font-leading-body);
+  color: var(--cwa-design-color-text);
+}
+.cwa-design-card__description {
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-text-muted);
+  margin-top: calc(-1 * var(--cwa-design-space-1));
+}
+.cwa-design-card__content {
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text);
+  min-width: 0;
+}
+.cwa-design-card__actions {
+  display: flex;
+  gap: var(--cwa-design-space-3);
+  justify-content: flex-end;
+  margin-top: var(--cwa-design-space-2);
+}

@@ -1,0 +1,21 @@
+import type { ComponentRecord } from "@cwa-design/registry";
+
+export const textareaMeta = {
+  schemaVersion: "1.0.0",
+  libraryVersion: "0.1.0-alpha.0",
+  framework: "react",
+  id: "textarea",
+  name: "Textarea",
+  status: "stable-in-alpha",
+  package: "@cwa-design/react",
+  exports: ["Textarea"],
+  importPath: "@cwa-design/react",
+  stylePath: "@cwa-design/react/styles.css",
+  props: {},
+  extends: [],
+  materialPolicy: "inherit-parent-surface",
+  a11y: ["label-association-ime-safe"],
+  examples: [],
+  runtimeDependencies: [],
+  deprecated: false,
+} satisfies ComponentRecord;

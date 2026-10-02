@@ -1,0 +1,95 @@
+/* Select：触发器复用控件外观；列表为 solid 材质（浮层不叠玻璃）。 */
+.cwa-design-select__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cwa-design-space-2);
+  min-width: 10rem;
+  min-height: 2.75rem;
+  padding: 0 var(--cwa-design-space-3);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text);
+  background: var(--cwa-design-color-surface);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  border-radius: var(--cwa-design-radius-control);
+  cursor: pointer;
+  transition: border-color var(--cwa-design-motion-control) ease;
+}
+.cwa-design-select__trigger[data-popup-open] {
+  border-color: var(--cwa-design-color-accent);
+}
+.cwa-design-select__trigger:focus-visible {
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline-offset: var(--cwa-design-focus-offset);
+}
+.cwa-design-select__trigger[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+.cwa-design-select__icon {
+  flex: none;
+  display: inline-flex;
+  color: var(--cwa-design-color-text-muted);
+  transition: transform var(--cwa-design-motion-control) ease;
+}
+.cwa-design-select__trigger[data-popup-open] .cwa-design-select__icon {
+  transform: rotate(180deg);
+}
+
+.cwa-design-select__positioner {
+  z-index: 2;
+}
+.cwa-design-select__popup {
+  min-width: var(--cwa-select-min-width, 10rem);
+  max-height: 20rem;
+  overflow-y: auto;
+  padding: var(--cwa-design-space-1);
+  background: var(--cwa-design-color-surface-raised);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  border-radius: var(--cwa-design-radius-control);
+  box-shadow: 0 12px 40px var(--cwa-design-color-scrim);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text);
+  transform-origin: var(--transform-origin, top center);
+  transition:
+    transform var(--cwa-design-motion-control) ease,
+    opacity var(--cwa-design-motion-control) ease;
+}
+.cwa-design-select__popup[data-starting-style],
+.cwa-design-select__popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.cwa-design-select__item {
+  display: flex;
+  align-items: center;
+  gap: var(--cwa-design-space-2);
+  padding: var(--cwa-design-space-2) var(--cwa-design-space-3);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+  min-height: 2.25rem;
+}
+.cwa-design-select__item[data-highlighted] {
+  background: color-mix(in srgb, var(--cwa-design-color-text) 8%, transparent);
+}
+.cwa-design-select__item[data-selected] {
+  color: var(--cwa-design-color-accent);
+  font-weight: 590;
+}
+.cwa-design-select__item[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+.cwa-design-select__item-indicator {
+  display: inline-flex;
+  flex: none;
+  margin-inline-start: auto;
+  visibility: hidden;
+}
+.cwa-design-select__item[data-selected] .cwa-design-select__item-indicator {
+  visibility: visible;
+}

@@ -1,0 +1,66 @@
+.cwa-design-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cwa-design-space-3);
+  padding: var(--cwa-design-space-3) var(--cwa-design-space-4);
+  border-radius: var(--cwa-design-radius-control);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  background: var(--cwa-design-color-surface);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text);
+  min-width: 0;
+}
+.cwa-design-alert__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.cwa-design-alert--info .cwa-design-alert__icon {
+  background: color-mix(in srgb, var(--cwa-design-color-accent) 14%, transparent);
+  color: var(--cwa-design-color-accent);
+}
+.cwa-design-alert--success .cwa-design-alert__icon {
+  background: color-mix(in srgb, var(--cwa-design-color-success) 16%, transparent);
+  color: var(--cwa-design-color-success);
+}
+.cwa-design-alert--warning .cwa-design-alert__icon {
+  background: color-mix(in srgb, var(--cwa-design-color-warning) 18%, transparent);
+  color: var(--cwa-design-color-warning);
+}
+.cwa-design-alert--danger .cwa-design-alert__icon {
+  background: color-mix(in srgb, var(--cwa-design-color-danger) 14%, transparent);
+  color: var(--cwa-design-color-danger);
+}
+.cwa-design-alert--danger {
+  border-color: color-mix(in srgb, var(--cwa-design-color-danger) 40%, transparent);
+}
+.cwa-design-alert--warning {
+  border-color: color-mix(in srgb, var(--cwa-design-color-warning) 45%, transparent);
+}
+.cwa-design-alert__body {
+  flex: 1;
+  min-width: 0;
+}
+.cwa-design-alert__title {
+  font-weight: 590;
+}
+.cwa-design-alert__content {
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-text-muted);
+  margin-top: var(--cwa-design-space-1);
+}
+.cwa-design-alert__action {
+  flex: none;
+}
+@media (prefers-contrast: more) {
+  .cwa-design-alert {
+    border-color: var(--cwa-design-color-border-strong);
+  }
+}

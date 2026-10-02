@@ -1,0 +1,28 @@
+.cwa-design-tooltip__positioner {
+  z-index: 3;
+}
+.cwa-design-tooltip {
+  max-width: 16rem;
+  padding: var(--cwa-design-space-2) var(--cwa-design-space-3);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--cwa-design-color-text) 92%, transparent);
+  color: var(--cwa-design-color-bg);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-caption);
+  line-height: var(--cwa-design-font-leading-body);
+  transform-origin: var(--transform-origin, bottom center);
+  transition:
+    transform var(--cwa-design-motion-control) ease,
+    opacity var(--cwa-design-motion-control) ease;
+}
+.cwa-design-tooltip[data-starting-style],
+.cwa-design-tooltip[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.94);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cwa-design-tooltip[data-starting-style],
+  .cwa-design-tooltip[data-ending-style] {
+    transform: none;
+  }
+}

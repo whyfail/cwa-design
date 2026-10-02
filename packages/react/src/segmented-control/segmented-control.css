@@ -1,0 +1,50 @@
+.cwa-design-segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--cwa-design-radius-control);
+  background: color-mix(in srgb, var(--cwa-design-color-text) 8%, transparent);
+}
+.cwa-design-segmented__item {
+  display: inline-flex;
+}
+.cwa-design-segmented__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.cwa-design-segmented__input:focus-visible + .cwa-design-segmented__label {
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline-offset: 1px;
+}
+.cwa-design-segmented__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: var(--cwa-design-space-1) var(--cwa-design-space-4);
+  border-radius: calc(var(--cwa-design-radius-control) - 2px);
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-body);
+  color: var(--cwa-design-color-text-muted);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--cwa-design-motion-control) ease,
+    color var(--cwa-design-motion-control) ease,
+    box-shadow var(--cwa-design-motion-control) ease;
+}
+.cwa-design-segmented__item:has(.cwa-design-segmented__input[data-checked]) .cwa-design-segmented__label {
+  background: var(--cwa-design-color-surface-raised);
+  color: var(--cwa-design-color-text);
+  font-weight: 590;
+  box-shadow: 0 1px 4px var(--cwa-design-color-scrim);
+}
+.cwa-design-segmented__item:has(.cwa-design-segmented__input[disabled]) {
+  opacity: 0.5;
+}
+.cwa-design-segmented__item:has(.cwa-design-segmented__input[disabled]) .cwa-design-segmented__label {
+  cursor: default;
+}

@@ -1,0 +1,38 @@
+.cwa-design-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cwa-design-space-1);
+  padding: 0.125rem var(--cwa-design-space-2);
+  border-radius: 9999px;
+  font-family: var(--cwa-design-font-family);
+  font-size: var(--cwa-design-font-size-caption);
+  font-weight: 590;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.cwa-design-badge--neutral {
+  background: color-mix(in srgb, var(--cwa-design-color-text) 10%, transparent);
+  color: var(--cwa-design-color-text);
+}
+.cwa-design-badge--accent {
+  background: color-mix(in srgb, var(--cwa-design-color-accent) 14%, transparent);
+  color: var(--cwa-design-color-accent);
+}
+.cwa-design-badge--success {
+  background: color-mix(in srgb, var(--cwa-design-color-success) 16%, transparent);
+  color: var(--cwa-design-color-success);
+}
+.cwa-design-badge--warning {
+  background: color-mix(in srgb, var(--cwa-design-color-warning) 18%, transparent);
+  color: var(--cwa-design-color-warning);
+}
+.cwa-design-badge--danger {
+  background: color-mix(in srgb, var(--cwa-design-color-danger) 14%, transparent);
+  color: var(--cwa-design-color-danger);
+}
+
+@media (prefers-contrast: more) {
+  .cwa-design-badge {
+    border: 1px solid var(--cwa-design-color-border-strong);
+  }
+}
