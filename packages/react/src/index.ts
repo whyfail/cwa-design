@@ -52,6 +52,13 @@ export {
   type RadioItemProps,
 } from "./radio-group/radio-group";
 export {
+  AccountPanelRecipe,
+  type AccountPanelRecipeProps,
+  AccountSkeletonRecipe,
+} from "./recipes/account-panel";
+export { AiWorkspaceRecipe, type AiWorkspaceRecipeProps } from "./recipes/ai-workspace";
+export { SettingsRecipe, type SettingsRecipeProps, type SettingsValues } from "./recipes/settings";
+export {
   SegmentedControl,
   type SegmentedControlItem,
   type SegmentedControlProps,

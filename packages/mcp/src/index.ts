@@ -29,7 +29,10 @@ function loadManifests(): RegistryManifest[] {
     throw new RegistryError("REGISTRY_UNAVAILABLE", `本地 registry 快照缺失: ${manifestDir}`);
   }
   return readdirSync(manifestDir).map(
-    (version) => JSON.parse(readFileSync(path.join(manifestDir, version, "manifest.json"), "utf8")) as RegistryManifest,
+    (version) =>
+      JSON.parse(
+        readFileSync(path.join(manifestDir, version, "manifest.json"), "utf8"),
+      ) as RegistryManifest,
   );
 }
 

@@ -118,7 +118,29 @@ export function buildManifest() {
         generatedAt,
         components,
         examples: examples.map((e) => e.record),
-        recipes: [],
+        recipes: [
+            {
+                id: "settings",
+                framework: "react",
+                title: "个人设置页（Field/Input/Switch/Dialog/Toast）",
+                components: ["field", "input", "switch", "button", "card", "dialog", "toast"],
+                files: ["packages/react/src/recipes/settings.tsx"],
+            },
+            {
+                id: "account-panel",
+                framework: "react",
+                title: "账户面板（Avatar/Badge/Card/Tabs/DropdownMenu/Skeleton）",
+                components: ["avatar", "badge", "card", "tabs", "dropdown-menu", "skeleton"],
+                files: ["packages/react/src/recipes/account-panel.tsx"],
+            },
+            {
+                id: "ai-workspace",
+                framework: "react",
+                title: "AI 工作台（Sheet/Popover/Tabs/Text/Button/Badge，静态 fixture 无模型 key）",
+                components: ["sheet", "popover", "tabs", "text", "button", "badge", "card"],
+                files: ["packages/react/src/recipes/ai-workspace.tsx"],
+            },
+        ],
     };
     // manifest 不含自身 digest 条目：序列化（digest 置空）→ 计算 → 回填。
     const withoutDigest = JSON.stringify({ ...manifestBody, registryDigest: "" }, null, 2);
