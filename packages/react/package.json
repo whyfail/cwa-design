@@ -21,7 +21,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build && node scripts/copy-styles.mjs && tsc -p tsconfig.build.json",
+    "build": "vite build && node scripts/copy-styles.mjs && tsc -p tsconfig.build.json && node scripts/generate-metas.ts",
     "typecheck": "tsc -p tsconfig.json",
     "typecheck:build": "tsc -p tsconfig.build.json --noEmit",
     "test": "vitest run"
