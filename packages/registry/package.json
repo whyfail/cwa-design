@@ -15,9 +15,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && tsc -p tsconfig.scripts.json && node dist-scripts/registry/scripts/build-manifest.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "manifest:build": "node dist-scripts/build-manifest.js"
   },
   "dependencies": {
     "zod": "4.6.5"

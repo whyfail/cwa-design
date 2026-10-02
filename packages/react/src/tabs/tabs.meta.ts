@@ -1,6 +1,6 @@
 import type { ComponentRecord } from "@cwa-design/registry";
 
-export const UtabsMeta = {
+export const tabsMeta = {
   schemaVersion: "1.0.0",
   libraryVersion: "0.1.0-alpha.0",
   framework: "react",
