@@ -7,13 +7,19 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { exampleRecordSchema, manifestSchema, type ComponentRecord } from "../src/index.js";
-
+import { type ComponentRecord, exampleRecordSchema, manifestSchema } from "../src/index.js";
 
 // 编译产物位于 dist-scripts/registry/scripts/（rootDir=packages），
 // 三级 ".." 到 monorepo 根：scripts → registry → packages → 根。
 // 以运行时 monorepo 标记文件兜底校验，防未来目录调整后静默错位。
-const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..", "..");
+const repoRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "..",
+  "..",
+  "..",
+);
 if (!existsSync(path.join(repoRoot, "pnpm-workspace.yaml"))) {
   throw new Error(`repoRoot 解析错误: ${repoRoot} 缺少 pnpm-workspace.yaml`);
 }
@@ -26,7 +32,9 @@ function sha256File(file: string): string {
   return `sha256:${createHash("sha256").update(readFileSync(file)).digest("hex")}`;
 }
 
-function collectExamples(components: Array<ComponentRecord>): Array<{ record: ReturnType<typeof exampleRecordSchema.parse>; file: string }> {
+function collectExamples(
+  components: Array<ComponentRecord>,
+): Array<{ record: ReturnType<typeof exampleRecordSchema.parse>; file: string }> {
   const out: Array<{ record: ReturnType<typeof exampleRecordSchema.parse>; file: string }> = [];
   for (const meta of components) {
     const examplesDir = path.join(reactSrc, meta.id, "examples");
@@ -87,11 +95,18 @@ function compileExamples(files: string[]): void {
   } catch (error) {
     const err = error as { stdout?: string; stderr?: string; status?: number };
     const detail = [err.stdout, err.stderr].filter(Boolean).join("\n").trim();
-    throw new Error(`示例编译失败 (exit ${err.status}): ${detail || String(error)}`, { cause: error });
+    throw new Error(`示例编译失败 (exit ${err.status}): ${detail || String(error)}`, {
+      cause: error,
+    });
   }
 }
 
-export function buildManifest(): { manifestPath: string; digest: string; components: number; examples: number } {
+export function buildManifest(): {
+  manifestPath: string;
+  digest: string;
+  components: number;
+  examples: number;
+} {
   const metasPath = path.join(repoRoot, "packages", "react", "dist", "metas.json");
   const components = JSON.parse(readFileSync(metasPath, "utf8")) as Array<ComponentRecord>;
   if (components.length !== 30) {
@@ -106,12 +121,27 @@ export function buildManifest(): { manifestPath: string; digest: string; compone
     throw new Error(`examples:check 失败: ${(error as Error).message}`, { cause: error });
   }
 
+  // 确定性构建：generatedAt 沿用已有 artifact（内容相同 ⇒ digest 相同）。
+  // 这是 immutable artifact 的前提；新版本首个构建用当前时间。
+  const existingPath = path.join(
+    registryDist,
+    "manifest",
+    "react",
+    LIBRARY_VERSION,
+    "manifest.json",
+  );
+  let generatedAt = new Date().toISOString();
+  if (existsSync(existingPath)) {
+    const existing = JSON.parse(readFileSync(existingPath, "utf8")) as { generatedAt?: string };
+    if (typeof existing.generatedAt === "string") generatedAt = existing.generatedAt;
+  }
+
   const manifestBody = {
     schemaVersion: SCHEMA_VERSION,
     libraryVersion: LIBRARY_VERSION,
     framework: "react",
     registryDigest: "pending",
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     components,
     examples: examples.map((e) => e.record),
     recipes: [],
@@ -130,11 +160,9 @@ export function buildManifest(): { manifestPath: string; digest: string; compone
 
   // 回读校验：digest 与字节一致、schema 通过。
   const reparsed = JSON.parse(readFileSync(manifestPath, "utf8")) as { registryDigest: string };
-  const actual = `sha256:${
-    createHash("sha256")
-      .update(JSON.stringify({ ...reparsed, registryDigest: "" }, null, 2))
-      .digest("hex")
-  }`;
+  const actual = `sha256:${createHash("sha256")
+    .update(JSON.stringify({ ...reparsed, registryDigest: "" }, null, 2))
+    .digest("hex")}`;
   if (reparsed.registryDigest !== actual) {
     throw new Error(`digest 不一致: manifest=${reparsed.registryDigest} actual=${actual}`);
   }
@@ -142,7 +170,8 @@ export function buildManifest(): { manifestPath: string; digest: string; compone
   return { manifestPath, digest, components: components.length, examples: examples.length };
 }
 
-const isMain = process.argv[1] !== undefined && import.meta.url === new URL(`file://${process.argv[1]}`).href;
+const isMain =
+  process.argv[1] !== undefined && import.meta.url === new URL(`file://${process.argv[1]}`).href;
 if (isMain) {
   const result = buildManifest();
   console.log(

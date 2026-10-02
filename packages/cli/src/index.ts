@@ -12,7 +12,6 @@ import {
   type RegistryManifest,
 } from "@cwa-design/registry";
 
-
 interface CliContext {
   manifests: RegistryManifest[];
   libraryVersion: string;

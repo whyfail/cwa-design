@@ -42,10 +42,7 @@ const META_MODULES: Array<[dir: string, exportName: string]> = [
 
 function isComponentRecord(value: unknown): value is ComponentRecord {
   return (
-    typeof value === "object" &&
-    value !== null &&
-    "id" in value &&
-    typeof value.id === "string"
+    typeof value === "object" && value !== null && "id" in value && typeof value.id === "string"
   );
 }
 

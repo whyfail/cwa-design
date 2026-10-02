@@ -1,6 +1,6 @@
 "use client";
 
-import { type ButtonHTMLAttributes, type ReactNode, type Ref } from "react";
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 
 export type IconButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 export type IconButtonSize = "sm" | "md" | "lg";

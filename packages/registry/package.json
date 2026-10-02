@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && tsc -p tsconfig.scripts.json && node dist-scripts/registry/scripts/build-manifest.js",
+    "build": "tsc -p tsconfig.build.json && tsc -p tsconfig.scripts.json && node dist-scripts/registry/scripts/build-manifest.js && node dist-scripts/registry/scripts/generate-skill-references.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "manifest:build": "node dist-scripts/build-manifest.js"

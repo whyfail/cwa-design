@@ -1,6 +1,6 @@
 "use client";
 
-import { type InputHTMLAttributes, type Ref } from "react";
+import type { InputHTMLAttributes, Ref } from "react";
 import { useFieldControl } from "../field/field";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

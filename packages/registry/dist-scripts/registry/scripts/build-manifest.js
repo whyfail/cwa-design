@@ -99,12 +99,21 @@ export function buildManifest() {
     catch (error) {
         throw new Error(`examples:check 失败: ${error.message}`, { cause: error });
     }
+    // 确定性构建：generatedAt 沿用已有 artifact（内容相同 ⇒ digest 相同）。
+    // 这是 immutable artifact 的前提；新版本首个构建用当前时间。
+    const existingPath = path.join(registryDist, "manifest", "react", LIBRARY_VERSION, "manifest.json");
+    let generatedAt = new Date().toISOString();
+    if (existsSync(existingPath)) {
+        const existing = JSON.parse(readFileSync(existingPath, "utf8"));
+        if (typeof existing.generatedAt === "string")
+            generatedAt = existing.generatedAt;
+    }
     const manifestBody = {
         schemaVersion: SCHEMA_VERSION,
         libraryVersion: LIBRARY_VERSION,
         framework: "react",
         registryDigest: "pending",
-        generatedAt: new Date().toISOString(),
+        generatedAt,
         components,
         examples: examples.map((e) => e.record),
         recipes: [],
