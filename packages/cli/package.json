@@ -1,0 +1,25 @@
+{
+  "name": "@cwa-design/cli",
+  "version": "0.1.0-alpha.0",
+  "description": "CWA Design CLI: doctor, search, inspect, plan (read-only; init/apply separate).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "bin": {
+    "cwa-design": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@cwa-design/registry": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "vitest": "5.0.3"
+  }
+}

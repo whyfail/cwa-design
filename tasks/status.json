@@ -1,7 +1,7 @@
 {
   "planVersion": "1.1.0",
   "frameworkPhase": "react-alpha",
-  "activeTask": "T25",
+  "activeTask": "T28",
   "p0PublicComponents": 30,
   "tasks": [
     {
@@ -268,6 +268,15 @@
         "T24"
       ],
       "report": "reports/tasks/T25.md",
+      "reviewRequired": true
+    },
+    {
+      "id": "T26",
+      "status": "verified",
+      "dependsOn": [
+        "T24"
+      ],
+      "report": "reports/tasks/T26.md",
       "reviewRequired": true
     }
   ]
