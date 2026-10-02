@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.2.0",
-    "zod": "4.6.5"
+    "zod": "4.6.5",
+    "@cwa-design/registry": "workspace:*",
+    "@cwa-design/tokens": "workspace:*"
   },
   "devDependencies": {
     "@modelcontextprotocol/client": "2.2.0",

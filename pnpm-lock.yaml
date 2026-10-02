@@ -290,6 +290,12 @@ importers:
 
   packages/mcp:
     dependencies:
+      '@cwa-design/registry':
+        specifier: workspace:*
+        version: link:../registry
+      '@cwa-design/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@modelcontextprotocol/server':
         specifier: 2.2.0
         version: 2.2.0
