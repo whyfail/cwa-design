@@ -1,7 +1,7 @@
 {
   "planVersion": "1.1.0",
   "frameworkPhase": "react-alpha-candidate",
-  "activeTask": "T25",
+  "activeTask": "T32",
   "p0PublicComponents": 30,
   "tasks": [
     {
@@ -262,13 +262,14 @@
     },
     {
       "id": "T25",
-      "status": "planned",
+      "status": "verified",
       "dependsOn": [
         "T13",
         "T24"
       ],
       "report": "reports/tasks/T25.md",
-      "reviewRequired": true
+      "reviewRequired": true,
+      "note": "人工走查留 T33"
     },
     {
       "id": "T26",
