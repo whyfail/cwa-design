@@ -1,7 +1,7 @@
 {
   "planVersion": "1.1.0",
   "frameworkPhase": "react-alpha",
-  "activeTask": "T27",
+  "activeTask": "T31",
   "p0PublicComponents": 30,
   "tasks": [
     {
@@ -281,12 +281,13 @@
     },
     {
       "id": "T27",
-      "status": "planned",
+      "status": "verified",
       "dependsOn": [
         "T26"
       ],
       "report": "reports/tasks/T27.md",
-      "reviewRequired": true
+      "reviewRequired": true,
+      "note": "init 写入单文件 cwa-design.json；apply 工程改动留待发布授权"
     },
     {
       "id": "T30",

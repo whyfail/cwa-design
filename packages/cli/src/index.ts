@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// CWA Design CLI（T26：只读命令）。init/apply 写入命令在 T27 单独交付。
+// CWA Design CLI（T26 只读命令 + T27 init 写入）。apply 类写入仅限显式 --apply。
 // 原则：无隐式写入；--json 输出机器可读数据；数据按确切版本查询。
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -11,6 +11,7 @@ import {
   RegistryError,
   type RegistryManifest,
 } from "@cwa-design/registry";
+import { applyInit, planInit } from "./init.js";
 
 interface CliContext {
   manifests: RegistryManifest[];
@@ -164,6 +165,32 @@ function main(): void {
       break;
     }
 
+    case "init": {
+      const apply = process.argv.includes("--apply");
+      const versionArg = args.find((a) => a.startsWith("--version="));
+      const version = versionArg ? versionArg.split("=")[1]! : ctx.libraryVersion;
+      try {
+        const plan = apply ? applyInit(process.cwd(), version) : planInit(process.cwd(), version);
+        if (json) {
+          console.log(
+            JSON.stringify(
+              { ok: true, applied: apply, action: plan.action, file: plan.file, diff: plan.diff },
+              null,
+              2,
+            ),
+          );
+        } else {
+          console.log(`init（${apply ? "已写入" : "dry-run，--apply 写入"}）：${plan.action}`);
+          for (const line of plan.diff) console.log(`  ${line}`);
+          if (plan.action === "up-to-date") console.log("  已是最新，无变更");
+        }
+      } catch (error) {
+        if (error instanceof RegistryError) fail(error.code, error.message);
+        throw error;
+      }
+      break;
+    }
+
     case "plan": {
       const ids = args.filter((a) => !a.startsWith("--"));
       const versionArg = args.find((a) => a.startsWith("--version="));
@@ -222,6 +249,7 @@ function main(): void {
   search [query]            搜索组件（--limit=N, --json）
   inspect <id>              组件契约详情（--version=x.y.z, --json）
   plan <id...>              生成安装计划（不写入，--json）
+  init [--apply]            生成/合并 cwa-design.json（默认 dry-run）
   help                      本帮助
 
 数据来自本地 registry 快照（版本 ${ctx.libraryVersion}）；apply 写入命令另行提供。`);
