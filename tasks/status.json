@@ -290,12 +290,12 @@
     }
   ],
   "releaseStatus": "deployed",
-  "updatedAt": "2026-10-03T15:35:04.263984+00:00",
+  "updatedAt": "2026-10-03T18:57:39.600000+00:00",
   "deployment": {
-    "version": "0.1.0-alpha.1",
-    "sourceCommit": "8f394b8eae01b948432a2186cc62e01909b65c43",
+    "version": "0.1.0-alpha.2",
+    "sourceCommit": "0c06de1c9b6a79acebdffb83862db7c364c4da52",
     "url": "https://whyfail.github.io/cwa-design/",
-    "workflowRun": 37133033123,
+    "workflowRun": 37145914516,
     "verification": "reports/optimization/deployment-results.json"
   }
 }

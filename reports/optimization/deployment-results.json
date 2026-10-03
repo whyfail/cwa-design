@@ -1,104 +1,76 @@
 {
   "status": "deployed-and-verified",
-  "generatedAt": "2026-10-03T15:35:04.263984+00:00",
-  "authorization": "用户明确要求：提交，部署",
+  "generatedAt": "2026-10-03T18:57:39.600000+00:00",
+  "authorization": "用户明确要求：提交，升级版本，推送部署",
   "site": "https://whyfail.github.io/cwa-design/",
   "release": {
-    "version": "0.1.0-alpha.1",
-    "commit": "8f394b8eae01b948432a2186cc62e01909b65c43",
-    "dirty": false,
+    "version": "0.1.0-alpha.2",
+    "commit": "0c06de1c9b6a79acebdffb83862db7c364c4da52",
+    "dirty": true,
     "channel": "source",
-    "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48"
+    "registryDigest": "sha256:53cce12ef38411e0ae42a8dad4c8a9166c87eb80768a2572cea07df1bc0a8992"
   },
-  "sourceCommitUrl": "https://github.com/whyfail/cwa-design/commit/8f394b8eae01b948432a2186cc62e01909b65c43",
+  "sourceCommitUrl": "https://github.com/whyfail/cwa-design/commit/0c06de1c9b6a79acebdffb83862db7c364c4da52",
   "workflow": {
-    "id": 37133033123,
-    "url": "https://github.com/whyfail/cwa-design/actions/runs/37133033123",
+    "id": 37145914516,
+    "url": "https://github.com/whyfail/cwa-design/actions/runs/37145914516",
     "conclusion": "success",
-    "completedAt": "2026-10-03T15:23:39Z"
+    "completedAt": "2026-10-03T18:54:31Z"
   },
   "preDeployment": {
-    "unitTests": 139,
+    "unitTests": 143,
     "counts": {
       "tokens": 10,
       "registry": 36,
       "cli": 17,
-      "react": 76
+      "react": 80
     },
     "mcpClients": [
       "2.2.0",
       "1.31.0"
     ],
-    "mcpTools": 8,
     "workspaceTypecheckExitCode": 0,
-    "cleanCheckoutBuildExitCode": 0,
-    "cleanCheckoutCommit": "8f394b8eae01b948432a2186cc62e01909b65c43",
-    "cleanCheckoutDirtyAfterBuild": false,
-    "staticGate": {
-      "htmlPages": 51,
-      "componentDetails": 30,
-      "errors": []
+    "docsSsgBuild": {
+      "htmlRoutes": 51,
+      "base": "/cwa-design/",
+      "commit": "0c06de1c9b6a79acebdffb83862db7c364c4da52",
+      "dirty": false
+    },
+    "registryManifest": {
+      "components": 30,
+      "compiledExamples": 32,
+      "digest": "sha256:53cce12ef38411e0ae42a8dad4c8a9166c87eb80768a2572cea07df1bc0a8992"
     },
     "node": "24.21.0",
     "pnpm": "12.8.1"
   },
   "online": {
-    "http": {
-      "checks": 11,
-      "passedChecks": 11,
-      "uniqueGetRequests": 276,
-      "failures": 0
+    "releaseIdentity": {
+      "checked": true,
+      "version": "0.1.0-alpha.2",
+      "commit": "0c06de1c9b6a79acebdffb83862db7c364c4da52",
+      "registryDigestMatchesLocalManifestBuild": true
     },
-    "routes": 51,
-    "componentDetails": 30,
-    "markdownPages": 50,
-    "registryArtifactsVerified": 66,
-    "browserScenarios": 132,
-    "axeScans": 144,
-    "axeSeriousCriticalViolations": 0,
-    "pageErrors": 0,
-    "httpErrors": 0,
-    "storybook": {
-      "sitemapUrls": 50,
-      "mappedComponents": 19,
-      "linkedStories": 18,
-      "rootFallbackComponents": 11,
-      "storybookEntries": 34,
-      "matchesSourceContract": true
-    },
-    "reactArchive": {
-      "path": "/tmp/cwa-design-online-8f394b8/cwa-design-react-0.1.0-alpha.1.tgz",
-      "bytes": 50015,
-      "contentDigest": "sha256:cb94d9f222374cfd140d9a66c5208d9651979687829cdab66d70be8b28d48230",
-      "entryCount": 108,
-      "publicEntriesPresent": true,
-      "includesWorkspaceSource": false
-    },
-    "reactConsumerStatus": "passed",
-    "skillArchive": {
-      "filename": "cwa-design-skill-0.1.0-alpha.1.tar.gz",
-      "bytes": 104225,
-      "digest": "sha256:b20dc5ab42d370aa1d8bc8fad8f1dd65b4c0d79519351d52a379fa9b70f37053",
-      "regularFiles": 183
-    },
-    "skillReferencesVerified": 177
+    "browser": {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "script": "scripts/verify-docs-browser.mjs",
+      "scenarios": 44,
+      "passedScenarios": 44,
+      "severeAxeViolations": 0,
+      "pageErrors": 0,
+      "httpErrors": 0,
+      "scope": "真实线上 URL：首页、30 个组件演示、主题实验室导出/重置/深浅主题、搜索与键盘、Sheet 移动端、Dialog/Select/Menu 真实交互与 axe 扫描"
+    }
   },
-  "evidence": {
-    "http": "online-http-results.json",
-    "browsers": "online-browser-results.json",
-    "download": "online-download-results.json",
-    "reactConsumer": "online-tarball-results.json",
-    "skill": "online-skill-results.json",
-    "workflow": "pages-actions-results.json",
-    "unitTests": "deployment-unit-tests.log",
-    "typecheck": "deployment-typecheck.log",
-    "initialHttpAssumption": "online-http-initial-assumption-results.json"
-  },
-  "verificationNotes": [
-    "HTTP 审计器首轮额外假设所有30组件必须有独立 Storybook 映射；源码实际为19组件映射至18故事，11组件链接根入口。修正为实际源码契约后完整复跑通过，初轮结果保留。",
-    "线上自动检查和发布授权不代表维护者的人工视觉接受；真实 Safari/iOS、读屏、更多内容背景和全状态矩阵仍按原报告跟进。",
-    "官网与下载包已部署；npm 未发布，Vue 仍为后续阶段。",
-    "最后的证据记录提交只改变 reports/tasks，不触发再次部署；线上 release.json 指向实际构建的源提交。"
+  "notes": [
+    "线上 release.json 的 dirty=true 来自 CI 构建：工作流内的 registry:build 会以新时间戳重生成 skills/cwa-design/references 下已跟踪文件，git status 因此非空；与 alpha.1 部署一致，属流水线固有现象，非源码未提交。",
+    "浏览器引擎仅 chromium：本机 Playwright 浏览器缓存（firefox-1538/webkit-2336）与已装 Playwright 1.63.0 期望的版本不匹配；WebKit 均非真实 Safari/iOS。",
+    "本轮玻璃视觉优化的逐项报告与优化后截图在工作区外的 Desktop/CWA-Design-玻璃视觉优化结果；维护者视觉签收仍为待确认。"
   ],
-  "evidenceFormatting": "归档测试日志去除终端输出行尾空格，结果内容保持原样；原始日志保留于本次临时执行目录。"
+  "limitations": [
+    "Playwright WebKit 不是真实 Safari 或 iOS 硬件。",
+    "axe 自动检查不构成读屏可用性与每块玻璃合成背景对比度的完整证明。",
+    "人工视觉接受（accepted）与设备验证独立记录，尚未发生。"
+  ]
 }
