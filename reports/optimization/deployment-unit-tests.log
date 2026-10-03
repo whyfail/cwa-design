@@ -1,0 +1,55 @@
+$ pnpm -r --if-present run test
+Scope: 9 of 10 workspace projects
+packages/registry test$ vitest run
+packages/tokens test$ vitest run
+packages/tokens test: 
+packages/tokens test:  RUN  v5.0.3 /Users/wulei/Desktop/wl/cwa/cwa-design/packages/tokens
+packages/tokens test: 
+packages/registry test: 
+packages/registry test:  RUN  v5.0.3 /Users/wulei/Desktop/wl/cwa/cwa-design/packages/registry
+packages/registry test: 
+packages/tokens test: 
+packages/tokens test:  Test Files  1 passed (1)
+packages/tokens test:       Tests  10 passed (10)
+packages/tokens test:    Start at  23:16:11
+packages/tokens test:    Duration  153ms (import 62%, transform 25%, tests 8%, worker 4%)
+packages/tokens test: 
+packages/tokens test: Done
+packages/registry test: 
+packages/registry test:  Test Files  3 passed (3)
+packages/registry test:       Tests  36 passed (36)
+packages/registry test:    Start at  23:16:11
+packages/registry test:    Duration  1.93s (tests 76%, import 20%, transform 4%)
+packages/registry test: 
+packages/registry test: Done
+packages/react test$ vitest run
+packages/mcp test$ node test/mcp-client-test.mjs
+packages/cli test$ vitest run
+packages/cli test: 
+packages/cli test:  RUN  v5.0.3 /Users/wulei/Desktop/wl/cwa/cwa-design/packages/cli
+packages/cli test: 
+packages/react test: 
+packages/react test:  RUN  v5.0.3 /Users/wulei/Desktop/wl/cwa/cwa-design/packages/react
+packages/react test: 
+packages/mcp test: [current 2.2.0] ok {"toolCount":8,"libraryVersion":"0.1.0-alpha.1"}
+packages/mcp test: [legacy 1.31.0] ok {"toolCount":8}
+packages/mcp test: MCP T29 PASS
+packages/mcp test: Done
+packages/cli test: 
+packages/cli test:  Test Files  2 passed (2)
+packages/cli test:       Tests  17 passed (17)
+packages/cli test:    Start at  23:16:13
+packages/cli test:    Duration  2.38s (tests 93%, import 4%, transform 3%)
+packages/cli test: 
+packages/cli test: Done
+packages/react test: 
+packages/react test:  Test Files  16 passed (16)
+packages/react test:       Tests  76 passed (76)
+packages/react test:    Start at  23:16:13
+packages/react test:    Duration  2.54s (environment 46%, tests 27%, setup 12%, import 11%, transform 4%)
+packages/react test: 
+packages/react test: Environment  jsdom was created 16 times · 8.60s total, 46% of tracked time
+packages/react test:              create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+packages/react test:              learn more: https://vitest.dev/guide/improving-performance#test-environments
+packages/react test: 
+packages/react test: Done

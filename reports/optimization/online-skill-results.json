@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-10-03T15:31:13.274747+00:00",
+  "archive": {
+    "filename": "cwa-design-skill-0.1.0-alpha.1.tar.gz",
+    "bytes": 104225,
+    "digest": "sha256:b20dc5ab42d370aa1d8bc8fad8f1dd65b4c0d79519351d52a379fa9b70f37053",
+    "regularFiles": 183
+  },
+  "checks": [
+    {
+      "root": "cwa-design/references",
+      "version": "0.1.0-alpha.1",
+      "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
+      "filesVerified": 71,
+      "passed": true
+    },
+    {
+      "root": "cwa-design/references/versions/react/0.1.0-alpha.0/references",
+      "version": "0.1.0-alpha.0",
+      "registryDigest": "sha256:095bda6190018ed0ee6882a7e74c7130692f227e0b4e5b108a950585e6a157ec",
+      "filesVerified": 35,
+      "passed": true
+    },
+    {
+      "root": "cwa-design/references/versions/react/0.1.0-alpha.1/references",
+      "version": "0.1.0-alpha.1",
+      "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
+      "filesVerified": 71,
+      "passed": true
+    }
+  ]
+}

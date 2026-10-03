@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-10-03T15:25:27.445Z",
+  "base": "https://whyfail.github.io/cwa-design/",
+  "release": {
+    "version": "0.1.0-alpha.1",
+    "commit": "8f394b8eae01b948432a2186cc62e01909b65c43",
+    "dirty": false,
+    "channel": "source",
+    "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48"
+  },
+  "browser": "154.0.8037.97",
+  "download": {
+    "href": "/cwa-design/downloads/cwa-design-react-0.1.0-alpha.1.tgz",
+    "filename": "cwa-design-react-0.1.0-alpha.1.tgz",
+    "path": "/tmp/cwa-design-online-8f394b8/cwa-design-react-0.1.0-alpha.1.tgz",
+    "bytes": 50015,
+    "digest": "sha256:cb94d9f222374cfd140d9a66c5208d9651979687829cdab66d70be8b28d48230",
+    "failure": null
+  },
+  "screenshot": "/tmp/cwa-design-online-8f394b8/homepage-desktop.png"
+}

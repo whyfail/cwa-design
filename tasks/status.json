@@ -1,7 +1,7 @@
 {
   "planVersion": "2.0.0",
   "frameworkPhase": "react-glass-website-optimization",
-  "activeTask": "R23",
+  "activeTask": null,
   "p0PublicComponents": 30,
   "legacyStatus": "tasks/archive/status-before-optimization-2026-10-03.json",
   "tasks": [
@@ -279,16 +279,23 @@
     {
       "id": "R23",
       "title": "部署及线上最终验证",
-      "status": "in_progress",
+      "status": "verified",
       "dependsOn": [
         "R22"
       ],
       "report": "reports/optimization/R23.md",
       "reviewRequired": true,
-      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出",
+      "verificationScope": "真实线上URL的自动路由/浏览器/资源/下载检查，详见R23报告；人工视觉接受与设备/读屏验收独立记录",
       "authorization": "用户明确要求：提交，部署"
     }
   ],
-  "releaseStatus": "deployment_authorized",
-  "updatedAt": "2026-10-03T15:09:52.349468+00:00"
+  "releaseStatus": "deployed",
+  "updatedAt": "2026-10-03T15:35:04.263984+00:00",
+  "deployment": {
+    "version": "0.1.0-alpha.1",
+    "sourceCommit": "8f394b8eae01b948432a2186cc62e01909b65c43",
+    "url": "https://whyfail.github.io/cwa-design/",
+    "workflowRun": 37133033123,
+    "verification": "reports/optimization/deployment-results.json"
+  }
 }

@@ -1,0 +1,18 @@
+$ pnpm -r --if-present run typecheck
+Scope: 9 of 10 workspace projects
+packages/registry typecheck$ tsc -p tsconfig.json --noEmit
+packages/tokens typecheck$ tsc -p tsconfig.json
+packages/tokens typecheck: Done
+packages/registry typecheck: Done
+packages/react typecheck$ tsc -p tsconfig.json
+packages/cli typecheck$ tsc -p tsconfig.json --noEmit
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+packages/mcp typecheck: Done
+packages/cli typecheck: Done
+packages/react typecheck: Done
+apps/docs typecheck$ tsc -p tsconfig.json
+examples/react-vite typecheck$ tsc -p tsconfig.json
+apps/storybook typecheck$ tsc -p tsconfig.json
+examples/react-vite typecheck: Done
+apps/docs typecheck: Done
+apps/storybook typecheck: Done
