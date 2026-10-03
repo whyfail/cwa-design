@@ -2,6 +2,8 @@
 
 import {
   type ButtonHTMLAttributes,
+  type FocusEvent,
+  type KeyboardEvent,
   type PointerEvent,
   type ReactNode,
   type Ref,
@@ -25,8 +27,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 /**
  * Button：原生 <button> 语义（保留 type/submit/表单提交）。
- * pointer-down 立即反馈，click 提交动作；loading 期间不触发 onClick。
- * 键盘 Space/Enter 激活由原生控件提供，不做代理。
+ * pointer-down 与键盘按住（Space/Enter）都立即给 data-pressed 反馈，click 提交动作；
+ * loading 期间不触发 onClick。键盘 Space/Enter 激活由原生控件提供，不做代理。
  */
 export function Button(props: ButtonProps) {
   const {
@@ -42,6 +44,9 @@ export function Button(props: ButtonProps) {
     onPointerUp,
     onPointerLeave,
     onPointerCancel,
+    onKeyDown,
+    onKeyUp,
+    onBlur,
     onClick,
     ...rest
   } = props;
@@ -61,6 +66,30 @@ export function Button(props: ButtonProps) {
       onPointerUp?.(event);
     },
     [onPointerUp],
+  );
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      // 键盘按住与鼠标按下等价：Space/Enter 按住期间保持按压视觉。
+      if (!isDisabled && !event.repeat && (event.key === " " || event.key === "Enter")) {
+        setPressed(true);
+      }
+      onKeyDown?.(event);
+    },
+    [isDisabled, onKeyDown],
+  );
+  const handleKeyUp = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key === " " || event.key === "Enter") setPressed(false);
+      onKeyUp?.(event);
+    },
+    [onKeyUp],
+  );
+  const handleBlur = useCallback(
+    (event: FocusEvent<HTMLButtonElement>) => {
+      setPressed(false);
+      onBlur?.(event);
+    },
+    [onBlur],
   );
 
   const classNames = [
@@ -92,6 +121,9 @@ export function Button(props: ButtonProps) {
         setPressed(false);
         onPointerCancel?.(event);
       }}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
+      onBlur={handleBlur}
       onClick={(event) => {
         if (loading) return;
         onClick?.(event);

@@ -4,9 +4,9 @@
 - schemaVersion: 1.1.0
 - framework: react
 - components: 30
-- examples: 31
+- examples: 32
 - recipes: 3
-- registryDigest: sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48
+- registryDigest: sha256:e743d9db2377f7794d927579286a8900749bca753604c9d19b75edb1c2296b3b
 - generatedAt: 2026-10-03T05:13:13.969Z
 
 组件契约见 contracts/<id>.json。index.json 对每个参考文件记录原始字节 SHA-256（不包括 index 自身）。

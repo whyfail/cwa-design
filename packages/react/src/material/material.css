@@ -1,7 +1,8 @@
 /* Shared optics. Components choose weight; content stays fully opaque.
    A toolbar shell samples the backdrop once; its children use highlight only. */
 .cwa-design-material {
-  --cwa-design-color-text-muted: var(--cwa-design-color-text);
+  /* 玻璃上的副文字用专用色阶（不透明），正文保持全强度；见 design-rules §8。 */
+  --cwa-design-color-text-muted: var(--cwa-design-color-glass-text-muted);
   --cwa-design-color-focus: var(--cwa-design-color-text);
   background-color: var(--cwa-material-fill, var(--cwa-design-color-glass-regular-fill));
   background-image: linear-gradient(135deg, var(--cwa-design-color-glass-reflection), transparent 48%);

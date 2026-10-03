@@ -3,6 +3,7 @@
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
 import { animate, motion, useDragControls, useMotionValue, useReducedMotion } from "motion/react";
 import {
+  type ComponentProps,
   createContext,
   type ReactNode,
   type PointerEvent as ReactPointerEvent,
@@ -194,10 +195,37 @@ function SheetContent({
   );
 }
 
+// 标题/说明自动附加组件类，排版由组件 CSS 决定，不依赖宿主页面的 heading 样式。
+function SheetTitle({ className, ...props }: ComponentProps<typeof BaseDialog.Title>) {
+  return (
+    <BaseDialog.Title
+      {...props}
+      className={
+        typeof className === "function"
+          ? (state) => `cwa-design-sheet__title ${className(state) ?? ""}`
+          : `cwa-design-sheet__title${className ? ` ${className}` : ""}`
+      }
+    />
+  );
+}
+
+function SheetDescription({ className, ...props }: ComponentProps<typeof BaseDialog.Description>) {
+  return (
+    <BaseDialog.Description
+      {...props}
+      className={
+        typeof className === "function"
+          ? (state) => `cwa-design-sheet__description ${className(state) ?? ""}`
+          : `cwa-design-sheet__description${className ? ` ${className}` : ""}`
+      }
+    />
+  );
+}
+
 export const Sheet = Object.assign(SheetRoot, {
   Trigger: BaseDialog.Trigger,
   Content: SheetContent,
   Close: BaseDialog.Close,
-  Title: BaseDialog.Title,
-  Description: BaseDialog.Description,
+  Title: SheetTitle,
+  Description: SheetDescription,
 });

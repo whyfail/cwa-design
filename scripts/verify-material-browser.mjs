@@ -11,7 +11,10 @@ const origin = process.env.CWA_MATERIAL_ORIGIN ?? "http://127.0.0.1:4174";
 const root = path.resolve(import.meta.dirname, "..");
 await mkdir(path.join(root, "reports/screenshots"), { recursive: true });
 const results = [];
-for (const [name, engine] of Object.entries({ chromium, firefox, webkit })) {
+const engines = { chromium, firefox, webkit };
+const engineNames = (process.env.CWA_MATERIAL_ENGINES || "chromium,firefox,webkit").split(",");
+for (const name of engineNames) {
+  const engine = engines[name];
   const browser = await engine.launch({
     headless: true,
     ...(name === "chromium" && process.env.CWA_CHROMIUM_CHANNEL

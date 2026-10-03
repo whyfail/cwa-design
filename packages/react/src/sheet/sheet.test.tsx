@@ -15,7 +15,7 @@ describe("Sheet", () => {
         <Sheet onOpenChange={onOpenChange}>
           <Sheet.Trigger>打开抽屉</Sheet.Trigger>
           <Sheet.Content>
-            <Sheet.Title className="cwa-design-sheet__title">显示设置</Sheet.Title>
+            <Sheet.Title>显示设置</Sheet.Title>
             <Sheet.Close render={<Button variant="secondary">关闭</Button>} />
           </Sheet.Content>
         </Sheet>
@@ -38,7 +38,7 @@ describe("Sheet", () => {
           <Sheet open={open} onOpenChange={setOpen} placement="end">
             <Sheet.Trigger>打开</Sheet.Trigger>
             <Sheet.Content>
-              <Sheet.Title className="cwa-design-sheet__title">侧栏</Sheet.Title>
+              <Sheet.Title>侧栏</Sheet.Title>
               <Sheet.Close render={<Button variant="secondary">收起</Button>} />
             </Sheet.Content>
           </Sheet>
@@ -90,5 +90,25 @@ describe("Sheet", () => {
     await user.keyboard("[Enter]");
     expect(screen.queryByRole("dialog")).toBeNull();
     expect(trigger).toHaveFocus();
+  });
+
+  it("Title/Description 自动附加组件类，排版不依赖宿主页面标题样式", async () => {
+    const user = userEvent.setup();
+    render(
+      <CwaProvider>
+        <Sheet>
+          <Sheet.Trigger>打开</Sheet.Trigger>
+          <Sheet.Content>
+            <Sheet.Title className="host-title">排版隔离</Sheet.Title>
+            <Sheet.Description>说明文字</Sheet.Description>
+          </Sheet.Content>
+        </Sheet>
+      </CwaProvider>,
+    );
+    await user.click(screen.getByText("打开"));
+    const title = screen.getByText("排版隔离");
+    expect(title).toHaveClass("cwa-design-sheet__title");
+    expect(title).toHaveClass("host-title");
+    expect(screen.getByText("说明文字")).toHaveClass("cwa-design-sheet__description");
   });
 });

@@ -86,8 +86,9 @@
   font-size: var(--cwa-design-font-size-title);
 }
 
-/* pointer-down 即时反馈；只动 transform/opacity。 */
-.cwa-design-button[data-pressed="true"]:not([disabled]) {
+/* pointer-down 与键盘按住（Space/Enter → data-pressed，及 :active 兜底）立即反馈；只动 transform/box-shadow。 */
+.cwa-design-button[data-pressed="true"]:not([disabled]),
+.cwa-design-button:not([disabled]):active {
   transform: scale(0.98);
   box-shadow: inset 0 1px 3px var(--cwa-design-color-glass-inner-shade);
 }
@@ -108,14 +109,16 @@
   .cwa-design-button__spinner {
     animation: none;
   }
-  .cwa-design-button[data-pressed="true"]:not([disabled]) {
+  .cwa-design-button[data-pressed="true"]:not([disabled]),
+  .cwa-design-button:not([disabled]):active {
     transform: none;
   }
 }
 [data-cwa-material="solid"] .cwa-design-button--secondary {
   background-color: var(--cwa-design-color-surface);
 }
-[data-cwa-motion="reduced"] .cwa-design-button[data-pressed="true"]:not([disabled]) {
+[data-cwa-motion="reduced"] .cwa-design-button[data-pressed="true"]:not([disabled]),
+[data-cwa-motion="reduced"] .cwa-design-button:not([disabled]):active {
   transform: none;
 }
 [data-cwa-motion="reduced"] .cwa-design-button__spinner { animation: none; }

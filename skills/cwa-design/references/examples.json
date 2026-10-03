@@ -32,6 +32,23 @@
     "requiresProvider": true
   },
   {
+    "id": "surface-clear-toolbar",
+    "componentId": "surface",
+    "framework": "react",
+    "title": "Surface 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react",
+      "react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+    "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+    "file": "examples/surface-clear-toolbar.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
     "id": "button-basic",
     "componentId": "button",
     "framework": "react",

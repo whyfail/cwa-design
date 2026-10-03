@@ -13,16 +13,25 @@
   box-sizing: border-box;
   position: fixed;
   z-index: var(--cwa-design-z-dialog, 1001);
-  border: 1px solid var(--cwa-design-color-border-subtle);
   border-radius: var(--cwa-design-radius-sheet);
   color: var(--cwa-design-color-text);
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-body);
   outline: none;
+  /* 大浮层使用独立的悬浮重量；材质层读取这些变量绘制接触/环境投影。 */
+  --cwa-design-shadow-contact-y: var(--cwa-design-shadow-elevation-large-contact-y);
+  --cwa-design-shadow-contact-blur: var(--cwa-design-shadow-elevation-large-contact-blur);
+  --cwa-design-shadow-ambient-y: var(--cwa-design-shadow-elevation-large-ambient-y);
+  --cwa-design-shadow-ambient-blur: var(--cwa-design-shadow-elevation-large-ambient-blur);
   transition: translate 300ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease;
 }
+/* 玻璃 Sheet 的定向 rim 来自共享材质层；只有实色表面使用普通边框。 */
 .cwa-design-sheet--solid {
   background: var(--cwa-design-color-surface-raised);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  box-shadow:
+    0 var(--cwa-design-shadow-contact-y) var(--cwa-design-shadow-contact-blur) var(--cwa-design-color-glass-contact-shadow),
+    0 var(--cwa-design-shadow-ambient-y) var(--cwa-design-shadow-ambient-blur) var(--cwa-design-color-glass-ambient-shadow);
 }
 
 .cwa-design-sheet--bottom {
@@ -87,7 +96,14 @@
 .cwa-design-sheet__title {
   margin: 0 0 var(--cwa-design-space-2);
   font-size: var(--cwa-design-font-size-title);
+  line-height: var(--cwa-design-font-leading-body);
+  letter-spacing: normal;
   font-weight: 590;
+}
+.cwa-design-sheet__description {
+  margin: 0 0 var(--cwa-design-space-4);
+  font-size: var(--cwa-design-font-size-caption);
+  color: var(--cwa-design-color-text-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

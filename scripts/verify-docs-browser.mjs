@@ -237,7 +237,7 @@ for (const engine of engines) {
         fill: getComputedStyle(el).backgroundColor,
         text: getComputedStyle(el).color,
       }));
-      assert.match(dark.fill, /rgba\(24, 31, 45,/);
+      assert.match(dark.fill, /rgba\(28, 29, 34,/);
       await page.reload({ waitUntil: "domcontentloaded" });
       await page.waitForFunction(() => document.documentElement.dataset.cwaTheme === "dark");
       await axe("home-dark");
@@ -392,22 +392,50 @@ for (const engine of engines) {
         });
         const normalize = (value) => value.replace(/\s+/g, "").replace(/^#fff$/, "#ffffff");
         assert.equal(config.provider.theme, theme, "export specifies the preview theme");
-        assert.equal(
-          normalize(config.cssTokens["--cwa-design-color-glass-regular-fill"]),
-          normalize(liveTokens.fill),
-          "export fill matches the composited preview token",
-        );
-        assert.equal(
-          normalize(config.cssTokens["--cwa-design-color-on-accent"]),
-          normalize(liveTokens.onAccent),
-          "export foreground matches the preview accent-button text",
-        );
+        // 默认继承主题 Token：未显式调整时导出不应包含覆盖项。
+        const exportedFill = config.cssTokens["--cwa-design-color-glass-regular-fill"];
+        if (exportedFill === undefined) {
+          assert.match(
+            liveTokens.fill,
+            theme === "dark" ? /^rgba\(28, 29, 34,/ : /^rgba\(255, 255, 255,/,
+            "unadjusted preview inherits the theme fill token",
+          );
+        } else {
+          assert.equal(
+            normalize(exportedFill),
+            normalize(liveTokens.fill),
+            "export fill matches the composited preview token",
+          );
+        }
+        const exportedOnAccent = config.cssTokens["--cwa-design-color-on-accent"];
+        if (exportedOnAccent !== undefined) {
+          assert.equal(
+            normalize(exportedOnAccent),
+            normalize(liveTokens.onAccent),
+            "export foreground matches the preview accent-button text",
+          );
+        }
         return liveTokens;
       }
       const controls = page.locator(".theme-controls");
       const material = controls.getByRole("combobox", { name: /^材质/ });
       const background = controls.getByRole("combobox", { name: /^背景/ });
       const accent = controls.getByRole("combobox", { name: /^主色/ });
+      const defaultConfig = await downloadTheme();
+      assert.deepEqual(
+        defaultConfig.cssTokens,
+        {},
+        "unadjusted lab exports no overrides and previews theme tokens",
+      );
+      const lightTokens = await page.locator(".glass-control-panel").evaluate((el) => ({
+        fill: getComputedStyle(el).getPropertyValue("--cwa-design-color-glass-regular-fill").trim(),
+      }));
+      // 构建器可能把 rgba() 压缩为 8 位 hex，两种写法都接受。
+      assert.match(
+        lightTokens.fill.replace(/\s+/g, ""),
+        /^(#ffffff85|rgba\(255,255,255,0?\.52\))$/,
+        "unadjusted light preview inherits the 52% theme fill",
+      );
       await material.selectOption("frosted");
       assert(
         await page
@@ -425,6 +453,15 @@ for (const engine of engines) {
       await background.selectOption("split");
       assert(await page.locator(".glass-playground--split").isVisible());
       await accent.selectOption("#087a6a");
+      await page.locator(".theme-range input").fill("70");
+      const config = await downloadTheme();
+      assert.equal(config.surface.material, "glass-clear");
+      assert.equal(config.cssTokens["--cwa-design-color-accent"], "#087a6a");
+      assert.equal(
+        config.cssTokens["--cwa-design-color-glass-regular-fill"],
+        "rgba(255,255,255,0.7)",
+      );
+      await verifyExport(config, "light");
       await page.getByLabel("显式实色降级").check();
       assert.equal(
         await page
@@ -432,25 +469,36 @@ for (const engine of engines) {
           .evaluate((el) => getComputedStyle(el).backdropFilter),
         "none",
       );
-      const config = await downloadTheme();
-      assert.equal(config.provider.material, "solid");
-      assert.equal(config.surface.material, "glass-clear");
-      assert.equal(config.cssTokens["--cwa-design-color-accent"], "#087a6a");
-      const lightTokens = await verifyExport(config, "light");
       await page.getByRole("button", { name: "重置", exact: true }).click();
       assert.equal(await material.inputValue(), "glass");
       assert.equal(await background.inputValue(), "landscape");
+      assert.equal(await accent.inputValue(), "", "accent resets to inherit-theme default");
       assert.equal(await page.getByLabel("显式实色降级").isChecked(), false);
       await axe("theme-lab-light");
       await setTheme("dark");
-      await page.waitForFunction(() =>
-        getComputedStyle(document.querySelector(".glass-control-panel"))
+      await page.waitForFunction(() => {
+        const raw = getComputedStyle(document.querySelector(".glass-control-panel"))
           .getPropertyValue("--cwa-design-color-glass-regular-fill")
-          .replace(/\s+/g, "")
-          .startsWith("rgba(24,31,45,"),
-      );
+          .replace(/\s+/g, "");
+        const hex = raw.match(/^#([0-9a-f]{6})([0-9a-f]{2})?$/i);
+        if (hex)
+          return (
+            parseInt(hex[1].slice(0, 2), 16) === 28 &&
+            parseInt(hex[1].slice(2, 4), 16) === 29 &&
+            parseInt(hex[1].slice(4, 6), 16) === 34
+          );
+        return raw.startsWith("rgba(28,29,34,");
+      });
       const darkConfig = await downloadTheme();
-      const darkTokens = await verifyExport(darkConfig, "dark");
+      assert.deepEqual(
+        darkConfig.cssTokens,
+        {},
+        "reset lab exports no overrides; preview uses theme tokens",
+      );
+      const darkTokens = await page.locator(".glass-control-panel").evaluate((el) => ({
+        onAccent: getComputedStyle(el).getPropertyValue("--cwa-design-color-on-accent").trim(),
+      }));
+      assert.equal(darkTokens.onAccent, "#061c34", "dark accent text follows the theme token");
       await axe("theme-lab-dark");
       await page.setViewportSize({ width: 390, height: 844 });
       await axe("theme-lab-mobile-dark");
@@ -486,7 +534,9 @@ for (const engine of engines) {
       await page.keyboard.press("End");
       await page.keyboard.press("Enter");
       assert(await trigger.textContent().then((value) => value.includes("研发团队")));
-      await page.waitForFunction(() => document.activeElement === document.querySelector('.demo-stage [role="combobox"]'));
+      await page.waitForFunction(
+        () => document.activeElement === document.querySelector('.demo-stage [role="combobox"]'),
+      );
       assert(await trigger.evaluate((el) => el === document.activeElement));
     });
     await scenario("menu-real-action-disabled", async () => {

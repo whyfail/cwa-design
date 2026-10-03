@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T14:45:11.783Z",
+  "generatedAt": "2026-10-03T17:22:42.028Z",
   "engine": "154.0.8037.97",
   "results": [
     {
@@ -27,18 +27,18 @@
         {
           "text": "专注于此刻的工作",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "10px",
+          "fontSize": "13px",
           "box": [
             232.875,
             113.390625,
             174.46875,
-            16.5
+            21.4375
           ],
-          "minimumContrast": 14.74,
+          "minimumContrast": 10.99,
           "passed": true
         },
         {
@@ -48,12 +48,12 @@
             24,
             28
           ],
-          "fontSize": "11px",
+          "fontSize": "13px",
           "box": [
             187.875,
-            211.890625,
-            44,
-            18.140625
+            216.828125,
+            52,
+            21.4375
           ],
           "minimumContrast": 13.26,
           "passed": true
@@ -61,18 +61,18 @@
         {
           "text": "64%",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "11px",
+          "fontSize": "13px",
           "box": [
-            433.40625,
-            211.890625,
-            24.46875,
-            18.140625
+            429.421875,
+            216.828125,
+            28.453125,
+            21.4375
           ],
-          "minimumContrast": 12.97,
+          "minimumContrast": 9.68,
           "passed": true
         },
         {
@@ -85,11 +85,11 @@
           "fontSize": "16px",
           "box": [
             243.875,
-            306.828125,
+            315.0625,
             96,
             26.390625
           ],
-          "minimumContrast": 10.49,
+          "minimumContrast": 10.38,
           "passed": true
         },
         {
@@ -102,7 +102,7 @@
           "fontSize": "16px",
           "box": [
             187.875,
-            360.03125,
+            368.265625,
             270,
             26.390625
           ],
@@ -112,18 +112,18 @@
         {
           "text": "当前模式：专注",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "10px",
+          "fontSize": "13px",
           "box": [
             187.875,
-            504.421875,
+            512.65625,
             270,
-            17
+            21.4375
           ],
-          "minimumContrast": 12.29,
+          "minimumContrast": 9.11,
           "passed": true
         },
         {
@@ -133,31 +133,31 @@
             24,
             28
           ],
-          "fontSize": "12px",
+          "fontSize": "13px",
           "box": [
             97,
-            585.1875,
-            99.15625,
-            15
+            590.265625,
+            106.28125,
+            16
           ],
-          "minimumContrast": 14.5,
+          "minimumContrast": 14.38,
           "passed": true
         },
         {
           "text": "一段静谧的工作时光",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "9px",
+          "fontSize": "13px",
           "box": [
             97,
-            604.578125,
+            610.65625,
             452.125,
-            14.84375
+            21.4375
           ],
-          "minimumContrast": 14.33,
+          "minimumContrast": 10.71,
           "passed": true
         }
       ]
@@ -165,159 +165,40 @@
     {
       "theme": "light",
       "material": "clear",
-      "background": "high-frequency-checker",
+      "background": "self-drawn-media-toolbar",
       "samples": [
         {
-          "text": "让界面轻一点。",
+          "text": "高山晨光",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "15px",
+          "fontSize": "14px",
           "box": [
-            435,
-            89,
-            102.90625,
-            18
+            326,
+            193.21875,
+            266,
+            25.890625
           ],
-          "minimumContrast": 15.46,
+          "minimumContrast": 7.49,
           "passed": true
         },
         {
-          "text": "专注于此刻的工作",
+          "text": "Clear：媒体上的轻工具栏",
           "rgb": [
-            23,
-            24,
-            28
+            43,
+            48,
+            57
           ],
-          "fontSize": "10px",
+          "fontSize": "14px",
           "box": [
-            435,
-            113.390625,
-            174.46875,
-            16.5
+            326,
+            219.109375,
+            266,
+            25.890625
           ],
-          "minimumContrast": 15.18,
-          "passed": true
-        },
-        {
-          "text": "背景音量",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "11px",
-          "box": [
-            390,
-            211.890625,
-            44,
-            18.140625
-          ],
-          "minimumContrast": 15.46,
-          "passed": true
-        },
-        {
-          "text": "64%",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "11px",
-          "box": [
-            635.53125,
-            211.890625,
-            24.46875,
-            18.140625
-          ],
-          "minimumContrast": 15.32,
-          "passed": true
-        },
-        {
-          "text": "允许桌面通知",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "16px",
-          "box": [
-            446,
-            306.828125,
-            96,
-            26.390625
-          ],
-          "minimumContrast": 15.06,
-          "passed": true
-        },
-        {
-          "text": "工作区名称",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "16px",
-          "box": [
-            390,
-            360.03125,
-            270,
-            26.390625
-          ],
-          "minimumContrast": 15.06,
-          "passed": true
-        },
-        {
-          "text": "当前模式：专注",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "10px",
-          "box": [
-            390,
-            504.421875,
-            270,
-            17
-          ],
-          "minimumContrast": 15.18,
-          "passed": true
-        },
-        {
-          "text": "Quiet mountains",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "12px",
-          "box": [
-            97,
-            585.1875,
-            99.15625,
-            15
-          ],
-          "minimumContrast": 15.53,
-          "passed": true
-        },
-        {
-          "text": "一段静谧的工作时光",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "9px",
-          "box": [
-            97,
-            604.578125,
-            856.375,
-            14.84375
-          ],
-          "minimumContrast": 15.18,
+          "minimumContrast": 7.18,
           "passed": true
         }
       ]
@@ -341,24 +222,24 @@
             102.90625,
             18
           ],
-          "minimumContrast": 5.81,
+          "minimumContrast": 5.48,
           "passed": true
         },
         {
           "text": "专注于此刻的工作",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "10px",
+          "fontSize": "13px",
           "box": [
             232.875,
             113.390625,
             174.46875,
-            16.5
+            21.4375
           ],
-          "minimumContrast": 5.79,
+          "minimumContrast": 4.61,
           "passed": true
         },
         {
@@ -368,31 +249,31 @@
             245,
             247
           ],
-          "fontSize": "11px",
+          "fontSize": "13px",
           "box": [
             187.875,
-            211.890625,
-            44,
-            18.140625
+            216.828125,
+            52,
+            21.4375
           ],
-          "minimumContrast": 7.07,
+          "minimumContrast": 6.75,
           "passed": true
         },
         {
           "text": "64%",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "11px",
+          "fontSize": "13px",
           "box": [
-            433.40625,
-            211.890625,
-            24.46875,
-            18.140625
+            429.421875,
+            216.828125,
+            28.453125,
+            21.4375
           ],
-          "minimumContrast": 7.65,
+          "minimumContrast": 6.28,
           "passed": true
         },
         {
@@ -405,11 +286,11 @@
           "fontSize": "16px",
           "box": [
             243.875,
-            306.828125,
+            315.0625,
             96,
             26.390625
           ],
-          "minimumContrast": 7.79,
+          "minimumContrast": 7.55,
           "passed": true
         },
         {
@@ -422,28 +303,28 @@
           "fontSize": "16px",
           "box": [
             187.875,
-            360.03125,
+            368.265625,
             270,
             26.390625
           ],
-          "minimumContrast": 8.44,
+          "minimumContrast": 8.16,
           "passed": true
         },
         {
           "text": "当前模式：专注",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "10px",
+          "fontSize": "13px",
           "box": [
             187.875,
-            504.421875,
+            512.65625,
             270,
-            17
+            21.4375
           ],
-          "minimumContrast": 7.74,
+          "minimumContrast": 6.36,
           "passed": true
         },
         {
@@ -453,31 +334,31 @@
             245,
             247
           ],
-          "fontSize": "12px",
+          "fontSize": "13px",
           "box": [
             97,
-            585.1875,
-            99.15625,
-            15
+            590.265625,
+            106.28125,
+            16
           ],
-          "minimumContrast": 6.19,
+          "minimumContrast": 5.84,
           "passed": true
         },
         {
           "text": "一段静谧的工作时光",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "9px",
+          "fontSize": "13px",
           "box": [
             97,
-            604.578125,
+            610.65625,
             452.125,
-            14.84375
+            21.4375
           ],
-          "minimumContrast": 6.17,
+          "minimumContrast": 4.94,
           "passed": true
         }
       ]
@@ -485,159 +366,40 @@
     {
       "theme": "dark",
       "material": "clear",
-      "background": "high-frequency-checker",
+      "background": "self-drawn-media-toolbar",
       "samples": [
         {
-          "text": "让界面轻一点。",
+          "text": "夜色山谷",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "15px",
+          "fontSize": "14px",
           "box": [
-            435,
-            89,
-            102.90625,
-            18
+            326,
+            193.21875,
+            266,
+            25.890625
           ],
-          "minimumContrast": 7.69,
+          "minimumContrast": 12.91,
           "passed": true
         },
         {
-          "text": "专注于此刻的工作",
+          "text": "Clear：媒体上的轻工具栏",
           "rgb": [
-            245,
-            245,
-            247
+            228,
+            228,
+            234
           ],
-          "fontSize": "10px",
+          "fontSize": "14px",
           "box": [
-            435,
-            113.390625,
-            174.46875,
-            16.5
+            326,
+            219.109375,
+            266,
+            25.890625
           ],
-          "minimumContrast": 7.82,
-          "passed": true
-        },
-        {
-          "text": "背景音量",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "11px",
-          "box": [
-            390,
-            211.890625,
-            44,
-            18.140625
-          ],
-          "minimumContrast": 8.19,
-          "passed": true
-        },
-        {
-          "text": "64%",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "11px",
-          "box": [
-            635.53125,
-            211.890625,
-            24.46875,
-            18.140625
-          ],
-          "minimumContrast": 9,
-          "passed": true
-        },
-        {
-          "text": "允许桌面通知",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "16px",
-          "box": [
-            446,
-            306.828125,
-            96,
-            26.390625
-          ],
-          "minimumContrast": 8.86,
-          "passed": true
-        },
-        {
-          "text": "工作区名称",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "16px",
-          "box": [
-            390,
-            360.03125,
-            270,
-            26.390625
-          ],
-          "minimumContrast": 8.86,
-          "passed": true
-        },
-        {
-          "text": "当前模式：专注",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "10px",
-          "box": [
-            390,
-            504.421875,
-            270,
-            17
-          ],
-          "minimumContrast": 8.97,
-          "passed": true
-        },
-        {
-          "text": "Quiet mountains",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "12px",
-          "box": [
-            97,
-            585.1875,
-            99.15625,
-            15
-          ],
-          "minimumContrast": 7.58,
-          "passed": true
-        },
-        {
-          "text": "一段静谧的工作时光",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "9px",
-          "box": [
-            97,
-            604.578125,
-            856.375,
-            14.84375
-          ],
-          "minimumContrast": 7.67,
+          "minimumContrast": 13.08,
           "passed": true
         }
       ]

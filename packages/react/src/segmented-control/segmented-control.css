@@ -41,7 +41,8 @@
   transition:
     background-color var(--cwa-design-motion-control) ease,
     color var(--cwa-design-motion-control) ease,
-    box-shadow var(--cwa-design-motion-control) ease;
+    box-shadow var(--cwa-design-motion-control) ease,
+    transform var(--cwa-design-motion-control) ease;
 }
 .cwa-design-segmented__item:has(.cwa-design-segmented__input[data-checked]) .cwa-design-segmented__label {
   background-color: var(--cwa-design-color-surface-raised);
@@ -51,6 +52,23 @@
   color: var(--cwa-design-color-text);
   font-weight: 590;
   box-shadow: inset 0 1px 0 var(--cwa-design-color-glass-inner-highlight), 0 var(--cwa-design-shadow-contact-y) var(--cwa-design-shadow-contact-blur) var(--cwa-design-color-glass-contact-shadow);
+}
+/* 未选中项的即时反馈：悬停轻填充，按下凹入；指针与键盘焦点态互不遮蔽。 */
+.cwa-design-segmented__item:has(.cwa-design-segmented__input:not([data-checked]):not([disabled])) .cwa-design-segmented__label:hover {
+  background-color: color-mix(in srgb, var(--cwa-design-color-text) 7%, transparent);
+  color: var(--cwa-design-color-text);
+}
+.cwa-design-segmented__item:has(.cwa-design-segmented__input:not([data-checked]):not([disabled])) .cwa-design-segmented__label:active {
+  transform: scale(0.97);
+  background-color: color-mix(in srgb, var(--cwa-design-color-text) 12%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cwa-design-segmented__item:has(.cwa-design-segmented__input:not([data-checked]):not([disabled])) .cwa-design-segmented__label:active {
+    transform: none;
+  }
+}
+[data-cwa-motion="reduced"] .cwa-design-segmented__item:has(.cwa-design-segmented__input:not([data-checked]):not([disabled])) .cwa-design-segmented__label:active {
+  transform: none;
 }
 @media (max-width: 30rem) {
   .cwa-design-segmented__label { padding-inline: var(--cwa-design-space-2); }

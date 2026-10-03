@@ -53,6 +53,21 @@ describe("Button", () => {
     expect(button).not.toHaveAttribute("data-pressed");
   });
 
+  it("sets data-pressed while Space/Enter is held for keyboard press feedback", async () => {
+    const user = userEvent.setup();
+    render(<Button>键盘按压</Button>);
+    const button = screen.getByRole("button", { name: "键盘按压" });
+    button.focus();
+    await user.keyboard("[Space>]");
+    expect(button).toHaveAttribute("data-pressed", "true");
+    await user.keyboard("[/Space]");
+    expect(button).not.toHaveAttribute("data-pressed");
+    await user.keyboard("[Enter>]");
+    expect(button).toHaveAttribute("data-pressed", "true");
+    await user.keyboard("[/Enter]");
+    expect(button).not.toHaveAttribute("data-pressed");
+  });
+
   it("forwards ref to the native button element (React 19 ref prop)", () => {
     const ref = createRef<HTMLButtonElement>();
     render(<Button ref={ref}>引用</Button>);

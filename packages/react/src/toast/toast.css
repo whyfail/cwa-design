@@ -16,7 +16,10 @@
   background: var(--cwa-design-color-surface-raised);
   border: 1px solid var(--cwa-design-color-border-subtle);
   border-radius: var(--cwa-design-radius-control);
-  box-shadow: 0 12px 40px var(--cwa-design-color-scrim);
+  /* 实色材质保留；悬浮重量与菜单级浮层一致（接触 + 环境双层）。 */
+  box-shadow:
+    0 var(--cwa-design-shadow-contact-y) var(--cwa-design-shadow-contact-blur) var(--cwa-design-color-glass-contact-shadow),
+    0 var(--cwa-design-shadow-ambient-y) var(--cwa-design-shadow-ambient-blur) var(--cwa-design-color-glass-ambient-shadow);
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-body);
   color: var(--cwa-design-color-text);
@@ -36,6 +39,9 @@
 }
 .cwa-design-toast__title {
   margin: 0;
+  font-size: var(--cwa-design-font-size-body);
+  line-height: var(--cwa-design-font-leading-body);
+  letter-spacing: normal;
   font-weight: 590;
 }
 .cwa-design-toast__title:empty {

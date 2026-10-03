@@ -37,7 +37,7 @@ export const surfaceMeta = {
     "visible-focus-for-interactive-parts",
     "keyboard-behavior-from-native-or-base-ui",
   ],
-  examples: ["surface-basic"],
+  examples: ["surface-basic", "surface-clear-toolbar"],
   runtimeDependencies: [],
   deprecated: false,
 } satisfies ComponentSourceRecord;

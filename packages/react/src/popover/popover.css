@@ -29,6 +29,8 @@
   margin: 0 0 var(--cwa-design-space-1);
   font-size: var(--cwa-design-font-size-body);
   font-weight: 590;
+  line-height: var(--cwa-design-font-leading-body);
+  letter-spacing: normal;
 }
 .cwa-design-popover__description {
   margin: 0;

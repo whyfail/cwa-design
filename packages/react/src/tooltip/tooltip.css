@@ -10,6 +10,9 @@
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-caption);
   line-height: var(--cwa-design-font-leading-body);
+  /* 小型瞬时浮层：只用轻接触阴影表达贴合，不压过正文。 */
+  box-shadow: 0 var(--cwa-design-shadow-elevation-small-contact-y) var(--cwa-design-shadow-elevation-small-contact-blur) var(--cwa-design-color-glass-contact-shadow),
+    0 var(--cwa-design-shadow-elevation-small-ambient-y) var(--cwa-design-shadow-elevation-small-ambient-blur) var(--cwa-design-color-glass-ambient-shadow);
   transform-origin: var(--transform-origin, bottom center);
   transition:
     transform var(--cwa-design-motion-control) ease,

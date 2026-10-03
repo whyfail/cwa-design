@@ -42,7 +42,8 @@
     "keyboard-behavior-from-native-or-base-ui"
   ],
   "examples": [
-    "surface-basic"
+    "surface-basic",
+    "surface-clear-toolbar"
   ],
   "runtimeDependencies": [],
   "deprecated": false

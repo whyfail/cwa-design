@@ -2,7 +2,7 @@
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.1",
   "framework": "react",
-  "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
+  "registryDigest": "sha256:e743d9db2377f7794d927579286a8900749bca753604c9d19b75edb1c2296b3b",
   "generatedAt": "2026-10-03T05:13:13.969Z",
   "components": [
     {
@@ -139,7 +139,8 @@
         "keyboard-behavior-from-native-or-base-ui"
       ],
       "examples": [
-        "surface-basic"
+        "surface-basic",
+        "surface-clear-toolbar"
       ],
       "runtimeDependencies": [],
       "deprecated": false
@@ -2356,6 +2357,23 @@
       "requiresProvider": true
     },
     {
+      "id": "surface-clear-toolbar",
+      "componentId": "surface",
+      "framework": "react",
+      "title": "Surface 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react",
+        "react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+      "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+      "file": "examples/surface-clear-toolbar.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
       "id": "button-basic",
       "componentId": "button",
       "framework": "react",
@@ -2925,6 +2943,14 @@
       "sourceDigest": "sha256:367037a2c3a85f1a9e6eeb75d97e8e32f275e2b8b468fd8bd181077d7c688b4f"
     },
     {
+      "path": "examples/surface-clear-toolbar.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+      "byteSize": 2415,
+      "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+      "sourceDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af"
+    },
+    {
       "path": "examples/button-basic.tsx",
       "mimeType": "text/plain",
       "contentDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb",
@@ -3191,10 +3217,10 @@
     {
       "path": "tokens.json",
       "mimeType": "application/json",
-      "contentDigest": "sha256:16b5e215a848541e5fcd030978829e8d3a225b97532cb01ac31f8489a01f88ef",
-      "byteSize": 13353,
+      "contentDigest": "sha256:f515752f31ce9ddd9ceed96b8b8ae3880acd643110b473df729636ad8c7c1bb5",
+      "byteSize": 15703,
       "sourcePath": "packages/tokens/src/tokens.json",
-      "sourceDigest": "sha256:36a46cda53841091894fd4ca55dc59f730af7cc90487dcecdb3bc6e649822e94"
+      "sourceDigest": "sha256:342c84bc5db0c1727217d2cc84f143d1722780b42807e95285ceadb26f686a52"
     },
     {
       "path": "contracts/provider.json",
@@ -3207,10 +3233,10 @@
     {
       "path": "contracts/surface.json",
       "mimeType": "application/json",
-      "contentDigest": "sha256:3904d4e2d8a26659192108b1ded7d70170f85f1f4639f53e37f0ca3b43868bd9",
-      "byteSize": 1385,
+      "contentDigest": "sha256:7a5c0d22ca4fbe52b8c3f70113250313cd98fa1c01622ea79acad7bd0f1d0be0",
+      "byteSize": 1414,
       "sourcePath": "packages/react/src/surface/surface.meta.ts",
-      "sourceDigest": "sha256:06210e4abf58545508a89cf2be29f06acb90bc2ea44e82882f1caab328b4c9bf"
+      "sourceDigest": "sha256:43c661489021b8cf0955f63c2598c9196b4ffd73ee27954aedb27ed5333706e5"
     },
     {
       "path": "contracts/button.json",

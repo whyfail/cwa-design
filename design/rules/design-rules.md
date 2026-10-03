@@ -65,10 +65,13 @@
 
 本轮可操作实验室位于 `apps/docs` 的主题/材质页；官网、Storybook 与实际消费包使用同一公共材质层。维护者视觉确认单独记录。
 
-## 8. 2026-10-03 玻璃优化目标
+## 8. 2026-10-03 玻璃优化目标（2026-10-04 按审查清单修订）
 
 - 透射、非均匀顶部/侧缘 rim、轻反射、内顶高光/底缘和接触/环境投影共同表达厚度；磨砂 blur 不能单独充当玻璃。
 - 公共材质 CSS 与源 Token 负责光学效果，官网仅提供布局和背景，不覆盖组件内部材质。
 - 深色独立调校；系统减少透明、增强对比、forced-colors、显式 solid 与缺少 blur 支持均保留可靠回退。
-- 默认 Regular 填充遮蔽为浅色 52%、深色 70%；玻璃内正文、辅助文字和焦点使用不透明正文色。Clear 在低 blur 与透明填充之外，叠加浅色白色 60% / 深色黑色 58% 的局部 dimming 层，不能仅以填充 alpha 代表最终透射率。
-- 当前候选目标待维护者实图评审；代码、自动检查、浏览器检查与 accepted 分开记录。
+- Regular 填充遮蔽候选：浅色 52%、深色 68%（中性石墨底 rgba(28,29,34)，替代蓝灰主导）；Thick 浅色 76%、深色 84%；Clear 浅色约 33% 合成（fill 0.20 + dimming 0.16）、深色约 52% 合成（fill 0.20 + dimming 0.40），层次按 Regular > Clear > Thick 递增遮蔽。玻璃内正文与焦点使用不透明正文色，副文字使用 `--cwa-design-color-glass-text-muted`（浅 #2b3039 / 深 #e4e4ea）；纯黑/纯白极端背景上副文字不达 4.5:1，此类内容应选 Thick 或 solid。
+- 悬浮重量按用途分级：`elevation-small`（工具栏/胶囊/Tooltip）、medium（菜单/Popover/Toast，默认 shadow token）、`elevation-large`（Dialog/Sheet）。
+- 内部控件共用凸起配方（surface 混合填充 + rim + 内高光），按压统一"缩放 + 内凹"并覆盖键盘（data-pressed + :active）；未选中分段项有 hover/active 反馈。
+- Clear 用于媒体上的轻工具栏：浅色配亮调媒体、深色配暗调媒体；全表单套用 Clear 属滥用场景，官网实验室对此有明确提示。
+- 候选数值待维护者实图评审；代码、自动检查、浏览器检查与 accepted 分开记录。

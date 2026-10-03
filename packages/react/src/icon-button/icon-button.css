@@ -1,4 +1,5 @@
-/* IconButton：圆形图标按钮；颜色来自 tokens。 */
+/* Controls share an enclosing glass backdrop; highlights do not add blur.
+   secondary 与 Button--secondary 共用同一凸起配方（填充 + rim + 内高光）。 */
 .cwa-design-icon-button {
   display: inline-flex;
   align-items: center;
@@ -13,6 +14,8 @@
   transition:
     transform var(--cwa-design-motion-control) ease,
     background-color var(--cwa-design-motion-control) ease,
+    border-color var(--cwa-design-motion-control) ease,
+    box-shadow var(--cwa-design-motion-control) ease,
     opacity var(--cwa-design-motion-control) ease;
 }
 .cwa-design-icon-button:focus-visible {
@@ -29,9 +32,15 @@
   color: var(--cwa-design-color-on-accent);
 }
 .cwa-design-icon-button--secondary {
-  background: color-mix(in srgb, var(--cwa-design-color-text) 8%, transparent);
+  background-color: color-mix(in srgb, var(--cwa-design-color-surface) 68%, transparent);
+  background-image: linear-gradient(160deg, var(--cwa-design-color-glass-reflection), transparent 62%);
   color: var(--cwa-design-color-text);
-  border-color: var(--cwa-design-color-border-subtle);
+  border-color: var(--cwa-design-color-glass-rim-bottom);
+  border-top-color: var(--cwa-design-color-glass-rim-top);
+  box-shadow: inset 0 1px 0 var(--cwa-design-color-glass-inner-highlight), inset 0 -1px 0 var(--cwa-design-color-glass-inner-shade);
+}
+.cwa-design-icon-button--secondary:not([disabled]):hover {
+  background-color: color-mix(in srgb, var(--cwa-design-color-surface) 86%, transparent);
 }
 .cwa-design-icon-button--ghost {
   background: transparent;
@@ -55,12 +64,35 @@
   height: 3.25rem;
 }
 
+/* 按压凹入与 Button 一致；:active 同时覆盖键盘按住。 */
 .cwa-design-icon-button:not([disabled]):active {
   transform: scale(0.95);
+  box-shadow: inset 0 1px 3px var(--cwa-design-color-glass-inner-shade);
 }
 @media (pointer: coarse) {
   .cwa-design-icon-button--sm {
     width: 2.75rem;
     height: 2.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cwa-design-icon-button:not([disabled]):active {
+    transform: none;
+  }
+}
+[data-cwa-motion="reduced"] .cwa-design-icon-button:not([disabled]):active {
+  transform: none;
+}
+[data-cwa-material="solid"] .cwa-design-icon-button--secondary {
+  background-color: var(--cwa-design-color-surface);
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
+  .cwa-design-icon-button--secondary { background-color: var(--cwa-design-color-surface); }
+}
+@media (prefers-contrast: more), (forced-colors: active) {
+  .cwa-design-icon-button {
+    background-image: none;
+    border-color: var(--cwa-design-color-border-strong);
+    box-shadow: none;
   }
 }
