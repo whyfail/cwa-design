@@ -19,7 +19,7 @@
 
 ## 使用（Alpha 形态）
 
-当前候选 `0.1.0-alpha.1` 尚未发布 npm。先通过源码 workspace 构建与示例使用；已部署网站可能仍为前一版本，不能以本地候选版本推断线上已更新。
+当前候选 `0.1.0-alpha.2` 尚未发布 npm。先通过源码 workspace 构建与示例使用；已部署网站可能仍为前一版本，不能以本地候选版本推断线上已更新。
 
 ```bash
 rtk proxy env NVMD_NODE_VERSION=24.21.0 corepack pnpm install --frozen-lockfile

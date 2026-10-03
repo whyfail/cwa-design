@@ -1,15 +1,15 @@
 {
   "status": "complete",
-  "generatedAt": "2026-10-03T17:26:58.896Z",
+  "generatedAt": "2026-10-03T17:59:40.483Z",
   "base": "http://127.0.0.1:4173/cwa-design/",
   "release": {
-    "version": "0.1.0-alpha.1",
-    "commit": "439aff827ea89f6162aa26d36c756cfedc32a353",
+    "version": "0.1.0-alpha.2",
+    "commit": "ed336f5fe9ecb4c56ce9f014cf005abfda041533",
     "dirty": true,
     "channel": "source",
-    "registryDigest": "sha256:e743d9db2377f7794d927579286a8900749bca753604c9d19b75edb1c2296b3b"
+    "registryDigest": "sha256:53cce12ef38411e0ae42a8dad4c8a9166c87eb80768a2572cea07df1bc0a8992"
   },
-  "buildFingerprint": "sha256:977411fa3acde48a2e879d17d80c42f0825bfe6dd8c5b56e151c06c78ed73e34",
+  "buildFingerprint": "sha256:91068d218a8e56fd6fb4c8e4e549dfbd7dc19991b99e3354cd5b81d6bd1b6966",
   "axeVersion": "4.13.0",
   "browsers": [
     {
@@ -502,7 +502,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -799,7 +799,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -1799,7 +1799,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -1909,7 +1909,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2024,7 +2024,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2125,7 +2125,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -2212,7 +2212,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2320,7 +2320,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2421,7 +2421,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2522,7 +2522,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2630,7 +2630,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2731,7 +2731,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2839,7 +2839,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -2940,7 +2940,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3055,7 +3055,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3163,7 +3163,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3257,7 +3257,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3351,7 +3351,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -3438,7 +3438,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3532,7 +3532,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3633,7 +3633,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -3727,7 +3727,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -3814,7 +3814,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -3901,7 +3901,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4009,7 +4009,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4117,7 +4117,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4211,7 +4211,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4305,7 +4305,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4406,7 +4406,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4500,7 +4500,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4594,7 +4594,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4688,7 +4688,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4782,7 +4782,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -4905,7 +4905,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -5006,7 +5006,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -5219,7 +5219,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -5611,7 +5611,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -5807,7 +5807,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -5989,7 +5989,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -6192,7 +6192,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -6279,7 +6279,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -6366,7 +6366,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 }
               ]
@@ -6453,7 +6453,7 @@
                   "target": [
                     ".site-version"
                   ],
-                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.1</a>",
+                  "html": "<a class=\"site-version\" href=\"/cwa-design/changelog/\" title=\"当前源码候选\">0.1.0-alpha.2</a>",
                   "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
                 },
                 {
@@ -6538,5 +6538,5 @@
     "Automated axe checks do not establish screen-reader usability or contrast over every composited glass background.",
     "Downloads and local example actions are tested without calling external business/model services."
   ],
-  "completedAt": "2026-10-03T17:27:12.793Z"
+  "completedAt": "2026-10-03T17:59:54.524Z"
 }

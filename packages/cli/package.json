@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/cli",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "CWA Design CLI: doctor, search, inspect, plan (read-only; init/apply separate).",
   "license": "MIT",
   "type": "module",

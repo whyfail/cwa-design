@@ -4,12 +4,12 @@
 
 ```sh
 node packages/cli/dist/index.js doctor --json
-node packages/cli/dist/index.js search button --version=0.1.0-alpha.1 --json
-node packages/cli/dist/index.js inspect select --version=0.1.0-alpha.1 --json
-node packages/cli/dist/index.js example button-basic --version=0.1.0-alpha.1 --json
-node packages/cli/dist/index.js tokens --version=0.1.0-alpha.1 --json
-node packages/cli/dist/index.js recipe settings --version=0.1.0-alpha.1 --json
-node packages/cli/dist/index.js plan button input --version=0.1.0-alpha.1 --json
+node packages/cli/dist/index.js search button --version=0.1.0-alpha.2 --json
+node packages/cli/dist/index.js inspect select --version=0.1.0-alpha.2 --json
+node packages/cli/dist/index.js example button-basic --version=0.1.0-alpha.2 --json
+node packages/cli/dist/index.js tokens --version=0.1.0-alpha.2 --json
+node packages/cli/dist/index.js recipe settings --version=0.1.0-alpha.2 --json
+node packages/cli/dist/index.js plan button input --version=0.1.0-alpha.2 --json
 ```
 
 `example`、`tokens`、`recipe` 读取 hash 校验后的真实版本产物；旧版快照缺文件时返回 `REGISTRY_UNAVAILABLE`。安装计划固定版本并明确 npm 发布未核验，不证明该包已可安装。

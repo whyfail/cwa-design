@@ -1,0 +1,520 @@
+[
+  {
+    "id": "provider-basic",
+    "componentId": "provider",
+    "framework": "react",
+    "title": "CwaProvider 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:538d4efb75f56f7df15c49707605e8680816dcbff87e998ab1c3db4d6b72049c",
+    "sourcePath": "packages/registry/examples/provider-basic.tsx",
+    "file": "examples/provider-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": false
+  },
+  {
+    "id": "surface-basic",
+    "componentId": "surface",
+    "framework": "react",
+    "title": "Surface 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:367037a2c3a85f1a9e6eeb75d97e8e32f275e2b8b468fd8bd181077d7c688b4f",
+    "sourcePath": "packages/registry/examples/surface-basic.tsx",
+    "file": "examples/surface-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "surface-clear-toolbar",
+    "componentId": "surface",
+    "framework": "react",
+    "title": "Surface 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react",
+      "react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+    "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+    "file": "examples/surface-clear-toolbar.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "button-basic",
+    "componentId": "button",
+    "framework": "react",
+    "title": "Button 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb",
+    "sourcePath": "packages/react/src/button/examples/button-basic.tsx",
+    "file": "examples/button-basic.tsx",
+    "exportName": "ButtonBasic",
+    "requiresProvider": true
+  },
+  {
+    "id": "button-loading",
+    "componentId": "button",
+    "framework": "react",
+    "title": "Button 加载状态",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react",
+      "react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:d311e0b1d527fb82c8ba571b392f9d2ae1d3d9a9bcba8998df4f5b7584b05e32",
+    "sourcePath": "packages/react/src/button/examples/button-loading.tsx",
+    "file": "examples/button-loading.tsx",
+    "exportName": "ButtonLoading",
+    "requiresProvider": true
+  },
+  {
+    "id": "icon-button-basic",
+    "componentId": "icon-button",
+    "framework": "react",
+    "title": "IconButton 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:02963b83165f4c7af9f3ce17187294b2843b0fa2604f17265b6859e538862454",
+    "sourcePath": "packages/react/src/icon-button/examples/icon-button-basic.tsx",
+    "file": "examples/icon-button-basic.tsx",
+    "exportName": "IconButtonBasic",
+    "requiresProvider": true
+  },
+  {
+    "id": "stack-basic",
+    "componentId": "stack",
+    "framework": "react",
+    "title": "Stack 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:c2579c9bc879f02647387f7f8fd66ce02e612006456439c320380e24debdc0e3",
+    "sourcePath": "packages/registry/examples/stack-basic.tsx",
+    "file": "examples/stack-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "text-basic",
+    "componentId": "text",
+    "framework": "react",
+    "title": "Text 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:e7a1be79dfff82626896bbdc33c0657de5dafa5325e4225eb424f91273827ef4",
+    "sourcePath": "packages/registry/examples/text-basic.tsx",
+    "file": "examples/text-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "heading-basic",
+    "componentId": "heading",
+    "framework": "react",
+    "title": "Heading 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:4bdd1aed13e96a22af3300bc813a0a0dd83c751e4501ef758b4b6555cf953991",
+    "sourcePath": "packages/registry/examples/heading-basic.tsx",
+    "file": "examples/heading-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "field-basic",
+    "componentId": "field",
+    "framework": "react",
+    "title": "Field 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:dae28f72df885cfb1c08bae8483827ddd96ba157ef5133c1eacda75773fd666b",
+    "sourcePath": "packages/registry/examples/field-basic.tsx",
+    "file": "examples/field-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "input-basic",
+    "componentId": "input",
+    "framework": "react",
+    "title": "Input 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:fb1437a85bb8396b56552477fb033d1228860e0d2cd952e840d0969f8d300fdc",
+    "sourcePath": "packages/registry/examples/input-basic.tsx",
+    "file": "examples/input-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "textarea-basic",
+    "componentId": "textarea",
+    "framework": "react",
+    "title": "Textarea 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:1c0785718370bef8afc77589eb123a08a46bf01380ef2b5d19c75f0456bf7f63",
+    "sourcePath": "packages/registry/examples/textarea-basic.tsx",
+    "file": "examples/textarea-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "separator-basic",
+    "componentId": "separator",
+    "framework": "react",
+    "title": "Separator 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:7091930f173d7b0ed71c842433aff8a0408d08f32bd52dadc09516f2f0c5c685",
+    "sourcePath": "packages/registry/examples/separator-basic.tsx",
+    "file": "examples/separator-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "badge-basic",
+    "componentId": "badge",
+    "framework": "react",
+    "title": "Badge 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:71b8f0844a8ebd10d3c80373bd88b5535a441514596ef59043117624cbc1b9d0",
+    "sourcePath": "packages/registry/examples/badge-basic.tsx",
+    "file": "examples/badge-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "avatar-basic",
+    "componentId": "avatar",
+    "framework": "react",
+    "title": "Avatar 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:7581d91a49586efa804aeb0c2bd2eeed6759f0d0b27ed889c20a69b640f9b439",
+    "sourcePath": "packages/registry/examples/avatar-basic.tsx",
+    "file": "examples/avatar-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "card-basic",
+    "componentId": "card",
+    "framework": "react",
+    "title": "Card 基础用法",
+    "compiled": true,
+    "imports": [
+      "react",
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:8f26ddb6bfa1fdcc1f3a12919654325d2acdcd2b780d4c2a8c0df76376edeada",
+    "sourcePath": "packages/registry/examples/card-basic.tsx",
+    "file": "examples/card-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "spinner-basic",
+    "componentId": "spinner",
+    "framework": "react",
+    "title": "Spinner 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:57865a2ac699e33b555f86c255a142b22191db6700f06a995b6ee1a4d6b2ef4f",
+    "sourcePath": "packages/registry/examples/spinner-basic.tsx",
+    "file": "examples/spinner-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "skeleton-basic",
+    "componentId": "skeleton",
+    "framework": "react",
+    "title": "Skeleton 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:33cd07e001f7da3303c238e49f94c9b6f8844674c0e43143022ce7f4844fdc6c",
+    "sourcePath": "packages/registry/examples/skeleton-basic.tsx",
+    "file": "examples/skeleton-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "checkbox-basic",
+    "componentId": "checkbox",
+    "framework": "react",
+    "title": "Checkbox 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:7a4c8f8a8e00659f5a1e5b4adc32ca8dd51c18245b11d05ed5f12745f3641567",
+    "sourcePath": "packages/registry/examples/checkbox-basic.tsx",
+    "file": "examples/checkbox-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "radio-group-basic",
+    "componentId": "radio-group",
+    "framework": "react",
+    "title": "RadioGroup 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:6bce709a270ff5ebb188c77444c26e8c458b412fc95e4793586a2da833a68315",
+    "sourcePath": "packages/registry/examples/radio-group-basic.tsx",
+    "file": "examples/radio-group-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "switch-basic",
+    "componentId": "switch",
+    "framework": "react",
+    "title": "Switch 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:a55d77071a6b0f3276629ed6ba4191d64cd8c818ed66d4641c6f85844e921026",
+    "sourcePath": "packages/registry/examples/switch-basic.tsx",
+    "file": "examples/switch-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "select-basic",
+    "componentId": "select",
+    "framework": "react",
+    "title": "Select 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:68399256d11aa624223d7068d5b245cc80945db708d46470677d578a4e57a4db",
+    "sourcePath": "packages/registry/examples/select-basic.tsx",
+    "file": "examples/select-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "slider-basic",
+    "componentId": "slider",
+    "framework": "react",
+    "title": "Slider 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:6a679ef47000b78f21067954dee3bcc76b6071d05bace6cc05435f62f489ba96",
+    "sourcePath": "packages/registry/examples/slider-basic.tsx",
+    "file": "examples/slider-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "tabs-basic",
+    "componentId": "tabs",
+    "framework": "react",
+    "title": "Tabs 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:d536a84857210a58108cb7270b2dc49e168bbaa38d506dbfb170947e5afbcb48",
+    "sourcePath": "packages/registry/examples/tabs-basic.tsx",
+    "file": "examples/tabs-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "segmented-control-basic",
+    "componentId": "segmented-control",
+    "framework": "react",
+    "title": "SegmentedControl 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:fac4d1751018aabc8b7228be2f6a606d2641f4858cbd896547c5ec4028636614",
+    "sourcePath": "packages/registry/examples/segmented-control-basic.tsx",
+    "file": "examples/segmented-control-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "tooltip-basic",
+    "componentId": "tooltip",
+    "framework": "react",
+    "title": "Tooltip 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:c4a9fe18f1f7461993345122dad231b07d43c6bc270dde0ebc35b6a7d1862e82",
+    "sourcePath": "packages/registry/examples/tooltip-basic.tsx",
+    "file": "examples/tooltip-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "popover-basic",
+    "componentId": "popover",
+    "framework": "react",
+    "title": "Popover 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:23d7a9c400a3534c225c3993cbabecddc81e6a27e0c7abb2985d2820c8f7b931",
+    "sourcePath": "packages/registry/examples/popover-basic.tsx",
+    "file": "examples/popover-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "dropdown-menu-basic",
+    "componentId": "dropdown-menu",
+    "framework": "react",
+    "title": "DropdownMenu 基础用法",
+    "compiled": true,
+    "imports": [
+      "react",
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:6c200bc9aa887ba927898d9bac2c0bbc7757ebde1b0db39498d11c2948c91c3e",
+    "sourcePath": "packages/registry/examples/dropdown-menu-basic.tsx",
+    "file": "examples/dropdown-menu-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "dialog-basic",
+    "componentId": "dialog",
+    "framework": "react",
+    "title": "Dialog 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:9d0730ce8deb836b49f728760a03e0ce834be02a13edeff42edf958f25d12f51",
+    "sourcePath": "packages/registry/examples/dialog-basic.tsx",
+    "file": "examples/dialog-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "sheet-basic",
+    "componentId": "sheet",
+    "framework": "react",
+    "title": "Sheet 基础用法",
+    "compiled": true,
+    "imports": [
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:e033a206c6f1fcd9aab74bc78bb509dca38b00d06ac8a07265019dfaf482df14",
+    "sourcePath": "packages/registry/examples/sheet-basic.tsx",
+    "file": "examples/sheet-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "toast-basic",
+    "componentId": "toast",
+    "framework": "react",
+    "title": "ToastProvider 基础用法",
+    "compiled": true,
+    "imports": [
+      "react",
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:e5a9bf4af893199b0d02144f3526d60c726a0fa97e661827a5900c900f229a6d",
+    "sourcePath": "packages/registry/examples/toast-basic.tsx",
+    "file": "examples/toast-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  },
+  {
+    "id": "alert-basic",
+    "componentId": "alert",
+    "framework": "react",
+    "title": "Alert 基础用法",
+    "compiled": true,
+    "imports": [
+      "react",
+      "@cwa-design/react"
+    ],
+    "needsStyles": true,
+    "contentDigest": "sha256:b4d4f3f55288057f02c7c4c2e44bdf112857c8bd7909b8f4fdfd0cc62ea33ee0",
+    "sourcePath": "packages/registry/examples/alert-basic.tsx",
+    "file": "examples/alert-basic.tsx",
+    "exportName": "default",
+    "requiresProvider": true
+  }
+]

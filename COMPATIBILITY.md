@@ -1,6 +1,6 @@
 # 兼容性矩阵（0.1.0-alpha.0）
 
-以下是旧版历史实测记录。`0.1.0-alpha.1` 优化候选的构建/行为/浏览器证据以 `reports/optimization/` 为准，不自动沿用旧版结果。
+以下是旧版历史实测记录。`0.1.0-alpha.2` 优化候选的构建/行为/浏览器证据以 `reports/optimization/` 为准，不自动沿用旧版结果。
 
 发布批次：tokens / react / registry / mcp / cli 同版本 0.1.0-alpha.0（fixed changeset 组）。
 本矩阵为**实测记录**（开发与验证环境），不是承诺支持范围。
