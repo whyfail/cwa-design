@@ -1,21 +1,43 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const surfaceMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "surface",
   name: "Surface",
+  description: "通用表面容器；正文用 solid/frosted，浮动层可显式使用 glass。",
+  typeName: "SurfaceProps",
+  sourceTypePath: "packages/react/src/surface/surface.tsx#SurfaceProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Surface"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
-  materialPolicy: "inherit-parent-surface",
-  a11y: ["material-contrast"],
-  examples: [],
+  props: {
+    material: {
+      type: "enum",
+      values: ["solid", "frosted", "glass", "glass-clear"],
+      default: "solid",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+  },
+  extends: [
+    "React.HTMLAttributes<HTMLDivElement>；className/style、DOM 事件、aria-*、data-* 均由原生类型继承",
+  ],
+  materialPolicy: "solid",
+  materialNotes:
+    "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
+  examples: ["surface-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

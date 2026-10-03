@@ -20,7 +20,7 @@
 }
 .cwa-design-badge--success {
   background: color-mix(in srgb, var(--cwa-design-color-success) 16%, transparent);
-  color: var(--cwa-design-color-success);
+  color: color-mix(in srgb, var(--cwa-design-color-success) 70%, var(--cwa-design-color-text));
 }
 .cwa-design-badge--warning {
   background: color-mix(in srgb, var(--cwa-design-color-warning) 18%, transparent);

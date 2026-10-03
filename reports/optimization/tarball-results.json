@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-10-03T14:40:51.517Z",
+  "status": "passed",
+  "node": "v24.21.0",
+  "version": "0.1.0-alpha.1",
+  "archive": {
+    "path": "/Users/wulei/Desktop/wl/cwa/cwa-design/apps/docs/dist/downloads/cwa-design-react-0.1.0-alpha.1.tgz",
+    "bytes": 50015,
+    "contentDigest": "sha256:cb94d9f222374cfd140d9a66c5208d9651979687829cdab66d70be8b28d48230",
+    "entryCount": 108,
+    "publicEntriesPresent": true,
+    "includesWorkspaceSource": false
+  },
+  "consumer": {
+    "directory": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-lkpJHw",
+    "dependencies": {
+      "@cwa-design/react": "file:./cwa-design-react-0.1.0-alpha.1.tgz",
+      "react": "19.3.0",
+      "react-dom": "19.3.0"
+    },
+    "devDependencies": {
+      "@typescript/native": "npm:typescript@7.0.2",
+      "@types/react": "19.3.0",
+      "@types/react-dom": "19.3.0",
+      "@vitejs/plugin-react": "6.1.1",
+      "vite": "8.3.2",
+      "typescript": "npm:@typescript/typescript6@6.0.2"
+    },
+    "usesWorkspaceProtocol": false,
+    "sourceAliasConfigured": false,
+    "importSpecifier": "@cwa-design/react",
+    "stylesSpecifier": "@cwa-design/react/styles.css"
+  },
+  "checks": {
+    "install": {
+      "passed": true,
+      "lockfile": "pnpm-lock.yaml",
+      "lockDigest": "sha256:1f4f62afe59b05e9da97e2019cd9ab9e629a3d84bd42b548a7f744219a103bbf",
+      "noWorkspaceReferences": true
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "viteClientBuild": {
+      "passed": true
+    },
+    "viteSsrBuild": {
+      "passed": true,
+      "explicitlyExternalPublicPackages": [
+        "@cwa-design/react",
+        "react",
+        "react-dom"
+      ]
+    },
+    "installedPublicExportsAndSsrServer": {
+      "installedPackageRoot": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-lkpJHw/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.1.tgz_@types+react@19.3.0_react-dom_9afe3b0d0125aedb093d95278462e35f/node_modules/@cwa-design/react",
+      "installedPackageVersion": "0.1.0-alpha.1",
+      "publicCssPath": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-lkpJHw/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.1.tgz_@types+react@19.3.0_react-dom_9afe3b0d0125aedb093d95278462e35f/node_modules/@cwa-design/react/dist/styles.css",
+      "packageIsWorkspaceLinked": false,
+      "publicExports": [
+        "AccountPanelRecipe",
+        "AccountSkeletonRecipe",
+        "AiWorkspaceRecipe",
+        "Alert",
+        "Avatar",
+        "Badge",
+        "Button",
+        "Card",
+        "CardActions",
+        "CardContent",
+        "CardDescription",
+        "CardTitle",
+        "Checkbox",
+        "CwaProvider",
+        "Dialog",
+        "DropdownMenu",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "Field",
+        "Heading",
+        "IconButton",
+        "Input",
+        "Popover",
+        "PopoverContent",
+        "RadioGroup",
+        "RadioItem",
+        "SegmentedControl",
+        "Select",
+        "SelectContent",
+        "SelectItem",
+        "Separator",
+        "SettingsRecipe",
+        "Sheet",
+        "Skeleton",
+        "Slider",
+        "Spinner",
+        "Stack",
+        "Surface",
+        "Switch",
+        "Tabs",
+        "TabsList",
+        "TabsPanel",
+        "TabsTab",
+        "Text",
+        "Textarea",
+        "ToastProvider",
+        "Tooltip",
+        "createToastManager",
+        "useCwaContext",
+        "useOptionalCwaContext",
+        "useToastManager"
+      ],
+      "requiredExportsVerified": 50,
+      "ssrMarkupCharacters": 4875,
+      "http": {
+        "status": 200,
+        "missingStatus": 404,
+        "cssAssets": [
+          "/assets/index-C4jk9yCk.css"
+        ],
+        "scriptAssets": [
+          "/assets/index-DpygSXEp.js"
+        ]
+      },
+      "passed": true
+    },
+    "bundledPublicCss": {
+      "passed": true,
+      "material": true,
+      "focusTokens": true,
+      "opticalRim": true
+    }
+  },
+  "assets": {
+    "files": [
+      {
+        "file": "index-C4jk9yCk.css",
+        "bytes": 51949,
+        "gzipBytes": 6611
+      },
+      {
+        "file": "index-DpygSXEp.js",
+        "bytes": 345244,
+        "gzipBytes": 109361
+      }
+    ],
+    "ssrBytes": 1261
+  },
+  "elapsedMs": 3989
+}

@@ -17,7 +17,6 @@ export const BottomSheet: Story = {
     <Sheet>
       <Sheet.Trigger render={<Button variant="primary">打开抽屉</Button>} />
       <Sheet.Content>
-        <div className="cwa-design-sheet__handle" aria-hidden="true" />
         <Sheet.Title className="cwa-design-sheet__title">显示设置</Sheet.Title>
         <Sheet.Description>向下拖动或按 Escape 关闭。多 snap points 为后续 API。</Sheet.Description>
         <div style={{ display: "flex", gap: 12 }}>

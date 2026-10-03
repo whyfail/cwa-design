@@ -40,6 +40,7 @@ async function resolveCss(file, seen) {
 }
 
 const cssFiles = [
+  "material/material.css",
   "button/button.css",
   "icon-button/icon-button.css",
   "provider/provider.css",

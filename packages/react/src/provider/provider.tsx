@@ -29,6 +29,11 @@ export interface CwaContextValue {
 
 const CwaContext = createContext<CwaContextValue | null>(null);
 
+/** Optional context for compositions that can inherit a scope or provide their own. */
+export function useOptionalCwaContext(): CwaContextValue | null {
+  return useContext(CwaContext);
+}
+
 export function useCwaContext(): CwaContextValue {
   const value = useContext(CwaContext);
   if (!value) {

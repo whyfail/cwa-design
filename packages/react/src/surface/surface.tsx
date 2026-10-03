@@ -10,10 +10,14 @@ export interface SurfaceProps extends HTMLAttributes<HTMLDivElement> {
 
 /**
  * Surface：语义表面容器。材质选择遵循 design-rules §2：
- * 正文/表单默认 solid|frosted；regular glass 只给浮动功能层；禁止 glass-on-glass。
+ * 正文/表单默认 solid|frosted；glass 用于浮动功能层。
+ * 同一功能板共用 backdrop；独立浮层按实际重叠选择材质。
  */
 export function Surface({ material = "solid", className, children, ...rest }: SurfaceProps) {
   const classNames = ["cwa-design-surface", `cwa-design-surface--${material}`];
+  if (material !== "solid") classNames.push("cwa-design-material");
+  if (material === "frosted") classNames.push("cwa-design-material--thick");
+  if (material === "glass-clear") classNames.push("cwa-design-material--clear");
   if (className) classNames.push(className);
   return (
     <div {...rest} className={classNames.join(" ")} data-cwa-surface={material}>

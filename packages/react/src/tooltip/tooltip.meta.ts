@@ -1,21 +1,37 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const tooltipMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "tooltip",
   name: "Tooltip",
+  description: "hover/focus 的非交互说明；交互内容使用 Popover。",
+  typeName: "CwaTooltipProps",
+  sourceTypePath: "packages/react/src/tooltip/tooltip.tsx#CwaTooltipProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Tooltip"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    content: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: true,
+    },
+    children: {
+      type: "node",
+      summary: "TS 为 ReactNode；实际用于 Trigger.render，应提供单个可接收事件/ref 的 React 元素",
+    },
+  },
+  extends: [
+    "@base-ui/react/tooltip#TooltipRootProps；open/defaultOpen/onOpenChange 等 Root 行为完整继承",
+  ],
   materialPolicy: "solid",
-  a11y: ["hover-focus-triggered", "escape-closable", "focus-restored", "no-interactive-content"],
-  examples: [],
-  runtimeDependencies: [],
+  materialNotes: "文字说明使用 solid 以保证可读性。",
+  a11y: ["non-interactive-description", "hover-and-focus"],
+  examples: ["tooltip-basic"],
+  runtimeDependencies: ["@base-ui/react"],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

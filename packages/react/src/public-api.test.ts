@@ -1,12 +1,16 @@
 // T24 前置校验：所有公共导出与 metadata 一致（公共 API 计数以本测试为准）。
+/// <reference types="vite/client" />
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { componentRecordSchema } from "@cwa-design/registry";
 import { describe, expect, it } from "vitest";
 import * as publicApi from "./index";
 
 const pkgRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = path.join(pkgRoot, "src");
+const metadataModules = import.meta.glob("./**/*.meta.ts", { eager: true });
+const sourceMetadataSchema = componentRecordSchema.omit({ libraryVersion: true });
 
 // 组件根 API 名称 → 所在目录（一个目录一个公共组件，compound 部件不计独立组件）
 const rootComponents: Record<string, string> = {
@@ -53,16 +57,19 @@ describe("P0 公共 API 计数与 metadata 一致性", () => {
   it("每个公共组件目录都有通过 schema 校验的 metadata", () => {
     const failures: string[] = [];
     for (const [name, dir] of Object.entries(rootComponents)) {
-      const metaPath = path.join(srcDir, dir, `${dir}.meta.ts`);
-      let source: string;
-      try {
-        source = readFileSync(metaPath, "utf8");
-      } catch {
+      const module = metadataModules[`./${dir}/${dir}.meta.ts`];
+      if (!module) {
         failures.push(`${name}: 缺少 ${dir}.meta.ts`);
         continue;
       }
-      if (!source.includes(`id: "${dir}"`)) failures.push(`${name}: meta id 与目录不一致`);
-      if (!source.includes(`name: "${name}"`)) failures.push(`${name}: meta name=${name} 不匹配`);
+      const records = Object.values(module as Record<string, unknown>);
+      const result = sourceMetadataSchema.safeParse(records[0]);
+      if (!result.success) {
+        failures.push(`${name}: schema 校验失败 ${result.error.message}`);
+        continue;
+      }
+      if (result.data.id !== dir) failures.push(`${name}: meta id 与目录不一致`);
+      if (result.data.name !== name) failures.push(`${name}: meta name=${name} 不匹配`);
     }
     expect(failures).toEqual([]);
   });
@@ -76,5 +83,7 @@ describe("P0 公共 API 计数与 metadata 一致性", () => {
     expect(missing, "styles.css 缺少的组件样式").toEqual([]);
     const inputCss = readFileSync(path.join(srcDir, "input", "input.css"), "utf8");
     expect(inputCss.includes(".cwa-design-textarea")).toBe(true);
+    // Overlay positioning and display:contents scopes must ship in the public entry.
+    expect(styles).toContain("./overlay/overlay.css");
   });
 });

@@ -6,10 +6,10 @@ import { Card, CardActions, CardContent, CardDescription, CardTitle } from "../c
 import { Dialog } from "../dialog/dialog";
 import { Field } from "../field/field";
 import { Input } from "../input/input";
-import { CwaProvider } from "../provider/provider";
 import { Stack } from "../stack/stack";
 import { Switch } from "../switch/switch";
 import { createToastManager, ToastProvider } from "../toast/toast";
+import { RecipeScope as CwaProvider } from "./recipe-scope";
 
 /** Settings recipe 的可见状态（业务侧持有；此处为组件内演示状态）。 */
 export interface SettingsValues {
@@ -44,13 +44,16 @@ export function SettingsRecipe({ initialValues, onSave }: SettingsRecipeProps) {
           onSubmit={(event) => {
             event.preventDefault();
             onSave?.(values);
-            manager.add({ title: "已保存设置", description: "更改立即生效" });
+            manager.add({
+              title: "已保存设置",
+              description: onSave ? "已提交给应用" : "已保存在当前演示中",
+            });
           }}
           style={{ maxWidth: "32rem" }}
         >
           <Card>
             <CardTitle>个人设置</CardTitle>
-            <CardDescription>显示名称与通知偏好会同步到工作台。</CardDescription>
+            <CardDescription>编辑显示名称与通知偏好；保存操作可由应用接入。</CardDescription>
             <CardContent>
               <Stack gap={4}>
                 <Field label="显示名称" description="用于工作台中的个人资料">

@@ -1,93 +1,55 @@
-// T28：从 registry manifest 生成 Skill references（单源，禁止手抄）。
-// 产物：skills/cwa-design/references/overview.md、components.md、contracts/<id>.json
-// 校验：生成后回读校验数量/digest；构建失败即 CI 失败。
-import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ComponentRecord, RegistryManifest } from "@cwa-design/registry";
+import { currentLibraryVersion, contentDigest, loadSnapshots, readArtifact, type RegistrySnapshot } from "../src/snapshot.js";
 
-// 运行产物位于 dist-scripts/registry/scripts/，五级 ".." 回到 monorepo 根。
-const repoRoot = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "..",
-  "..",
-  "..",
-);
-const manifestPath = path.join(
-  repoRoot,
-  "packages",
-  "registry",
-  "dist",
-  "manifest",
-  "react",
-  "0.1.0-alpha.0",
-  "manifest.json",
-);
-const skillDir = path.join(repoRoot, "skills", "cwa-design");
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..", "..");
+const registryRoot = path.join(repoRoot, "packages/registry");
+const skillDir = path.join(repoRoot, "skills/cwa-design");
 const refDir = path.join(skillDir, "references");
+const snapshots = loadSnapshots(path.join(registryRoot, "dist/manifest/react"));
+const currentVersion = currentLibraryVersion(registryRoot);
+const current = snapshots.find((snapshot) => snapshot.manifest.libraryVersion === currentVersion);
+if (!current) throw new Error(`Current registry snapshot is missing: ${currentVersion}`);
+const skill = readFileSync(path.join(skillDir, "SKILL.md"), "utf8");
 
-if (!existsSync(manifestPath)) {
-  throw new Error(`manifest 不存在，先运行 registry build: ${manifestPath}`);
+function generateReferences(snapshot: RegistrySnapshot, directory: string): void {
+  const manifest = snapshot.manifest;
+  const index: Array<{ path: string; contentDigest: string; byteSize: number }> = [];
+  const put = (file: string, content: string) => {
+    mkdirSync(path.dirname(path.join(directory, file)), { recursive: true });
+    writeFileSync(path.join(directory, file), content);
+    index.push({ path: file, contentDigest: contentDigest(content), byteSize: Buffer.byteLength(content) });
+  };
+  put("manifest.json", readFileSync(path.join(snapshot.directory, "manifest.json"), "utf8"));
+  put("overview.md", `# CWA Design Registry Overview\n\n- libraryVersion: ${manifest.libraryVersion}\n- schemaVersion: ${manifest.schemaVersion}\n- framework: ${manifest.framework}\n- components: ${manifest.components.length}\n- examples: ${manifest.examples.length}\n- recipes: ${manifest.recipes.length}\n- registryDigest: ${manifest.registryDigest}\n- generatedAt: ${manifest.generatedAt}\n\n组件契约见 contracts/<id>.json。index.json 对每个参考文件记录原始字节 SHA-256（不包括 index 自身）。\nRegistry digest 的算法是 JSON 两空格缩进、registryDigest 置空、不含最终换行。\n${manifest.artifacts ? "已编译 TSX、配方与同版本 Tokens 快照随参考文件分发。" : "旧版本仅含元数据；不包含完整源码或 Tokens，禁止借用其他版本冒充。"}\n`);
+  const lines = [`# 组件摘要（${manifest.libraryVersion}）`, "", "| id | 名称 | 用途 | 材质策略 |", "| --- | --- | --- | --- |"];
+  for (const component of manifest.components) {
+    lines.push(`| ${component.id} | ${component.name} | ${(component.description ?? "见对应版本 TS 声明").replaceAll("|", "\\|")} | ${component.materialPolicy} |`);
+    put(`contracts/${component.id}.json`, `${JSON.stringify(component, null, 2)}\n`);
+  }
+  put("components.md", `${lines.join("\n")}\n`);
+  for (const artifact of manifest.artifacts ?? []) {
+    if (artifact.path.startsWith("contracts/")) continue;
+    put(artifact.path, readArtifact(snapshot, artifact.path).content);
+  }
+  put("recipes.json", `${JSON.stringify(manifest.recipes, null, 2)}\n`);
+  put("examples.json", `${JSON.stringify(manifest.examples, null, 2)}\n`);
+  writeFileSync(path.join(directory, "index.json"), `${JSON.stringify({ schemaVersion: manifest.schemaVersion, libraryVersion: manifest.libraryVersion, registryDigest: manifest.registryDigest, digestMethod: "sha256-raw-file-bytes", files: index.sort((a, b) => a.path.localeCompare(b.path)) }, null, 2)}\n`);
 }
-const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as RegistryManifest;
-const components = manifest.components as ComponentRecord[];
 
-// overview.md：版本 + 组件计数 + 数据源
-const overview = `# CWA Design Registry Overview
-
-- libraryVersion: ${manifest.libraryVersion}
-- schemaVersion: ${manifest.schemaVersion}
-- framework: ${manifest.framework}
-- components: ${components.length}
-- registryDigest: ${manifest.registryDigest}
-- generatedAt: ${manifest.generatedAt}
-
-数据来源：registry manifest（immutable artifact）。组件契约见 contracts/<id>.json，
-其 contentDigest 可对原始文件校验。
-`;
-
-// components.md：一行摘要表
-const lines = [
-  `# 组件摘要（${manifest.libraryVersion}）`,
-  "",
-  "| id | 名称 | 状态 | 材质策略 | a11y |",
-  "| --- | --- | --- | --- | --- |",
-];
-for (const c of components) {
-  lines.push(`| ${c.id} | ${c.name} | ${c.status} | ${c.materialPolicy} | ${c.a11y.join("、")} |`);
-}
-const componentsMd = `${lines.join("\n")}\n`;
-
-// contracts/<id>.json：完整契约
 rmSync(refDir, { recursive: true, force: true });
-mkdirSync(path.join(refDir, "contracts"), { recursive: true });
-for (const c of components) {
-  const json = `${JSON.stringify(c, null, 2)}\n`;
-  const digest = `sha256:${createHash("sha256").update(json, "utf8").digest("hex")}`;
-  writeFileSync(path.join(refDir, "contracts", `${c.id}.json`), json);
-  if (
-    digest !== manifest.examples.find((e) => e.componentId === c.id)?.contentDigest &&
-    c.examples.length > 0
-  ) {
-    // 示例 digest 属于示例文件而非契约文件；此处仅校验契约 JSON 可解析与 id 一致。
-  }
-  if (!json.includes(`"id": "${c.id}"`)) {
-    throw new Error(`契约文件 id 不一致: ${c.id}`);
-  }
+mkdirSync(refDir, { recursive: true });
+generateReferences(current, refDir);
+for (const snapshot of snapshots) {
+  const versionDir = path.join(refDir, "versions/react", snapshot.manifest.libraryVersion);
+  mkdirSync(versionDir, { recursive: true });
+  writeFileSync(path.join(versionDir, "SKILL.md"), skill);
+  generateReferences(snapshot, path.join(versionDir, "references"));
+  const packaged = path.join(registryRoot, "dist/skills/react", snapshot.manifest.libraryVersion);
+  rmSync(packaged, { recursive: true, force: true });
+  mkdirSync(path.dirname(packaged), { recursive: true });
+  cpSync(versionDir, packaged, { recursive: true });
 }
-
-writeFileSync(path.join(refDir, "overview.md"), overview);
-writeFileSync(path.join(refDir, "components.md"), `${componentsMd}\n`);
-
-// 汇总校验
-const contractPath = path.join(refDir, "contracts", "button.json");
-const contractCount = existsSync(contractPath)
-  ? Object.keys(JSON.parse(readFileSync(contractPath, "utf8")) as Record<string, unknown>).length
-  : 0;
-if (contractCount === 0) throw new Error("契约文件生成异常");
-console.log(
-  `skill references: overview.md + components.md + ${components.length} contracts (digest=${manifest.registryDigest.slice(0, 20)}...)`,
-);
+if (!existsSync(path.join(refDir, "contracts/button.json"))) throw new Error("Skill contract generation failed");
+console.log(`skill references: ${snapshots.length} version bundles; current ${currentVersion}, ${current.manifest.components.length} contracts, verified source/Token hashes`);

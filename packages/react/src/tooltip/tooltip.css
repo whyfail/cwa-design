@@ -1,5 +1,5 @@
 .cwa-design-tooltip__positioner {
-  z-index: 3;
+  z-index: var(--cwa-design-z-tooltip, 1003);
 }
 .cwa-design-tooltip {
   max-width: 16rem;

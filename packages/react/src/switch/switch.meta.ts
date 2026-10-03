@@ -1,21 +1,41 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const switchMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "switch",
   name: "Switch",
+  description: "即时二态设置；children 在 label 内渲染。",
+  typeName: "SwitchProps",
+  sourceTypePath: "packages/react/src/switch/switch.tsx#SwitchProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Switch"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: ["native-form-submission"],
+  props: {
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    className: {
+      type: "string",
+      description: "附加样式类；具体合并行为以实现为准",
+    },
+  },
+  extends: [
+    "@base-ui/react/switch#SwitchRootProps；checked/defaultChecked/onCheckedChange/disabled/name/value 和原生属性完整继承",
+  ],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["native-role", "visible-focus", "keyboard-operable", "label-required"],
-  examples: [],
-  runtimeDependencies: [],
+  materialNotes: "轻填充，不独立 blur。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
+  examples: ["switch-basic"],
+  runtimeDependencies: ["@base-ui/react"],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

@@ -1,5 +1,7 @@
 # 兼容性矩阵（0.1.0-alpha.0）
 
+以下是旧版历史实测记录。`0.1.0-alpha.1` 优化候选的构建/行为/浏览器证据以 `reports/optimization/` 为准，不自动沿用旧版结果。
+
 发布批次：tokens / react / registry / mcp / cli 同版本 0.1.0-alpha.0（fixed changeset 组）。
 本矩阵为**实测记录**（开发与验证环境），不是承诺支持范围。
 
@@ -43,3 +45,9 @@
    （motion@13.5.0 / vite@8.3.2 曾触发）；消费者可按 pnpm 文档 exclude 或等待窗口过期。
 2. 消费者 TS 需为 CSS 副作用导入提供 bundler 类型（如 `vite/client`），否则 TS2882。
 3. Safari/WebKit 真机、Firefox：未在本环境验证（Playwright 矩阵为后续任务）。
+
+## 0.1.0-alpha.1 候选实证（2026-10-03）
+
+当前候选结果覆盖以上历史记录中与本轮相关的未验项：Chrome154、Firefox153、Playwright WebKit26.5 的官网交互，独立tarball消费和TS7/SSR、134unit及MCP双代客户端通过。WebKit不是真实Safari/iOS，读屏和真机性能未验证。
+
+详见 [实施汇总](reports/optimization/implementation-summary.md) 与 [原始结果](reports/optimization/verification-results.json)。候选没有npm发布；Vue/Nuxt仍未实现。

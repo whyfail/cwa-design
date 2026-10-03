@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [],
+    "paths": {
+      "@cwa-design/react": ["../../react/dist/index.d.ts"],
+      "react": ["../../react/node_modules/@types/react/index.d.ts"],
+      "react/*": ["../../react/node_modules/@types/react/*"]
+    }
+  },
+  "include": ["*.tsx"]
+}

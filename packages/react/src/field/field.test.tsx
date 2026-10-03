@@ -17,6 +17,7 @@ describe("Field + Input 关联", () => {
     const describedBy = input.getAttribute("aria-describedby") ?? "";
     expect(describedBy).toContain("description");
     expect(describedBy).toContain("error");
+    expect(input).toHaveAccessibleDescription("用于个人资料 不能为空");
     expect(screen.getByText("不能为空")).toHaveAttribute("role", "alert");
     expect(input).toHaveAttribute("aria-invalid", "true");
   });
@@ -119,6 +120,7 @@ describe("Field + Input 关联", () => {
     );
     const textarea = screen.getByLabelText("简介");
     expect(textarea.getAttribute("aria-describedby") ?? "").toContain("description");
+    expect(textarea).toHaveAccessibleDescription("最多 200 字");
     await user.type(textarea, "你好");
     expect(textarea).toHaveValue("你好");
   });

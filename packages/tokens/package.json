@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/tokens",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Design tokens for CWA Design: framework-agnostic JSON source and generated CSS variables.",
   "license": "MIT",
   "type": "module",
@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/generate.ts",
+    "build": "node scripts/generate.ts && node scripts/validate-css-tokens.ts",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run"
   },

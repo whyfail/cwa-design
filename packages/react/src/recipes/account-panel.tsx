@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Avatar } from "../avatar/avatar";
 import { Badge } from "../badge/badge";
 import { Button } from "../button/button";
@@ -9,11 +10,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "../dropdown-menu/dropdown-menu";
-import { CwaProvider } from "../provider/provider";
 import { Skeleton } from "../skeleton/skeleton";
 import { Stack } from "../stack/stack";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "../tabs/tabs";
 import { Text } from "../text/text";
+import { RecipeScope as CwaProvider } from "./recipe-scope";
 
 export interface AccountPanelRecipeProps {
   /** 静态 fixture；真实业务接入时由调用方传入。 */
@@ -21,6 +22,9 @@ export interface AccountPanelRecipeProps {
   plan?: "Pro" | "Team" | "Free";
   loading?: boolean;
   onSignOut?: () => void;
+  onAccountSettings?: () => void;
+  onWorkspaceChange?: () => void;
+  onManageSubscription?: () => void;
 }
 
 const mockActivity: Array<{ label: string; time: string }> = [
@@ -35,10 +39,18 @@ export function AccountPanelRecipe({
   plan = "Pro",
   loading = false,
   onSignOut,
+  onAccountSettings,
+  onWorkspaceChange,
+  onManageSubscription,
 }: AccountPanelRecipeProps) {
+  const [feedback, setFeedback] = useState("");
+  const requestAction = (label: string, callback?: () => void) => {
+    callback?.();
+    setFeedback(callback ? `已请求${label}。` : `${label}演示：由宿主应用接入此操作。`);
+  };
   return (
     <CwaProvider>
-      <div style={{ width: "24rem" }}>
+      <div style={{ width: "24rem", maxWidth: "100%", minWidth: 0 }}>
         <Card>
           <CardTitle>
             <Stack direction="row" gap={3} style={{ alignItems: "center" }}>
@@ -61,9 +73,18 @@ export function AccountPanelRecipe({
                     }
                   />
                   <DropdownMenuContent>
-                    <DropdownMenuItem onClick={() => {}}>账户设置</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => {}}>切换工作区</DropdownMenuItem>
-                    <DropdownMenuItem destructive onClick={() => onSignOut?.()}>
+                    <DropdownMenuItem onClick={() => requestAction("账户设置", onAccountSettings)}>
+                      账户设置
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => requestAction("切换工作区", onWorkspaceChange)}
+                    >
+                      切换工作区
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      destructive
+                      onClick={() => requestAction("退出登录", onSignOut)}
+                    >
                       退出登录
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -87,7 +108,7 @@ export function AccountPanelRecipe({
                         key={item.label}
                         direction="row"
                         gap={3}
-                        style={{ justifyContent: "space-between" }}
+                        style={{ justifyContent: "space-between", flexWrap: "wrap" }}
                       >
                         <Text>{item.label}</Text>
                         <Text variant="caption" tone="muted">
@@ -108,10 +129,18 @@ export function AccountPanelRecipe({
             </TabsPanel>
           </Tabs>
           <CardActions>
-            <Button variant="secondary" onClick={() => {}}>
+            <Button
+              variant="secondary"
+              onClick={() => requestAction("管理订阅", onManageSubscription)}
+            >
               管理订阅
             </Button>
           </CardActions>
+          <CardContent>
+            <Text variant="caption" tone="muted" role="status">
+              {feedback}
+            </Text>
+          </CardContent>
         </Card>
       </div>
     </CwaProvider>

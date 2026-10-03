@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CWA Design · 视觉审查</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f4f7; color: #1d2027; font: 15px/1.6 system-ui, -apple-system, "PingFang SC", sans-serif; }
+    main { max-width: 1600px; margin: auto; padding: 36px 28px 72px; }
+    h1 { font-size: 36px; line-height: 1.2; letter-spacing: -.03em; margin: 10px 0 16px; }
+    h2 { margin: 0 0 8px; font-size: 21px; }
+    p { margin: 0 0 18px; }
+    a { color: #005fbe; text-underline-offset: 3px; }
+    .lead { max-width: 900px; color: #555c6a; }
+    .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; }
+    article { min-width: 0; background: white; padding: 22px; border-radius: 20px; border: 1px solid #dfe3e9; }
+    .label { font-size: 12px; letter-spacing: .08em; color: #5a6270; }
+    img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid #dce1e7; margin-top: 18px; }
+    li { margin: 7px 0; }
+    .proofs { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+    .proofs figure { margin: 0; padding: 22px; border: 1px solid #dfe3e9; background: white; border-radius: 20px; }
+    figcaption { font-weight: 650; }
+    .notes { margin-top: 28px; padding: 24px; background: #e9edf3; border-radius: 16px; }
+    @media(max-width: 1000px) { .row { grid-template-columns: 1fr; } .proofs { grid-template-columns: 1fr; } main { padding: 26px 16px; } }
+  </style>
+</head>
+<body>
+<main>
+  <span class="label">CWA DESIGN / 0.1.0-ALPHA.1 / 2026-10-03</span>
+  <h1>玻璃材质与正式官网，实际候选。</h1>
+  <p class="lead">旧版与候选入口截图均为 1440×1000。中间一栏记录推荐目标及同源材质实验，不冒充已获接受的效果图。截图是浏览器真实画面，完整可操作官网由本地预览查看。</p>
+  <p><a href="http://127.0.0.1:4173/cwa-design/">打开官网预览</a> · <a href="http://127.0.0.1:4173/cwa-design/themes/">调整材质</a> · <a href="implementation-summary.md">查看实施报告</a></p>
+  <div class="row">
+    <article>
+      <span class="label">01 / 旧版实际入口</span>
+      <h2>文档入口，缺少正式首页</h2>
+      <p>保留优化计划的审查截图，作为实施前证据。原始文件名 current-start-desktop.png，未重新截取或改绘。</p>
+      <a href="../screenshots/before-root-desktop.png"><img src="../screenshots/before-root-desktop.png" alt="实施前官网入口的真实截图" /></a>
+    </article>
+    <article>
+      <span class="label">02 / 推荐目标，待视觉接受</span>
+      <h2>透射、光学层次与清晰正文</h2>
+      <ul>
+        <li>共享公共材质：固定采样、定向 rim、反射、内壁、接触与环境投影。</li>
+        <li>Regular 用于浮动功能层，Thick 承载密集信息，正文使用稳定背景。</li>
+        <li>浅深主题分别调校，文字保持不透明；Clear 叠加局部 dimming。</li>
+        <li>完整品牌首页，加 Ant Design 式组件目录、示例、源码、API 和搜索。</li>
+      </ul>
+      <a href="../../design/targets/glass-study.html">操作材质实验</a> · <a href="../../design/targets/visual-target.md">阅读视觉 brief</a>
+      <a href="../screenshots/material-chromium-light.png"><img src="../screenshots/material-chromium-light.png" alt="使用共享材质 CSS 的推荐对照实验" /></a>
+    </article>
+    <article>
+      <span class="label">03 / 当前真实候选</span>
+      <h2>完整官网与可操作组件</h2>
+      <p>真实 Surface、按钮、输入、滑块、开关和分段选择。该画面使用候选分发 CSS，样式没有在官网私有覆盖。</p>
+      <a href="../screenshots/home-final-light-1440.png"><img src="../screenshots/home-final-light-1440.png" alt="完成优化的候选正式官网浅色首页" /></a>
+    </article>
+  </div>
+  <div class="proofs">
+    <figure><figcaption>候选深色首页 · 1440px</figcaption><a href="../screenshots/home-final-dark-1440.png"><img src="../screenshots/home-final-dark-1440.png" alt="深色候选首页" /></a></figure>
+    <figure><figcaption>组件详情 · 1440px</figcaption><a href="../screenshots/button-final-light-1440.png"><img src="../screenshots/button-final-light-1440.png" alt="Button组件详情的目录、源码和示例" /></a></figure>
+    <figure><figcaption>浅色首页 · 375px</figcaption><a href="../screenshots/home-final-light-375.png"><img src="../screenshots/home-final-light-375.png" alt="375px移动官网首页" /></a></figure>
+    <figure><figcaption>深色真实玻璃控件 · 375px</figcaption><a href="../screenshots/glass-final-dark-375.png"><img src="../screenshots/glass-final-dark-375.png" alt="375px深色玻璃控件细节" /></a></figure>
+  </div>
+  <div class="notes">
+    <strong>当前状态：本地候选，可审查，尚未上线。</strong>
+    <p>134个单元测试、三引擎132个交互场景、144次axe扫描、40个响应式状态及实际tarball消费者均通过。自动扫描保留渐变背景的incomplete与非模态Portal的moderate region提示；默认场景36处文本合成取样最低5.79:1。</p>
+    <p>维护者视觉接受、真实Safari/iOS、人工读屏、固定设备触摸性能与更多内容背景仍待检查。Web CSS为L2材质近似，未宣称等价Apple原生Liquid Glass。</p>
+  </div>
+</main>
+</body>
+</html>

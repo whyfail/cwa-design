@@ -1,0 +1,82 @@
+[
+  {
+    "id": "settings",
+    "framework": "react",
+    "title": "个人设置表单",
+    "components": [
+      "provider",
+      "field",
+      "input",
+      "switch",
+      "button",
+      "card",
+      "dialog",
+      "toast",
+      "stack"
+    ],
+    "files": [
+      "recipes/settings.tsx",
+      "recipes/recipe-scope.tsx"
+    ],
+    "sourcePath": "packages/react/src/recipes/settings.tsx",
+    "exportName": "SettingsRecipe",
+    "compiled": true,
+    "limitations": [
+      "本地表单演示；onSave 由业务接入，未连接持久化服务。"
+    ]
+  },
+  {
+    "id": "account-panel",
+    "framework": "react",
+    "title": "账户面板",
+    "components": [
+      "provider",
+      "avatar",
+      "badge",
+      "button",
+      "card",
+      "tabs",
+      "dropdown-menu",
+      "skeleton",
+      "stack",
+      "text"
+    ],
+    "files": [
+      "recipes/account-panel.tsx",
+      "recipes/recipe-scope.tsx"
+    ],
+    "sourcePath": "packages/react/src/recipes/account-panel.tsx",
+    "exportName": "AccountPanelRecipe",
+    "compiled": true,
+    "limitations": [
+      "活动与账单为静态 fixture；业务操作可通过回调接入，默认只给本地反馈。"
+    ]
+  },
+  {
+    "id": "ai-workspace",
+    "framework": "react",
+    "title": "AI 工作台界面组合",
+    "components": [
+      "provider",
+      "sheet",
+      "popover",
+      "tabs",
+      "text",
+      "button",
+      "badge",
+      "card",
+      "stack"
+    ],
+    "files": [
+      "recipes/ai-workspace.tsx",
+      "recipes/recipe-scope.tsx"
+    ],
+    "sourcePath": "packages/react/src/recipes/ai-workspace.tsx",
+    "exportName": "AiWorkspaceRecipe",
+    "compiled": true,
+    "limitations": [
+      "消息与工具记录为静态 fixture；未连接模型服务。",
+      "发送与附件选择提供本地演示，可通过回调接入业务；没有文件上传服务。"
+    ]
+  }
+]

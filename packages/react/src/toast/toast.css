@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: var(--cwa-design-space-2);
   max-width: min(24rem, calc(100vw - 2 * var(--cwa-design-space-4)));
-  z-index: 4;
+  z-index: var(--cwa-design-z-toast, 1004);
 }
 .cwa-design-toast {
   display: flex;
@@ -63,11 +63,17 @@
   min-height: 2rem;
 }
 .cwa-design-toast__close:focus-visible {
-  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
   outline-offset: var(--cwa-design-focus-offset);
 }
 .cwa-design-toast [data-action] {
   flex: none;
+}
+@media (pointer: coarse) {
+  .cwa-design-toast__close {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .cwa-design-toast[data-starting-style],

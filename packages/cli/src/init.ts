@@ -23,7 +23,8 @@ export interface InitPlan {
 }
 
 export interface CwaConfig {
-  $schema: string;
+  $schema?: string;
+  schemaVersion?: string;
   provider: Record<string, string>;
   version: string;
   previousHash?: string;
@@ -39,7 +40,7 @@ function defaultProvider(): Record<string, string> {
 
 function defaultConfig(version: string): CwaConfig {
   return {
-    $schema: "https://cwa-design.dev/schemas/cwa-config-1.json",
+    schemaVersion: "1.0.0",
     provider: defaultProvider(),
     version,
   };
@@ -97,6 +98,9 @@ export function planInit(cwd: string, version: string): InitPlan {
     ...Object.keys(existing.provider ?? {}),
   ]);
   const diff: string[] = [];
+  if (existing.version !== version)
+    diff.push(`~ version: ${existing.version ?? "未设置"} → ${version}`);
+  if (existing.schemaVersion === undefined) diff.push('+ schemaVersion = "1.0.0"');
   for (const key of keys) {
     const before = existing.provider?.[key];
     const after = defaultProvider()[key];

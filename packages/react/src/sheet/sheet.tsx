@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
-import { animate, motion, useMotionValue, useReducedMotion } from "motion/react";
+import { animate, motion, useDragControls, useMotionValue, useReducedMotion } from "motion/react";
 import {
   createContext,
   type ReactNode,
@@ -85,12 +85,19 @@ function SheetContent({
   material = "glass-thick",
   dismissThreshold = 96,
 }: SheetContentProps) {
-  const { portalContainer } = useCwaContext();
+  const { portalContainer, motion: motionPreference } = useCwaContext();
   const { open, setOpen, placement } = useSheetState();
-  const reducedMotion = useReducedMotion();
+  const systemReducedMotion = useReducedMotion();
+  const reducedMotion = systemReducedMotion || motionPreference === "reduced";
   const isBottom = placement === "bottom";
-  // 拖动位移走 Motion value；进出动画走外层 Popup 的 CSS（transform 分层不冲突）。
+  // Motion transform moves the material and contents together; CSS translate handles entrance.
   const dragOffset = useMotionValue(0);
+  const dragControls = useDragControls();
+  const [rtl, setRtl] = useState(false);
+  const setDragElement = useCallback((element: HTMLDivElement | null) => {
+    if (element) setRtl(getComputedStyle(element).direction === "rtl");
+  }, []);
+  const dragged = useRef(false);
   const settled = useRef(open);
   useEffect(() => {
     if (open && !settled.current) {
@@ -100,7 +107,17 @@ function SheetContent({
   }, [open, dragOffset]);
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLElement>) => {
-    event.currentTarget.setPointerCapture?.(event.pointerId);
+    dragged.current = false;
+    dragOffset.stop();
+    dragControls.start(event);
+  };
+
+  const handlePointerCancel = () => {
+    dragControls.cancel();
+    dragOffset.stop();
+    dragOffset.set(0);
+    // Ignore a stray synthesized click after cancellation; a new pointer-down resets this.
+    dragged.current = true;
   };
 
   const handleDragEnd = (
@@ -109,9 +126,11 @@ function SheetContent({
   ) => {
     const offset = isBottom ? info.offset.y : info.offset.x;
     const velocity = isBottom ? info.velocity.y : info.velocity.x;
-    const towardDismiss = isBottom
-      ? offset > dismissThreshold || velocity > 700
-      : offset > dismissThreshold || velocity > 700;
+    const sign = !isBottom && rtl ? -1 : 1;
+    const dismissalVelocity = velocity * sign;
+    const towardDismiss =
+      dismissalVelocity > 700 ||
+      (offset * sign > Math.max(0, dismissThreshold) && dismissalVelocity >= -150);
     if (towardDismiss) {
       setOpen(false);
       return;
@@ -129,25 +148,46 @@ function SheetContent({
       <OverlayPortalScope>
         <BaseDialog.Backdrop className="cwa-design-sheet-backdrop" />
         <BaseDialog.Popup
+          ref={setDragElement}
+          render={
+            <motion.div
+              style={isBottom ? { y: dragOffset } : { x: dragOffset }}
+              drag={isBottom ? "y" : "x"}
+              dragControls={dragControls}
+              dragListener={false}
+              dragMomentum={false}
+              dragConstraints={isBottom ? { top: 0 } : rtl ? { right: 0 } : { left: 0 }}
+              dragElastic={0.12}
+              onDragStart={() => {
+                dragged.current = true;
+              }}
+              onDragEnd={handleDragEnd}
+            />
+          }
           className={
             "cwa-design-sheet cwa-design-sheet--" +
             placement +
             " cwa-design-sheet--" +
             material +
-            (className ? " " + className : "")
+            (material === "glass-thick" ? " cwa-design-material cwa-design-material--thick" : "") +
+            (className ? ` ${className}` : "")
           }
         >
-          <motion.div
-            className="cwa-design-sheet__drag"
-            style={{ y: dragOffset, x: 0 }}
-            drag={isBottom ? "y" : "x"}
-            dragConstraints={isBottom ? { top: 0 } : { left: 0 }}
-            dragElastic={0.12}
-            onDragEnd={handleDragEnd}
-            onPointerDown={handlePointerDown}
-          >
+          <div className="cwa-design-sheet__drag">
+            <button
+              type="button"
+              className="cwa-design-sheet__grip"
+              aria-label="关闭面板；拖动也可关闭"
+              onPointerDown={handlePointerDown}
+              onPointerCancel={handlePointerCancel}
+              onClick={(event) => {
+                if (event.detail === 0 || !dragged.current) setOpen(false);
+              }}
+            >
+              <span className="cwa-design-sheet__handle" aria-hidden="true" />
+            </button>
             {children}
-          </motion.div>
+          </div>
         </BaseDialog.Popup>
       </OverlayPortalScope>
     </BaseDialog.Portal>

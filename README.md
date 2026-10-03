@@ -1,22 +1,33 @@
 # CWA Design
 
-**文档站：https://whyfail.github.io/cwa-design/ · 组件 Playground：https://whyfail.github.io/cwa-design/storybook/**
+**已部署网站：https://whyfail.github.io/cwa-design/ · Storybook：https://whyfail.github.io/cwa-design/storybook/**
 
 面向开发者与 AI 编程助手的 Apple 风格 Web 组件库（React 首发，Vue 随后）。
 
 开发方案：`/Users/wulei/Desktop/CWA-Design-开发方案`（主计划 01 · 任务清单 02 · 启动提示词 03 · 版本核验 04）。
-任务状态：`tasks/status.json` · 报告：`reports/tasks/` · 设计规则：`design/rules/design-rules.md` · ADR：`design/adr/`。
+本轮玻璃与官网优化：`/Users/wulei/Desktop/CWA-Design-玻璃风格与官网优化计划-2026-10-03.md`。
+当前任务：`tasks/status.json` · 优化报告：`reports/optimization/` · 历史报告：`reports/tasks/` · 设计规则：`design/rules/design-rules.md`。
 
 ## 包
 
 | 包 | 说明 |
 | --- | --- |
 | `@cwa-design/tokens` | Token JSON 单一来源 → 生成 CSS 变量（light/dark、材质、motion 预设） |
-| `@cwa-design/react` | React 组件库（P0 全部 30 个公共组件（2026-10-02） |
+| `@cwa-design/react` | React 组件库，30 个公共组件与三个业务组合 |
 | `@cwa-design/registry` | Registry schema 与版本规则（AI 单一事实来源的契约层） |
-| `@cwa-design/mcp` | 只读 stdio MCP server（spike：当前 2.2.0 + legacy 1.31.0 客户端已验证） |
+| `@cwa-design/mcp` | 只读 stdio MCP server（确切版本、源码/hash/分页；两代客户端已验证） |
 
 ## 使用（Alpha 形态）
+
+当前候选 `0.1.0-alpha.1` 尚未发布 npm。先通过源码 workspace 构建与示例使用；已部署网站可能仍为前一版本，不能以本地候选版本推断线上已更新。
+
+```bash
+rtk proxy env NVMD_NODE_VERSION=24.21.0 corepack pnpm install --frozen-lockfile
+rtk proxy env NVMD_NODE_VERSION=24.21.0 corepack pnpm run build
+rtk proxy env NVMD_NODE_VERSION=24.21.0 corepack pnpm --filter @cwa-design/docs preview
+```
+
+官网通过实际构建生成详情 HTML。Pages 构建使用 `/cwa-design/` base，详见 `apps/docs` 和部署 workflow；Storybook 继续作为开发与状态调试入口。
 
 ```tsx
 import { CwaProvider, Button, Field, Input } from "@cwa-design/react";
@@ -39,13 +50,13 @@ Storybook 10.6 · Vitest 5 · ESLint 10 + typescript-eslint（typed）· Biome�
 
 ```bash
 corepack pnpm install
-corepack pnpm -r --if-present run build   # 全仓构建
-corepack pnpm -r --if-present run test    # 98 个行为/schema/契约测试
+corepack pnpm run build   # 全仓构建
+corepack pnpm -r --if-present run test    # 实际数量与结果见本轮报告
 corepack pnpm lint                        # typed lint
 ```
 
 ## 状态（2026-10-03）
 
-T00–T24、T26–T29 已执行（详见 `reports/tasks/` 与 `reports/PHASE-S3.md`），P0 30 组件 + recipes + manifest + CLI + MCP + Skill 完成。Alpha 剩余：T25 文档站成品页、T30 宿主矩阵、T32 AI 评测、T33 人工 a11y、T34 正式发布（候选物料已备）。
+当前 R00–R23 负责公共玻璃材质、正式官网、真实 AI 契约与回归。旧 T 任务状态归档在 `tasks/archive/`；历史代码或测试数量不等于本轮视觉/官网验收。
 
-许可证 UNLICENSED（待维护者决定）；`@cwa-design/*` 为暂定名。未发布到 npm。
+许可证 MIT，见 `LICENSE`。包名为 `@cwa-design/*`；没有虚构 npm 发布、Vue 支持或远程 MCP 服务。维护者视觉接受与真实 Safari/iOS、读屏检查单独记录。

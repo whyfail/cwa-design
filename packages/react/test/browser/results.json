@@ -1,0 +1,540 @@
+{
+  "generatedAt": "2026-10-03T09:53:10.998Z",
+  "fixture": "http://127.0.0.1:4182/",
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "154.0.8037.97",
+      "checks": [
+        {
+          "name": "bottom",
+          "before": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "during": {
+            "x": 0,
+            "y": 161.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "after": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.609375,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2423,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-ltr",
+          "before": {
+            "x": 31.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "during": {
+            "x": 66.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "after": {
+            "x": 31.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "grip": {
+            "x": 188.59375,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2423,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "grip": {
+            "x": 157.40625,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2423,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "system-reduced-end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 844
+          },
+          "grip": {
+            "x": 157.40625,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2423,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "bottom-reduced-solid",
+          "before": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "during": {
+            "x": 0,
+            "y": 161.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "after": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.609375,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2423,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "checks": [
+        {
+          "name": "bottom",
+          "before": {
+            "x": 0,
+            "y": 126.5999984741211,
+            "width": 390,
+            "height": 717.4000015258789
+          },
+          "during": {
+            "x": 0,
+            "y": 161.60000610351562,
+            "width": 390,
+            "height": 717.3999938964844
+          },
+          "after": {
+            "x": 0,
+            "y": 126.5999984741211,
+            "width": 390,
+            "height": 717.4000015258789
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.60000610351562,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2465,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-ltr",
+          "before": {
+            "x": 31.200000762939453,
+            "y": 0,
+            "width": 358.79999923706055,
+            "height": 844
+          },
+          "during": {
+            "x": 66.19999694824219,
+            "y": 0,
+            "width": 358.8000030517578,
+            "height": 844
+          },
+          "after": {
+            "x": 31.200000762939453,
+            "y": 0,
+            "width": 358.79999923706055,
+            "height": 844
+          },
+          "grip": {
+            "x": 188.60000610351562,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2466,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "grip": {
+            "x": 157.39999389648438,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2466,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "system-reduced-end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.79998779296875,
+            "height": 844
+          },
+          "grip": {
+            "x": 157.39999389648438,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2466,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "bottom-reduced-solid",
+          "before": {
+            "x": 0,
+            "y": 126.5999984741211,
+            "width": 390,
+            "height": 717.4000015258789
+          },
+          "during": {
+            "x": 0,
+            "y": 161.60000610351562,
+            "width": 390,
+            "height": 717.3999938964844
+          },
+          "after": {
+            "x": 0,
+            "y": 126.5999984741211,
+            "width": 390,
+            "height": 717.4000015258789
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.60000610351562,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2465,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "checks": [
+        {
+          "name": "bottom",
+          "before": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "during": {
+            "x": 0,
+            "y": 161.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "after": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.609375,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2254,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-ltr",
+          "before": {
+            "x": 31.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "during": {
+            "x": 66.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "after": {
+            "x": 31.203125,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "grip": {
+            "x": 188.59375,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2254,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "grip": {
+            "x": 157.40625,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2254,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "system-reduced-end-rtl",
+          "before": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "during": {
+            "x": -35,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "after": {
+            "x": 0,
+            "y": 0,
+            "width": 358.796875,
+            "height": 843.984375
+          },
+          "grip": {
+            "x": 157.40625,
+            "y": 25,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 844,
+            "scrollHeight": 2254,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        },
+        {
+          "name": "bottom-reduced-solid",
+          "before": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "during": {
+            "x": 0,
+            "y": 161.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "after": {
+            "x": 0,
+            "y": 126.609375,
+            "width": 390,
+            "height": 717.390625
+          },
+          "grip": {
+            "x": 173,
+            "y": 151.609375,
+            "width": 44,
+            "height": 44
+          },
+          "scroll": {
+            "height": 717,
+            "scrollHeight": 2254,
+            "touchAction": "pan-y",
+            "popupTouchAction": "auto"
+          },
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

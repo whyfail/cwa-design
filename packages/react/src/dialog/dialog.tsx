@@ -2,7 +2,7 @@
 
 import type { DialogRootProps as BaseDialogRootProps } from "@base-ui/react/dialog";
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { OverlayPortalScope } from "../overlay/overlay-scope";
 import { useCwaContext } from "../provider/provider";
 
@@ -13,7 +13,7 @@ export interface DialogRootProps extends BaseDialogRootProps {
 export interface DialogContentProps {
   children?: ReactNode;
   className?: string;
-  /** 覆盖默认（glass-thick）材质：浮层叠在玻璃层之上时应使用 solid。 */
+  /** 默认 thick 玻璃；复杂背景或实际采样重叠时可选择 solid。 */
   material?: "glass-thick" | "solid";
 }
 
@@ -34,7 +34,10 @@ function DialogContent({ children, className, material = "glass-thick" }: Dialog
         <BaseDialog.Backdrop className="cwa-design-dialog-backdrop" />
         <BaseDialog.Popup
           className={
-            "cwa-design-dialog cwa-design-dialog--" + material + (className ? " " + className : "")
+            "cwa-design-dialog cwa-design-dialog--" +
+            material +
+            (material === "glass-thick" ? " cwa-design-material cwa-design-material--thick" : "") +
+            (className ? " " + className : "")
           }
         >
           {children}
@@ -44,15 +47,33 @@ function DialogContent({ children, className, material = "glass-thick" }: Dialog
   );
 }
 
-function DialogTitle(props: React.ComponentProps<typeof BaseDialog.Title>) {
-  return <BaseDialog.Title {...props} />;
+function DialogTitle({ className, ...props }: ComponentProps<typeof BaseDialog.Title>) {
+  return (
+    <BaseDialog.Title
+      {...props}
+      className={
+        typeof className === "function"
+          ? (state) => `cwa-design-dialog__title ${className(state) ?? ""}`
+          : `cwa-design-dialog__title${className ? ` ${className}` : ""}`
+      }
+    />
+  );
 }
 
-function DialogDescription(props: React.ComponentProps<typeof BaseDialog.Description>) {
-  return <BaseDialog.Description {...props} />;
+function DialogDescription({ className, ...props }: ComponentProps<typeof BaseDialog.Description>) {
+  return (
+    <BaseDialog.Description
+      {...props}
+      className={
+        typeof className === "function"
+          ? (state) => `cwa-design-dialog__description ${className(state) ?? ""}`
+          : `cwa-design-dialog__description${className ? ` ${className}` : ""}`
+      }
+    />
+  );
 }
 
-function DialogClose(props: React.ComponentProps<typeof BaseDialog.Close>) {
+function DialogClose(props: ComponentProps<typeof BaseDialog.Close>) {
   return <BaseDialog.Close {...props} />;
 }
 

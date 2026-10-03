@@ -60,10 +60,14 @@ export function Field({
             </span>
           ) : null}
         </label>
-        {description ? <p className="cwa-design-field__description">{description}</p> : null}
+        {description ? (
+          <p id={descriptionId} className="cwa-design-field__description">
+            {description}
+          </p>
+        ) : null}
         {children}
         {error ? (
-          <p className="cwa-design-field__error" role="alert">
+          <p id={errorId} className="cwa-design-field__error" role="alert">
             {error}
           </p>
         ) : null}

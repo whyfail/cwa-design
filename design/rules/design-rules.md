@@ -20,7 +20,7 @@
 
 硬规则：
 
-1. **禁止 glass-on-glass**：任何玻璃层之上叠放的浮层/控件必须实色或接近实色；Portal 不豁免视觉重叠。
+1. **控制实际 backdrop 重叠**：toolbar 内控件共享玻璃外壳，不再独立 blur；独立菜单/Popover 可用 regular glass，覆盖玻璃区域时依据背景加厚或降级。Portal 不豁免视觉重叠，不能把所有浮层一律固化为实色。
 2. 默认固定 blur，**只动画 transform/opacity**；blur 动画属后续独立验证项。
 3. 不给父容器设 opacity（会连带文字透明并建立错误 backdrop root）。
 4. 系统信号优先级：`forced-colors` > reduced-motion > reduced-transparency > `prefers-contrast: more` > 用户显式选择（solid 必须随时可用）。
@@ -63,4 +63,12 @@
 2. **浮动 toolbar**（功能层，regular glass）：内容在下方滚过，验证五背景可读性。
 3. **可拖动 Sheet**（物理交互）：snap、速度衔接、中断反向。
 
-实现位于 `apps/playground`（T06+ 组件就绪后建立）；维护者按本规则评审并冻结视觉基线。
+本轮可操作实验室位于 `apps/docs` 的主题/材质页；官网、Storybook 与实际消费包使用同一公共材质层。维护者视觉确认单独记录。
+
+## 8. 2026-10-03 玻璃优化目标
+
+- 透射、非均匀顶部/侧缘 rim、轻反射、内顶高光/底缘和接触/环境投影共同表达厚度；磨砂 blur 不能单独充当玻璃。
+- 公共材质 CSS 与源 Token 负责光学效果，官网仅提供布局和背景，不覆盖组件内部材质。
+- 深色独立调校；系统减少透明、增强对比、forced-colors、显式 solid 与缺少 blur 支持均保留可靠回退。
+- 默认 Regular 填充遮蔽为浅色 52%、深色 70%；玻璃内正文、辅助文字和焦点使用不透明正文色。Clear 在低 blur 与透明填充之外，叠加浅色白色 60% / 深色黑色 58% 的局部 dimming 层，不能仅以填充 alpha 代表最终透射率。
+- 当前候选目标待维护者实图评审；代码、自动检查、浏览器检查与 accepted 分开记录。

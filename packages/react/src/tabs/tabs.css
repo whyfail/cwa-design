@@ -22,7 +22,7 @@
   color: var(--cwa-design-color-text);
 }
 .cwa-design-tabs__tab:focus-visible {
-  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
   outline-offset: -2px;
   border-radius: 0.5rem;
 }

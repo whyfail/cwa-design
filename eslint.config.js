@@ -2,11 +2,11 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', '**/node_modules/**', '**/.next/**', '**/storybook-static/**', '**/*.stories.tsx'] },
+  { ignores: ['**/dist/**', '**/node_modules/**', '**/.next/**', '**/.ssr/**', '**/storybook-static/**', '**/*.stories.tsx'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     languageOptions: {
       parserOptions: {
         projectService: true,

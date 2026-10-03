@@ -44,6 +44,7 @@ export {
   type MotionPreference,
   type ThemePreference,
   useCwaContext,
+  useOptionalCwaContext,
 } from "./provider/provider";
 export {
   type CwaRadioGroupProps,

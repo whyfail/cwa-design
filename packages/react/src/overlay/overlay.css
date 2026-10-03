@@ -1,4 +1,8 @@
 /* Overlay portal 作用域容器：仅承载主题属性，不产生布局。 */
-.cwa-design-portal-scope {
+.cwa-design-portal-scope, .cwa-design-focus-scope {
   display: contents;
 }
+
+/* Portal surfaces stay above application navigation; DOM order handles nested overlays. */
+.cwa-design-dialog-backdrop, .cwa-design-sheet-backdrop { position: fixed; inset: 0; z-index: var(--cwa-design-z-overlay, 1000); }
+.cwa-design-dialog, .cwa-design-sheet { z-index: var(--cwa-design-z-dialog, 1001); }

@@ -1,0 +1,54 @@
+/* Shared optics. Components choose weight; content stays fully opaque.
+   A toolbar shell samples the backdrop once; its children use highlight only. */
+.cwa-design-material {
+  --cwa-design-color-text-muted: var(--cwa-design-color-text);
+  --cwa-design-color-focus: var(--cwa-design-color-text);
+  background-color: var(--cwa-material-fill, var(--cwa-design-color-glass-regular-fill));
+  background-image: linear-gradient(135deg, var(--cwa-design-color-glass-reflection), transparent 48%);
+  border: 1px solid var(--cwa-design-color-glass-rim-bottom);
+  border-top-color: var(--cwa-design-color-glass-rim-top);
+  border-left-color: var(--cwa-design-color-glass-inner-highlight);
+  box-shadow:
+    inset 0 1px 0 var(--cwa-design-color-glass-inner-highlight),
+    inset 0 -1px 0 var(--cwa-design-color-glass-inner-shade),
+    0 var(--cwa-design-shadow-contact-y) var(--cwa-design-shadow-contact-blur) var(--cwa-design-color-glass-contact-shadow),
+    0 var(--cwa-design-shadow-ambient-y) var(--cwa-design-shadow-ambient-blur) var(--cwa-design-color-glass-ambient-shadow);
+  -webkit-backdrop-filter: blur(var(--cwa-material-blur, var(--cwa-design-blur-glass-regular))) saturate(var(--cwa-design-saturation-glass));
+  backdrop-filter: blur(var(--cwa-material-blur, var(--cwa-design-blur-glass-regular))) saturate(var(--cwa-design-saturation-glass));
+}
+.cwa-design-material--thick {
+  --cwa-material-fill: var(--cwa-design-color-glass-thick-fill);
+  --cwa-material-blur: var(--cwa-design-blur-glass-thick);
+}
+.cwa-design-material--clear {
+  --cwa-material-fill: var(--cwa-design-color-glass-clear-fill);
+  --cwa-material-blur: var(--cwa-design-blur-glass-clear);
+  background-image: linear-gradient(135deg, var(--cwa-design-color-glass-reflection), transparent 48%), linear-gradient(var(--cwa-design-color-glass-clear-dimming), var(--cwa-design-color-glass-clear-dimming));
+}
+.cwa-design-material .cwa-design-button--ghost,
+.cwa-design-material .cwa-design-icon-button--ghost { color: var(--cwa-design-color-text); }
+.cwa-design-material-highlight {
+  background-image: linear-gradient(160deg, var(--cwa-design-color-glass-reflection), transparent 62%);
+  box-shadow: inset 0 1px 0 var(--cwa-design-color-glass-inner-highlight), inset 0 -1px 0 var(--cwa-design-color-glass-inner-shade), 0 2px 6px var(--cwa-design-color-glass-contact-shadow);
+}
+/* An explicit or system fallback drops the sampling layer, not merely its blur. */
+[data-cwa-material="solid"] .cwa-design-material {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+@media (prefers-reduced-transparency: reduce) {
+  .cwa-design-material {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more), (forced-colors: active) {
+  .cwa-design-material,
+  .cwa-design-material-highlight {
+    background-image: none;
+    border-color: var(--cwa-design-color-border-strong);
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

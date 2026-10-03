@@ -3,39 +3,34 @@
 // 原则：无隐式写入；--json 输出机器可读数据；数据按确切版本查询。
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import {
   type ComponentRecord,
   getComponent,
   getManifest,
   RegistryError,
-  type RegistryManifest,
 } from "@cwa-design/registry";
+import {
+  currentLibraryVersion,
+  loadSnapshots,
+  readArtifact,
+  type RegistrySnapshot,
+} from "@cwa-design/registry/snapshot";
 import { applyInit, planInit } from "./init.js";
 
 interface CliContext {
-  manifests: RegistryManifest[];
+  snapshots: RegistrySnapshot[];
   libraryVersion: string;
 }
 
 function loadContext(): CliContext {
-  // manifest 随 CLI 包携带（同版本批次发布，§19）。
-  const manifestPath = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "node_modules",
-    "@cwa-design/registry",
-    "dist",
-    "manifest",
+  const snapshots = loadSnapshots();
+  const libraryVersion = currentLibraryVersion();
+  getManifest(
+    snapshots.map((snapshot) => snapshot.manifest),
     "react",
-    "0.1.0-alpha.0",
-    "manifest.json",
+    libraryVersion,
   );
-  if (!existsSync(manifestPath)) {
-    fail("REGISTRY_UNAVAILABLE", `本地 registry 快照缺失: ${manifestPath}`);
-  }
-  const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as RegistryManifest;
-  return { manifests: [manifest], libraryVersion: manifest.libraryVersion };
+  return { snapshots, libraryVersion };
 }
 
 function fail(code: string, message: string): never {
@@ -89,6 +84,14 @@ function main(): void {
   const [command, ...args] = process.argv.slice(2);
   const json = process.argv.includes("--json");
   const ctx = loadContext();
+  const versionArg = args.find((arg) => arg.startsWith("--version="));
+  const version = versionArg ? versionArg.slice("--version=".length) : ctx.libraryVersion;
+  const manifest = getManifest(
+    ctx.snapshots.map((snapshot) => snapshot.manifest),
+    "react",
+    version,
+  );
+  const snapshot = ctx.snapshots.find((entry) => entry.manifest === manifest)!;
 
   switch (command) {
     case "doctor": {
@@ -101,7 +104,11 @@ function main(): void {
         cwd,
         framework: project.framework,
         packageManager: project.packageManager,
-        registryVersions: ctx.manifests.map((m) => `${m.framework}@${m.libraryVersion}`),
+        registryVersions: ctx.snapshots.map(
+          ({ manifest: entry }) => `${entry.framework}@${entry.libraryVersion}`,
+        ),
+        selectedVersion: version,
+        registryDigest: manifest.registryDigest,
         checks: [
           {
             name: "node-lts",
@@ -127,7 +134,8 @@ function main(): void {
       const query = (args.find((a) => !a.startsWith("--")) ?? "").toLowerCase();
       const limitArg = args.find((a) => a.startsWith("--limit="));
       const limit = limitArg ? Number(limitArg.split("=")[1]) : 10;
-      const manifest = ctx.manifests[0]!;
+      if (!Number.isInteger(limit) || limit < 1 || limit > 50)
+        fail("INVALID_INPUT", "--limit 必须是 1–50 的整数。");
       const hits = manifest.components.filter(
         (c) =>
           query === "" ||
@@ -142,7 +150,13 @@ function main(): void {
         summary: `${c.status} · ${c.materialPolicy}`,
       }));
       if (json)
-        console.log(JSON.stringify({ ok: true, query, results, total: hits.length }, null, 2));
+        console.log(
+          JSON.stringify(
+            { ok: true, libraryVersion: version, query, results, total: hits.length },
+            null,
+            2,
+          ),
+        );
       else {
         console.log(`search "${query}" → ${hits.length} hits (showing ${results.length})`);
         for (const r of results) console.log(`  ${r.id.padEnd(20)} ${r.summary}`);
@@ -152,11 +166,8 @@ function main(): void {
 
     case "inspect": {
       const id = args.find((a) => !a.startsWith("--"));
-      const versionArg = args.find((a) => a.startsWith("--version="));
-      const version = versionArg ? versionArg.split("=")[1]! : ctx.libraryVersion;
       if (!id) fail("INVALID_INPUT", "用法: cwa-design inspect <component-id> [--version=x.y.z]");
       try {
-        const manifest = getManifest(ctx.manifests, "react", version);
         printRecord(getComponent(manifest, id), json);
       } catch (error) {
         if (error instanceof RegistryError) fail(error.code, error.message);
@@ -167,8 +178,6 @@ function main(): void {
 
     case "init": {
       const apply = process.argv.includes("--apply");
-      const versionArg = args.find((a) => a.startsWith("--version="));
-      const version = versionArg ? versionArg.split("=")[1]! : ctx.libraryVersion;
       try {
         const plan = apply ? applyInit(process.cwd(), version) : planInit(process.cwd(), version);
         if (json) {
@@ -193,19 +202,18 @@ function main(): void {
 
     case "plan": {
       const ids = args.filter((a) => !a.startsWith("--"));
-      const versionArg = args.find((a) => a.startsWith("--version="));
-      const version = versionArg ? versionArg.split("=")[1]! : ctx.libraryVersion;
       if (ids.length === 0)
         fail("INVALID_INPUT", "用法: cwa-design plan <component-id...> [--version=x.y.z]");
       try {
-        const manifest = getManifest(ctx.manifests, "react", version);
         const records = ids.map((id) => getComponent(manifest, id));
         const plan = {
           ok: true,
           version,
           install: {
-            packages: ["@cwa-design/react"],
-            command: "pnpm add @cwa-design/react",
+            packages: [`@cwa-design/react@${version}`],
+            command: `pnpm add @cwa-design/react@${version}`,
+            publicationStatus: "not-verified",
+            commandRequiresPublishedVersion: true,
           },
           styles: { import: "@cwa-design/react/styles.css", note: "入口引入一次；含 tokens" },
           provider: {
@@ -222,6 +230,7 @@ function main(): void {
           warnings: [
             "plan 仅输出可审查步骤，不写入工程（apply 为 T27 独立命令）",
             "命令为建议值，实际以项目包管理器为准",
+            "本地 Registry 不证明 npm 已发布；候选版请使用源码构建或审核后的本地 tarball。发布状态核验前不要执行该 npm 命令。",
           ],
         };
         if (json) console.log(JSON.stringify(plan, null, 2));
@@ -240,6 +249,75 @@ function main(): void {
       break;
     }
 
+    case "example": {
+      const id = args.find((arg) => !arg.startsWith("--"));
+      const example = manifest.examples.find((entry) => entry.id === id);
+      if (!example)
+        throw new RegistryError("EXAMPLE_NOT_FOUND", `示例 ${id ?? ""} 不存在于 ${version}。`);
+      if (!example.file)
+        throw new RegistryError("REGISTRY_UNAVAILABLE", `版本 ${version} 没有该示例源码快照。`);
+      const artifact = readArtifact(snapshot, example.file);
+      if (artifact.record.contentDigest !== example.contentDigest)
+        throw new RegistryError("REGISTRY_UNAVAILABLE", "示例与源码 digest 不一致。");
+      if (json)
+        console.log(
+          JSON.stringify(
+            {
+              ok: true,
+              libraryVersion: version,
+              data: { ...example, source: artifact.content, artifact: artifact.record },
+            },
+            null,
+            2,
+          ),
+        );
+      else console.log(artifact.content);
+      break;
+    }
+
+    case "tokens": {
+      if (!manifest.tokensFile)
+        throw new RegistryError(
+          "REGISTRY_UNAVAILABLE",
+          `版本 ${version} 没有 Token 快照；不能借用当前版本。`,
+        );
+      const artifact = readArtifact(snapshot, manifest.tokensFile);
+      const tokens = JSON.parse(artifact.content) as { libraryVersion: string };
+      if (tokens.libraryVersion !== version)
+        throw new RegistryError("REGISTRY_UNAVAILABLE", "Token 与 Registry 版本不一致。");
+      if (json)
+        console.log(
+          JSON.stringify(
+            { ok: true, libraryVersion: version, data: tokens, artifact: artifact.record },
+            null,
+            2,
+          ),
+        );
+      else console.log(artifact.content);
+      break;
+    }
+
+    case "recipe": {
+      const id = args.find((arg) => !arg.startsWith("--"));
+      const recipe = manifest.recipes.find((entry) => entry.id === id);
+      if (!recipe)
+        throw new RegistryError("RECIPE_NOT_FOUND", `配方 ${id ?? ""} 不存在于 ${version}。`);
+      const sources = recipe.files.map((file) => {
+        const artifact = readArtifact(snapshot, file);
+        return { file, source: artifact.content, artifact: artifact.record };
+      });
+      if (json)
+        console.log(
+          JSON.stringify(
+            { ok: true, libraryVersion: version, data: { ...recipe, sources } },
+            null,
+            2,
+          ),
+        );
+      else for (const source of sources) console.log(`${source.file}\n${source.source}`);
+      break;
+    }
+
     case "--help":
     case "help":
     case undefined: {
@@ -249,6 +327,9 @@ function main(): void {
   search [query]            搜索组件（--limit=N, --json）
   inspect <id>              组件契约详情（--version=x.y.z, --json）
   plan <id...>              生成安装计划（不写入，--json）
+  example <id>              读取确切版本的真实示例源码（--json）
+  tokens                    读取确切版本的 Token JSON（--json）
+  recipe <id>               读取配方源码与业务接入限制（--json）
   init [--apply]            生成/合并 cwa-design.json（默认 dry-run）
   help                      本帮助
 
@@ -261,4 +342,9 @@ function main(): void {
   }
 }
 
-main();
+try {
+  main();
+} catch (error) {
+  if (error instanceof RegistryError) fail(error.code, error.message);
+  throw error;
+}

@@ -1,12 +1,15 @@
-// CWA Design Registry schema（T05）。
-// 字段为拟定契约，随 T07+ 组件切片演进；冻结点在 T24（P0 全量 manifest 构建）。
+// Component source contracts are versioned by the registry builder, never by hand.
 import { z } from "zod";
+export const REGISTRY_SCHEMA_VERSION = "1.1.0";
 export const RegistryErrorCode = {
     VERSION_NOT_FOUND: "VERSION_NOT_FOUND",
     COMPONENT_NOT_FOUND: "COMPONENT_NOT_FOUND",
     INVALID_INPUT: "INVALID_INPUT",
     UNSUPPORTED_FRAMEWORK: "UNSUPPORTED_FRAMEWORK",
     REGISTRY_UNAVAILABLE: "REGISTRY_UNAVAILABLE",
+    EXAMPLE_NOT_FOUND: "EXAMPLE_NOT_FOUND",
+    RECIPE_NOT_FOUND: "RECIPE_NOT_FOUND",
+    MIGRATION_NOT_FOUND: "MIGRATION_NOT_FOUND",
 };
 export class RegistryError extends Error {
     code;
@@ -20,13 +23,21 @@ export const frameworkSchema = z.enum(["react"]);
 /** 确切 SemVer 发行版（允许 alpha/beta prerelease，禁止范围）。 */
 export const exactVersionSchema = z
     .string()
-    .regex(/^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$/, "必须是确切 SemVer");
+    .max(128)
+    .regex(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/, "必须是确切 SemVer")
+    .refine((value) => !value.split("+")[0].split("-").slice(1).join("-").split(".").some((part) => /^0\d+$/.test(part)), "SemVer 数字 prerelease 不能有前导零");
+const propInfo = {
+    required: z.boolean().optional(),
+    description: z.string().optional(),
+    defaultSummary: z.string().optional(),
+    origin: z.enum(["own", "inherited"]).optional(),
+};
 export const propEnumSchema = z
     .strictObject({
     type: z.literal("enum"),
-    values: z.array(z.string()).min(1),
-    default: z.string().optional(),
-    required: z.boolean().optional(),
+    values: z.array(z.union([z.string(), z.number()])).min(1),
+    default: z.union([z.string(), z.number()]).optional(),
+    ...propInfo,
 })
     .refine((v) => v.default === undefined || v.values.includes(v.default), {
     error: "enum default 必须是 values 之一",
@@ -34,22 +45,28 @@ export const propEnumSchema = z
 export const propStringSchema = z.strictObject({
     type: z.literal("string"),
     default: z.string().optional(),
-    required: z.boolean().optional(),
+    ...propInfo,
 });
 export const propBooleanSchema = z.strictObject({
     type: z.literal("boolean"),
     default: z.boolean().optional(),
-    required: z.boolean().optional(),
+    ...propInfo,
 });
 export const propNumberSchema = z.strictObject({
     type: z.literal("number"),
     default: z.number().optional(),
-    required: z.boolean().optional(),
+    ...propInfo,
 });
 /** children/ref/回调等不可完整序列化的类型：只记录类型摘要，指向 TS 声明。 */
 export const propOpaqueSchema = z.strictObject({
-    type: z.enum(["node", "ref", "function", "element", "record"]),
+    type: z.enum(["node", "ref", "function", "element", "record", "array", "union"]),
     summary: z.string(),
+    ...propInfo,
+});
+export const propStringNumberSchema = z.strictObject({
+    type: z.literal("string-number"),
+    default: z.union([z.string(), z.number()]).optional(),
+    ...propInfo,
 });
 export const propSchema = z.union([
     propEnumSchema,
@@ -57,33 +74,55 @@ export const propSchema = z.union([
     propBooleanSchema,
     propNumberSchema,
     propOpaqueSchema,
+    propStringNumberSchema,
 ]);
+export const materialPolicySchema = z.enum([
+    "inherit-parent-surface", "glass-regular", "glass-thick", "glass-clear-opt-in", "solid", "frosted",
+]);
+export const compoundPartSchema = z.strictObject({
+    exportName: z.string(),
+    typeName: z.string(),
+    sourceTypePath: z.string(),
+    description: z.string(),
+    props: z.record(z.string(), propSchema),
+    extends: z.array(z.string()),
+    materialPolicy: materialPolicySchema.optional(),
+    materialNotes: z.string().optional(),
+});
 export const componentRecordSchema = z.strictObject({
     schemaVersion: z.string(),
     libraryVersion: exactVersionSchema,
     framework: frameworkSchema,
     id: z.string().regex(/^[a-z][a-z0-9-]*$/),
     name: z.string().min(1),
+    description: z.string().optional(),
+    typeName: z.string().optional(),
+    sourceTypePath: z.string().optional(),
     status: z.enum(["draft", "stable-in-alpha", "deprecated"]),
     package: z.string(),
     exports: z.array(z.string()).min(1),
     importPath: z.string(),
     stylePath: z.string(),
     props: z.record(z.string(), propSchema),
-    /** 继承的原生属性白名单（完整 TS 类型仍是权威）。 */
+    /** Exact inherited TS types; this is not an invented prop whitelist. */
     extends: z.array(z.string()).default([]),
-    materialPolicy: z.enum([
-        "inherit-parent-surface",
-        "glass-regular",
-        "glass-thick",
-        "glass-clear-opt-in",
-        "solid",
-        "frosted",
-    ]),
+    compoundParts: z.record(z.string(), compoundPartSchema).optional(),
+    materialPolicy: materialPolicySchema,
+    materialNotes: z.string().optional(),
     a11y: z.array(z.string()).min(1),
     examples: z.array(z.string()).default([]),
     runtimeDependencies: z.array(z.string()).default([]),
     deprecated: z.boolean().default(false),
+});
+export const relativeArtifactPathSchema = z.string().regex(/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._/-]+$/);
+export const contentDigestSchema = z.string().regex(/^sha256:[0-9a-f]{64}$/);
+export const artifactRecordSchema = z.strictObject({
+    path: relativeArtifactPathSchema,
+    mimeType: z.string(),
+    contentDigest: contentDigestSchema,
+    byteSize: z.number().int().nonnegative(),
+    sourcePath: relativeArtifactPathSchema.optional(),
+    sourceDigest: contentDigestSchema.optional(),
 });
 export const exampleRecordSchema = z.strictObject({
     id: z.string().regex(/^[a-z][a-z0-9-]*$/),
@@ -94,7 +133,11 @@ export const exampleRecordSchema = z.strictObject({
     compiled: z.boolean().nullable(),
     imports: z.array(z.string()),
     needsStyles: z.boolean(),
-    contentDigest: z.string().regex(/^sha256:[0-9a-f]{64}$/),
+    contentDigest: contentDigestSchema,
+    sourcePath: relativeArtifactPathSchema.optional(),
+    file: relativeArtifactPathSchema.optional(),
+    exportName: z.string().optional(),
+    requiresProvider: z.boolean().optional(),
 });
 export const recipeRecordSchema = z.strictObject({
     id: z.string().regex(/^[a-z][a-z0-9-]*$/),
@@ -102,6 +145,10 @@ export const recipeRecordSchema = z.strictObject({
     title: z.string(),
     components: z.array(z.string()).min(1),
     files: z.array(z.string()).min(1),
+    sourcePath: relativeArtifactPathSchema.optional(),
+    exportName: z.string().optional(),
+    compiled: z.boolean().nullable().optional(),
+    limitations: z.array(z.string()).optional(),
 });
 /** Registry envelope：schemaVersion（数据格式）与 libraryVersion（发行版本）分开，不得合并。 */
 export const manifestSchema = z.strictObject({
@@ -113,6 +160,9 @@ export const manifestSchema = z.strictObject({
     components: z.array(componentRecordSchema),
     examples: z.array(exampleRecordSchema).default([]),
     recipes: z.array(recipeRecordSchema).default([]),
+    artifacts: z.array(artifactRecordSchema).optional(),
+    tokensFile: relativeArtifactPathSchema.optional(),
+    digestMethod: z.literal("sha256-json-2-space-empty-registryDigest").optional(),
 });
 /** 按确切版本取 manifest；未命中抛 VERSION_NOT_FOUND，绝不静默换成新版本。 */
 export function getManifest(manifests, framework, version) {

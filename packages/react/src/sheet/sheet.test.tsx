@@ -15,7 +15,6 @@ describe("Sheet", () => {
         <Sheet onOpenChange={onOpenChange}>
           <Sheet.Trigger>打开抽屉</Sheet.Trigger>
           <Sheet.Content>
-            <div className="cwa-design-sheet__handle" aria-hidden="true" />
             <Sheet.Title className="cwa-design-sheet__title">显示设置</Sheet.Title>
             <Sheet.Close render={<Button variant="secondary">关闭</Button>} />
           </Sheet.Content>
@@ -70,5 +69,26 @@ describe("Sheet", () => {
     expect(screen.getByText("内容")).toBeTruthy();
     await user.keyboard("[Escape]");
     expect(screen.queryByText("内容")).toBeNull();
+  });
+
+  it("拖动手柄提供键盘关闭替代并恢复触发器焦点", async () => {
+    const user = userEvent.setup();
+    render(
+      <CwaProvider>
+        <Sheet>
+          <Sheet.Trigger>打开</Sheet.Trigger>
+          <Sheet.Content>
+            <Sheet.Title>键盘面板</Sheet.Title>
+          </Sheet.Content>
+        </Sheet>
+      </CwaProvider>,
+    );
+    const trigger = screen.getByRole("button", { name: "打开" });
+    await user.click(trigger);
+    const grip = await screen.findByRole("button", { name: "关闭面板；拖动也可关闭" });
+    grip.focus();
+    await user.keyboard("[Enter]");
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(trigger).toHaveFocus();
   });
 });

@@ -1,21 +1,46 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const avatarMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "avatar",
   name: "Avatar",
+  description: "固定几何头像；无 src 时显示 fallback，图片加载由 Base UI 管理。",
+  typeName: "AvatarProps",
+  sourceTypePath: "packages/react/src/avatar/avatar.tsx#AvatarProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Avatar"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
+  props: {
+    src: {
+      type: "string",
+    },
+    alt: {
+      type: "string",
+    },
+    fallback: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    size: {
+      type: "enum",
+      values: ["sm", "md", "lg"],
+      default: "md",
+    },
+    className: {
+      type: "string",
+      description: "附加样式类；具体合并行为以实现为准",
+    },
+  },
   extends: [],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["image-fallback-stable"],
-  examples: [],
-  runtimeDependencies: [],
+  materialNotes: "头像内容不创建背景玻璃。",
+  a11y: ["image-alt-or-decoration", "fixed-size-fallback"],
+  examples: ["avatar-basic"],
+  runtimeDependencies: ["@base-ui/react"],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

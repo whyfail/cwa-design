@@ -6,11 +6,11 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: "react-docgen-typescript",
   },
-  viteFinal: async (config) => {
+  viteFinal: (config, { configType }) => {
     // GitHub Pages 子路径部署（项目页）；本地 dev/build 不设则保持根路径。
-    if (process.env.STORYBOOK_BASE) {
-      config.base = process.env.STORYBOOK_BASE;
-    }
+    config.base =
+      process.env.STORYBOOK_BASE ??
+      (configType === "PRODUCTION" ? `${process.env.CWA_BASE ?? "/"}storybook/` : "/");
     return config;
   },
 };

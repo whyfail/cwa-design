@@ -1,0 +1,258 @@
+{
+  "generatedAt": "2026-10-03T14:50:58.357119+00:00",
+  "release": {
+    "version": "0.1.0-alpha.1",
+    "commit": "99639df5f3c96f3181ec69a9b2af18cab1aa744c",
+    "dirty": true,
+    "channel": "source",
+    "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48"
+  },
+  "commands": [
+    {
+      "command": "NVMD_NODE_VERSION=24.21.0 CWA_BASE=/cwa-design/ STORYBOOK_BASE=/cwa-design/storybook/ corepack pnpm run verify",
+      "exitCode": 0,
+      "includes": [
+        "workspace packages and consumers",
+        "51-route docs SSG",
+        "Storybook production build",
+        "unit tests",
+        "two-generation MCP stdio",
+        "strict ESLint"
+      ]
+    },
+    {
+      "command": "corepack pnpm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "unitTests": {
+    "tokens": 10,
+    "registry": 31,
+    "cli": 17,
+    "react": 76
+  },
+  "totalUnitTests": 134,
+  "browserScenarios": 132,
+  "axeScans": 144,
+  "seriousCriticalAxe": 0,
+  "responsiveStates": 40,
+  "contrastSamples": 36,
+  "minimumSampledContrast": 5.79,
+  "mainEntryAssets": [
+    {
+      "file": "assets/index-DSVOQZvp.js",
+      "bytes": 367341,
+      "gzipBytes": 115123
+    },
+    {
+      "file": "assets/jsx-runtime-BkSabwWG.js",
+      "bytes": 961,
+      "gzipBytes": 555
+    },
+    {
+      "file": "assets/react-Biqg-U6H.js",
+      "bytes": 7871,
+      "gzipBytes": 3021
+    },
+    {
+      "file": "assets/useIsoLayoutEffect-DLZL2KrX.js",
+      "bytes": 4699,
+      "gzipBytes": 2048
+    },
+    {
+      "file": "assets/useAnimationFrame-C0bm9LM2.js",
+      "bytes": 1194,
+      "gzipBytes": 553
+    },
+    {
+      "file": "assets/stateAttributesMapping-DPdCyRwj.js",
+      "bytes": 170,
+      "gzipBytes": 138
+    },
+    {
+      "file": "assets/useOpenChangeComplete-CaJGTCCQ.js",
+      "bytes": 5194,
+      "gzipBytes": 2042
+    },
+    {
+      "file": "assets/useTimeout-nSj8vXGE.js",
+      "bytes": 481,
+      "gzipBytes": 284
+    },
+    {
+      "file": "assets/useControlled-CG-NWkl2.js",
+      "bytes": 284,
+      "gzipBytes": 235
+    },
+    {
+      "file": "assets/visuallyHidden-CrYY0HH5.js",
+      "bytes": 194,
+      "gzipBytes": 168
+    },
+    {
+      "file": "assets/createBaseUIEventDetails-Cvtk3CMR.js",
+      "bytes": 3459,
+      "gzipBytes": 1657
+    },
+    {
+      "file": "assets/shim-CsNx1O2g.js",
+      "bytes": 904,
+      "gzipBytes": 484
+    },
+    {
+      "file": "assets/useBaseUiId-DIh2Xw2-.js",
+      "bytes": 105,
+      "gzipBytes": 121
+    },
+    {
+      "file": "assets/useLabelableId-BPKL2M9s.js",
+      "bytes": 2239,
+      "gzipBytes": 1063
+    },
+    {
+      "file": "assets/useButton-Cc61TgDg.js",
+      "bytes": 2541,
+      "gzipBytes": 1174
+    },
+    {
+      "file": "assets/FieldItemContext-DSLgAGw0.js",
+      "bytes": 180,
+      "gzipBytes": 162
+    },
+    {
+      "file": "assets/useAriaLabelledBy-DjpmSdAH.js",
+      "bytes": 618,
+      "gzipBytes": 405
+    },
+    {
+      "file": "assets/useValueChanged-BUvT8lX7.js",
+      "bytes": 262,
+      "gzipBytes": 212
+    },
+    {
+      "file": "assets/provider-BOG_KqN6.js",
+      "bytes": 1276,
+      "gzipBytes": 720
+    },
+    {
+      "file": "assets/shadowDom-Dfty--5G.js",
+      "bytes": 431,
+      "gzipBytes": 287
+    },
+    {
+      "file": "assets/addEventListener-C_QDqcfA.js",
+      "bytes": 1814,
+      "gzipBytes": 862
+    },
+    {
+      "file": "assets/composite-DYBHL3QG.js",
+      "bytes": 898,
+      "gzipBytes": 493
+    },
+    {
+      "file": "assets/ReactStore-cHa-l7qY.js",
+      "bytes": 11953,
+      "gzipBytes": 4903
+    },
+    {
+      "file": "assets/useTransitionStatus-D6FLo5ZD.js",
+      "bytes": 777,
+      "gzipBytes": 406
+    },
+    {
+      "file": "assets/popupTriggerMap-eLHBEjbU.js",
+      "bytes": 14996,
+      "gzipBytes": 5453
+    },
+    {
+      "file": "assets/useValueAsRef-SyUjNykH.js",
+      "bytes": 213,
+      "gzipBytes": 171
+    },
+    {
+      "file": "assets/useOpenInteractionType-BFOVWcW9.js",
+      "bytes": 15380,
+      "gzipBytes": 5916
+    },
+    {
+      "file": "assets/floating-ui.utils-Ca2a-QsZ.js",
+      "bytes": 1571,
+      "gzipBytes": 733
+    },
+    {
+      "file": "assets/DirectionContext-dkIUhNyi.js",
+      "bytes": 191,
+      "gzipBytes": 167
+    },
+    {
+      "file": "assets/usePositioner-D1voihYf.js",
+      "bytes": 25226,
+      "gzipBytes": 9840
+    },
+    {
+      "file": "assets/composite-BalnIltl.js",
+      "bytes": 2154,
+      "gzipBytes": 788
+    },
+    {
+      "file": "assets/inertValue-DHgYfG90.js",
+      "bytes": 108,
+      "gzipBytes": 125
+    },
+    {
+      "file": "assets/CompositeList-0nzUHD17.js",
+      "bytes": 3293,
+      "gzipBytes": 1465
+    },
+    {
+      "file": "assets/useAnchoredPopupScrollLock-C2aAsCYW.js",
+      "bytes": 576,
+      "gzipBytes": 386
+    },
+    {
+      "file": "assets/useCompositeItem-B7fnp3Kp.js",
+      "bytes": 605,
+      "gzipBytes": 410
+    },
+    {
+      "file": "assets/CompositeItem-DHR-t_um.js",
+      "bytes": 394,
+      "gzipBytes": 277
+    },
+    {
+      "file": "assets/isElementDisabled-KSuuBj8D.js",
+      "bytes": 114,
+      "gzipBytes": 111
+    },
+    {
+      "file": "assets/serializeValue-B_EucO5O.js",
+      "bytes": 133,
+      "gzipBytes": 122
+    },
+    {
+      "file": "assets/CSPContext-B-MUx-Dn.js",
+      "bytes": 204,
+      "gzipBytes": 180
+    },
+    {
+      "file": "assets/resolveAriaLabelledBy-TqO-Wseb.js",
+      "bytes": 308,
+      "gzipBytes": 218
+    },
+    {
+      "file": "assets/index-lEh3fW1m.css",
+      "bytes": 80005,
+      "gzipBytes": 11740
+    }
+  ],
+  "limitations": [
+    "Axe leaves moderate region findings for non-modal menu/select portals outside page landmarks.",
+    "Gradient/image contrast remains incomplete in axe; sampled contrast covers four default scenes, not every photo or app backdrop.",
+    "Real Safari/iOS, physical touch performance, manual screen readers and maintainer visual acceptance remain pending.",
+    "No commit, push, public deployment or npm publication performed."
+  ]
+}

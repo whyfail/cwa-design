@@ -1,0 +1,923 @@
+{
+  "schemaVersion": "1.0.0",
+  "libraryVersion": "0.1.0-alpha.0",
+  "framework": "react",
+  "registryDigest": "sha256:095bda6190018ed0ee6882a7e74c7130692f227e0b4e5b108a950585e6a157ec",
+  "generatedAt": "2026-10-03T04:10:04.320Z",
+  "components": [
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "provider",
+      "name": "CwaProvider",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "CwaProvider"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "ssr-stable-theme"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "surface",
+      "name": "Surface",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Surface"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "material-contrast"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "button",
+      "name": "Button",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Button"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger"
+          ],
+          "default": "primary"
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "loading": {
+          "type": "boolean",
+          "default": false
+        },
+        "children": {
+          "type": "node",
+          "summary": "按钮内容；见 TS 声明 ButtonProps"
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "HTMLButtonElement"
+        }
+      },
+      "extends": [
+        "native-button-attributes"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "native-button",
+        "visible-focus",
+        "keyboard-enter-space",
+        "aria-busy-loading",
+        "44px-target-md"
+      ],
+      "examples": [
+        "button-basic",
+        "button-loading"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "icon-button",
+      "name": "IconButton",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "IconButton"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger"
+          ],
+          "default": "secondary"
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "loading": {
+          "type": "boolean",
+          "default": false
+        },
+        "children": {
+          "type": "node",
+          "summary": "图标内容"
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "HTMLButtonElement"
+        }
+      },
+      "extends": [
+        "native-button-attributes"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "name-required",
+        "native-button",
+        "visible-focus",
+        "44px-target-md"
+      ],
+      "examples": [
+        "icon-button-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "stack",
+      "name": "Stack",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Stack"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "layout-only"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "text",
+      "name": "Text",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Text"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "readable-typography"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "heading",
+      "name": "Heading",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Heading"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "semantic-heading-level"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "field",
+      "name": "Field",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Field"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "label-association"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "input",
+      "name": "Input",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Input"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "label-association-ime-safe"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "textarea",
+      "name": "Textarea",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Textarea"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "label-association-ime-safe"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "separator",
+      "name": "Separator",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Separator"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "native-separator"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "badge",
+      "name": "Badge",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Badge"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "visible-text"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "avatar",
+      "name": "Avatar",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Avatar"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "image-fallback-stable"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "card",
+      "name": "Card",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Card"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "solid-default"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "spinner",
+      "name": "Spinner",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Spinner"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "busy-status"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "skeleton",
+      "name": "Skeleton",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Skeleton"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "placeholder-hidden"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "checkbox",
+      "name": "Checkbox",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Checkbox"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "native-role",
+        "visible-focus",
+        "keyboard-operable",
+        "label-required"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "radio-group",
+      "name": "RadioGroup",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "RadioGroup"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "native-role",
+        "visible-focus",
+        "keyboard-operable",
+        "label-required"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "switch",
+      "name": "Switch",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Switch"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "native-role",
+        "visible-focus",
+        "keyboard-operable",
+        "label-required"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "select",
+      "name": "Select",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Select",
+        "SelectContent",
+        "SelectItem"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "solid",
+      "a11y": [
+        "combobox-listbox-pattern",
+        "typeahead",
+        "focus-return",
+        "disabled-options-announced"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "slider",
+      "name": "Slider",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Slider"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "keyboard-operable",
+        "visible-focus",
+        "aria-value-semantic"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "tabs",
+      "name": "Tabs",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Tabs"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "keyboard-operable",
+        "visible-focus",
+        "aria-value-semantic"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "segmented-control",
+      "name": "SegmentedControl",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "SegmentedControl"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [
+        "native-form-submission"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "a11y": [
+        "keyboard-operable",
+        "visible-focus",
+        "aria-value-semantic"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "tooltip",
+      "name": "Tooltip",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Tooltip"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "solid",
+      "a11y": [
+        "hover-focus-triggered",
+        "escape-closable",
+        "focus-restored",
+        "no-interactive-content"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "popover",
+      "name": "Popover",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Popover"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "solid",
+      "a11y": [
+        "hover-focus-triggered",
+        "escape-closable",
+        "focus-restored",
+        "no-interactive-content"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "dropdown-menu",
+      "name": "DropdownMenu",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "DropdownMenu"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "solid",
+      "a11y": [
+        "keyboard-navigable",
+        "live-region-managed",
+        "escape-closable",
+        "text-not-color-only"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "dialog",
+      "name": "Dialog",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Dialog"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "glass-thick",
+      "a11y": [
+        "focus-trap-escape-restore"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "sheet",
+      "name": "Sheet",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Sheet"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "glass-thick",
+      "a11y": [
+        "dialog-semantics-keyboard-alternative"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "toast",
+      "name": "ToastProvider",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "ToastProvider"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "solid",
+      "a11y": [
+        "keyboard-navigable",
+        "live-region-managed",
+        "escape-closable",
+        "text-not-color-only"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "libraryVersion": "0.1.0-alpha.0",
+      "framework": "react",
+      "id": "alert",
+      "name": "Alert",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Alert"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {},
+      "extends": [],
+      "materialPolicy": "solid",
+      "a11y": [
+        "keyboard-navigable",
+        "live-region-managed",
+        "escape-closable",
+        "text-not-color-only"
+      ],
+      "examples": [],
+      "runtimeDependencies": [],
+      "deprecated": false
+    }
+  ],
+  "examples": [
+    {
+      "id": "button-basic",
+      "componentId": "button",
+      "framework": "react",
+      "title": "button · button-basic",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": false,
+      "contentDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb"
+    },
+    {
+      "id": "button-loading",
+      "componentId": "button",
+      "framework": "react",
+      "title": "button · button-loading",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react",
+        "react"
+      ],
+      "needsStyles": false,
+      "contentDigest": "sha256:d311e0b1d527fb82c8ba571b392f9d2ae1d3d9a9bcba8998df4f5b7584b05e32"
+    },
+    {
+      "id": "icon-button-basic",
+      "componentId": "icon-button",
+      "framework": "react",
+      "title": "icon-button · icon-button-basic",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": false,
+      "contentDigest": "sha256:02963b83165f4c7af9f3ce17187294b2843b0fa2604f17265b6859e538862454"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "settings",
+      "framework": "react",
+      "title": "个人设置页（Field/Input/Switch/Dialog/Toast）",
+      "components": [
+        "field",
+        "input",
+        "switch",
+        "button",
+        "card",
+        "dialog",
+        "toast"
+      ],
+      "files": [
+        "packages/react/src/recipes/settings.tsx"
+      ]
+    },
+    {
+      "id": "account-panel",
+      "framework": "react",
+      "title": "账户面板（Avatar/Badge/Card/Tabs/DropdownMenu/Skeleton）",
+      "components": [
+        "avatar",
+        "badge",
+        "card",
+        "tabs",
+        "dropdown-menu",
+        "skeleton"
+      ],
+      "files": [
+        "packages/react/src/recipes/account-panel.tsx"
+      ]
+    },
+    {
+      "id": "ai-workspace",
+      "framework": "react",
+      "title": "AI 工作台（Sheet/Popover/Tabs/Text/Button/Badge，静态 fixture 无模型 key）",
+      "components": [
+        "sheet",
+        "popover",
+        "tabs",
+        "text",
+        "button",
+        "badge",
+        "card"
+      ],
+      "files": [
+        "packages/react/src/recipes/ai-workspace.tsx"
+      ]
+    }
+  ]
+}

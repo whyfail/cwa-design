@@ -16,7 +16,7 @@
     opacity var(--cwa-design-motion-control) ease;
 }
 .cwa-design-icon-button:focus-visible {
-  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
   outline-offset: var(--cwa-design-focus-offset);
 }
 .cwa-design-icon-button[disabled] {
@@ -39,7 +39,7 @@
 }
 .cwa-design-icon-button--danger {
   background: var(--cwa-design-color-danger);
-  color: #ffffff;
+  color: var(--cwa-design-color-on-accent);
 }
 
 .cwa-design-icon-button--sm {
@@ -57,4 +57,10 @@
 
 .cwa-design-icon-button:not([disabled]):active {
   transform: scale(0.95);
+}
+@media (pointer: coarse) {
+  .cwa-design-icon-button--sm {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }

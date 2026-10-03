@@ -1,303 +1,294 @@
 {
-  "planVersion": "1.1.0",
-  "frameworkPhase": "react-alpha-candidate",
-  "activeTask": "T32",
+  "planVersion": "2.0.0",
+  "frameworkPhase": "react-glass-website-optimization",
+  "activeTask": "R23",
   "p0PublicComponents": 30,
+  "legacyStatus": "tasks/archive/status-before-optimization-2026-10-03.json",
   "tasks": [
     {
-      "id": "T00",
+      "id": "R00",
+      "title": "当前版本、部署、状态和API基线",
       "status": "verified",
       "dependsOn": [],
-      "report": "reports/tasks/T00.md",
+      "report": "reports/optimization/R00.md",
       "reviewRequired": true
     },
     {
-      "id": "T01",
+      "id": "R01",
+      "title": "Token/偏好/主题基础修复",
       "status": "verified",
       "dependsOn": [
-        "T00"
+        "R00"
       ],
-      "report": "reports/tasks/T01.md",
+      "report": "reports/optimization/R01.md",
       "reviewRequired": true
     },
     {
-      "id": "T02",
+      "id": "R02",
+      "title": "推荐视觉 brief 与可操作对照",
       "status": "verified",
       "dependsOn": [
-        "T01"
+        "R00"
       ],
-      "report": "reports/tasks/T02.md",
+      "report": "reports/optimization/R02.md",
       "reviewRequired": true
     },
     {
-      "id": "T03",
+      "id": "R03",
+      "title": "公共玻璃渲染层与Token",
+      "status": "verified",
+      "dependsOn": [
+        "R01",
+        "R02"
+      ],
+      "report": "reports/optimization/R03.md",
+      "reviewRequired": true
+    },
+    {
+      "id": "R04",
+      "title": "Surface/Button/Input 标杆",
+      "status": "verified",
+      "dependsOn": [
+        "R03"
+      ],
+      "report": "reports/optimization/R04.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R05",
+      "title": "Switch/Slider/SegmentedControl",
+      "status": "verified",
+      "dependsOn": [
+        "R04"
+      ],
+      "report": "reports/optimization/R05.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R06",
+      "title": "Popover/Menu/Dialog/Sheet",
+      "status": "verified",
+      "dependsOn": [
+        "R04"
+      ],
+      "report": "reports/optimization/R06.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R07",
+      "title": "路由与静态生成基座",
+      "status": "verified",
+      "dependsOn": [
+        "R00"
+      ],
+      "report": "reports/optimization/R07.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R08",
+      "title": "官网Shell与移动导航",
+      "status": "verified",
+      "dependsOn": [
+        "R02",
+        "R03",
+        "R07"
+      ],
+      "report": "reports/optimization/R08.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R09",
+      "title": "完整品牌首页",
+      "status": "verified",
+      "dependsOn": [
+        "R04",
+        "R05",
+        "R06",
+        "R08"
+      ],
+      "report": "reports/optimization/R09.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R10",
+      "title": "五个组件详情模板",
+      "status": "verified",
+      "dependsOn": [
+        "R04",
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "report": "reports/optimization/R10.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R11",
+      "title": "全部30组件目录与详情",
+      "status": "verified",
+      "dependsOn": [
+        "R10",
+        "R16"
+      ],
+      "report": "reports/optimization/R11.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R12",
+      "title": "搜索、版本与导航行为",
       "status": "implemented",
       "dependsOn": [
-        "T02"
+        "R10"
       ],
-      "report": "reports/tasks/T03-T05.md",
+      "report": "reports/optimization/R12.md",
       "reviewRequired": true,
-      "note": "playground 原型汇编与五背景视觉评审待浏览器"
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T04",
+      "id": "R13",
+      "title": "Quick Start与实际安装链路",
       "status": "verified",
       "dependsOn": [
-        "T03"
+        "R00",
+        "R04",
+        "R10"
       ],
-      "report": "reports/tasks/T03-T05.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R13.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T05",
+      "id": "R14",
+      "title": "主题与材质实验室",
       "status": "verified",
       "dependsOn": [
-        "T03"
+        "R03",
+        "R10"
       ],
-      "report": "reports/tasks/T03-T05.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R14.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T06",
+      "id": "R15",
+      "title": "三个完整patterns",
       "status": "verified",
       "dependsOn": [
-        "T04",
-        "T05"
+        "R05",
+        "R06",
+        "R10"
       ],
-      "report": "reports/tasks/T06-T09.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R15.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T07",
+      "id": "R16",
+      "title": "Registry/Skill/MCP真实性修复",
       "status": "verified",
       "dependsOn": [
-        "T06"
+        "R00",
+        "R03"
       ],
-      "report": "reports/tasks/T06-T09.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R16.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T08",
+      "id": "R17",
+      "title": "设计/AI/资源/更新页面",
       "status": "verified",
       "dependsOn": [
-        "T06"
+        "R13",
+        "R14",
+        "R16"
       ],
-      "report": "reports/tasks/T06-T09.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R17.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T09",
-      "status": "verified",
-      "dependsOn": [
-        "T06"
-      ],
-      "report": "reports/tasks/T06-T09.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T10",
-      "status": "verified",
-      "dependsOn": [
-        "T06",
-        "T07"
-      ],
-      "report": "reports/tasks/T10-T12.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T11",
-      "status": "verified",
-      "dependsOn": [
-        "T10"
-      ],
-      "report": "reports/tasks/T10-T12.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T12",
+      "id": "R18",
+      "title": "剩余20组件样式与状态迁移",
       "status": "implemented",
       "dependsOn": [
-        "T10",
-        "T11"
+        "R06"
       ],
-      "report": "reports/tasks/T10-T12.md",
+      "report": "reports/optimization/R18.md",
       "reviewRequired": true,
-      "note": "拖拽手感/中断/滚动冲突待真实浏览器（T12-B/C/D）"
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T13",
-      "status": "verified",
+      "id": "R19",
+      "title": "深浅主题/移动/浏览器回归",
+      "status": "implemented",
       "dependsOn": [
-        "T07",
-        "T09",
-        "T11",
-        "T12"
+        "R09",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R17",
+        "R18"
       ],
-      "report": "reports/tasks/T13.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T14",
-      "status": "verified",
-      "dependsOn": [
-        "T08"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T15",
-      "status": "verified",
-      "dependsOn": [
-        "T06",
-        "T08"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T16",
-      "status": "verified",
-      "dependsOn": [
-        "T06",
-        "T08"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T17",
-      "status": "verified",
-      "dependsOn": [
-        "T09"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T18",
-      "status": "verified",
-      "dependsOn": [
-        "T10",
-        "T17"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T19",
-      "status": "verified",
-      "dependsOn": [
-        "T06",
-        "T12"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T20",
-      "status": "verified",
-      "dependsOn": [
-        "T06",
-        "T08"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T21",
-      "status": "verified",
-      "dependsOn": [
-        "T10"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T22",
-      "status": "verified",
-      "dependsOn": [
-        "T10",
-        "T21"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T23",
-      "status": "verified",
-      "dependsOn": [
-        "T08",
-        "T10"
-      ],
-      "report": "reports/tasks/T14-T23.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T24",
-      "status": "verified",
-      "dependsOn": [
-        "T05",
-        "T07",
-        "T08",
-        "T09",
-        "T10",
-        "T11",
-        "T12",
-        "T13",
-        "T14",
-        "T15",
-        "T16",
-        "T17",
-        "T18",
-        "T19",
-        "T20",
-        "T21",
-        "T22",
-        "T23"
-      ],
-      "report": "reports/tasks/T24.md",
+      "report": "reports/optimization/R19.md",
       "reviewRequired": true,
-      "note": "manifest 构建+破坏性校验全过；recipes 留 T31"
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T25",
-      "status": "verified",
+      "id": "R20",
+      "title": "API/行为/a11y/消费/AI验收",
+      "status": "implemented",
       "dependsOn": [
-        "T13",
-        "T24"
+        "R19"
       ],
-      "report": "reports/tasks/T25.md",
+      "report": "reports/optimization/R20.md",
       "reviewRequired": true,
-      "note": "人工走查留 T33"
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T26",
-      "status": "verified",
+      "id": "R21",
+      "title": "前后与目标视觉对照",
+      "status": "implemented",
       "dependsOn": [
-        "T24"
+        "R20"
       ],
-      "report": "reports/tasks/T26.md",
-      "reviewRequired": true
-    },
-    {
-      "id": "T27",
-      "status": "verified",
-      "dependsOn": [
-        "T26"
-      ],
-      "report": "reports/tasks/T27.md",
+      "report": "reports/optimization/R21.md",
       "reviewRequired": true,
-      "note": "init 写入单文件 cwa-design.json；apply 工程改动留待发布授权"
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
     },
     {
-      "id": "T30",
-      "status": "planned",
+      "id": "R22",
+      "title": "发布候选与部署流程准备",
+      "status": "implemented",
       "dependsOn": [
-        "T29"
+        "R21"
       ],
-      "report": "reports/tasks/T30.md",
-      "reviewRequired": true
+      "report": "reports/optimization/R22.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出"
+    },
+    {
+      "id": "R23",
+      "title": "部署及线上最终验证",
+      "status": "in_progress",
+      "dependsOn": [
+        "R22"
+      ],
+      "report": "reports/optimization/R23.md",
+      "reviewRequired": true,
+      "verificationScope": "自动/候选证据，详见报告；accepted 仅由维护者给出",
+      "authorization": "用户明确要求：提交，部署"
     }
-  ]
+  ],
+  "releaseStatus": "deployment_authorized",
+  "updatedAt": "2026-10-03T15:09:52.349468+00:00"
 }

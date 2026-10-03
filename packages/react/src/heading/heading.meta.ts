@@ -1,21 +1,41 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const headingMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "heading",
   name: "Heading",
+  description: "语义级别与视觉尺寸独立；level 必填并决定实际 h1–h6。",
+  typeName: "HeadingProps",
+  sourceTypePath: "packages/react/src/heading/heading.tsx#HeadingProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Heading"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    level: {
+      type: "enum",
+      values: [1, 2, 3, 4, 5, 6],
+      required: true,
+    },
+    visualSize: {
+      type: "enum",
+      values: ["display", "title", "body"],
+      defaultSummary: "level ≤ 2 为 display，其他为 title",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+  },
+  extends: ["React.HTMLAttributes<HTMLHeadingElement>"],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["semantic-heading-level"],
-  examples: [],
+  materialNotes: "无背景；按所在表面保证文本对比度。",
+  a11y: ["semantic-heading-level-required"],
+  examples: ["heading-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

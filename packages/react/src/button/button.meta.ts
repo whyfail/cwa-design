@@ -1,15 +1,14 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
-/**
- * Button 的 Registry 记录（T05 schema 校验的实例）。
- * 权威 API 仍是本包 TS 声明；此处记录语义/材质/a11y 约定。
- */
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const buttonMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "button",
   name: "Button",
+  description: '执行动作的原生按钮；表单提交需显式 type="submit"。',
+  typeName: "ButtonProps",
+  sourceTypePath: "packages/react/src/button/button.tsx#ButtonProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Button"],
@@ -21,21 +20,43 @@ export const buttonMeta = {
       values: ["primary", "secondary", "ghost", "danger"],
       default: "primary",
     },
-    size: { type: "enum", values: ["sm", "md", "lg"], default: "md" },
-    loading: { type: "boolean", default: false },
-    children: { type: "node", summary: "按钮内容；见 TS 声明 ButtonProps" },
-    ref: { type: "ref", summary: "HTMLButtonElement" },
+    size: {
+      type: "enum",
+      values: ["sm", "md", "lg"],
+      default: "md",
+    },
+    loading: {
+      type: "boolean",
+      default: false,
+    },
+    ref: {
+      type: "ref",
+      summary: "React.Ref<HTMLButtonElement>",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    type: {
+      type: "enum",
+      values: ["button", "submit", "reset"],
+      origin: "inherited",
+      description: "实现为原生 type 提供 button 默认值",
+      default: "button",
+    },
   },
-  extends: ["native-button-attributes"],
+  extends: [
+    "React.ButtonHTMLAttributes<HTMLButtonElement>；disabled、onClick、name/value、form、aria-* 等原生属性直接透传",
+  ],
   materialPolicy: "inherit-parent-surface",
+  materialNotes: "控件自身使用 tint/实色填充，不额外叠加 backdrop blur；与父玻璃壳共享光学层。",
   a11y: [
-    "native-button",
-    "visible-focus",
-    "keyboard-enter-space",
-    "aria-busy-loading",
-    "44px-target-md",
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
   ],
   examples: ["button-basic", "button-loading"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

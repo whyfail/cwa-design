@@ -1,7 +1,10 @@
 import type { Preview } from "@storybook/react-vite";
+import { createElement } from "react";
+import { CwaProvider } from "../../../packages/react/src/provider/provider";
 import "@cwa-design/react/styles.css";
 
 const preview: Preview = {
+  decorators: [(Story) => createElement(CwaProvider, { children: createElement(Story) })],
   parameters: {
     backgrounds: {
       options: {

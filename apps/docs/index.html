@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CWA Design 文档</title>
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <!--cwa-head-->
+    <script>try{const p=localStorage.getItem('cwa-theme');const t=p==='light'||p==='dark'?p:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.cwaTheme=t;document.documentElement.style.colorScheme=t}catch{}</script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--cwa-app--></div>
+    <!--cwa-data-->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -7,12 +7,24 @@ import { z } from "zod";
 
 const pkgRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const primitiveEntry = z.object({
-  value: z.string(),
-  type: z.enum(["dimension", "number"]),
-  unit: z.string(),
-  description: z.string(),
-});
+const primitiveEntry = z
+  .object({
+    value: z.string(),
+    type: z.enum(["dimension", "number"]),
+    unit: z.string(),
+    description: z.string(),
+  })
+  .superRefine((entry, ctx) => {
+    const valid =
+      entry.type === "number"
+        ? (entry.unit === "ratio" && Number.isFinite(Number(entry.value))) ||
+          (entry.unit === "integer" &&
+            /^-?\d+$/.test(entry.value) &&
+            Number.isSafeInteger(Number(entry.value)))
+        : ["px", "rem", "em"].includes(entry.unit) &&
+          new RegExp(`^-?\\d+(?:\\.\\d+)?${entry.unit}$`).test(entry.value);
+    if (!valid) ctx.addIssue({ code: "custom", message: "Token 值须匹配声明的类型与单位" });
+  });
 
 const colorEntry = z.object({
   value: z
@@ -62,6 +74,11 @@ export function generateCss(tokens: CwaTokens): string {
     for (const [key, entry] of Object.entries(entries))
       p(`  ${cssName(group, key)}: ${entry.value};`);
   }
+  for (const [key, entry] of Object.entries(tokens.motion)) {
+    if (entry.type === "duration") p(`  --cwa-design-motion-${kebab(key)}: ${entry.value};`);
+  }
+  p("}");
+  p(':root, [data-cwa-theme="light"] {');
   for (const [key, entry] of Object.entries(tokens.semantic.light)) {
     p(`  ${cssName("color", key.replace(/^color-/, ""))}: ${entry.value};`);
   }
@@ -76,65 +93,62 @@ export function generateCss(tokens: CwaTokens): string {
   }
   p("}");
 
-  // 无 blur 支持时保留实色可读性：玻璃填充回退到 surface，blur 清零。
-  const surfaceValue = (theme: "light" | "dark") => tokens.semantic[theme]["color-surface"]!.value;
-  p("@supports not (backdrop-filter: blur(1px)) {");
-  p("  :root {");
-  p(`    ${cssName("color", "glass-regular-fill")}: ${surfaceValue("light")};`);
-  p(`    ${cssName("color", "glass-thick-fill")}: ${surfaceValue("light")};`);
-  p(`    ${cssName("color", "glass-clear-fill")}: ${surfaceValue("light")};`);
-  p(`    ${cssName("blur", "glass-regular")}: 0px;`);
-  p(`    ${cssName("blur", "glass-thick")}: 0px;`);
-  p(`    ${cssName("blur", "glass-clear")}: 0px;`);
-  p("  }");
-  p(`  [data-cwa-theme="dark"] {`);
-  p(`    ${cssName("color", "glass-regular-fill")}: ${surfaceValue("dark")};`);
-  p(`    ${cssName("color", "glass-thick-fill")}: ${surfaceValue("dark")};`);
-  p(`    ${cssName("color", "glass-clear-fill")}: ${surfaceValue("dark")};`);
-  p("  }");
-  p("}");
-
-  // 用户显式选择实色材质：Provider 根元素 data-cwa-material="solid"。
-  const solidBlock = (theme: "light" | "dark") => [
-    `  ${cssName("color", "glass-regular-fill")}: ${surfaceValue(theme)};`,
-    `  ${cssName("color", "glass-thick-fill")}: ${surfaceValue(theme)};`,
-    `  ${cssName("color", "glass-clear-fill")}: ${surfaceValue(theme)};`,
+  // Use the local surface variable so nested light/dark scopes and Portal copies agree.
+  const solidBlock = () => [
+    `  ${cssName("color", "glass-regular-fill")}: var(--cwa-design-color-surface);`,
+    `  ${cssName("color", "glass-thick-fill")}: var(--cwa-design-color-surface);`,
+    `  ${cssName("color", "glass-clear-fill")}: var(--cwa-design-color-surface);`,
     `  ${cssName("blur", "glass-regular")}: 0px;`,
     `  ${cssName("blur", "glass-thick")}: 0px;`,
     `  ${cssName("blur", "glass-clear")}: 0px;`,
   ];
-  p(`[data-cwa-material="solid"] {`);
-  p(solidBlock("light").join("\n"));
+  p('[data-cwa-material="solid"], [data-cwa-material="solid"] [data-cwa-theme] {');
+  p(solidBlock().join("\n"));
   p("}");
-  p(`[data-cwa-theme="dark"][data-cwa-material="solid"] {`);
-  p(solidBlock("dark").join("\n"));
+  p("@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {");
+  p("  :root, [data-cwa-theme] {");
+  p(solidBlock().join("\n"));
+  p("  }");
   p("}");
 
   // 系统减少动态：动画时长趋零（位移交给组件层移除）。
   p("@media (prefers-reduced-motion: reduce) {");
-  p("  :root {");
+  p("  :root, [data-cwa-motion] {");
   for (const [key, entry] of Object.entries(tokens.motion)) {
     if (entry.type === "duration") p(`    --cwa-design-motion-${kebab(key)}: 1ms;`);
   }
   p("  }");
   p("}");
+  p('[data-cwa-motion="reduced"] {');
+  for (const [key, entry] of Object.entries(tokens.motion)) {
+    if (entry.type === "duration") p(`  --cwa-design-motion-${kebab(key)}: 1ms;`);
+  }
+  p("}");
 
   // 减少透明：玻璃填充转实色，blur 清零。
   p("@media (prefers-reduced-transparency: reduce) {");
-  p("  :root {");
-  p(`    ${cssName("color", "glass-regular-fill")}: ${surfaceValue("light")};`);
-  p(`    ${cssName("color", "glass-thick-fill")}: ${surfaceValue("light")};`);
-  p(`    ${cssName("blur", "glass-regular")}: 0px;`);
-  p(`    ${cssName("blur", "glass-thick")}: 0px;`);
+  p("  :root, [data-cwa-theme] {");
+  p(solidBlock().join("\n"));
   p("  }");
   p("}");
 
   // 更高对比：加强边界。
   p("@media (prefers-contrast: more) {");
-  p("  :root {");
-  p(
-    `    ${cssName("color", "border-subtle")}: ${tokens.semantic.light["color-border-strong"]!.value};`,
-  );
+  p("  :root, [data-cwa-theme] {");
+  p(solidBlock().join("\n"));
+  p("    --cwa-design-color-border-subtle: var(--cwa-design-color-border-strong);");
+  p("  }");
+  p("}");
+  p("@media (forced-colors: active) {");
+  p("  :root, [data-cwa-theme] {");
+  p(solidBlock().join("\n"));
+  p("    --cwa-design-color-surface: Canvas;");
+  p("    --cwa-design-color-text: CanvasText;");
+  p("    --cwa-design-color-text-muted: CanvasText;");
+  p("    --cwa-design-color-accent: Highlight;");
+  p("    --cwa-design-color-on-accent: HighlightText;");
+  p("    --cwa-design-color-border-subtle: ButtonText;");
+  p("    --cwa-design-color-border-strong: ButtonText;");
   p("  }");
   p("}");
 
@@ -163,6 +177,10 @@ function main() {
   }
   for (const key of Object.keys(parsed.semantic.light))
     varNames.push(cssName("color", key.replace(/^color-/, "")));
+  varNames.push(cssName("font", "family"));
+  for (const [key, entry] of Object.entries(parsed.motion)) {
+    if (entry.type === "duration") varNames.push(`--cwa-design-motion-${kebab(key)}`);
+  }
   const dts = `// 由 generate.ts 生成\nexport const cwaTokenVariables = ${JSON.stringify(varNames, null, 2)} as const;\nexport type CwaTokenVariable = (typeof cwaTokenVariables)[number];\nexport const cwaMotionPresets = ${JSON.stringify(Object.keys(parsed.motion))} as const;\n`;
   writeFileSync(path.join(pkgRoot, "dist", "tokens.d.ts"), dts);
   console.log(

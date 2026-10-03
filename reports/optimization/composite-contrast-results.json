@@ -1,0 +1,652 @@
+{
+  "generatedAt": "2026-10-03T14:45:11.783Z",
+  "engine": "154.0.8037.97",
+  "results": [
+    {
+      "theme": "light",
+      "material": "regular",
+      "background": "original-landscape-svg",
+      "samples": [
+        {
+          "text": "让界面轻一点。",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "15px",
+          "box": [
+            232.875,
+            89,
+            102.90625,
+            18
+          ],
+          "minimumContrast": 14.84,
+          "passed": true
+        },
+        {
+          "text": "专注于此刻的工作",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "10px",
+          "box": [
+            232.875,
+            113.390625,
+            174.46875,
+            16.5
+          ],
+          "minimumContrast": 14.74,
+          "passed": true
+        },
+        {
+          "text": "背景音量",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "11px",
+          "box": [
+            187.875,
+            211.890625,
+            44,
+            18.140625
+          ],
+          "minimumContrast": 13.26,
+          "passed": true
+        },
+        {
+          "text": "64%",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "11px",
+          "box": [
+            433.40625,
+            211.890625,
+            24.46875,
+            18.140625
+          ],
+          "minimumContrast": 12.97,
+          "passed": true
+        },
+        {
+          "text": "允许桌面通知",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "16px",
+          "box": [
+            243.875,
+            306.828125,
+            96,
+            26.390625
+          ],
+          "minimumContrast": 10.49,
+          "passed": true
+        },
+        {
+          "text": "工作区名称",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "16px",
+          "box": [
+            187.875,
+            360.03125,
+            270,
+            26.390625
+          ],
+          "minimumContrast": 8.77,
+          "passed": true
+        },
+        {
+          "text": "当前模式：专注",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "10px",
+          "box": [
+            187.875,
+            504.421875,
+            270,
+            17
+          ],
+          "minimumContrast": 12.29,
+          "passed": true
+        },
+        {
+          "text": "Quiet mountains",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "12px",
+          "box": [
+            97,
+            585.1875,
+            99.15625,
+            15
+          ],
+          "minimumContrast": 14.5,
+          "passed": true
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "9px",
+          "box": [
+            97,
+            604.578125,
+            452.125,
+            14.84375
+          ],
+          "minimumContrast": 14.33,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "clear",
+      "background": "high-frequency-checker",
+      "samples": [
+        {
+          "text": "让界面轻一点。",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "15px",
+          "box": [
+            435,
+            89,
+            102.90625,
+            18
+          ],
+          "minimumContrast": 15.46,
+          "passed": true
+        },
+        {
+          "text": "专注于此刻的工作",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "10px",
+          "box": [
+            435,
+            113.390625,
+            174.46875,
+            16.5
+          ],
+          "minimumContrast": 15.18,
+          "passed": true
+        },
+        {
+          "text": "背景音量",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "11px",
+          "box": [
+            390,
+            211.890625,
+            44,
+            18.140625
+          ],
+          "minimumContrast": 15.46,
+          "passed": true
+        },
+        {
+          "text": "64%",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "11px",
+          "box": [
+            635.53125,
+            211.890625,
+            24.46875,
+            18.140625
+          ],
+          "minimumContrast": 15.32,
+          "passed": true
+        },
+        {
+          "text": "允许桌面通知",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "16px",
+          "box": [
+            446,
+            306.828125,
+            96,
+            26.390625
+          ],
+          "minimumContrast": 15.06,
+          "passed": true
+        },
+        {
+          "text": "工作区名称",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "16px",
+          "box": [
+            390,
+            360.03125,
+            270,
+            26.390625
+          ],
+          "minimumContrast": 15.06,
+          "passed": true
+        },
+        {
+          "text": "当前模式：专注",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "10px",
+          "box": [
+            390,
+            504.421875,
+            270,
+            17
+          ],
+          "minimumContrast": 15.18,
+          "passed": true
+        },
+        {
+          "text": "Quiet mountains",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "12px",
+          "box": [
+            97,
+            585.1875,
+            99.15625,
+            15
+          ],
+          "minimumContrast": 15.53,
+          "passed": true
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "rgb": [
+            23,
+            24,
+            28
+          ],
+          "fontSize": "9px",
+          "box": [
+            97,
+            604.578125,
+            856.375,
+            14.84375
+          ],
+          "minimumContrast": 15.18,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "regular",
+      "background": "original-landscape-svg",
+      "samples": [
+        {
+          "text": "让界面轻一点。",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "15px",
+          "box": [
+            232.875,
+            89,
+            102.90625,
+            18
+          ],
+          "minimumContrast": 5.81,
+          "passed": true
+        },
+        {
+          "text": "专注于此刻的工作",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "10px",
+          "box": [
+            232.875,
+            113.390625,
+            174.46875,
+            16.5
+          ],
+          "minimumContrast": 5.79,
+          "passed": true
+        },
+        {
+          "text": "背景音量",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "11px",
+          "box": [
+            187.875,
+            211.890625,
+            44,
+            18.140625
+          ],
+          "minimumContrast": 7.07,
+          "passed": true
+        },
+        {
+          "text": "64%",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "11px",
+          "box": [
+            433.40625,
+            211.890625,
+            24.46875,
+            18.140625
+          ],
+          "minimumContrast": 7.65,
+          "passed": true
+        },
+        {
+          "text": "允许桌面通知",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "16px",
+          "box": [
+            243.875,
+            306.828125,
+            96,
+            26.390625
+          ],
+          "minimumContrast": 7.79,
+          "passed": true
+        },
+        {
+          "text": "工作区名称",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "16px",
+          "box": [
+            187.875,
+            360.03125,
+            270,
+            26.390625
+          ],
+          "minimumContrast": 8.44,
+          "passed": true
+        },
+        {
+          "text": "当前模式：专注",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "10px",
+          "box": [
+            187.875,
+            504.421875,
+            270,
+            17
+          ],
+          "minimumContrast": 7.74,
+          "passed": true
+        },
+        {
+          "text": "Quiet mountains",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "12px",
+          "box": [
+            97,
+            585.1875,
+            99.15625,
+            15
+          ],
+          "minimumContrast": 6.19,
+          "passed": true
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "9px",
+          "box": [
+            97,
+            604.578125,
+            452.125,
+            14.84375
+          ],
+          "minimumContrast": 6.17,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "clear",
+      "background": "high-frequency-checker",
+      "samples": [
+        {
+          "text": "让界面轻一点。",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "15px",
+          "box": [
+            435,
+            89,
+            102.90625,
+            18
+          ],
+          "minimumContrast": 7.69,
+          "passed": true
+        },
+        {
+          "text": "专注于此刻的工作",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "10px",
+          "box": [
+            435,
+            113.390625,
+            174.46875,
+            16.5
+          ],
+          "minimumContrast": 7.82,
+          "passed": true
+        },
+        {
+          "text": "背景音量",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "11px",
+          "box": [
+            390,
+            211.890625,
+            44,
+            18.140625
+          ],
+          "minimumContrast": 8.19,
+          "passed": true
+        },
+        {
+          "text": "64%",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "11px",
+          "box": [
+            635.53125,
+            211.890625,
+            24.46875,
+            18.140625
+          ],
+          "minimumContrast": 9,
+          "passed": true
+        },
+        {
+          "text": "允许桌面通知",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "16px",
+          "box": [
+            446,
+            306.828125,
+            96,
+            26.390625
+          ],
+          "minimumContrast": 8.86,
+          "passed": true
+        },
+        {
+          "text": "工作区名称",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "16px",
+          "box": [
+            390,
+            360.03125,
+            270,
+            26.390625
+          ],
+          "minimumContrast": 8.86,
+          "passed": true
+        },
+        {
+          "text": "当前模式：专注",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "10px",
+          "box": [
+            390,
+            504.421875,
+            270,
+            17
+          ],
+          "minimumContrast": 8.97,
+          "passed": true
+        },
+        {
+          "text": "Quiet mountains",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "12px",
+          "box": [
+            97,
+            585.1875,
+            99.15625,
+            15
+          ],
+          "minimumContrast": 7.58,
+          "passed": true
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "rgb": [
+            245,
+            245,
+            247
+          ],
+          "fontSize": "9px",
+          "box": [
+            97,
+            604.578125,
+            856.375,
+            14.84375
+          ],
+          "minimumContrast": 7.67,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "failed": [],
+  "limitations": [
+    "Checks only selected opaque labels in four default rendered scenes; not all application backgrounds or photos.",
+    "Text glyphs alone were made transparent to sample the backdrop while retaining container fill, reflection and blur.",
+    "This sampled contrast evidence is separate from axe and does not establish full WCAG conformance."
+  ]
+}

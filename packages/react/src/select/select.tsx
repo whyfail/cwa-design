@@ -3,7 +3,7 @@
 import type { SelectRootProps } from "@base-ui/react/select";
 import { Select as BaseSelect } from "@base-ui/react/select";
 import type { ReactNode } from "react";
-import { OverlayPortalScope } from "../overlay/overlay-scope";
+import { FocusGuardScope, OverlayPortalScope } from "../overlay/overlay-scope";
 import { useCwaContext } from "../provider/provider";
 
 export type SelectRootPropsAlias<Value extends string = string> = SelectRootProps<Value>;
@@ -18,7 +18,11 @@ export const Select = Object.assign(
     children,
     ...rest
   }: SelectRootProps<Value> & { children?: ReactNode }) {
-    return <BaseSelect.Root<Value> {...rest}>{children}</BaseSelect.Root>;
+    return (
+      <BaseSelect.Root<Value> {...rest}>
+        <FocusGuardScope>{children}</FocusGuardScope>
+      </BaseSelect.Root>
+    );
   },
   {
     Trigger: BaseSelect.Trigger,
@@ -39,19 +43,19 @@ export const Select = Object.assign(
 export interface SelectContentProps {
   children?: ReactNode;
   className?: string;
+  /** 默认 regular 玻璃。 */
+  material?: "glass" | "solid";
 }
 
-/** SelectContent：Portal + Positioner + Popup 的 CWA 组合（主题化 portal、solid 材质）。 */
-export function SelectContent({ children, className }: SelectContentProps) {
+/** SelectContent：主题化 Portal + Positioner + Popup；按实际背景选择 glass / solid。 */
+export function SelectContent({ children, className, material = "glass" }: SelectContentProps) {
   const { portalContainer } = useCwaContext();
   return (
     <BaseSelect.Portal container={portalContainer ?? undefined}>
       <OverlayPortalScope>
         <BaseSelect.Positioner sideOffset={6} className="cwa-design-select__positioner">
           <BaseSelect.Popup
-            className={
-              className ? `cwa-design-select__popup ${className}` : "cwa-design-select__popup"
-            }
+            className={`cwa-design-select__popup cwa-design-select__popup--${material}${material === "glass" ? " cwa-design-material" : ""}${className ? ` ${className}` : ""}`}
           >
             {children}
           </BaseSelect.Popup>
@@ -73,7 +77,7 @@ export function SelectItem({ value, children, disabled, className }: SelectItemP
     <BaseSelect.Item
       value={value}
       disabled={disabled}
-      className={className ?? "cwa-design-select__item"}
+      className={`cwa-design-select__item${className ? ` ${className}` : ""}`}
     >
       <BaseSelect.ItemText>{children}</BaseSelect.ItemText>
       <BaseSelect.ItemIndicator className="cwa-design-select__item-indicator">

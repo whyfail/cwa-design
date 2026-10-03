@@ -2,6 +2,13 @@
 // 覆盖 8 个只读工具、错误码、分页。任一失败 exit 1。
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
+import { strict as assert } from "node:assert";
+import { currentLibraryVersion, loadSnapshots, readArtifact } from "@cwa-design/registry/snapshot";
+
+const VERSION = currentLibraryVersion();
+const snapshot = loadSnapshots().find((entry) => entry.manifest.libraryVersion === VERSION);
+const digest = (source) => `sha256:${createHash("sha256").update(source).digest("hex")}`;
 
 const serverPath = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -34,6 +41,20 @@ async function withCurrentClient() {
   const caps = await client.callTool({ name: "cwa_design_get_capabilities", arguments: {} });
   if (caps.structuredContent?.data?.components !== 30)
     throw new Error("capabilities 组件数应为 30");
+  assert.equal(caps.structuredContent.libraryVersion, VERSION);
+  assert.equal(caps.structuredContent.data.recipes, 3);
+  assert.equal(caps.structuredContent.data.responseBudgetBytes, 12 * 1024);
+  async function call(name, args = {}) {
+    const result = await client.callTool({ name: `cwa_design_${name}`, arguments: args });
+    assert.ok(
+      Buffer.byteLength(JSON.stringify(result)) <= 12 * 1024,
+      `${name} complete response exceeds budget`,
+    );
+    for (const item of result.content ?? [])
+      if (item.type === "text")
+        assert.ok(Buffer.byteLength(item.text) <= 12 * 1024, `${name} response exceeds budget`);
+    return result;
+  }
 
   const search = await client.callTool({
     name: "cwa_design_search_components",
@@ -58,10 +79,18 @@ async function withCurrentClient() {
     arguments: { exampleId: "button-basic" },
   });
   if (example.structuredContent?.data?.compiled !== true) throw new Error("示例未标记已编译");
+  assert.equal(
+    digest(example.structuredContent.data.source),
+    example.structuredContent.data.contentDigest,
+  );
+  assert.equal(
+    example.structuredContent.data.source,
+    readArtifact(snapshot, "examples/button-basic.tsx").content,
+  );
 
   const tokens = await client.callTool({
     name: "cwa_design_get_tokens",
-    arguments: { theme: "dark" },
+    arguments: { theme: "dark", groups: ["semantic-dark"] },
   });
   if (!tokens.structuredContent?.data?.["semantic-dark"]) throw new Error("tokens dark 组缺失");
 
@@ -71,6 +100,8 @@ async function withCurrentClient() {
   });
   if (!String(plan.structuredContent?.data?.install).includes("pnpm add"))
     throw new Error("plan 异常");
+  assert.equal(plan.structuredContent.data.install, `pnpm add @cwa-design/react@${VERSION}`);
+  assert.equal(plan.structuredContent.data.publicationStatus, "not-verified");
 
   const sameVersion = await client.callTool({
     name: "cwa_design_get_migration",
@@ -94,6 +125,143 @@ async function withCurrentClient() {
     arguments: { recipeId: "nope" },
   });
   if (badRecipe.isError !== true) throw new Error("未知 recipe 应为 tool error");
+
+  // Every tool that accepts a version must validate it, including same-version migration.
+  for (const [name, args] of [
+    ["search_components", { version: "9.9.9" }],
+    ["get_tokens", { version: "9.9.9" }],
+    ["get_example", { version: "9.9.9", exampleId: "button-basic" }],
+    ["get_recipe", { version: "9.9.9", recipeId: "settings" }],
+    ["plan_installation", { framework: "react", version: "9.9.9" }],
+    ["get_migration", { framework: "react", fromVersion: "9.9.9", toVersion: "9.9.9" }],
+  ]) {
+    const result = await call(name, args);
+    assert.equal(result.isError, true, name);
+    assert.equal(result.structuredContent.error.code, "VERSION_NOT_FOUND", name);
+  }
+  const range = await call("search_components", { version: "^0.1.0" });
+  assert.equal(range.structuredContent.error.code, "INVALID_INPUT");
+  const badCursor = await call("search_components", { cursor: "bogus" });
+  assert.equal(badCursor.structuredContent.error.code, "INVALID_INPUT");
+  const next = await call("search_components", {
+    query: "button",
+    limit: 1,
+    cursor: search.structuredContent.nextCursor,
+  });
+  assert.notEqual(
+    next.structuredContent.data.results[0].id,
+    search.structuredContent.data.results[0].id,
+  );
+  const mismatchedCursor = await call("search_components", {
+    query: "dialog",
+    cursor: search.structuredContent.nextCursor,
+  });
+  assert.equal(mismatchedCursor.structuredContent.error.code, "INVALID_INPUT");
+
+  const oldSearch = await call("search_components", { version: "0.1.0-alpha.0", query: "button" });
+  assert.equal(oldSearch.structuredContent.libraryVersion, "0.1.0-alpha.0");
+  const oldPlan = await call("plan_installation", { framework: "react", version: "0.1.0-alpha.0" });
+  assert.equal(oldPlan.structuredContent.data.install, "pnpm add @cwa-design/react@0.1.0-alpha.0");
+  for (const [name, args] of [
+    ["get_example", { exampleId: "button-basic" }],
+    ["get_tokens", {}],
+    ["get_recipe", { recipeId: "settings" }],
+  ]) {
+    const result = await call(name, { ...args, version: "0.1.0-alpha.0" });
+    assert.equal(result.isError, true);
+    assert.equal(result.structuredContent.error.code, "REGISTRY_UNAVAILABLE", name);
+  }
+  for (const recipe of snapshot.manifest.recipes) {
+    let recipeCursor;
+    const files = {};
+    do {
+      const result = await call("get_recipe", {
+        recipeId: recipe.id,
+        ...(recipeCursor ? { cursor: recipeCursor } : {}),
+      });
+      assert.notEqual(result.isError, true);
+      const data = result.structuredContent.data;
+      assert.ok(data.limitations.length > 0);
+      for (const source of data.sources) {
+        assert.equal(digest(source.source), source.sourcePage.chunkDigest);
+        const previous = files[source.file] ?? { source: "", artifact: source.artifact };
+        assert.equal(Array.from(previous.source).length, source.sourcePage.offset);
+        previous.source += source.source;
+        files[source.file] = previous;
+      }
+      recipeCursor = result.structuredContent.nextCursor;
+    } while (recipeCursor);
+    for (const source of Object.values(files))
+      assert.equal(digest(source.source), source.artifact.contentDigest);
+  }
+  for (const entry of snapshot.manifest.examples) {
+    let exampleCursor;
+    let source = "";
+    do {
+      const result = await call("get_example", {
+        exampleId: entry.id,
+        ...(exampleCursor ? { cursor: exampleCursor } : {}),
+      });
+      assert.notEqual(result.isError, true, entry.id);
+      assert.equal(result.structuredContent.libraryVersion, VERSION);
+      assert.equal(Array.from(source).length, result.structuredContent.data.sourcePage.offset);
+      source += result.structuredContent.data.source;
+      exampleCursor = result.structuredContent.nextCursor;
+    } while (exampleCursor);
+    assert.equal(digest(source), entry.contentDigest);
+  }
+  const merged = {};
+  let cursor;
+  do {
+    const result = await call("get_tokens", {
+      theme: "all",
+      limit: 2,
+      ...(cursor ? { cursor } : {}),
+    });
+    assert.notEqual(result.isError, true);
+    for (const group of ["primitive", "semantic-light", "semantic-dark", "motion"])
+      if (result.structuredContent.data[group])
+        Object.assign((merged[group] ??= {}), result.structuredContent.data[group]);
+    cursor = result.structuredContent.nextCursor;
+  } while (cursor);
+  const sourceTokens = JSON.parse(readArtifact(snapshot, snapshot.manifest.tokensFile).content);
+  assert.deepEqual(merged.primitive, sourceTokens.primitive);
+  assert.deepEqual(merged["semantic-light"], sourceTokens.semantic.light);
+  assert.deepEqual(merged["semantic-dark"], sourceTokens.semantic.dark);
+  assert.deepEqual(merged.motion, sourceTokens.motion);
+  const all = await call("get_tokens", {
+    theme: "all",
+    groups: ["semantic-light", "semantic-dark"],
+  });
+  assert.ok(all.structuredContent.data["semantic-light"]);
+  assert.ok(all.structuredContent.data["semantic-dark"] || all.structuredContent.nextCursor);
+  const largeContract = await call("get_component", { id: "select" });
+  assert.equal(largeContract.structuredContent.error.code, "INVALID_INPUT");
+  for (const part of [
+    "root",
+    ...Object.keys(
+      snapshot.manifest.components.find((entry) => entry.id === "select").compoundParts,
+    ),
+  ]) {
+    const result = await call("get_component", { id: "select", sections: ["api"], part });
+    assert.notEqual(result.isError, true, part);
+    assert.ok(result.structuredContent.data.api.props);
+  }
+  for (const record of snapshot.manifest.components) {
+    const result = await call("get_component", { id: record.id, sections: ["api"], part: "root" });
+    assert.notEqual(result.isError, true, record.id);
+    assert.deepEqual(result.structuredContent.data.api.props, record.props);
+    assert.deepEqual(result.structuredContent.data.api.exports, record.exports);
+    assert.equal(result.structuredContent.libraryVersion, VERSION);
+  }
+  const migrated = await call("get_migration", {
+    framework: "react",
+    fromVersion: "0.1.0-alpha.0",
+    toVersion: VERSION,
+  });
+  assert.notEqual(migrated.isError, true);
+  assert.equal(migrated.structuredContent.libraryVersion, VERSION);
+  assert.ok(migrated.structuredContent.data.changes.length > 0);
 
   await client.close();
   return { toolCount: tools.tools.length, libraryVersion: caps.structuredContent?.libraryVersion };

@@ -19,16 +19,31 @@ describe("Slider", () => {
         aria-label="音量"
       />,
     );
-    const slider = screen.getByRole("slider");
+    const slider = screen.getByRole("slider", { name: "音量" });
+    expect(slider.tagName).toBe("INPUT");
+    expect(slider).toHaveAttribute("aria-label", "音量");
     expect(slider).toHaveAttribute("aria-valuenow", "40");
     slider.focus();
     await user.keyboard("[ArrowRight]");
     await user.keyboard("[ArrowRight]");
     expect(onValueChange).toHaveBeenLastCalledWith(60, expect.anything());
     await user.keyboard("[Home]");
-    expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "0");
+    expect(screen.getByRole("slider", { name: "音量" })).toHaveAttribute("aria-valuenow", "0");
     await user.keyboard("[End]");
-    expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "100");
+    expect(screen.getByRole("slider", { name: "音量" })).toHaveAttribute("aria-valuenow", "100");
+  });
+
+  it("aria-labelledby 关联可见标签到实际 range input", () => {
+    render(
+      <>
+        <span id="slider-visible-label">缩放比例</span>
+        <Slider defaultValue={60} aria-labelledby="slider-visible-label" />
+      </>,
+    );
+    const slider = screen.getByRole("slider", { name: "缩放比例" });
+    expect(slider.tagName).toBe("INPUT");
+    expect(slider).toHaveAttribute("aria-labelledby", "slider-visible-label");
+    expect(slider).toHaveAttribute("aria-valuenow", "60");
   });
 });
 

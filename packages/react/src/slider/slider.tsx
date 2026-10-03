@@ -11,13 +11,29 @@ export type CwaSliderProps = SliderRootProps & { children?: ReactNode };
  * 箭头/Home/End、aria-valuenow、拖动中断、触摸滚动协调由 Base UI 提供。
  * 数值语义：aria-valuetext 由调用方按 locale 提供（数值显示与数据分离）。
  */
-export function Slider({ children, className, ...rest }: CwaSliderProps) {
+export function Slider({
+  children,
+  className,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledby,
+  ...rest
+}: CwaSliderProps) {
   return (
-    <BaseSlider.Root {...rest}>
-      <BaseSlider.Control className={className ?? "cwa-design-slider__control"}>
+    <BaseSlider.Root {...rest} aria-label={ariaLabel} aria-labelledby={ariaLabelledby}>
+      <BaseSlider.Control
+        className={
+          typeof className === "function"
+            ? (state) => `cwa-design-slider__control ${className(state) ?? ""}`
+            : `cwa-design-slider__control${className ? ` ${className}` : ""}`
+        }
+      >
         <BaseSlider.Track className="cwa-design-slider__track">
           <BaseSlider.Indicator className="cwa-design-slider__indicator" />
-          <BaseSlider.Thumb className="cwa-design-slider__thumb" />
+          <BaseSlider.Thumb
+            className="cwa-design-slider__thumb"
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
+          />
         </BaseSlider.Track>
       </BaseSlider.Control>
       {children}

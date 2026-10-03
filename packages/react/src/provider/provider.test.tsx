@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { CwaProvider, useCwaContext } from "./provider";
+import { CwaProvider, useCwaContext, useOptionalCwaContext } from "./provider";
 
 function Probe() {
   const ctx = useCwaContext();
@@ -61,5 +61,22 @@ describe("CwaProvider", () => {
     const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
     expect(() => render(<Probe />)).toThrow(/CwaProvider/);
     consoleError.mockRestore();
+  });
+
+  it("optional context在Provider外返回null，并在作用域内返回真实配置", () => {
+    function OptionalProbe() {
+      const ctx = useOptionalCwaContext();
+      return (
+        <span data-testid="optional-probe">{ctx ? `${ctx.theme}/${ctx.material}` : "none"}</span>
+      );
+    }
+    const { getByTestId, rerender } = render(<OptionalProbe />);
+    expect(getByTestId("optional-probe")).toHaveTextContent("none");
+    rerender(
+      <CwaProvider theme="dark" material="solid">
+        <OptionalProbe />
+      </CwaProvider>,
+    );
+    expect(getByTestId("optional-probe")).toHaveTextContent("dark/solid");
   });
 });

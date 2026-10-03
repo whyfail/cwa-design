@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "libraryVersion": "0.1.0-alpha.0",
+  "registryDigest": "sha256:095bda6190018ed0ee6882a7e74c7130692f227e0b4e5b108a950585e6a157ec",
+  "digestMethod": "sha256-raw-file-bytes",
+  "files": [
+    {
+      "path": "components.md",
+      "contentDigest": "sha256:f5df16122ac586cbec5d16ce761e426e98ab58e9164bed9ddb7acb560565f171",
+      "byteSize": 2236
+    },
+    {
+      "path": "contracts/alert.json",
+      "contentDigest": "sha256:dcd11375069b43683bad2492194bd449bc39eaa4b9c9a54dd68b7381029ff682",
+      "byteSize": 559
+    },
+    {
+      "path": "contracts/avatar.json",
+      "contentDigest": "sha256:ac4261c4e178f5c8b73ade13d609813b24413e1fe3ab620f3b605f9b70f7b4c0",
+      "byteSize": 505
+    },
+    {
+      "path": "contracts/badge.json",
+      "contentDigest": "sha256:44f343e6d52300aa7cfeb532206593c340f2e256758b9c2dd0943d1f407a477d",
+      "byteSize": 493
+    },
+    {
+      "path": "contracts/button.json",
+      "contentDigest": "sha256:132cc27bc13102751e2f1f7d43e6633b7c4afd0088c3d49a40c1561ee47b835d",
+      "byteSize": 1237
+    },
+    {
+      "path": "contracts/card.json",
+      "contentDigest": "sha256:71923bf6d7d5bd744757eba3f4d00726829d2d0193e75a50d59432839b05ea6f",
+      "byteSize": 491
+    },
+    {
+      "path": "contracts/checkbox.json",
+      "contentDigest": "sha256:8aa50c2104426942237a5424c7d1d4bdfc7f8a64e9a8acddf56e1d25a6dbb52f",
+      "byteSize": 601
+    },
+    {
+      "path": "contracts/dialog.json",
+      "contentDigest": "sha256:7839685f654fce8e149d11708649ed445f9132a6fb0585f73a08b700a853b33a",
+      "byteSize": 498
+    },
+    {
+      "path": "contracts/dropdown-menu.json",
+      "contentDigest": "sha256:d10fae8a91ada6e93e167af9c45cad586f20d592b8b59265d5dd3ce421e9d055",
+      "byteSize": 581
+    },
+    {
+      "path": "contracts/field.json",
+      "contentDigest": "sha256:f4449d04115fc6ba03f056d6421ed819a038cf7f195e68a84f5f34e2f8a91cda",
+      "byteSize": 498
+    },
+    {
+      "path": "contracts/heading.json",
+      "contentDigest": "sha256:621a5acff3299ed251021da63c4a917012ae1c505f17d1a6e6db075531570e1c",
+      "byteSize": 509
+    },
+    {
+      "path": "contracts/icon-button.json",
+      "contentDigest": "sha256:f6e6a3d9980a5d01a671d1e1108c38cb1c561eb30efaf57f8496377073b3b581",
+      "byteSize": 1244
+    },
+    {
+      "path": "contracts/input.json",
+      "contentDigest": "sha256:cc6708b2792e902ac234013aeb2dc6b580e6dc117f353e94409289cf4573855b",
+      "byteSize": 507
+    },
+    {
+      "path": "contracts/popover.json",
+      "contentDigest": "sha256:2bfea4405282c21831b517d99732ff2c493ac5ccc5633c6710db2e287fa704b9",
+      "byteSize": 566
+    },
+    {
+      "path": "contracts/provider.json",
+      "contentDigest": "sha256:e6b1fecf61488108aacf77b4e7bdf5592cae8fa34499ad45e5e57d267990713c",
+      "byteSize": 512
+    },
+    {
+      "path": "contracts/radio-group.json",
+      "contentDigest": "sha256:d6fad5ec6e9b9670f73c91f6e35b58d6500d842cf44e309e9ea1c249329afbe9",
+      "byteSize": 608
+    },
+    {
+      "path": "contracts/segmented-control.json",
+      "contentDigest": "sha256:5be3696cc224e2ab5ecefacd778bdecf82bd644bafe0141256bd416fc98660c1",
+      "byteSize": 612
+    },
+    {
+      "path": "contracts/select.json",
+      "contentDigest": "sha256:24ba772931826454bbb81986ad2f4286ab3a52aa1f5b299441810a29af6406ba",
+      "byteSize": 633
+    },
+    {
+      "path": "contracts/separator.json",
+      "contentDigest": "sha256:efa289706708240ed04897933d680dc038f24169887ecb46f293033540b7a51a",
+      "byteSize": 509
+    },
+    {
+      "path": "contracts/sheet.json",
+      "contentDigest": "sha256:c964ee4d0c75f43dfbcccc2fad81453a2ada5de9be0ea6c23d06520e1afe061a",
+      "byteSize": 507
+    },
+    {
+      "path": "contracts/skeleton.json",
+      "contentDigest": "sha256:6a4fbe6378f88f4cf59a0d141dcfaab5bcfefbb8d0fea42e2b795dcb8ba471cd",
+      "byteSize": 508
+    },
+    {
+      "path": "contracts/slider.json",
+      "contentDigest": "sha256:b7d624173e90852efcd03451ad320fd6ce858f7afec03f5d28b66c1c501b34f0",
+      "byteSize": 581
+    },
+    {
+      "path": "contracts/spinner.json",
+      "contentDigest": "sha256:6a2f93f0904647dc816f41d417720f2bfc3a796bfc2788d4274db72bff412ea9",
+      "byteSize": 498
+    },
+    {
+      "path": "contracts/stack.json",
+      "contentDigest": "sha256:8d9a726a2b5e10586cf67c7fb99b8163bd307e1283b79f80f11613972239c975",
+      "byteSize": 492
+    },
+    {
+      "path": "contracts/surface.json",
+      "contentDigest": "sha256:332fb6c97b15cced699bc33dc6a7412165c5995001c9d928ce61f340554f7cba",
+      "byteSize": 504
+    },
+    {
+      "path": "contracts/switch.json",
+      "contentDigest": "sha256:8d5117b223401d437d455c1cc15a0621f5e5bc4c2b04370c6b60515778b57768",
+      "byteSize": 595
+    },
+    {
+      "path": "contracts/tabs.json",
+      "contentDigest": "sha256:4370db96a4cfef199fe9ec4a1ba4b408701a4758d0a055c930b424e5897e9e50",
+      "byteSize": 575
+    },
+    {
+      "path": "contracts/text.json",
+      "contentDigest": "sha256:8472df3ea00f0c9d09347a57558e11adb6a985e22ca0ebb96e50ad2ef2de7bb2",
+      "byteSize": 497
+    },
+    {
+      "path": "contracts/textarea.json",
+      "contentDigest": "sha256:2301b8a2607e91b8d90915a33b20cebe1a5ecfbcd6d3f37410ff855b69c43ed3",
+      "byteSize": 516
+    },
+    {
+      "path": "contracts/toast.json",
+      "contentDigest": "sha256:a4203bb6d78192aadf568fec76db40fe93679274b69c2e7bb8c9ff1622610dca",
+      "byteSize": 575
+    },
+    {
+      "path": "contracts/tooltip.json",
+      "contentDigest": "sha256:daaf4d8ede1f5c065dc2f49dbe3951ee6e8b31c8c4dce7ea402d1f8b2ce374c7",
+      "byteSize": 566
+    },
+    {
+      "path": "examples.json",
+      "contentDigest": "sha256:9fd549515e3ad5cf210bce76e1ae42345e0e8be447815d68d362f44d8f0cf60b",
+      "byteSize": 1008
+    },
+    {
+      "path": "manifest.json",
+      "contentDigest": "sha256:81167c0b0c62484d1d882d670ea67fb062e1136a843c8530b9e1f6a467da5ab2",
+      "byteSize": 23407
+    },
+    {
+      "path": "overview.md",
+      "contentDigest": "sha256:91bbe1eafbfc834c4b4bc67aebfa7898550e1c39419641ab2dbf791207539f45",
+      "byteSize": 602
+    },
+    {
+      "path": "recipes.json",
+      "contentDigest": "sha256:4190478a76ea9d8ead85b7b83288134e2f42dccb047bfece1aab99ea1be058c3",
+      "byteSize": 1039
+    }
+  ]
+}

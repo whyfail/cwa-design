@@ -1,32 +1,63 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const iconButtonMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "icon-button",
   name: "IconButton",
+  description: "只含图标的原生按钮；必须提供 label 作为可访问名称。",
+  typeName: "IconButtonProps",
+  sourceTypePath: "packages/react/src/icon-button/icon-button.tsx#IconButtonProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["IconButton"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
   props: {
-    label: { type: "string", required: true },
+    label: {
+      type: "string",
+      required: true,
+    },
     variant: {
       type: "enum",
       values: ["primary", "secondary", "ghost", "danger"],
       default: "secondary",
     },
-    size: { type: "enum", values: ["sm", "md", "lg"], default: "md" },
-    loading: { type: "boolean", default: false },
-    children: { type: "node", summary: "图标内容" },
-    ref: { type: "ref", summary: "HTMLButtonElement" },
+    size: {
+      type: "enum",
+      values: ["sm", "md", "lg"],
+      default: "md",
+    },
+    loading: {
+      type: "boolean",
+      default: false,
+    },
+    ref: {
+      type: "ref",
+      summary: "React.Ref<HTMLButtonElement>",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    type: {
+      type: "enum",
+      values: ["button", "submit", "reset"],
+      origin: "inherited",
+      default: "button",
+    },
   },
-  extends: ["native-button-attributes"],
+  extends: ["React.ButtonHTMLAttributes<HTMLButtonElement>；disabled/onClick/aria-* 等继承"],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["name-required", "native-button", "visible-focus", "44px-target-md"],
+  materialNotes: "图标按钮不独立创建 blur；label 不能只靠图标或 Tooltip 替代。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
   examples: ["icon-button-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

@@ -1,21 +1,34 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const spinnerMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "spinner",
   name: "Spinner",
+  description: "不确定进度指示；label 控制可访问名称。",
+  typeName: "SpinnerProps",
+  sourceTypePath: "packages/react/src/spinner/spinner.tsx#SpinnerProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Spinner"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    label: {
+      type: "string",
+    },
+    size: {
+      type: "enum",
+      values: ["sm", "md", "lg"],
+      default: "md",
+    },
+  },
+  extends: ["React.HTMLAttributes<HTMLSpanElement>"],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["busy-status"],
-  examples: [],
+  materialNotes: "仅进度图形，不创建玻璃；尊重 reduced-motion。",
+  a11y: ["label-or-decorative", "reduced-motion"],
+  examples: ["spinner-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

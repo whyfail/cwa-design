@@ -1,5 +1,5 @@
 /* Sheet：bottom / end 两种位置；glass-thick 或 solid 材质。
-   外层 Popup 只做进出动画（CSS transform）；内层 .__drag 承接 Motion 拖拽。 */
+   Popup 的 CSS translate 做进出动画，Motion transform 让材质和内容一起跟随拖拽。 */
 .cwa-design-sheet-backdrop {
   background: var(--cwa-design-color-scrim);
   transition: opacity 200ms ease;
@@ -10,24 +10,16 @@
 }
 
 .cwa-design-sheet {
+  box-sizing: border-box;
   position: fixed;
-  z-index: 1;
+  z-index: var(--cwa-design-z-dialog, 1001);
   border: 1px solid var(--cwa-design-color-border-subtle);
   border-radius: var(--cwa-design-radius-sheet);
   color: var(--cwa-design-color-text);
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-body);
-  box-shadow: 0 -12px 48px var(--cwa-design-color-scrim);
   outline: none;
-  transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease;
-}
-.cwa-design-sheet--glass-thick {
-  background: var(--cwa-design-color-glass-thick-fill);
-}
-@supports (backdrop-filter: blur(1px)) {
-  .cwa-design-sheet--glass-thick {
-    backdrop-filter: blur(var(--cwa-design-blur-glass-thick)) saturate(var(--cwa-design-saturation-glass));
-  }
+  transition: translate 300ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease;
 }
 .cwa-design-sheet--solid {
   background: var(--cwa-design-color-surface-raised);
@@ -41,9 +33,11 @@
   border-bottom-right-radius: 0;
 }
 .cwa-design-sheet--end {
+  --cwa-sheet-enter-x: 100%;
   inset-block: 0;
   inset-inline-end: 0;
   width: min(24rem, 92vw);
+  max-height: 100dvh;
   border-start-start-radius: var(--cwa-design-radius-sheet);
   border-end-start-radius: var(--cwa-design-radius-sheet);
 }
@@ -54,30 +48,41 @@
 }
 .cwa-design-sheet--bottom[data-starting-style],
 .cwa-design-sheet--bottom[data-ending-style] {
-  transform: translateY(100%);
+  translate: 0 100%;
 }
 .cwa-design-sheet--end[data-starting-style],
 .cwa-design-sheet--end[data-ending-style] {
-  transform: translateX(100%);
+  translate: var(--cwa-sheet-enter-x) 0;
 }
 
 .cwa-design-sheet__drag {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-height: inherit;
   padding: var(--cwa-design-space-5);
-  touch-action: none;
+  overflow-y: auto;
+  touch-action: pan-y;
   overscroll-behavior: contain;
 }
 
 .cwa-design-sheet__handle {
+  display: block;
   align-self: center;
   width: 2.25rem;
   height: 0.25rem;
   border-radius: 9999px;
   background: var(--cwa-design-color-border-strong);
-  margin-bottom: var(--cwa-design-space-3);
 }
+.cwa-design-sheet__grip {
+  align-self: center; display: grid; place-items: center; min-width: 44px; min-height: 44px;
+  border: 0; padding: 0; background: transparent; touch-action: none; cursor: grab;
+}
+.cwa-design-sheet__grip:focus-visible {
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
+  outline-offset: var(--cwa-design-focus-offset); border-radius: var(--cwa-design-radius-control);
+}
+[dir="rtl"] .cwa-design-sheet--end { --cwa-sheet-enter-x: -100%; }
 
 .cwa-design-sheet__title {
   margin: 0 0 var(--cwa-design-space-2);
@@ -93,6 +98,14 @@
   .cwa-design-sheet--bottom[data-ending-style],
   .cwa-design-sheet--end[data-starting-style],
   .cwa-design-sheet--end[data-ending-style] {
-    transform: none;
+    translate: none;
   }
+}
+
+[data-cwa-motion="reduced"] .cwa-design-sheet {
+  transition: opacity 200ms ease;
+}
+[data-cwa-motion="reduced"] .cwa-design-sheet[data-starting-style],
+[data-cwa-motion="reduced"] .cwa-design-sheet[data-ending-style] {
+  translate: none;
 }

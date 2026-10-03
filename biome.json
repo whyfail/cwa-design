@@ -1,7 +1,17 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "files": {
-    "includes": ["**/*.ts", "**/*.tsx", "**/*.mjs", "**/*.json", "!**/dist/**", "!**/node_modules/**", "!**/.next/**", "!**/storybook-static/**"]
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mjs",
+      "**/*.json",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/.next/**",
+      "!**/.ssr/**",
+      "!**/storybook-static/**"
+    ]
   },
   "formatter": {
     "enabled": true,

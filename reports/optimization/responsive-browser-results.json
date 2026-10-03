@@ -1,0 +1,450 @@
+{
+  "generatedAt": "2026-10-03T14:40:56.016Z",
+  "browserVersion": "154.0.8037.97",
+  "results": [
+    {
+      "name": "home",
+      "route": "",
+      "theme": "light",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "light",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "light",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "light",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "light",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "light",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "light",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "light",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "light",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "light",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "light",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "light",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "light",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "light",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "light",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "light",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "light",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "light",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "light",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "light",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "dark",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "dark",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "dark",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "dark",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "dark",
+      "width": 375,
+      "layout": {
+        "width": 375,
+        "viewport": 375
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "dark",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "dark",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "dark",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "dark",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "dark",
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "viewport": 768
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "dark",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "dark",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "dark",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "dark",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "dark",
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "viewport": 1024
+      },
+      "passed": true
+    },
+    {
+      "name": "home",
+      "route": "",
+      "theme": "dark",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "components",
+      "route": "components/",
+      "theme": "dark",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "button",
+      "route": "components/button/",
+      "theme": "dark",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "themes",
+      "route": "themes/",
+      "theme": "dark",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "patterns",
+      "route": "patterns/",
+      "theme": "dark",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "viewport": 1440
+      },
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Chromium responsive layout checks; no real iOS or physical touch device.",
+    "Viewport screenshots avoid Chromium full-page backdrop-filter tiling artifacts."
+  ]
+}

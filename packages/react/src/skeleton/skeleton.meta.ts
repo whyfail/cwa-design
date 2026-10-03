@@ -1,21 +1,36 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const skeletonMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "skeleton",
   name: "Skeleton",
+  description: "固定占位几何；为加载中的内容预留宽高。",
+  typeName: "SkeletonProps",
+  sourceTypePath: "packages/react/src/skeleton/skeleton.tsx#SkeletonProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Skeleton"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    width: {
+      type: "string-number",
+    },
+    height: {
+      type: "string-number",
+      default: "1rem",
+    },
+    radius: {
+      type: "string-number",
+    },
+  },
+  extends: ["React.HTMLAttributes<HTMLDivElement>"],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["placeholder-hidden"],
-  examples: [],
+  materialNotes: "使用占位填充；系统 reduced-motion 下停止闪烁。",
+  a11y: ["aria-hidden-placeholder", "reduced-motion"],
+  examples: ["skeleton-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

@@ -1,21 +1,46 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const alertMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "alert",
   name: "Alert",
+  description: '页面内的即时状态提示；所有 tone 均渲染 role="alert"。',
+  typeName: "AlertProps",
+  sourceTypePath: "packages/react/src/alert/alert.tsx#AlertProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Alert"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    tone: {
+      type: "enum",
+      values: ["info", "success", "warning", "danger"],
+      default: "info",
+    },
+    title: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+    action: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+  },
+  extends: ['Omit<React.HTMLAttributes<HTMLDivElement>, "title">；title 被 ReactNode 标题取代'],
   materialPolicy: "solid",
-  a11y: ["keyboard-navigable", "live-region-managed", "escape-closable", "text-not-color-only"],
-  examples: [],
+  materialNotes: "状态块使用轻填充；文本与图标共同表达含义。",
+  a11y: ["role-alert-all-tones", "text-and-icon-status"],
+  examples: ["alert-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

@@ -1,21 +1,39 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const separatorMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "separator",
   name: "Separator",
+  description: "水平或垂直分隔线；非装饰性时保留 separator 语义。",
+  typeName: "SeparatorProps",
+  sourceTypePath: "packages/react/src/separator/separator.tsx#SeparatorProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Separator"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    decorative: {
+      type: "boolean",
+      default: true,
+    },
+    orientation: {
+      type: "enum",
+      values: ["horizontal", "vertical"],
+      default: "horizontal",
+    },
+  },
+  extends: ["React.HTMLAttributes<HTMLHRElement | HTMLDivElement>"],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["native-separator"],
-  examples: [],
+  materialNotes: "仅边界，不创建光学层。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
+  examples: ["separator-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

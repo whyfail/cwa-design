@@ -17,29 +17,26 @@
   max-height: min(85dvh, 48rem);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: var(--cwa-design-space-5);
-  border: 1px solid var(--cwa-design-color-border-subtle);
   border-radius: var(--cwa-design-radius-sheet);
   color: var(--cwa-design-color-text);
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-body);
   transform: translateY(-50%);
-  box-shadow: 0 24px 64px var(--cwa-design-color-scrim);
   outline: none;
-}
-.cwa-design-dialog--glass-thick {
-  background: var(--cwa-design-color-glass-thick-fill);
-}
-@supports (backdrop-filter: blur(1px)) {
-  .cwa-design-dialog--glass-thick {
-    backdrop-filter: blur(var(--cwa-design-blur-glass-thick)) saturate(var(--cwa-design-saturation-glass));
-  }
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 160ms ease;
 }
 .cwa-design-dialog--solid {
   background: var(--cwa-design-color-surface-raised);
+  border: 1px solid var(--cwa-design-color-border-subtle);
+  box-shadow: 0 var(--cwa-design-shadow-contact-y) var(--cwa-design-shadow-contact-blur) var(--cwa-design-color-glass-contact-shadow),
+    0 var(--cwa-design-shadow-ambient-y) var(--cwa-design-shadow-ambient-blur) var(--cwa-design-color-glass-ambient-shadow);
 }
 
-/* 进出动效：scale + opacity 从当前位置可中断（Base UI 重挂/重开继续）。 */
+/* 进出只动 scale / opacity；CSS transition 可从当前插值位置反转。 */
 .cwa-design-dialog[data-starting-style],
 .cwa-design-dialog[data-ending-style] {
   opacity: 0;
@@ -62,15 +59,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cwa-design-dialog, .cwa-design-dialog-backdrop { transition: none; }
   .cwa-design-dialog[data-starting-style],
   .cwa-design-dialog[data-ending-style] {
     transform: translateY(-50%);
   }
 }
-@media (prefers-contrast: more) {
-  .cwa-design-dialog--glass-thick {
-    background: var(--cwa-design-color-surface-raised);
-    backdrop-filter: none;
-    border-color: var(--cwa-design-color-border-strong);
-  }
+[data-cwa-motion="reduced"] .cwa-design-dialog,
+[data-cwa-motion="reduced"] .cwa-design-dialog-backdrop { transition: none; }
+[data-cwa-motion="reduced"] .cwa-design-dialog[data-starting-style],
+[data-cwa-motion="reduced"] .cwa-design-dialog[data-ending-style] { transform: translateY(-50%); }
+@media (max-width: 30rem) {
+  .cwa-design-dialog { width: calc(100vw - 2 * var(--cwa-design-space-3)); padding: var(--cwa-design-space-4); }
 }

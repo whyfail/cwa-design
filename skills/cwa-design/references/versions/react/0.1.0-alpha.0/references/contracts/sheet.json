@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "libraryVersion": "0.1.0-alpha.0",
+  "framework": "react",
+  "id": "sheet",
+  "name": "Sheet",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Sheet"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {},
+  "extends": [],
+  "materialPolicy": "glass-thick",
+  "a11y": [
+    "dialog-semantics-keyboard-alternative"
+  ],
+  "examples": [],
+  "runtimeDependencies": [],
+  "deprecated": false
+}

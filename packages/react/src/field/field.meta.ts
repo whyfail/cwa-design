@@ -1,21 +1,54 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const fieldMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "field",
   name: "Field",
+  description:
+    "稳定关联 label/description/error 与 Input/Textarea；required 只控制标记，原生 required 仍传给控件。",
+  typeName: "FieldProps",
+  sourceTypePath: "packages/react/src/field/field.tsx#FieldProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Field"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
+  props: {
+    label: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+    },
+    error: {
+      type: "string",
+    },
+    required: {
+      type: "boolean",
+      default: false,
+    },
+    id: {
+      type: "string",
+      defaultSummary: "React.useId() 生成稳定关联 id",
+    },
+    className: {
+      type: "string",
+      description: "附加样式类；具体合并行为以实现为准",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: true,
+    },
+  },
   extends: [],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["label-association"],
-  examples: [],
+  materialNotes: "不创建背景材质；搭配内容层表单控件。",
+  a11y: ["visible-label", "stable-label-control-association", "error-alert"],
+  examples: ["field-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

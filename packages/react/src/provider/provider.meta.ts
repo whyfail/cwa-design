@@ -1,21 +1,69 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const providerMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "provider",
   name: "CwaProvider",
+  description: "主题、材质、动效、密度与 Portal 的应用根；将所有需要上下文的组件置于其内。",
+  typeName: "CwaProviderProps",
+  sourceTypePath: "packages/react/src/provider/provider.tsx#CwaProviderProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
-  exports: ["CwaProvider"],
+  exports: ["CwaProvider", "useCwaContext", "useOptionalCwaContext"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
+  props: {
+    theme: {
+      type: "enum",
+      values: ["light", "dark", "system"],
+      default: "system",
+    },
+    material: {
+      type: "enum",
+      values: ["auto", "solid"],
+      default: "auto",
+    },
+    motion: {
+      type: "enum",
+      values: ["system", "reduced", "full"],
+      description: "full 不覆盖系统 reduced-motion",
+      default: "system",
+    },
+    density: {
+      type: "enum",
+      values: ["comfortable", "compact"],
+      default: "comfortable",
+    },
+    locale: {
+      type: "string",
+    },
+    portalContainer: {
+      type: "element",
+      summary: "HTMLElement | null",
+      defaultSummary: "null；客户端 Portal 默认挂到 body",
+    },
+    className: {
+      type: "string",
+      description: "附加样式类；具体合并行为以实现为准",
+    },
+    style: {
+      type: "record",
+      summary: "React.CSSProperties",
+    },
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: true,
+    },
+  },
   extends: [],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["ssr-stable-theme"],
-  examples: [],
+  materialNotes:
+    '不创建玻璃表面；material="solid" 强制组件表面实色。theme="system" 在 SSR/首帧不写解析后的主题，客户端解析系统偏好。',
+  a11y: ["context-required", "ssr-stable-theme", "system-preference-priority"],
+  examples: ["provider-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

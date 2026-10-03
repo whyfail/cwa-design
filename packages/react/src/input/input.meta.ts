@@ -1,21 +1,40 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const inputMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "input",
   name: "Input",
+  description: "原生单行输入；value/defaultValue/onChange 和 IME 使用原生事件。",
+  typeName: "InputProps",
+  sourceTypePath: "packages/react/src/input/input.tsx#InputProps",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
   exports: ["Input"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    invalid: {
+      type: "boolean",
+      defaultSummary: "显式值优先；否则由 Field error 推导，无 error 时为 false",
+    },
+    ref: {
+      type: "ref",
+      summary: "React.Ref<HTMLInputElement>",
+    },
+  },
+  extends: [
+    "React.InputHTMLAttributes<HTMLInputElement>；value/defaultValue/onChange/name/type/required/id/aria-* 等原生属性。id 缺省读取 Field 关联；没有 onValueChange API。",
+  ],
   materialPolicy: "inherit-parent-surface",
-  a11y: ["label-association-ime-safe"],
-  examples: [],
+  materialNotes: "文本控件为可读填充，不独立 blur。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
+  examples: ["input-basic"],
   runtimeDependencies: [],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

@@ -1,21 +1,37 @@
-import type { ComponentRecord } from "@cwa-design/registry";
+import type { ComponentSourceRecord } from "@cwa-design/registry";
 
+// Own props and inherited TS types; release version is added from package.json by Registry.
 export const toastMeta = {
-  schemaVersion: "1.0.0",
-  libraryVersion: "0.1.0-alpha.0",
+  schemaVersion: "1.1.0",
   framework: "react",
   id: "toast",
   name: "ToastProvider",
+  description: "应用通知队列；外部触发可创建 manager 并传入 toastManager。",
+  typeName: "ToastProviderPropsAlias",
+  sourceTypePath: "packages/react/src/toast/toast.tsx#ToastProviderPropsAlias",
   status: "stable-in-alpha",
   package: "@cwa-design/react",
-  exports: ["ToastProvider"],
+  exports: ["ToastProvider", "createToastManager", "useToastManager"],
   importPath: "@cwa-design/react",
   stylePath: "@cwa-design/react/styles.css",
-  props: {},
-  extends: [],
+  props: {
+    children: {
+      type: "node",
+      summary: "ReactNode；内容由调用方提供",
+      required: false,
+    },
+  },
+  extends: [
+    "@base-ui/react/toast#ToastProviderProps；timeout 默认 5000ms、limit 默认 3、toastManager 可选；不是原生 div props",
+  ],
   materialPolicy: "solid",
-  a11y: ["keyboard-navigable", "live-region-managed", "escape-closable", "text-not-color-only"],
-  examples: [],
-  runtimeDependencies: [],
+  materialNotes: "通知为可读 solid 表面，live region 与队列由 Base UI 提供。",
+  a11y: [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui",
+  ],
+  examples: ["toast-basic"],
+  runtimeDependencies: ["@base-ui/react"],
   deprecated: false,
-} satisfies ComponentRecord;
+} satisfies ComponentSourceRecord;

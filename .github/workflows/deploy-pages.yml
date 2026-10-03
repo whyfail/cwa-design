@@ -3,6 +3,9 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - reports/**
+      - tasks/**
   workflow_dispatch:
 
 permissions:
@@ -21,31 +24,31 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.21.0
       - name: Enable corepack (pnpm 12.8.1)
         run: corepack enable
       - name: Install dependencies
         run: corepack pnpm install --frozen-lockfile
       - name: Build packages (tokens → react → registry → cli/mcp)
-        run: corepack pnpm -r --if-present run build
+        run: corepack pnpm run build:packages
       - name: Build registry manifest + skill references
         run: corepack pnpm run registry:build
-      - name: Build docs (base /cwa-design/)
-        run: corepack pnpm --filter @cwa-design/docs exec vite build --base=/cwa-design/
       - name: Build Storybook (base /cwa-design/storybook/)
         working-directory: apps/storybook
         env:
           STORYBOOK_BASE: /cwa-design/storybook/
         run: corepack pnpm run build
-      - name: Assemble site
-        run: |
-          mkdir -p site/storybook
-          cp -r apps/docs/dist/* site/
-          cp -r apps/storybook/storybook-static/* site/storybook/
+      - name: Build static docs, resources and Storybook links
+        env:
+          CWA_BASE: /cwa-design/
+          CWA_SITE_ORIGIN: https://whyfail.github.io
+        run: corepack pnpm --filter @cwa-design/docs run build
+      - name: Verify static routes and links
+        run: python3 scripts/verify-static-site.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: apps/docs/dist
 
   deploy:
     needs: build

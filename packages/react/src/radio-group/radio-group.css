@@ -35,7 +35,7 @@
   transform: scale(0.95);
 }
 .cwa-design-radio__circle:focus-visible {
-  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-accent);
+  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
   outline-offset: var(--cwa-design-focus-offset);
 }
 .cwa-design-radio__circle[data-checked] {

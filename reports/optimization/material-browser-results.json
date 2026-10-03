@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-03",
+  "results": [
+    {
+      "engine": "chromium",
+      "browserVersion": "154.0.8037.97",
+      "light": {
+        "fill": "rgba(255, 255, 255, 0.52)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "dark": {
+        "fill": "rgba(24, 31, 45, 0.7)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "nestedSolid": {
+        "fill": "rgb(255, 255, 255)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "solid": {
+        "fill": "rgb(44, 44, 46)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "reducedTransparency": {
+        "fill": "rgb(44, 44, 46)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "layout": {
+        "width": 390,
+        "viewport": 390
+      },
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "browserVersion": "153.0",
+      "light": {
+        "fill": "rgba(255, 255, 255, 0.52)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "dark": {
+        "fill": "rgba(24, 31, 45, 0.7)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "nestedSolid": {
+        "fill": "rgb(255, 255, 255)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "solid": {
+        "fill": "rgb(44, 44, 46)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "reducedTransparency": null,
+      "layout": {
+        "width": 390,
+        "viewport": 390
+      },
+      "pageErrors": []
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "light": {
+        "fill": "rgba(255, 255, 255, 0.52)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "dark": {
+        "fill": "rgba(24, 31, 45, 0.7)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "blur(20px) saturate(1.5)",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "nestedSolid": {
+        "fill": "rgb(255, 255, 255)",
+        "text": "rgb(23, 24, 28)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.72) 0px 1px 0px 0px inset, rgba(34, 56, 92, 0.1) 0px -1px 0px 0px inset, rgba(24, 46, 82, 0.1) 0px 2px 6px 0px, rgba(24, 46, 82, 0.15) 0px 16px 40px 0px"
+      },
+      "solid": {
+        "fill": "rgb(44, 44, 46)",
+        "text": "rgb(245, 245, 247)",
+        "filter": "none",
+        "shadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.22) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.25) 0px 2px 6px 0px, rgba(0, 0, 0, 0.34) 0px 16px 40px 0px"
+      },
+      "reducedTransparency": null,
+      "layout": {
+        "width": 390,
+        "viewport": 390
+      },
+      "pageErrors": []
+    }
+  ],
+  "limitations": [
+    "Playwright WebKit is not real Safari/iOS",
+    "Chromium alone emulated reduced-transparency",
+    "No manual screen reader or full composite contrast audit"
+  ]
+}

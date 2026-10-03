@@ -3,7 +3,7 @@
 import type { MenuRootProps } from "@base-ui/react/menu";
 import { Menu as BaseMenu } from "@base-ui/react/menu";
 import type { ReactNode } from "react";
-import { OverlayPortalScope } from "../overlay/overlay-scope";
+import { FocusGuardScope, OverlayPortalScope } from "../overlay/overlay-scope";
 import { useCwaContext } from "../provider/provider";
 
 export type DropdownMenuRootProps = MenuRootProps & { children?: ReactNode };
@@ -12,11 +12,15 @@ export type DropdownMenuRootProps = MenuRootProps & { children?: ReactNode };
  * DropdownMenu：动作菜单（T22）。
  * 箭头/typeahead/禁用项/方向键导航/Escape 由 Base UI 提供。
  * 与 Select 的边界：Select 表达"选择值"，Menu 表达"触发动作"。
- * 材质 solid（浮层不叠玻璃）。
+ * 默认 regular 玻璃；复杂背景或实际采样重叠时可选择 solid。
  */
 export const DropdownMenu = Object.assign(
   function DropdownMenuRoot({ children, ...rest }: DropdownMenuRootProps) {
-    return <BaseMenu.Root {...rest}>{children}</BaseMenu.Root>;
+    return (
+      <BaseMenu.Root {...rest}>
+        <FocusGuardScope>{children}</FocusGuardScope>
+      </BaseMenu.Root>
+    );
   },
   {
     Trigger: BaseMenu.Trigger,
@@ -34,16 +38,22 @@ export const DropdownMenu = Object.assign(
 export interface DropdownMenuContentProps {
   children?: ReactNode;
   className?: string;
+  /** 默认 regular 玻璃。 */
+  material?: "glass" | "solid";
 }
 
-export function DropdownMenuContent({ children, className }: DropdownMenuContentProps) {
+export function DropdownMenuContent({
+  children,
+  className,
+  material = "glass",
+}: DropdownMenuContentProps) {
   const { portalContainer } = useCwaContext();
   return (
     <BaseMenu.Portal container={portalContainer ?? undefined}>
       <OverlayPortalScope>
         <BaseMenu.Positioner sideOffset={6} align="start" className="cwa-design-menu__positioner">
           <BaseMenu.Popup
-            className={className ? `cwa-design-menu ${className}` : "cwa-design-menu"}
+            className={`cwa-design-menu cwa-design-menu--${material}${material === "glass" ? " cwa-design-material" : ""}${className ? ` ${className}` : ""}`}
           >
             {children}
           </BaseMenu.Popup>
