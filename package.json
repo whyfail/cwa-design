@@ -15,7 +15,9 @@
     "build": "pnpm -r --if-present run build",
     "test": "pnpm -r --if-present run test",
     "test:mcp": "pnpm --filter @cwa-design/mcp run test",
-    "test:consumers": "pnpm --filter @cwa-design/examples-react-vite run build"
+    "test:consumers": "pnpm --filter @cwa-design/examples-react-vite run build",
+    "registry:build": "node packages/registry/dist-scripts/registry/scripts/build-manifest.js && node packages/registry/dist-scripts/registry/scripts/generate-skill-references.js",
+    "verify": "pnpm -r --if-present run build && pnpm run registry:build && pnpm -r --if-present run test && pnpm run lint"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",

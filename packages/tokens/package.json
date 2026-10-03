@@ -2,7 +2,7 @@
   "name": "@cwa-design/tokens",
   "version": "0.1.0-alpha.0",
   "description": "Design tokens for CWA Design: framework-agnostic JSON source and generated CSS variables.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./dist/tokens.json",

@@ -1,5 +1,7 @@
 # CWA Design
 
+**文档站：https://whyfail.github.io/cwa-design/ · 组件 Playground：https://whyfail.github.io/cwa-design/storybook/**
+
 面向开发者与 AI 编程助手的 Apple 风格 Web 组件库（React 首发，Vue 随后）。
 
 开发方案：`/Users/wulei/Desktop/CWA-Design-开发方案`（主计划 01 · 任务清单 02 · 启动提示词 03 · 版本核验 04）。
