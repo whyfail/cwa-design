@@ -31,7 +31,11 @@ export const surfaceMeta = {
   ],
   materialPolicy: "solid",
   materialNotes:
-    "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。",
+    "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。" +
+    "背景可读性边界（2026-10-04 实测矩阵，2 主题 × 9 背景 × 4 材质）：正文与控件标签（不透明正文色）在 regular 下全部验证背景达标；" +
+    "副文字（--cwa-design-color-glass-text-muted）在 regular 下仅保证中等亮度背景（山水/文字列表/图表/棋盘）与同向极端背景（浅色×纯白、深色×纯黑）；" +
+    "跨亮度媒体（浅色×暗图、深色×亮图）、明暗分区与反向极端背景请改 frosted 或 solid，或给控件局部实色底面。" +
+    "glass-clear 只用于媒体上的轻量工具栏：浅色配亮调媒体、深色配暗调媒体，仅放少量大号短标签；表单与长文请用 regular/frosted/solid。",
   a11y: [
     "semantic-content",
     "visible-focus-for-interactive-parts",

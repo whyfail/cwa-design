@@ -5,8 +5,8 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
-  readFileSync,
   readdirSync,
+  readFileSync,
   statSync,
   writeFileSync,
 } from "node:fs";
@@ -109,12 +109,17 @@ try {
   writeFileSync(
     path.join(directory, "src/app.tsx"),
     `import { Button, CwaProvider, Heading, Input, SegmentedControl, SettingsRecipe, Slider, Surface, Switch } from "@cwa-design/react";
-export function App() { return <CwaProvider theme="light"><Surface material="glass"><Heading level={1}>Independent tarball consumer</Heading><Button>Ready</Button><Input aria-label="Consumer name" defaultValue="Ada" /><Slider aria-label="Volume" defaultValue={50} /><Switch>Notifications</Switch><SegmentedControl aria-label="View" defaultValue="day" items={[{value:"day",label:"Day"},{value:"week",label:"Week"}]} /><SettingsRecipe /></Surface></CwaProvider>; }
+export function App() { return <><CwaProvider theme="light"><Surface material="glass"><Heading level={1}>Independent tarball consumer</Heading><Button>Ready</Button><Input aria-label="Consumer name" defaultValue="Ada" /><Slider aria-label="Volume" defaultValue={50} /><Switch>Notifications</Switch><SegmentedControl aria-label="View" defaultValue="day" items={[{value:"day",label:"Day"},{value:"week",label:"Week"}]} /><SettingsRecipe /></Surface></CwaProvider><section aria-label="Scoped theme check"><CwaProvider theme="dark" className="my-cwa-theme"><Surface material="glass" data-testid="scoped-surface"><Heading level={2}>Scoped 67% fill</Heading><Button>Scoped</Button></Surface></CwaProvider><CwaProvider theme="dark"><Surface material="glass" data-testid="default-dark-surface"><Heading level={2}>Theme default</Heading><Button>Default</Button></Surface></CwaProvider></section></>; }
 `,
+  );
+  // 与官网主题实验室导出的 CSS 片段同构（N01）：类名挂在 Provider 上即生效。
+  writeFileSync(
+    path.join(directory, "src/consumer-theme.css"),
+    ".my-cwa-theme {\n  --cwa-design-color-glass-regular-fill: rgba(28,29,34,0.67);\n}\n",
   );
   writeFileSync(
     path.join(directory, "src/main.tsx"),
-    'import { createRoot, hydrateRoot } from "react-dom/client";\nimport "@cwa-design/react/styles.css";\nimport { App } from "./app";\nconst root = document.getElementById("root")!;\nif (root.hasChildNodes()) hydrateRoot(root, <App />); else createRoot(root).render(<App />);\n',
+    'import { createRoot, hydrateRoot } from "react-dom/client";\nimport "@cwa-design/react/styles.css";\nimport "./consumer-theme.css";\nimport { App } from "./app";\nconst root = document.getElementById("root")!;\nif (root.hasChildNodes()) hydrateRoot(root, <App />); else createRoot(root).render(<App />);\n',
   );
   writeFileSync(
     path.join(directory, "src/entry-server.tsx"),
@@ -220,8 +225,31 @@ const base = "http://127.0.0.1:" + server.address().port;
 const page = await fetch(base + "/"); assert.equal(page.status, 200); assert.ok((await page.text()).includes(html));
 for (const asset of [...cssAssets, ...scriptAssets]) assert.equal((await fetch(base + asset)).status, 200);
 const missing = await fetch(base + "/missing"); assert.equal(missing.status, 404);
+let computedStyles = null;
+if (process.env.CWA_PLAYWRIGHT_MODULE) {
+  // N01：粘贴官网导出的 CSS + my-cwa-theme 类后，独立消费页的计算样式必须生效。
+  const { createRequire } = await import("node:module");
+  const qaRequire = createRequire(new URL("file://" + process.env.CWA_PLAYWRIGHT_MODULE.replace(/\\/$/, "") + "/package.json"));
+  const { chromium } = qaRequire("playwright");
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({ colorScheme: "dark" });
+  const browserPage = await context.newPage();
+  await browserPage.goto(base + "/");
+  const readFill = (testId) => browserPage.evaluate((id) => {
+    const el = document.querySelector("[data-testid=" + id + "]");
+    return getComputedStyle(el).backgroundColor;
+  }, testId);
+  await browserPage.waitForSelector("[data-testid=scoped-surface]");
+  const scoped = await readFill("scoped-surface");
+  const fallback = await readFill("default-dark-surface");
+  const normalize = (value) => value.replace(/\\s+/g, "");
+  assert.equal(normalize(scoped), "rgba(28,29,34,0.67)", "scoped .my-cwa-theme override applies in the consumer page");
+  assert.equal(normalize(fallback), "rgba(28,29,34,0.68)", "unscoped dark surface keeps the theme default");
+  await browser.close();
+  computedStyles = { scopedFill: scoped, unscopedDarkFill: fallback, engine: "chromium" };
+}
 await new Promise((resolve) => server.close(resolve));
-console.log(JSON.stringify({ installedPackageRoot, installedPackageVersion: installedPackage.version, publicCssPath, packageIsWorkspaceLinked: false, publicExports: Object.keys(Cwa).sort(), requiredExportsVerified: expected.requiredExports.length, ssrMarkupCharacters: html.length, http: { status: page.status, missingStatus: missing.status, cssAssets, scriptAssets }, passed: true }));
+console.log(JSON.stringify({ installedPackageRoot, installedPackageVersion: installedPackage.version, publicCssPath, packageIsWorkspaceLinked: false, publicExports: Object.keys(Cwa).sort(), requiredExportsVerified: expected.requiredExports.length, ssrMarkupCharacters: html.length, http: { status: page.status, missingStatus: missing.status, cssAssets, scriptAssets }, computedStyles, passed: true }));
 `,
   );
   const proof = JSON.parse(run(["node", "verify-server.mjs"], directory));

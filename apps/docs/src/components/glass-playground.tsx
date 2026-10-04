@@ -12,7 +12,8 @@ import {
   Switch,
   useCwaContext,
 } from "@cwa-design/react";
-import { type CSSProperties, useState } from "react";
+import { useState } from "react";
+import { buildThemeOverrides } from "../theme-overrides";
 import { Icon } from "./icons";
 
 export function Landscape() {
@@ -69,7 +70,21 @@ export function Landscape() {
   );
 }
 
-/* 以下背景均为本仓库自绘（无第三方素材），用于材质可读性对照基线。 */
+/* 以下背景均为本仓库自绘（无第三方素材），用于材质可读性对照基线。
+   真实照片样张（photo-real-*）来自 CC0 素材，见 public/media/MEDIA-SOURCES.md。 */
+
+export function RealPhoto({ variant }: { variant: "bright" | "dark" }) {
+  return (
+    <img
+      className="landscape"
+      src={`${import.meta.env.BASE_URL}media/photo-real-${variant}.jpg`}
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      decoding="async"
+    />
+  );
+}
 
 export function PhotoLight() {
   return (
@@ -244,16 +259,12 @@ export function GlassPlayground({
   const [playing, setPlaying] = useState(false);
   const [saved, setSaved] = useState(false);
   const dark = context.resolvedTheme === "dark" || context.theme === "dark";
-  const variables = {
-    ...(tint !== undefined
-      ? {
-          "--cwa-design-color-glass-regular-fill": `rgba(${dark ? "24,31,45" : "255,255,255"},${tint / 100})`,
-        }
-      : {}),
-    ...(accent
-      ? { "--cwa-design-color-accent": accent, "--cwa-design-color-on-accent": "#fff" }
-      : {}),
-  } as CSSProperties;
+  // 显式覆盖与主题实验室导出走同一份构建逻辑，保证预览 = 粘贴代码的实际效果。
+  const { variables } = buildThemeOverrides({
+    theme: dark ? "dark" : "light",
+    tint: tint ?? null,
+    accent: accent ?? "",
+  });
   return (
     <CwaProvider
       theme={context.theme}
@@ -269,6 +280,8 @@ export function GlassPlayground({
         {background === "landscape" ? <Landscape /> : null}
         {background === "photo-light" ? <PhotoLight /> : null}
         {background === "photo-dark" ? <PhotoDark /> : null}
+        {background === "photo-real-light" ? <RealPhoto variant="bright" /> : null}
+        {background === "photo-real-dark" ? <RealPhoto variant="dark" /> : null}
         {background === "chart" ? <ChartPane /> : null}
         {background === "text-list" ? <TextListPane /> : null}
         <div className="scene-caption">

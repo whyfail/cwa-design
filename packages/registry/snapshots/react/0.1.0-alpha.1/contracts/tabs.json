@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.1",
+  "framework": "react",
+  "id": "tabs",
+  "name": "Tabs",
+  "description": "切换关联内容面板；小规模互斥设置使用 SegmentedControl。",
+  "typeName": "CwaTabsProps",
+  "sourceTypePath": "packages/react/src/tabs/tabs.tsx#CwaTabsProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Tabs",
+    "TabsList",
+    "TabsTab",
+    "TabsPanel"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "@base-ui/react/tabs#TabsRootProps；value/defaultValue/onValueChange/orientation、原生属性等完整继承"
+  ],
+  "compoundParts": {
+    "Tabs.List": {
+      "exportName": "Tabs.List",
+      "typeName": "TabsListProps",
+      "sourceTypePath": "@base-ui/react/tabs#TabsListProps",
+      "description": "activateOnFocus（默认 false）/loopFocus（默认 true）在 Tabs.List 上；没有 activationMode Root prop。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/tabs#TabsListProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "Tabs.Tab": {
+      "exportName": "Tabs.Tab",
+      "typeName": "TabsTabProps",
+      "sourceTypePath": "@base-ui/react/tabs#TabsTabProps",
+      "description": "Base UI Tab 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/tabs#TabsTabProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "Tabs.Panel": {
+      "exportName": "Tabs.Panel",
+      "typeName": "TabsPanelProps",
+      "sourceTypePath": "@base-ui/react/tabs#TabsPanelProps",
+      "description": "Base UI Panel 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/tabs#TabsPanelProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "Tabs.Indicator": {
+      "exportName": "Tabs.Indicator",
+      "typeName": "TabsIndicatorProps",
+      "sourceTypePath": "@base-ui/react/tabs#TabsIndicatorProps",
+      "description": "Base UI Indicator 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/tabs#TabsIndicatorProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "TabsList": {
+      "exportName": "TabsList",
+      "typeName": "TabsListProps",
+      "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsListProps",
+      "description": "CWA 样式 List；只接受这里列出的 props。需要 activateOnFocus 时使用 Tabs.List。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        },
+        "aria-label": {
+          "type": "string"
+        }
+      },
+      "extends": []
+    },
+    "TabsTab": {
+      "exportName": "TabsTab",
+      "typeName": "TabsTabProps",
+      "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsTabProps",
+      "description": "字符串值的 CWA Tab。",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": []
+    },
+    "TabsPanel": {
+      "exportName": "TabsPanel",
+      "typeName": "TabsPanelProps",
+      "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsPanelProps",
+      "description": "字符串值关联的 CWA Panel。",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": []
+    }
+  },
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "选中状态为填充/指示，不创建背景玻璃。",
+  "a11y": [
+    "accessible-name-required-for-controls",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "tabs-basic"
+  ],
+  "runtimeDependencies": [
+    "@base-ui/react"
+  ],
+  "deprecated": false
+}

@@ -13,8 +13,10 @@
 .cwa-design-heading--title {
   font-size: var(--cwa-design-font-size-title);
   line-height: var(--cwa-design-font-leading-body);
+  letter-spacing: normal;
 }
 .cwa-design-heading--body {
   font-size: var(--cwa-design-font-size-body);
   line-height: var(--cwa-design-font-leading-body);
+  letter-spacing: normal;
 }

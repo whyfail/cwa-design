@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.1",
+  "framework": "react",
+  "id": "slider",
+  "name": "Slider",
+  "description": "单 Thumb 数值滑块；箭头/Home/End 为拖拽替代。",
+  "typeName": "CwaSliderProps",
+  "sourceTypePath": "packages/react/src/slider/slider.tsx#CwaSliderProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Slider"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "@base-ui/react/slider#SliderRootProps；value/defaultValue/onValueChange/min/max/step/disabled、原生属性完整继承；CWA className 施加于内部 Control"
+  ],
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "轨道与 Thumb 不独立 blur；当前组合只渲染一个 Thumb，不宣称支持完整范围滑块。",
+  "a11y": [
+    "accessible-name-required-for-controls",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "slider-basic"
+  ],
+  "runtimeDependencies": [
+    "@base-ui/react"
+  ],
+  "deprecated": false
+}

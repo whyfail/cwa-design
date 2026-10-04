@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.2",
-  "registryDigest": "sha256:53cce12ef38411e0ae42a8dad4c8a9166c87eb80768a2572cea07df1bc0a8992",
+  "registryDigest": "sha256:e65a3d1ea71ca13254a3b6986446c1510b173d71284ae2efaec7a63f5a3392ed",
   "digestMethod": "sha256-raw-file-bytes",
   "files": [
     {
@@ -126,8 +126,8 @@
     },
     {
       "path": "contracts/surface.json",
-      "contentDigest": "sha256:40ea2071e524304d1c16e8fce90a07d4a15c9debad52867a6a4afc848850abd3",
-      "byteSize": 1414
+      "contentDigest": "sha256:a63f02b2f37779e13dbb17f30583c9b9562b2d111354ec111fcf13b56214bab6",
+      "byteSize": 2104
     },
     {
       "path": "contracts/switch.json",
@@ -326,12 +326,12 @@
     },
     {
       "path": "manifest.json",
-      "contentDigest": "sha256:8ba065cc1be54de3537168c38c286bca3db3e78e19a873c44a410004d173f3a1",
-      "byteSize": 123155
+      "contentDigest": "sha256:6f456bcf783a41bd662b5775b5c5883c6d68083c6d7e2ff03a4434f28afac10c",
+      "byteSize": 123845
     },
     {
       "path": "overview.md",
-      "contentDigest": "sha256:0fe0fe2dff6bf9da2a8dc47d357d783667e3bcaf48f2bba6e215df55cc7f0657",
+      "contentDigest": "sha256:8a4eb1660f75e872ea3bb5ec4da7c8bad4cb6660487481331c5a05683183e57f",
       "byteSize": 581
     },
     {

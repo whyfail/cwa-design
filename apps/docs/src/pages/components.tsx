@@ -1,11 +1,15 @@
-import { useState } from "react";
 import data from "virtual:cwa-site-data";
-import { catalog, categories } from "../data/catalog";
-import { href } from "../routes";
-import { DemoCard } from "../components/demo-card";
+import { useState } from "react";
 import { CodeBlock } from "../components/code-block";
+import { DemoCard } from "../components/demo-card";
 import { Icon } from "../components/icons";
+import { OverlayMaterialStage } from "../components/overlay-stage";
+import { catalog, categories } from "../data/catalog";
 import type { ComponentDoc, PropDoc } from "../data/types";
+import { href } from "../routes";
+
+/** 拥有浮层材质的组件在"材质与状态"一节使用共享的真实媒体对照舞台（N07）。 */
+const OVERLAY_STAGE_IDS = new Set(["popover", "dropdown-menu", "select", "dialog", "sheet"]);
 
 function ApiTable({ props }: { props: Record<string, PropDoc> }) {
   if (Object.keys(props).length === 0)
@@ -256,6 +260,13 @@ export function ComponentPage({ id }: { id: string }) {
         {notes.map((note) => (
           <p key={note}>{note}</p>
         ))}
+        {OVERLAY_STAGE_IDS.has(id) ? (
+          <>
+            <h3>媒体对照舞台</h3>
+            <p>打开浮层，检查玻璃透色、边缘与阴影在真实亮/暗照片上的表现。</p>
+            <OverlayMaterialStage id={id} />
+          </>
+        ) : null}
         <p>适用的状态与行为见示例及本页 API；系统减少透明与显式 solid 配置会启用回退。</p>
         <a className="text-link" href={href("/design/materials/")}>
           阅读材质指南 →

@@ -1,8 +1,15 @@
 import { type SurfaceMaterial, useCwaContext } from "@cwa-design/react";
 import { useState } from "react";
+import { pressureReason, SAFE_ALTERNATIVE_HINT } from "../background-policy";
 import { CodeBlock } from "../components/code-block";
 import { GlassPlayground } from "../components/glass-playground";
 import { type SiteRoute } from "../routes";
+import {
+  buildThemeOverrides,
+  providerClassNameAttribute,
+  renderCssSnippet,
+  THEME_GLASS_TINT,
+} from "../theme-overrides";
 import { PageIntro } from "./articles";
 
 // 显式品牌主色选项；空值表示继承当前主题 Token（预览、代码与导出同规则）。
@@ -13,9 +20,11 @@ const ACCENT_PRESETS = [
 ];
 
 const BACKGROUNDS = [
-  { value: "landscape", label: "山水与光" },
-  { value: "photo-light", label: "亮照片" },
-  { value: "photo-dark", label: "暗照片" },
+  { value: "landscape", label: "山水与光（自绘）" },
+  { value: "photo-light", label: "亮调插画（自绘）" },
+  { value: "photo-dark", label: "暗调插画（自绘）" },
+  { value: "photo-real-light", label: "真实亮照片" },
+  { value: "photo-real-dark", label: "真实暗照片" },
   { value: "text-list", label: "文字列表" },
   { value: "chart", label: "彩色图表" },
   { value: "checker", label: "高频棋盘" },
@@ -27,8 +36,7 @@ const BACKGROUNDS = [
 export function ThemesPage({ route }: { route: SiteRoute }) {
   const context = useCwaContext();
   const theme = context.resolvedTheme === "dark" || context.theme === "dark" ? "dark" : "light";
-  const rgb = theme === "dark" ? "28,29,34" : "255,255,255";
-  const themeTint = theme === "dark" ? 68 : 52;
+  const themeTint = THEME_GLASS_TINT[theme];
   const [material, setMaterial] = useState<SurfaceMaterial>("glass");
   const [background, setBackground] = useState("landscape");
   const [solid, setSolid] = useState(false);
@@ -36,28 +44,15 @@ export function ThemesPage({ route }: { route: SiteRoute }) {
   const [tint, setTint] = useState<number | null>(null);
   const [accent, setAccent] = useState("");
   const effectiveTint = tint ?? themeTint;
-  const overrides: string[] = [];
-  const cssTokens: Record<string, string> = {};
-  if (accent) {
-    overrides.push(
-      `  --cwa-design-color-accent: ${accent};`,
-      `  --cwa-design-color-on-accent: #ffffff;`,
-    );
-    cssTokens["--cwa-design-color-accent"] = accent;
-    cssTokens["--cwa-design-color-on-accent"] = "#ffffff";
-  }
-  if (tint !== null) {
-    overrides.push(`  --cwa-design-color-glass-regular-fill: rgba(${rgb},${tint / 100});`);
-    cssTokens["--cwa-design-color-glass-regular-fill"] = `rgba(${rgb},${tint / 100})`;
-  }
-  const code = `<CwaProvider theme="${theme}" material="${solid ? "solid" : "auto"}">\n  <Surface material="${material}">\n    {/* 你的控件 */}\n  </Surface>\n</CwaProvider>`;
-  const css = overrides.length
-    ? `.my-cwa-theme {\n${overrides.join("\n")}\n}`
-    : `.my-cwa-theme {\n  /* 无覆盖：继承当前主题默认 Token */\n}`;
+  const pressure = pressureReason(theme, solid ? "solid" : material, background);
+  // 唯一覆盖来源：预览变量、TSX/CSS 代码与 JSON 导出共用 buildThemeOverrides 结果。
+  const overrides = buildThemeOverrides({ theme, tint, accent });
+  const code = `<CwaProvider theme="${theme}" material="${solid ? "solid" : "auto"}"${providerClassNameAttribute(overrides.hasOverrides)}>\n  <Surface material="${material}">\n    {/* 你的控件 */}\n  </Surface>\n</CwaProvider>`;
+  const css = renderCssSnippet(overrides);
   const config = {
     provider: { theme, material: solid ? "solid" : "auto" },
     surface: { material },
-    cssTokens,
+    cssTokens: overrides.cssTokens,
   };
   function download() {
     const url = URL.createObjectURL(
@@ -145,13 +140,22 @@ export function ThemesPage({ route }: { route: SiteRoute }) {
         {...(tint !== null && { tint })}
         {...(accent && { accent })}
       />
+      {pressure ? (
+        <p className="doc-note pressure-note" role="status">
+          {pressure}
+          <button type="button" className="site-text-button" onClick={() => setMaterial("frosted")}>
+            改用 Thick Frosted
+          </button>
+          {SAFE_ALTERNATIVE_HINT}
+        </p>
+      ) : null}
       <p className="doc-note">
         {material === "glass-clear"
           ? "Clear 适合照片、视频等媒体上的轻量工具栏；表单等需要稳定阅读底面的场景请用 Regular 或 Thick。"
           : "默认预览继承当前主题的公开 Token；拖动遮蔽滑块或选择品牌主色后才构成显式覆盖，代码与导出同步这一规则。"}
         {material === "glass-clear"
           ? " 导出与覆盖规则同上。"
-          : " Thick、Clear 各有独立 Token。导出的是当前配置，背景仅用于验证。"}
+          : " Thick、Clear 各有独立 Token。导出的是当前配置，背景仅用于验证。有覆盖时请在 TSX 中保留生成的 my-cwa-theme 类，CSS 才会生效。"}
       </p>
       <section id="export">
         <h2>带回你的应用</h2>

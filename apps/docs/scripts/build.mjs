@@ -13,13 +13,36 @@ if (!base.startsWith("/") || !base.endsWith("/"))
 const origin = process.env.CWA_SITE_ORIGIN ?? "https://whyfail.github.io";
 const siteData = getSiteData();
 const pkg = JSON.parse(await readFile(path.join(repo, "packages/react/package.json"), "utf8"));
+const porcelain = execFileSync("git", ["status", "--porcelain"], { cwd: repo, encoding: "utf8" });
+const changedPaths = porcelain
+  .split("\n")
+  .filter(Boolean)
+  .map((line) => line.slice(3).replace(/^"|"$/g, ""));
+// 生成物（跟踪在仓库里、由 registry/skill 构建或验证流程产出）与源码改动分开记录；
+// dirty 保持整体语义，不把生成物变化强行算成源码未提交，也不写 false。
+const generatedPatterns = [/^skills\/cwa-design\/references\//, /^reports\//];
+const generatedChanged = changedPaths.filter((file) =>
+  generatedPatterns.some((pattern) => pattern.test(file)),
+);
+const sourceChanged = changedPaths.filter(
+  (file) => !generatedPatterns.some((pattern) => pattern.test(file)),
+);
 const release = {
   version: pkg.version,
   commit: execFileSync("git", ["rev-parse", "HEAD"], { cwd: repo, encoding: "utf8" }).trim(),
-  dirty: Boolean(
-    execFileSync("git", ["status", "--porcelain"], { cwd: repo, encoding: "utf8" }).trim(),
-  ),
+  dirty: changedPaths.length > 0,
   channel: "source",
+  sourceState: {
+    dirty: sourceChanged.length > 0,
+    changedFiles: sourceChanged.length,
+    ...(sourceChanged.length ? { sample: sourceChanged.slice(0, 10) } : {}),
+  },
+  generatedState: {
+    dirty: generatedChanged.length > 0,
+    changedFiles: generatedChanged.length,
+    note: "跟踪在仓库中的生成物（skill references / 验证报告）在候选版构建期间允许有变化；与源码状态分开评估。",
+    ...(generatedChanged.length ? { sample: generatedChanged.slice(0, 10) } : {}),
+  },
 };
 const common = { root, base, define: { __CWA_RELEASE__: JSON.stringify(release) } };
 await build({ ...common, build: { outDir: "dist", emptyOutDir: true } });

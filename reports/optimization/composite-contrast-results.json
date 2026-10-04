@@ -1,414 +1,1522 @@
 {
-  "generatedAt": "2026-10-03T17:22:42.028Z",
+  "generatedAt": "2026-10-03T21:05:24.478Z",
   "engine": "154.0.8037.97",
-  "results": [
+  "matrix": {
+    "themes": 2,
+    "backgrounds": 11,
+    "materials": 4,
+    "scenes": 90,
+    "samples": 800,
+    "threshold": "4.5:1 (WCAG 2.2 AA normal text, unrounded comparison)"
+  },
+  "supportedScenes": 63,
+  "pressureScenes": 27,
+  "pressureFailingScenes": 17,
+  "scenes": [
     {
       "theme": "light",
-      "material": "regular",
-      "background": "original-landscape-svg",
-      "samples": [
-        {
-          "text": "让界面轻一点。",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "15px",
-          "box": [
-            232.875,
-            89,
-            102.90625,
-            18
-          ],
-          "minimumContrast": 14.84,
-          "passed": true
-        },
+      "material": "glass",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 5.497,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "photo-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.78,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "photo-dark",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 4,
+      "minimum": 3.972,
+      "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "13px",
-          "box": [
-            232.875,
-            113.390625,
-            174.46875,
-            21.4375
-          ],
-          "minimumContrast": 10.99,
-          "passed": true
-        },
-        {
-          "text": "背景音量",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "13px",
-          "box": [
-            187.875,
-            216.828125,
-            52,
-            21.4375
-          ],
-          "minimumContrast": 13.26,
-          "passed": true
+          "contrast": 4.457,
+          "fontSize": "13px"
         },
         {
           "text": "64%",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "13px",
-          "box": [
-            429.421875,
-            216.828125,
-            28.453125,
-            21.4375
-          ],
-          "minimumContrast": 9.68,
-          "passed": true
-        },
-        {
-          "text": "允许桌面通知",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "16px",
-          "box": [
-            243.875,
-            315.0625,
-            96,
-            26.390625
-          ],
-          "minimumContrast": 10.38,
-          "passed": true
-        },
-        {
-          "text": "工作区名称",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "16px",
-          "box": [
-            187.875,
-            368.265625,
-            270,
-            26.390625
-          ],
-          "minimumContrast": 8.77,
-          "passed": true
+          "contrast": 4.181,
+          "fontSize": "13px"
         },
         {
           "text": "当前模式：专注",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "13px",
-          "box": [
-            187.875,
-            512.65625,
-            270,
-            21.4375
-          ],
-          "minimumContrast": 9.11,
-          "passed": true
-        },
-        {
-          "text": "Quiet mountains",
-          "rgb": [
-            23,
-            24,
-            28
-          ],
-          "fontSize": "13px",
-          "box": [
-            97,
-            590.265625,
-            106.28125,
-            16
-          ],
-          "minimumContrast": 14.38,
-          "passed": true
+          "contrast": 4.016,
+          "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "13px",
-          "box": [
-            97,
-            610.65625,
-            452.125,
-            21.4375
-          ],
-          "minimumContrast": 10.71,
-          "passed": true
+          "contrast": 3.972,
+          "fontSize": "13px"
         }
       ]
     },
     {
       "theme": "light",
-      "material": "clear",
-      "background": "self-drawn-media-toolbar",
-      "samples": [
+      "material": "glass",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 4.518,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 4.935,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.603,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.974,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 10.634,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "split",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 1,
+      "minimum": 4.469,
+      "failedSamples": [
         {
-          "text": "高山晨光",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "14px",
-          "box": [
-            326,
-            193.21875,
-            266,
-            25.890625
-          ],
-          "minimumContrast": 7.49,
-          "passed": true
-        },
-        {
-          "text": "Clear：媒体上的轻工具栏",
-          "rgb": [
-            43,
-            48,
-            57
-          ],
-          "fontSize": "14px",
-          "box": [
-            326,
-            219.109375,
-            266,
-            25.890625
-          ],
-          "minimumContrast": 7.18,
-          "passed": true
+          "text": "当前模式：专注",
+          "contrast": 4.469,
+          "fontSize": "13px"
         }
       ]
     },
     {
-      "theme": "dark",
-      "material": "regular",
-      "background": "original-landscape-svg",
-      "samples": [
-        {
-          "text": "让界面轻一点。",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "15px",
-          "box": [
-            232.875,
-            89,
-            102.90625,
-            18
-          ],
-          "minimumContrast": 5.48,
-          "passed": true
-        },
+      "theme": "light",
+      "material": "glass",
+      "background": "white",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 13.14,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "black",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 4,
+      "minimum": 3.543,
+      "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "13px",
-          "box": [
-            232.875,
-            113.390625,
-            174.46875,
-            21.4375
-          ],
-          "minimumContrast": 4.61,
-          "passed": true
-        },
-        {
-          "text": "背景音量",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "13px",
-          "box": [
-            187.875,
-            216.828125,
-            52,
-            21.4375
-          ],
-          "minimumContrast": 6.75,
-          "passed": true
+          "contrast": 3.941,
+          "fontSize": "13px"
         },
         {
           "text": "64%",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "13px",
-          "box": [
-            429.421875,
-            216.828125,
-            28.453125,
-            21.4375
-          ],
-          "minimumContrast": 6.28,
-          "passed": true
-        },
-        {
-          "text": "允许桌面通知",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "16px",
-          "box": [
-            243.875,
-            315.0625,
-            96,
-            26.390625
-          ],
-          "minimumContrast": 7.55,
-          "passed": true
-        },
-        {
-          "text": "工作区名称",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "16px",
-          "box": [
-            187.875,
-            368.265625,
-            270,
-            26.390625
-          ],
-          "minimumContrast": 8.16,
-          "passed": true
+          "contrast": 3.591,
+          "fontSize": "13px"
         },
         {
           "text": "当前模式：专注",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "13px",
-          "box": [
-            187.875,
-            512.65625,
-            270,
-            21.4375
-          ],
-          "minimumContrast": 6.36,
-          "passed": true
-        },
-        {
-          "text": "Quiet mountains",
-          "rgb": [
-            245,
-            245,
-            247
-          ],
-          "fontSize": "13px",
-          "box": [
-            97,
-            590.265625,
-            106.28125,
-            16
-          ],
-          "minimumContrast": 5.84,
-          "passed": true
+          "contrast": 3.591,
+          "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "13px",
-          "box": [
-            97,
-            610.65625,
-            452.125,
-            21.4375
-          ],
-          "minimumContrast": 4.94,
-          "passed": true
+          "contrast": 3.543,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.922,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "photo-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 10.757,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "photo-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.721,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.295,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.465,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.918,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 13.085,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.899,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "split",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.118,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "white",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 13.14,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "frosted",
+      "background": "black",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.362,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "landscape",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 1,
+      "minimum": 3.493,
+      "failedSamples": [
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 3.493,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-light",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.42,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-dark",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 9,
+      "minimum": 2.088,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 3.942,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 2.507,
+          "fontSize": "13px"
+        },
+        {
+          "text": "背景音量",
+          "contrast": 3.823,
+          "fontSize": "13px"
+        },
+        {
+          "text": "64%",
+          "contrast": 2.255,
+          "fontSize": "13px"
+        },
+        {
+          "text": "允许桌面通知",
+          "contrast": 2.925,
+          "fontSize": "16px"
+        },
+        {
+          "text": "工作区名称",
+          "contrast": 2.877,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 2.088,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 4.283,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 2.12,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-real-light",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 3,
+      "minimum": 2.355,
+      "failedSamples": [
+        {
+          "text": "当前模式：专注",
+          "contrast": 3.147,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 4.349,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 2.355,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-real-dark",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 3,
+      "minimum": 2.886,
+      "failedSamples": [
+        {
+          "text": "允许桌面通知",
+          "contrast": 4.404,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 3.913,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 2.886,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "text-list",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.386,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "chart",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.933,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "checker",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 9.33,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "split",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 7,
+      "minimum": 2.506,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 4.422,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 2.988,
+          "fontSize": "13px"
+        },
+        {
+          "text": "背景音量",
+          "contrast": 4.172,
+          "fontSize": "13px"
+        },
+        {
+          "text": "允许桌面通知",
+          "contrast": 3.354,
+          "fontSize": "16px"
+        },
+        {
+          "text": "工作区名称",
+          "contrast": 3.354,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 2.506,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 2.826,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "white",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 13.14,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "black",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 9,
+      "minimum": 1.75,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 3.329,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 2.044,
+          "fontSize": "13px"
+        },
+        {
+          "text": "背景音量",
+          "contrast": 3.089,
+          "fontSize": "13px"
+        },
+        {
+          "text": "64%",
+          "contrast": 1.75,
+          "fontSize": "13px"
+        },
+        {
+          "text": "允许桌面通知",
+          "contrast": 2.342,
+          "fontSize": "16px"
+        },
+        {
+          "text": "工作区名称",
+          "contrast": 2.342,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 1.75,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 3.741,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 1.75,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "photo-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "photo-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "split",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "white",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "solid",
+      "background": "black",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.868,
+      "failedSamples": []
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "self-drawn media toolbar sample",
+      "pressure": false,
+      "sampleCount": 4,
+      "failedCount": 0,
+      "minimum": 8.414,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 4.678,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "photo-light",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 1,
+      "minimum": 4.487,
+      "failedSamples": [
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 4.487,
+          "fontSize": "13px"
         }
       ]
     },
     {
       "theme": "dark",
-      "material": "clear",
-      "background": "self-drawn-media-toolbar",
-      "samples": [
+      "material": "glass",
+      "background": "photo-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.517,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 5.185,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.009,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.015,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.023,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 4.862,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "split",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 4.869,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "white",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 3,
+      "minimum": 3.91,
+      "failedSamples": [
         {
-          "text": "夜色山谷",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "14px",
-          "box": [
-            326,
-            193.21875,
-            266,
-            25.890625
-          ],
-          "minimumContrast": 12.91,
-          "passed": true
+          "text": "专注于此刻的工作",
+          "contrast": 4.026,
+          "fontSize": "13px"
         },
         {
-          "text": "Clear：媒体上的轻工具栏",
-          "rgb": [
-            228,
-            228,
-            234
-          ],
-          "fontSize": "14px",
-          "box": [
-            326,
-            219.109375,
-            266,
-            25.890625
-          ],
-          "minimumContrast": 13.08,
-          "passed": true
+          "text": "Quiet mountains",
+          "contrast": 4.487,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 3.91,
+          "fontSize": "13px"
         }
       ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "black",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.409,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.403,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "photo-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.301,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "photo-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.455,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.041,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 9.355,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.168,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 10.818,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 7.492,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "split",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 8.352,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "white",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.667,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "frosted",
+      "background": "black",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 11.892,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "landscape",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 3,
+      "minimum": 3.511,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 4.337,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 3.511,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 3.948,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-light",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 4,
+      "minimum": 3.284,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 4.193,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 3.284,
+          "fontSize": "13px"
+        },
+        {
+          "text": "背景音量",
+          "contrast": 3.996,
+          "fontSize": "13px"
+        },
+        {
+          "text": "64%",
+          "contrast": 3.935,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-dark",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 13.463,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-real-light",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 2,
+      "minimum": 3.789,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 4.495,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 3.789,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-real-dark",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 5.102,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "text-list",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 12.401,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "chart",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 5.77,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "checker",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 6,
+      "minimum": 3.764,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 4.377,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 3.915,
+          "fontSize": "13px"
+        },
+        {
+          "text": "64%",
+          "contrast": 4.354,
+          "fontSize": "13px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 4.34,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 4.364,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 3.764,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "split",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 4,
+      "minimum": 3.582,
+      "failedSamples": [
+        {
+          "text": "64%",
+          "contrast": 3.644,
+          "fontSize": "13px"
+        },
+        {
+          "text": "工作区名称",
+          "contrast": 4.238,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 3.644,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 3.582,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "white",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 9,
+      "minimum": 2.875,
+      "failedSamples": [
+        {
+          "text": "让界面轻一点。",
+          "contrast": 3.344,
+          "fontSize": "15px"
+        },
+        {
+          "text": "专注于此刻的工作",
+          "contrast": 2.914,
+          "fontSize": "13px"
+        },
+        {
+          "text": "背景音量",
+          "contrast": 3.435,
+          "fontSize": "13px"
+        },
+        {
+          "text": "64%",
+          "contrast": 3.206,
+          "fontSize": "13px"
+        },
+        {
+          "text": "允许桌面通知",
+          "contrast": 3.627,
+          "fontSize": "16px"
+        },
+        {
+          "text": "工作区名称",
+          "contrast": 3.627,
+          "fontSize": "16px"
+        },
+        {
+          "text": "当前模式：专注",
+          "contrast": 3.206,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 3.299,
+          "fontSize": "13px"
+        },
+        {
+          "text": "一段静谧的工作时光",
+          "contrast": 2.875,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "black",
+      "pressure": true,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 14.549,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "landscape",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "photo-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "photo-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "photo-real-light",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "photo-real-dark",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "text-list",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "chart",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "checker",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "split",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "white",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "solid",
+      "background": "black",
+      "pressure": false,
+      "sampleCount": 9,
+      "failedCount": 0,
+      "minimum": 6.303,
+      "failedSamples": []
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "self-drawn media toolbar sample",
+      "pressure": false,
+      "sampleCount": 4,
+      "failedCount": 0,
+      "minimum": 13.437,
+      "failedSamples": []
     }
   ],
-  "failed": [],
+  "pressureDetails": [
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "photo-dark",
+      "minimum": 3.972,
+      "failedCount": 4,
+      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "split",
+      "minimum": 4.469,
+      "failedCount": 1,
+      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+    },
+    {
+      "theme": "light",
+      "material": "glass",
+      "background": "black",
+      "minimum": 3.543,
+      "failedCount": 4,
+      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "landscape",
+      "minimum": 3.493,
+      "failedCount": 1,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-light",
+      "minimum": 7.42,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-dark",
+      "minimum": 2.088,
+      "failedCount": 9,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-real-light",
+      "minimum": 2.355,
+      "failedCount": 3,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "photo-real-dark",
+      "minimum": 2.886,
+      "failedCount": 3,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "text-list",
+      "minimum": 12.386,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "chart",
+      "minimum": 11.933,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "checker",
+      "minimum": 9.33,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "split",
+      "minimum": 2.506,
+      "failedCount": 7,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "white",
+      "minimum": 13.14,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "light",
+      "material": "glass-clear",
+      "background": "black",
+      "minimum": 1.75,
+      "failedCount": 9,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "photo-light",
+      "minimum": 4.487,
+      "failedCount": 1,
+      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass",
+      "background": "white",
+      "minimum": 3.91,
+      "failedCount": 3,
+      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "landscape",
+      "minimum": 3.511,
+      "failedCount": 3,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-light",
+      "minimum": 3.284,
+      "failedCount": 4,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-dark",
+      "minimum": 13.463,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-real-light",
+      "minimum": 3.789,
+      "failedCount": 2,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "photo-real-dark",
+      "minimum": 5.102,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "text-list",
+      "minimum": 12.401,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "chart",
+      "minimum": 5.77,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "checker",
+      "minimum": 3.764,
+      "failedCount": 6,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "split",
+      "minimum": 3.582,
+      "failedCount": 4,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "white",
+      "minimum": 2.875,
+      "failedCount": 9,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    },
+    {
+      "theme": "dark",
+      "material": "glass-clear",
+      "background": "black",
+      "minimum": 14.549,
+      "failedCount": 0,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+    }
+  ],
   "limitations": [
-    "Checks only selected opaque labels in four default rendered scenes; not all application backgrounds or photos.",
-    "Text glyphs alone were made transparent to sample the backdrop while retaining container fill, reflection and blur.",
-    "This sampled contrast evidence is separate from axe and does not establish full WCAG conformance."
+    "Backdrop screening only: glyphs are hidden and the minimum ratio over each label's bounding box is measured; not a per-glyph WCAG conformance audit.",
+    "Excludes button text, focus rings and control boundaries; axe and manual review cover those separately.",
+    "Chromium-only measurement; Firefox/WebKit compositing is not covered by this script."
   ]
 }

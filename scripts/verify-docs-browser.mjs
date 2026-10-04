@@ -512,6 +512,242 @@ for (const engine of engines) {
         mobile,
       };
     });
+    await scenario("theme-lab-explicit-override-consistency", async () => {
+      // N01 回归：深色 68 → 67 → 68 的显式覆盖必须使用主题石墨底色，
+      // 预览、CSS/TSX 代码与 JSON 导出三处一致（旧缺陷：预览用旧蓝灰 24,31,45）。
+      await goto("themes/");
+      await setTheme("dark");
+      const controls = page.locator(".theme-controls");
+      const slider = controls.locator(".theme-range input");
+      const previewFill = () =>
+        page.locator(".glass-control-panel").evaluate((el) => {
+          // normalizeToken 需要在浏览器上下文内定义（evaluate 回调无法引用 Node 作用域）。
+          const raw = getComputedStyle(el)
+            .getPropertyValue("--cwa-design-color-glass-regular-fill")
+            .trim()
+            .replace(/\s+/g, "");
+          const hex = raw.match(/^#([0-9a-f]{6})([0-9a-f]{2})?$/i);
+          if (hex)
+            return `rgba(${parseInt(hex[1].slice(0, 2), 16)},${parseInt(hex[1].slice(2, 4), 16)},${parseInt(hex[1].slice(4, 6), 16)},${hex[2] ? Math.round((parseInt(hex[2], 16) / 255) * 100) / 100 : 1})`;
+          return raw;
+        });
+      const cssBlock = page.locator(".code-block").nth(1).locator("pre code");
+      const tsxBlock = page.locator(".code-block").first().locator("pre code");
+      async function downloadConfig() {
+        const downloadEvent = page.waitForEvent("download");
+        await page.getByRole("button", { name: /导出当前配置 JSON/ }).click();
+        const download = await downloadEvent;
+        const stream = await download.createReadStream();
+        const chunks = [];
+        for await (const chunk of stream) chunks.push(chunk);
+        return JSON.parse(Buffer.concat(chunks).toString());
+      }
+      assert.equal(
+        await previewFill(),
+        "rgba(28,29,34,0.68)",
+        "dark default inherits graphite 68%",
+      );
+      await slider.fill("67");
+      assert.equal(
+        await previewFill(),
+        "rgba(28,29,34,0.67)",
+        "explicit 67% uses the graphite base, not legacy blue-gray",
+      );
+      assert.match(
+        (await cssBlock.textContent()).replace(/\s+/g, ""),
+        /\.my-cwa-theme\{--cwa-design-color-glass-regular-fill:rgba\(28,29,34,0\.67\);\}/,
+        "CSS export matches the preview override",
+      );
+      const config67 = await downloadConfig();
+      assert.equal(
+        config67.cssTokens["--cwa-design-color-glass-regular-fill"],
+        "rgba(28,29,34,0.67)",
+      );
+      assert.match(
+        (await tsxBlock.textContent()).replace(/\s+/g, ""),
+        /className="my-cwa-theme"/,
+        "TSX wires the my-cwa-theme scope for the exported CSS",
+      );
+      await slider.fill("68");
+      assert.equal(
+        await previewFill(),
+        "rgba(28,29,34,0.68)",
+        "68 → 67 → 68 returns to the theme value",
+      );
+      const config68 = await downloadConfig();
+      assert.equal(
+        config68.cssTokens["--cwa-design-color-glass-regular-fill"],
+        "rgba(28,29,34,0.68)",
+      );
+      // 浅色主题同规则：显式覆盖用白色底。
+      await setTheme("light");
+      await slider.fill("60");
+      assert.equal(await previewFill(), "rgba(255,255,255,0.6)");
+      assert.match((await cssBlock.textContent()).replace(/\s+/g, ""), /rgba\(255,255,255,0\.6\)/);
+      await page.getByRole("button", { name: "重置", exact: true }).click();
+      assert.equal(
+        await previewFill(),
+        "rgba(255,255,255,0.52)",
+        "reset returns to the light theme default",
+      );
+      assert.match(await cssBlock.textContent(), /无覆盖/, "reset clears the exported overrides");
+      // solid 切换时预览仍是 glass Token 导出（Provider 属性在 TSX 中体现）。
+      await page.getByLabel("显式实色降级").check();
+      const solidConfig = await downloadConfig();
+      assert.equal(solidConfig.provider.material, "solid");
+      assert.match(await tsxBlock.textContent(), /material="solid"/);
+      await page.getByRole("button", { name: "重置", exact: true }).click();
+      await axe("theme-lab-override-consistency");
+      return {
+        dark67: config67.cssTokens,
+        dark68: config68.cssTokens,
+        solid: solidConfig.provider,
+      };
+    });
+    await scenario("heading-text-cascade-isolation", async () => {
+      // N02 回归：组件排版（Heading level × visualSize、Text as × variant × tone）
+      // 在官网文档祖先内与祖先外的计算样式必须一致（site 排版规则零特异性）。
+      await goto("components/heading/");
+      await setTheme("light");
+      await loadExamples();
+      const matrix = await page.evaluate(() => {
+        // 段落规则是 .site-doc-main 内的 section 后代，因此文档侧克隆挂在真实 section 里。
+        const docsHost =
+          document.querySelector(".site-doc-main section") ??
+          document.querySelector(".site-doc-main");
+        const isolatedHost = document.createElement("div");
+        isolatedHost.style.cssText =
+          "position:absolute;width:900px;height:12px;overflow:hidden;opacity:0;pointer-events:none";
+        document.body.appendChild(isolatedHost);
+        const cases = [];
+        for (const cls of [
+          "cwa-design-heading--display",
+          "cwa-design-heading--title",
+          "cwa-design-heading--body",
+        ])
+          for (const tag of ["h1", "h2", "h3", "h4"]) cases.push({ kind: "heading", cls, tag });
+        for (const variant of ["body", "caption"])
+          for (const tone of ["default", "muted"])
+            for (const tag of ["p", "span"]) cases.push({ kind: "text", variant, tone, tag });
+        const props = [
+          "fontSize",
+          "lineHeight",
+          "marginTop",
+          "marginBottom",
+          "color",
+          "letterSpacing",
+          "fontWeight",
+        ];
+        const results = [];
+        for (const item of cases) {
+          const mount = (parent) => {
+            const el = document.createElement(item.tag);
+            if (item.kind === "heading") {
+              el.className = `cwa-design-heading ${item.cls}`;
+              el.textContent = "层级样例";
+            } else {
+              el.className = `cwa-design-text cwa-design-text--${item.variant} cwa-design-text--${item.tone}`;
+              el.textContent = "正文样例";
+            }
+            parent.appendChild(el);
+            return el;
+          };
+          const inDocs = mount(docsHost.appendChild(document.createElement("div")));
+          const isolated = mount(isolatedHost.appendChild(document.createElement("div")));
+          const one = getComputedStyle(inDocs);
+          const two = getComputedStyle(isolated);
+          const diffs = props
+            .filter((prop) => one[prop] !== two[prop])
+            .map((prop) => `${prop}: ${one[prop]} != ${two[prop]}`);
+          results.push({
+            ...item,
+            equal: diffs.length === 0,
+            diffs,
+            inDocs: Object.fromEntries(props.map((prop) => [prop, one[prop]])),
+          });
+          inDocs.parentElement.remove();
+          isolated.parentElement.remove();
+        }
+        isolatedHost.remove();
+        return results;
+      });
+      const mismatches = matrix.filter((row) => !row.equal);
+      assert.deepEqual(
+        mismatches,
+        [],
+        `component typography must not depend on the docs ancestor: ${JSON.stringify(mismatches.slice(0, 3))}`,
+      );
+      const display = matrix.find(
+        (row) =>
+          row.kind === "heading" && row.cls === "cwa-design-heading--display" && row.tag === "h2",
+      );
+      assert.equal(
+        display.inDocs.fontSize,
+        "28px",
+        "Heading display keeps the component size inside docs",
+      );
+      assert.equal(
+        display.inDocs.marginTop,
+        "0px",
+        "Heading display keeps the component margin inside docs",
+      );
+      const bodyText = matrix.find(
+        (row) =>
+          row.kind === "text" &&
+          row.variant === "body" &&
+          row.tone === "default" &&
+          row.tag === "p",
+      );
+      assert.equal(
+        bodyText.inDocs.fontSize,
+        "16px",
+        "Text body keeps the component size inside docs",
+      );
+      assert.equal(
+        matrix.length,
+        20,
+        "explicit scenario coverage: 3 heading sizes × 4 levels + 2 variants × 2 tones × 2 elements",
+      );
+      await axe("heading-cascade-isolation");
+      return {
+        cases: matrix.length,
+        sample: { display: display.inDocs, bodyText: bodyText.inDocs },
+      };
+    });
+    await scenario("overlay-stage-real-media", async () => {
+      // N07：浮层材质对照舞台使用真实照片，图片必须实际加载并切换。
+      await goto("components/popover/");
+      await loadExamples();
+      const stage = page.locator(".overlay-stage");
+      await stage.scrollIntoViewIfNeeded();
+      const image = stage.locator("img.overlay-stage-media");
+      await image.waitFor();
+      await page.waitForFunction(
+        (element) => element.complete && element.naturalWidth > 1000,
+        await image.elementHandle(),
+      );
+      assert(
+        await stage.getByRole("button", { name: "真实暗照片" }).isVisible(),
+        "stage media picker offers real dark photo",
+      );
+      await stage.getByRole("button", { name: "真实暗照片" }).click();
+      const darkImage = stage.locator("img.overlay-stage-media");
+      await page.waitForFunction(
+        (element) => element.src.includes("photo-real-dark"),
+        await darkImage.elementHandle(),
+      );
+      await stage.getByRole("button", { name: "自绘明暗分区" }).click();
+      assert(await stage.locator(".overlay-stage-media--split").isVisible());
+      // 每个浮层组件页都有舞台实例。
+      for (const id of ["dropdown-menu", "select", "dialog", "sheet"]) {
+        await goto(`components/${id}/`);
+        assert(
+          (await page.locator(`.overlay-stage[data-overlay-stage=${id}]`).count()) === 1,
+          `${id} has its own media stage`,
+        );
+      }
+      return { popoverStage: true, mediaSwitch: ["real-dark", "split"] };
+    });
     await scenario("dialog-real-open-close-focus", async () => {
       await goto("components/dialog/");
       await loadExamples();

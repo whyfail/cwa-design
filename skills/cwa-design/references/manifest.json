@@ -2,7 +2,7 @@
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.2",
   "framework": "react",
-  "registryDigest": "sha256:53cce12ef38411e0ae42a8dad4c8a9166c87eb80768a2572cea07df1bc0a8992",
+  "registryDigest": "sha256:e65a3d1ea71ca13254a3b6986446c1510b173d71284ae2efaec7a63f5a3392ed",
   "generatedAt": "2026-10-03T17:58:40.072Z",
   "components": [
     {
@@ -132,7 +132,7 @@
         "React.HTMLAttributes<HTMLDivElement>；className/style、DOM 事件、aria-*、data-* 均由原生类型继承"
       ],
       "materialPolicy": "solid",
-      "materialNotes": "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。",
+      "materialNotes": "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。背景可读性边界（2026-10-04 实测矩阵，2 主题 × 9 背景 × 4 材质）：正文与控件标签（不透明正文色）在 regular 下全部验证背景达标；副文字（--cwa-design-color-glass-text-muted）在 regular 下仅保证中等亮度背景（山水/文字列表/图表/棋盘）与同向极端背景（浅色×纯白、深色×纯黑）；跨亮度媒体（浅色×暗图、深色×亮图）、明暗分区与反向极端背景请改 frosted 或 solid，或给控件局部实色底面。glass-clear 只用于媒体上的轻量工具栏：浅色配亮调媒体、深色配暗调媒体，仅放少量大号短标签；表单与长文请用 regular/frosted/solid。",
       "a11y": [
         "semantic-content",
         "visible-focus-for-interactive-parts",
@@ -3233,10 +3233,10 @@
     {
       "path": "contracts/surface.json",
       "mimeType": "application/json",
-      "contentDigest": "sha256:40ea2071e524304d1c16e8fce90a07d4a15c9debad52867a6a4afc848850abd3",
-      "byteSize": 1414,
+      "contentDigest": "sha256:a63f02b2f37779e13dbb17f30583c9b9562b2d111354ec111fcf13b56214bab6",
+      "byteSize": 2104,
       "sourcePath": "packages/react/src/surface/surface.meta.ts",
-      "sourceDigest": "sha256:43c661489021b8cf0955f63c2598c9196b4ffd73ee27954aedb27ed5333706e5"
+      "sourceDigest": "sha256:a2c9840595e9155c1ba4d101a87a61b8e545c66c84afff88a97b0aa89fc5a2a9"
     },
     {
       "path": "contracts/button.json",

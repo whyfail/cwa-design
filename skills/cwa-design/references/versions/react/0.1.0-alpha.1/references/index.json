@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.1",
-  "registryDigest": "sha256:e743d9db2377f7794d927579286a8900749bca753604c9d19b75edb1c2296b3b",
+  "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
   "digestMethod": "sha256-raw-file-bytes",
   "files": [
     {
@@ -126,8 +126,8 @@
     },
     {
       "path": "contracts/surface.json",
-      "contentDigest": "sha256:7a5c0d22ca4fbe52b8c3f70113250313cd98fa1c01622ea79acad7bd0f1d0be0",
-      "byteSize": 1414
+      "contentDigest": "sha256:3904d4e2d8a26659192108b1ded7d70170f85f1f4639f53e37f0ca3b43868bd9",
+      "byteSize": 1385
     },
     {
       "path": "contracts/switch.json",
@@ -161,8 +161,8 @@
     },
     {
       "path": "examples.json",
-      "contentDigest": "sha256:5de5b0abf17eebdff48cd10ce52aa217421345c6983bfe1c01297684f58d8524",
-      "byteSize": 15794
+      "contentDigest": "sha256:f80d2b965de86245d5804e2dfa1d3888c12666c2cc214ad5345f7c5375e9ae0e",
+      "byteSize": 15267
     },
     {
       "path": "examples/alert-basic.tsx",
@@ -290,11 +290,6 @@
       "byteSize": 317
     },
     {
-      "path": "examples/surface-clear-toolbar.tsx",
-      "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
-      "byteSize": 2415
-    },
-    {
       "path": "examples/switch-basic.tsx",
       "contentDigest": "sha256:a55d77071a6b0f3276629ed6ba4191d64cd8c818ed66d4641c6f85844e921026",
       "byteSize": 263
@@ -326,12 +321,12 @@
     },
     {
       "path": "manifest.json",
-      "contentDigest": "sha256:68ee2793354530bdad65f0229c9e07230d2ccdbc75f6617b6076a1dac35d419f",
-      "byteSize": 123155
+      "contentDigest": "sha256:deaa50c2df576e262747771a93db98582106c206fa84715c337450262df5cbfb",
+      "byteSize": 122170
     },
     {
       "path": "overview.md",
-      "contentDigest": "sha256:ee8a2d069fb16fa542e359dc9a353bc0459429ad2a115f5e06874dedf23df197",
+      "contentDigest": "sha256:3bc94fb2b21a0fc1047bd96ab9fd86a4f074646d54e14c6291f993e2f013069a",
       "byteSize": 581
     },
     {
@@ -361,8 +356,8 @@
     },
     {
       "path": "tokens.json",
-      "contentDigest": "sha256:f515752f31ce9ddd9ceed96b8b8ae3880acd643110b473df729636ad8c7c1bb5",
-      "byteSize": 15703
+      "contentDigest": "sha256:16b5e215a848541e5fcd030978829e8d3a225b97532cb01ac31f8489a01f88ef",
+      "byteSize": 13353
     }
   ]
 }

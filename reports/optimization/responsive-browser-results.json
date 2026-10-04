@@ -1,12 +1,190 @@
 {
-  "generatedAt": "2026-10-03T14:40:56.016Z",
+  "generatedAt": "2026-10-03T21:08:10.523Z",
   "browserVersion": "154.0.8037.97",
+  "matrix": {
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "fontScales": [
+      100,
+      150,
+      200
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "zooms": [
+      1.5,
+      2
+    ]
+  },
   "results": [
     {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
+    },
+    {
       "name": "home",
       "route": "",
       "theme": "light",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -18,6 +196,7 @@
       "route": "components/",
       "theme": "light",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -29,6 +208,7 @@
       "route": "components/button/",
       "theme": "light",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -40,6 +220,7 @@
       "route": "themes/",
       "theme": "light",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -51,6 +232,7 @@
       "route": "patterns/",
       "theme": "light",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -62,6 +244,7 @@
       "route": "",
       "theme": "light",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -73,6 +256,7 @@
       "route": "components/",
       "theme": "light",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -84,6 +268,7 @@
       "route": "components/button/",
       "theme": "light",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -95,6 +280,7 @@
       "route": "themes/",
       "theme": "light",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -106,6 +292,7 @@
       "route": "patterns/",
       "theme": "light",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -117,6 +304,7 @@
       "route": "",
       "theme": "light",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -128,6 +316,7 @@
       "route": "components/",
       "theme": "light",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -139,6 +328,7 @@
       "route": "components/button/",
       "theme": "light",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -150,6 +340,7 @@
       "route": "themes/",
       "theme": "light",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -161,6 +352,7 @@
       "route": "patterns/",
       "theme": "light",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -172,6 +364,7 @@
       "route": "",
       "theme": "light",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -183,6 +376,7 @@
       "route": "components/",
       "theme": "light",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -194,6 +388,7 @@
       "route": "components/button/",
       "theme": "light",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -205,6 +400,7 @@
       "route": "themes/",
       "theme": "light",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -216,17 +412,199 @@
       "route": "patterns/",
       "theme": "light",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
       },
       "passed": true
+    },
+    {
+      "theme": "light",
+      "zoom": 1.5,
+      "equivalentWidth": 853,
+      "passed": true,
+      "scrollWidth": 853,
+      "clientWidth": 853,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0
+      }
+    },
+    {
+      "theme": "light",
+      "zoom": 2,
+      "equivalentWidth": 640,
+      "passed": true,
+      "scrollWidth": 640,
+      "clientWidth": 640,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0
+      }
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 320
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 390
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 768
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 1440
     },
     {
       "name": "home",
       "route": "",
       "theme": "dark",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -238,6 +616,7 @@
       "route": "components/",
       "theme": "dark",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -249,6 +628,7 @@
       "route": "components/button/",
       "theme": "dark",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -260,6 +640,7 @@
       "route": "themes/",
       "theme": "dark",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -271,6 +652,7 @@
       "route": "patterns/",
       "theme": "dark",
       "width": 375,
+      "fontScale": 100,
       "layout": {
         "width": 375,
         "viewport": 375
@@ -282,6 +664,7 @@
       "route": "",
       "theme": "dark",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -293,6 +676,7 @@
       "route": "components/",
       "theme": "dark",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -304,6 +688,7 @@
       "route": "components/button/",
       "theme": "dark",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -315,6 +700,7 @@
       "route": "themes/",
       "theme": "dark",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -326,6 +712,7 @@
       "route": "patterns/",
       "theme": "dark",
       "width": 768,
+      "fontScale": 100,
       "layout": {
         "width": 768,
         "viewport": 768
@@ -337,6 +724,7 @@
       "route": "",
       "theme": "dark",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -348,6 +736,7 @@
       "route": "components/",
       "theme": "dark",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -359,6 +748,7 @@
       "route": "components/button/",
       "theme": "dark",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -370,6 +760,7 @@
       "route": "themes/",
       "theme": "dark",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -381,6 +772,7 @@
       "route": "patterns/",
       "theme": "dark",
       "width": 1024,
+      "fontScale": 100,
       "layout": {
         "width": 1024,
         "viewport": 1024
@@ -392,6 +784,7 @@
       "route": "",
       "theme": "dark",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -403,6 +796,7 @@
       "route": "components/",
       "theme": "dark",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -414,6 +808,7 @@
       "route": "components/button/",
       "theme": "dark",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -425,6 +820,7 @@
       "route": "themes/",
       "theme": "dark",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
@@ -436,15 +832,41 @@
       "route": "patterns/",
       "theme": "dark",
       "width": 1440,
+      "fontScale": 100,
       "layout": {
         "width": 1440,
         "viewport": 1440
       },
       "passed": true
+    },
+    {
+      "theme": "dark",
+      "zoom": 1.5,
+      "equivalentWidth": 853,
+      "passed": true,
+      "scrollWidth": 853,
+      "clientWidth": 853,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0
+      }
+    },
+    {
+      "theme": "dark",
+      "zoom": 2,
+      "equivalentWidth": 640,
+      "passed": true,
+      "scrollWidth": 640,
+      "clientWidth": 640,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0
+      }
     }
   ],
   "limitations": [
-    "Chromium responsive layout checks; no real iOS or physical touch device.",
-    "Viewport screenshots avoid Chromium full-page backdrop-filter tiling artifacts."
+    "Chromium responsive/font-scale checks; no real iOS or physical touch device.",
+    "Root font-size stress (100/150/200%) is not a full WCAG resize-text conformance audit.",
+    "Browser zoom is modeled as an equivalent CSS-viewport reduction (150%/200% of a 1280px window), not engine-native zoom rendering."
   ]
 }

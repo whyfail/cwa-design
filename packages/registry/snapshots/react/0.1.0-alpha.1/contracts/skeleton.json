@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.1",
+  "framework": "react",
+  "id": "skeleton",
+  "name": "Skeleton",
+  "description": "固定占位几何；为加载中的内容预留宽高。",
+  "typeName": "SkeletonProps",
+  "sourceTypePath": "packages/react/src/skeleton/skeleton.tsx#SkeletonProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Skeleton"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "width": {
+      "type": "string-number"
+    },
+    "height": {
+      "type": "string-number",
+      "default": "1rem"
+    },
+    "radius": {
+      "type": "string-number"
+    }
+  },
+  "extends": [
+    "React.HTMLAttributes<HTMLDivElement>"
+  ],
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "使用占位填充；系统 reduced-motion 下停止闪烁。",
+  "a11y": [
+    "aria-hidden-placeholder",
+    "reduced-motion"
+  ],
+  "examples": [
+    "skeleton-basic"
+  ],
+  "runtimeDependencies": [],
+  "deprecated": false
+}
