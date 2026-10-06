@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T02:35:41.030Z",
+  "generatedAt": "2026-10-06T02:51:40.131Z",
   "status": "passed",
   "node": "v24.21.0",
   "version": "0.1.0-alpha.3",
@@ -12,7 +12,7 @@
     "includesWorkspaceSource": false
   },
   "consumer": {
-    "directory": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd",
+    "directory": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-3Fu9vu",
     "dependencies": {
       "@cwa-design/react": "file:./cwa-design-react-0.1.0-alpha.3.tgz",
       "react": "19.3.0",
@@ -53,9 +53,9 @@
       ]
     },
     "installedPublicExportsAndSsrServer": {
-      "installedPackageRoot": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react",
+      "installedPackageRoot": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-3Fu9vu/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react",
       "installedPackageVersion": "0.1.0-alpha.3",
-      "publicCssPath": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react/dist/styles.css",
+      "publicCssPath": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-3Fu9vu/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react/dist/styles.css",
       "packageIsWorkspaceLinked": false,
       "publicExports": [
         "AccountPanelRecipe",
@@ -173,5 +173,5 @@
     ],
     "ssrBytes": 7161
   },
-  "elapsedMs": 5300
+  "elapsedMs": 5088
 }

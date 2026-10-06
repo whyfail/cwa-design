@@ -165,14 +165,11 @@ export function GlassCandidatesPage() {
   const [media, setMedia] = useState<"real-bright" | "real-dark">("real-bright");
   return (
     <>
-      <p className="site-eyebrow">DESIGN</p>
-      <h1>
-        玻璃候选 A/B 对照<span className="alpha-label">待签收</span>
-      </h1>
-      <p className="site-lead">
-        A = 已部署 79168ce 的 Token；B = 0.1.0-alpha.3 候选（默认已应用）。
-        同一真实照片、同一布局、同一文字，仅 Token 不同；推荐 B 为默认候选， 审美签收 pending（ADR
-        0002）。切换背景观察 rim、透色与投影在不同媒体上的表现。
+      {/* 页面 h1 与引言由 ArticlePage 的 PageIntro 提供；此处只放待签收标注与对照内容。 */}
+      <p className="doc-note">
+        <span className="alpha-label">待签收</span> A = 已部署 79168ce 的 Token；B =
+        0.1.0-alpha.3 候选（默认已应用）。同一真实照片、同一布局、同一文字，仅 Token
+        不同；推荐 B 为默认候选，审美签收 pending（ADR 0002）。
       </p>
       <div className="ab-controls" role="group" aria-label="对照背景">
         <button

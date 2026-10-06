@@ -27,13 +27,30 @@ const archive =
 const reportPath = path.join(repoRoot, "reports/optimization/tarball-results.json");
 const startedAt = Date.now();
 const digest = (bytes) => `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
+// 本机仓库规范用 rtk 代理；CI/其他环境无 rtk 时直接执行同一条命令。
+const rtkAvailable = (() => {
+  try {
+    execFileSync("rtk", ["--version"], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+})();
 const run = (args, cwd) =>
-  execFileSync("rtk", ["proxy", "env", "NVMD_NODE_VERSION=24.21.0", ...args], {
-    cwd,
-    encoding: "utf8",
-    maxBuffer: 10 * 1024 * 1024,
-    stdio: ["ignore", "pipe", "pipe"],
-  });
+  rtkAvailable
+    ? execFileSync("rtk", ["proxy", "env", "NVMD_NODE_VERSION=24.21.0", ...args], {
+        cwd,
+        encoding: "utf8",
+        maxBuffer: 10 * 1024 * 1024,
+        stdio: ["ignore", "pipe", "pipe"],
+      })
+    : execFileSync(args[0], args.slice(1), {
+        cwd,
+        encoding: "utf8",
+        maxBuffer: 10 * 1024 * 1024,
+        stdio: ["ignore", "pipe", "pipe"],
+        env: { ...process.env, NVMD_NODE_VERSION: process.env.NVMD_NODE_VERSION ?? "24.21.0" },
+      });
 const report = {
   generatedAt: new Date().toISOString(),
   status: "running",

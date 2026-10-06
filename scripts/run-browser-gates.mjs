@@ -31,6 +31,8 @@ execFileSync("corepack", ["pnpm", "--filter", "@cwa-design/docs", "run", "build"
   env: { ...process.env, CWA_BASE: env.CWA_BASE, NVMD_NODE_VERSION: "24.21.0" },
   stdio: "inherit",
 });
+// 部署工作流同款静态检查（每页单 h1、深链接等），提前在门禁里拦截同类回归。
+run("static site checks", "python3", ["scripts/verify-static-site.py"]);
 
 const server = spawn("node", [path.join(root, "apps/docs/scripts/serve.mjs")], {
   cwd: path.join(root, "apps/docs"),
