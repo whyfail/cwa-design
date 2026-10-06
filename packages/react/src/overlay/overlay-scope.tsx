@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, type RefObject, useEffect, useRef } from "react";
+import { type ReactNode, type RefObject, useEffect, useLayoutEffect, useRef } from "react";
 import { useCwaContext } from "../provider/provider";
 
 /**
@@ -8,7 +8,70 @@ import { useCwaContext } from "../provider/provider";
  * tokens 定义在 :root（全局可继承），但 data-cwa-theme / data-cwa-material 等
  * 属性作用域在 Provider 根元素上；portal 挂到 body 后必须复制这些属性，
  * 否则浮层读不到主题/密度/材质（主计划 §9.1）。
+ *
+ * Token 覆盖同步（ADR 0001）：Provider 根元素上通过 className/style 生效的
+ * `--cwa-design-*` 覆盖不会自然传入 Portal。挂载时枚举 Provider 根的计算样式，
+ * 与本作用域元素的自然解析值逐项比较，仅把差异写到作用域元素上；打开时一次 +
+ * Provider 属性/Context 变化时重同步，不做每帧读取。
  */
+function useTokenScopeSync(
+  scopeRef: RefObject<HTMLElement | null>,
+  providerElement: HTMLElement | null,
+  resyncKeys: readonly unknown[],
+) {
+  const syncedNames = useRef<Set<string>>(new Set());
+  useLayoutEffect(() => {
+    const scope = scopeRef.current;
+    if (!scope || !providerElement) return;
+    const sync = () => {
+      // 先清除上一轮同步的内联值，让比较基于自然解析结果。
+      for (const name of syncedNames.current) scope.style.removeProperty(name);
+      syncedNames.current.clear();
+      const providerComputed = getComputedStyle(providerElement);
+      const scopeComputed = getComputedStyle(scope);
+      // 候选名：Provider 计算样式枚举（真实浏览器覆盖 class+inline）∪ 根元素
+      // 内联样式名（jsdom 等不枚举自定义属性时的可靠来源）。
+      const names = new Set<string>();
+      for (let index = 0; index < providerComputed.length; index += 1) {
+        const name = providerComputed[index]!;
+        if (name.startsWith("--cwa-design-")) names.add(name);
+      }
+      for (let index = 0; index < providerElement.style.length; index += 1) {
+        const name = providerElement.style[index]!;
+        if (name.startsWith("--cwa-design-")) names.add(name);
+      }
+      for (const name of names) {
+        const providerValue =
+          providerElement.style.getPropertyValue(name).trim() ||
+          providerComputed.getPropertyValue(name).trim();
+        const scopeValue = scopeComputed.getPropertyValue(name).trim();
+        if (providerValue && providerValue !== scopeValue) {
+          scope.style.setProperty(name, providerValue);
+          syncedNames.current.add(name);
+        }
+      }
+    };
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(providerElement, {
+      attributes: true,
+      attributeFilter: [
+        "style",
+        "class",
+        "data-cwa-theme",
+        "data-cwa-material",
+        "data-cwa-motion",
+        "data-cwa-density",
+      ],
+    });
+    return () => {
+      observer.disconnect();
+      for (const name of syncedNames.current) scope.style.removeProperty(name);
+      syncedNames.current.clear();
+    };
+    // resyncKeys：Context 主题/材质/密度/动效变化时重同步（展开依赖为刻意设计）。
+  }, [scopeRef, providerElement, ...resyncKeys]);
+}
 function useFocusGuardNames(scopeRef: RefObject<HTMLElement | null>, locale: string | undefined) {
   useEffect(() => {
     const scope = scopeRef.current;
@@ -72,6 +135,13 @@ export function OverlayPortalScope({ children }: { children: ReactNode }) {
   const ctx = useCwaContext();
   const scopeRef = useRef<HTMLDivElement>(null);
   useFocusGuardNames(scopeRef, ctx.locale);
+  useTokenScopeSync(scopeRef, ctx.providerElement, [
+    ctx.theme,
+    ctx.resolvedTheme,
+    ctx.material,
+    ctx.motion,
+    ctx.density,
+  ]);
   const attributes: Record<string, string> = {};
   const theme = ctx.theme === "system" ? ctx.resolvedTheme : ctx.theme;
   if (theme) attributes["data-cwa-theme"] = theme;

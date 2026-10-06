@@ -12,8 +12,8 @@ import {
 import {
   currentLibraryVersion,
   loadSnapshots,
-  readArtifact,
   type RegistrySnapshot,
+  readArtifact,
 } from "@cwa-design/registry/snapshot";
 import { applyInit, planInit } from "./init.js";
 

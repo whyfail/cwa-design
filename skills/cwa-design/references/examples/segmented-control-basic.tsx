@@ -3,6 +3,14 @@ import { SegmentedControl } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <SegmentedControl aria-label="时间范围" defaultValue="week" items={[{ value: "day", label: "日" }, { value: "week", label: "周" }, { value: "month", label: "月" }]} />
+    <SegmentedControl
+      aria-label="时间范围"
+      defaultValue="week"
+      items={[
+        { value: "day", label: "日" },
+        { value: "week", label: "周" },
+        { value: "month", label: "月" },
+      ]}
+    />
   );
 }

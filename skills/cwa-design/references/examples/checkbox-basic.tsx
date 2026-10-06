@@ -3,6 +3,8 @@ import { Checkbox } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Checkbox name="updates" defaultChecked>接收产品更新</Checkbox>
+    <Checkbox name="updates" defaultChecked>
+      接收产品更新
+    </Checkbox>
   );
 }

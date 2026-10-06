@@ -3,6 +3,8 @@ import { CwaProvider, Text } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <CwaProvider theme="light" material="auto"><Text>应用根提供主题、材质与 Portal 上下文。</Text></CwaProvider>
+    <CwaProvider theme="light" material="auto">
+      <Text>应用根提供主题、材质与 Portal 上下文。</Text>
+    </CwaProvider>
   );
 }

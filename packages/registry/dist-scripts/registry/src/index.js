@@ -25,7 +25,13 @@ export const exactVersionSchema = z
     .string()
     .max(128)
     .regex(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/, "必须是确切 SemVer")
-    .refine((value) => !value.split("+")[0].split("-").slice(1).join("-").split(".").some((part) => /^0\d+$/.test(part)), "SemVer 数字 prerelease 不能有前导零");
+    .refine((value) => !value
+    .split("+")[0]
+    .split("-")
+    .slice(1)
+    .join("-")
+    .split(".")
+    .some((part) => /^0\d+$/.test(part)), "SemVer 数字 prerelease 不能有前导零");
 const propInfo = {
     required: z.boolean().optional(),
     description: z.string().optional(),
@@ -77,7 +83,12 @@ export const propSchema = z.union([
     propStringNumberSchema,
 ]);
 export const materialPolicySchema = z.enum([
-    "inherit-parent-surface", "glass-regular", "glass-thick", "glass-clear-opt-in", "solid", "frosted",
+    "inherit-parent-surface",
+    "glass-regular",
+    "glass-thick",
+    "glass-clear-opt-in",
+    "solid",
+    "frosted",
 ]);
 export const compoundPartSchema = z.strictObject({
     exportName: z.string(),
@@ -114,7 +125,9 @@ export const componentRecordSchema = z.strictObject({
     runtimeDependencies: z.array(z.string()).default([]),
     deprecated: z.boolean().default(false),
 });
-export const relativeArtifactPathSchema = z.string().regex(/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._/-]+$/);
+export const relativeArtifactPathSchema = z
+    .string()
+    .regex(/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._/-]+$/);
 export const contentDigestSchema = z.string().regex(/^sha256:[0-9a-f]{64}$/);
 export const artifactRecordSchema = z.strictObject({
     path: relativeArtifactPathSchema,

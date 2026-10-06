@@ -3,11 +3,11 @@ import { Buffer } from "node:buffer";
 import { pathToFileURL } from "node:url";
 import { getComponent, getManifest, RegistryError } from "@cwa-design/registry";
 import {
-  currentLibraryVersion,
   contentDigest,
+  currentLibraryVersion,
   loadSnapshots,
-  readArtifact,
   type RegistrySnapshot,
+  readArtifact,
 } from "@cwa-design/registry/snapshot";
 import { McpServer } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";

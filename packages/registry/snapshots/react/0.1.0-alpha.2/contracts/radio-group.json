@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.2",
+  "framework": "react",
+  "id": "radio-group",
+  "name": "RadioGroup",
+  "description": "单选选项组；方向键导航与隐藏表单 input 由 Base UI 提供。",
+  "typeName": "CwaRadioGroupProps",
+  "sourceTypePath": "packages/react/src/radio-group/radio-group.tsx#CwaRadioGroupProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "RadioGroup",
+    "RadioItem"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "@base-ui/react/radio-group#RadioGroupProps；value/defaultValue/onValueChange/name/disabled/className/aria-* 等完整继承"
+  ],
+  "compoundParts": {
+    "RadioItem": {
+      "exportName": "RadioItem",
+      "typeName": "RadioItemProps",
+      "sourceTypePath": "packages/react/src/radio-group/radio-group.tsx#RadioItemProps",
+      "description": "带 label 的单个选项；value 为字符串。",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": []
+    }
+  },
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "选项不创建光学层。",
+  "a11y": [
+    "accessible-name-required-for-controls",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "radio-group-basic"
+  ],
+  "runtimeDependencies": [
+    "@base-ui/react"
+  ],
+  "deprecated": false
+}

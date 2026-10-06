@@ -3,6 +3,8 @@ import { Field, Input } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Field label="邮箱"><Input name="email" type="email" autoComplete="email" placeholder="you@example.com" /></Field>
+    <Field label="邮箱">
+      <Input name="email" type="email" autoComplete="email" placeholder="you@example.com" />
+    </Field>
   );
 }

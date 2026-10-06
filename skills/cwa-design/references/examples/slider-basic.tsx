@@ -2,7 +2,5 @@
 import { Slider } from "@cwa-design/react";
 
 export default function Example() {
-  return (
-    <Slider aria-label="缩放比例" defaultValue={50} min={0} max={100} step={5} />
-  );
+  return <Slider aria-label="缩放比例" defaultValue={50} min={0} max={100} step={5} />;
 }

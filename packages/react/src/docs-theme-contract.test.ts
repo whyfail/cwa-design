@@ -54,3 +54,45 @@ describe("docs 主题实验室覆盖常量契约", () => {
     }
   });
 });
+
+describe("V04 材质策略四端同步防漂移", () => {
+  const read = (relative: string) =>
+    readFileSync(path.join(import.meta.dirname, "../../../", relative), "utf8");
+  const policy = read("apps/docs/src/background-policy.ts");
+  const surfaceMeta = read("packages/react/src/surface/surface.meta.ts");
+  const skill = read("skills/cwa-design/SKILL.md");
+  const materialsArticle = read("apps/docs/src/pages/articles.tsx");
+
+  it("策略与 Surface 契约使用同一证据口径（11 背景、未取整、深色×纯白 4.487）", () => {
+    expect(policy).toContain('glassDarkPressure = ["photo-light", "white"]');
+    for (const source of [surfaceMeta, skill, materialsArticle]) {
+      expect(source).toContain("11 背景");
+      expect(source).toContain("3.910");
+      expect(source).not.toContain("全部验证背景达标");
+      expect(source).not.toContain("全部九类验证背景达标");
+      expect(source).not.toContain("9 背景");
+    }
+  });
+
+  it("四类支持状态在策略、实验室与契约中同在", () => {
+    for (const state of [
+      "supported",
+      "pressure",
+      "not-recommended",
+      "explicit-override-unverified",
+    ]) {
+      expect(policy).toContain(state);
+      expect(read("apps/docs/src/pages/themes.tsx")).toContain("supportState");
+    }
+    expect(surfaceMeta).toContain("显式 tint/accent 覆盖不在默认矩阵范围内");
+    expect(skill).toContain("explicit-override-unverified");
+  });
+
+  it("Clear 逐媒体压力数组与脚本解析的命名一致", () => {
+    expect(policy).toContain('clearLightMediaPressure = ["real-bright", "real-dark", "split"]');
+    expect(policy).toContain('clearDarkMediaPressure = ["split"]');
+    const script = read("scripts/verify-composite-contrast.mjs");
+    expect(script).toContain('parseArray("clearLightMediaPressure")');
+    expect(script).toContain('parseArray("clearDarkMediaPressure")');
+  });
+});

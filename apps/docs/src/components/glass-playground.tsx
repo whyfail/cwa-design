@@ -76,12 +76,12 @@ export function Landscape() {
 export function RealPhoto({ variant }: { variant: "bright" | "dark" }) {
   return (
     <img
-      className="landscape"
+      className="landscape photo-real"
       src={`${import.meta.env.BASE_URL}media/photo-real-${variant}.jpg`}
       alt=""
       aria-hidden="true"
       loading="eager"
-      decoding="async"
+      decoding="sync"
     />
   );
 }
@@ -272,10 +272,11 @@ export function GlassPlayground({
       density={context.density}
       material={solid ? "solid" : context.material}
       className="playground-scope"
+      // 覆盖放在 Provider 根（ADR 0001 的受支持路径）：面板与打开的浮层一致。
+      style={variables}
     >
       <div
         className={`glass-playground glass-playground--${background} ${compact ? "glass-playground--compact" : ""}`}
-        style={variables}
       >
         {background === "landscape" ? <Landscape /> : null}
         {background === "photo-light" ? <PhotoLight /> : null}

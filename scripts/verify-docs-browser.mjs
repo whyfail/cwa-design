@@ -2,20 +2,21 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 
-const playwright = await import(process.env.CWA_PLAYWRIGHT_MODULE || "playwright");
+// V07：QA 依赖默认来自仓库内 @cwa-design/qa（可复现锁文件）；环境变量仍可覆盖。
 const root = path.resolve(import.meta.dirname, "..");
+const qaRequire = createRequire(path.join(root, "packages/qa/package.json"));
+const playwright = process.env.CWA_PLAYWRIGHT_MODULE
+  ? await import(process.env.CWA_PLAYWRIGHT_MODULE)
+  : qaRequire("playwright");
 const base = process.env.CWA_DOCS_URL || "http://127.0.0.1:4173/cwa-design/";
-const qaDirectory = (
-  await readFile(
-    process.env.CWA_AXE_DIRECTORY_FILE || "/tmp/cwa-design-qa-current-path.txt",
-    "utf8",
-  )
-).trim();
-const axePath = path.join(qaDirectory, "node_modules/axe-core/axe.min.js");
+const axePath = process.env.CWA_AXE_PATH
+  ? process.env.CWA_AXE_PATH
+  : path.join(root, "packages/qa/node_modules/axe-core/axe.min.js");
 const axeVersion = JSON.parse(
-  await readFile(path.join(qaDirectory, "node_modules/axe-core/package.json"), "utf8"),
+  await readFile(path.join(root, "packages/qa/node_modules/axe-core/package.json"), "utf8"),
 ).version;
 const release = await fetch(new URL("release.json", base)).then((response) => {
   assert(response.ok, "release.json must be served");
@@ -574,9 +575,9 @@ for (const engine of engines) {
         "rgba(28,29,34,0.68)",
         "68 → 67 → 68 returns to the theme value",
       );
-      const config68 = await downloadConfig();
+      const config72 = await downloadConfig();
       assert.equal(
-        config68.cssTokens["--cwa-design-color-glass-regular-fill"],
+        config72.cssTokens["--cwa-design-color-glass-regular-fill"],
         "rgba(28,29,34,0.68)",
       );
       // 浅色主题同规则：显式覆盖用白色底。
@@ -600,7 +601,7 @@ for (const engine of engines) {
       await axe("theme-lab-override-consistency");
       return {
         dark67: config67.cssTokens,
-        dark68: config68.cssTokens,
+        dark72: config72.cssTokens,
         solid: solidConfig.provider,
       };
     });
@@ -747,6 +748,67 @@ for (const engine of engines) {
         );
       }
       return { popoverStage: true, mediaSwitch: ["real-dark", "split"] };
+    });
+    await scenario("theme-lab-portal-override-consistency", async () => {
+      // V02 回归：Jade 主色 + 显式 67% 遮蔽时，打开材质说明的 Portal 浮层
+      // 必须继承 Provider 的 Token 覆盖（旧缺陷：Portal 回落 #005fbe/#ffffff85）。
+      await goto("themes/");
+      await setTheme("light");
+      const controls = page.locator(".theme-controls");
+      await controls.getByRole("combobox", { name: /^主色/ }).selectOption("#087a6a");
+      await page.locator(".theme-range input").fill("67");
+      const readStyles = () =>
+        page.evaluate(() => {
+          const panel = document.querySelector(".glass-control-panel");
+          const portalPopup = document.querySelector(
+            ".cwa-design-portal-scope .cwa-design-popover, .cwa-design-portal-scope [role=dialog]",
+          );
+          const popup =
+            portalPopup ?? document.querySelector("[role=dialog][id], .cwa-design-popover");
+          const panelStyle = getComputedStyle(panel);
+          return {
+            panel: {
+              accent: panelStyle.getPropertyValue("--cwa-design-color-accent").trim(),
+              fill: getComputedStyle(panel).backgroundColor,
+            },
+            portal: popup
+              ? {
+                  accent: getComputedStyle(popup)
+                    .getPropertyValue("--cwa-design-color-accent")
+                    .trim(),
+                  fill: getComputedStyle(popup).backgroundColor,
+                }
+              : null,
+          };
+        });
+      const trigger = page.getByRole("button", { name: "查看材质说明" });
+      await trigger.click();
+      await page
+        .locator(
+          ".cwa-design-portal-scope [role=dialog], .cwa-design-portal-scope .cwa-design-popover",
+        )
+        .first()
+        .waitFor({ state: "visible", timeout: 10000 });
+      const styles = await readStyles();
+      assert(styles.portal, "popover portal renders");
+      assert.equal(styles.panel.accent, "#087a6a", "panel uses the explicit Jade accent");
+      assert.equal(styles.portal.accent, "#087a6a", "portal inherits the Provider accent override");
+      // 实验室的说明浮层是显式 solid 材质（底面为实色 Token）；67% 玻璃填充
+      // 经 Portal 的继承由独立 tarball 消费者的 glass Popover 场景断言。
+      // 关闭重开仍一致。
+      await page.keyboard.press("Escape");
+      await trigger.click();
+      await page
+        .locator(
+          ".cwa-design-portal-scope [role=dialog], .cwa-design-portal-scope .cwa-design-popover",
+        )
+        .first()
+        .waitFor({ state: "visible", timeout: 10000 });
+      const reopened = await readStyles();
+      assert.equal(reopened.portal.accent, "#087a6a", "reopened portal keeps the override");
+      await page.keyboard.press("Escape");
+      await axe("theme-lab-portal-override");
+      return styles;
     });
     await scenario("dialog-real-open-close-focus", async () => {
       await goto("components/dialog/");

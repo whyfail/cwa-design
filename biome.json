@@ -10,7 +10,14 @@
       "!**/node_modules/**",
       "!**/.next/**",
       "!**/.ssr/**",
-      "!**/storybook-static/**"
+      "!**/storybook-static/**",
+      "!**/.playwright-cli/**",
+      "!packages/registry/snapshots/**",
+      "!skills/cwa-design/references/**",
+      "!reports/**",
+      "!tasks/**",
+      "!versions.json",
+      "!pnpm-lock.yaml"
     ]
   },
   "formatter": {

@@ -31,6 +31,12 @@ const EXPECTED_HISTORICAL: Array<{ version: string; digest: string; examples: nu
     digest: "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
     examples: 31,
   },
+  {
+    // 79168ce 部署版（V07 冻结）：alpha.3 候选改动前从 dist 完整固化。
+    version: "0.1.0-alpha.2",
+    digest: "sha256:e65a3d1ea71ca13254a3b6986446c1510b173d71284ae2efaec7a63f5a3392ed",
+    examples: 32,
+  },
 ];
 
 describe("历史 Registry 快照（按版本使用可信）", () => {

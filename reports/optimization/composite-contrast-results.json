@@ -1,1299 +1,1592 @@
 {
-  "generatedAt": "2026-10-03T21:05:24.478Z",
+  "generatedAt": "2026-10-06T02:35:32.736Z",
   "engine": "154.0.8037.97",
+  "devicePixelRatio": 1,
+  "sampling": "bounding-box screening with glyphs hidden; boxes and screenshots share one origin; unrounded ratios",
   "matrix": {
     "themes": 2,
     "backgrounds": 11,
     "materials": 4,
-    "scenes": 90,
-    "samples": 800,
-    "threshold": "4.5:1 (WCAG 2.2 AA normal text, unrounded comparison)"
+    "scenes": 96,
+    "samples": 818,
+    "threshold": ">= 4.5:1 compared unrounded (WCAG 2.2 AA normal text)"
   },
-  "supportedScenes": 63,
+  "supportedScenes": 65,
   "pressureScenes": 27,
   "pressureFailingScenes": 17,
   "scenes": [
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 5.497,
+      "minimum": 5.497218492662601,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "photo-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.78,
+      "minimum": 8.779642889849002,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "photo-dark",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 4,
-      "minimum": 3.972,
+      "minimum": 3.9717316879766718,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-photo-dark-diagnostic.png",
       "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "contrast": 4.457,
+          "contrast": 4.334993014927992,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 4.181,
+          "contrast": 4.1806254980962425,
           "fontSize": "13px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 4.016,
+          "contrast": 4.015523689175135,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.972,
+          "contrast": 3.9717316879766718,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 4.518,
+      "minimum": 4.590997950812073,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 4.935,
+      "minimum": 4.9351368479710604,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.603,
+      "minimum": 12.603476942111177,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.974,
+      "minimum": 12.97353429454595,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 10.634,
+      "minimum": 10.634010616806755,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "split",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 1,
-      "minimum": 4.469,
+      "minimum": 4.46863592213685,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-split-diagnostic.png",
       "failedSamples": [
         {
           "text": "当前模式：专注",
-          "contrast": 4.469,
+          "contrast": 4.46863592213685,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "white",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 13.14,
+      "minimum": 13.140410702523532,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass",
       "background": "black",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 4,
-      "minimum": 3.543,
+      "minimum": 3.5433984317995173,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-black-diagnostic.png",
       "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "contrast": 3.941,
+          "contrast": 3.7884883221835857,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 3.591,
+          "contrast": 3.5914935966447827,
           "fontSize": "13px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 3.591,
+          "contrast": 3.5914935966447827,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.543,
+          "contrast": 3.5433984317995173,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.922,
+      "minimum": 8.921518648957965,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "photo-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 10.757,
+      "minimum": 10.757074453674324,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "photo-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.721,
+      "minimum": 7.720565512926444,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.295,
+      "minimum": 8.204890229130543,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.465,
+      "minimum": 8.46501127212032,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.918,
+      "minimum": 12.917552932302087,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 13.085,
+      "minimum": 13.076940809564464,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.899,
+      "minimum": 11.898796651170114,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "split",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.118,
+      "minimum": 8.118372970119635,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-split-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "white",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 13.14,
+      "minimum": 13.140410702523532,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "frosted",
       "background": "black",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.362,
+      "minimum": 7.361901895152056,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-frosted-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "landscape",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 1,
-      "minimum": 3.493,
+      "minimum": 3.4927305084066287,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-landscape-diagnostic.png",
       "failedSamples": [
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.493,
+          "contrast": 3.4927305084066287,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-light",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.42,
+      "minimum": 7.419996432750873,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-dark",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 9,
-      "minimum": 2.088,
+      "minimum": 2.0881959975200868,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-photo-dark-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 3.942,
+          "contrast": 3.606159257549694,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 2.507,
+          "contrast": 2.368816050120339,
           "fontSize": "13px"
         },
         {
           "text": "背景音量",
-          "contrast": 3.823,
+          "contrast": 3.5573468775173014,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 2.255,
+          "contrast": 2.254655263562514,
           "fontSize": "13px"
         },
         {
           "text": "允许桌面通知",
-          "contrast": 2.925,
+          "contrast": 2.9247279708725737,
           "fontSize": "16px"
         },
         {
           "text": "工作区名称",
-          "contrast": 2.877,
+          "contrast": 2.8768874731331593,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 2.088,
+          "contrast": 2.0881959975200868,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 4.283,
+          "contrast": 3.8155901281358764,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 2.12,
+          "contrast": 2.1196707564038695,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-real-light",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 3,
-      "minimum": 2.355,
+      "minimum": 2.5490308045890218,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-photo-real-light-diagnostic.png",
       "failedSamples": [
         {
           "text": "当前模式：专注",
-          "contrast": 3.147,
+          "contrast": 3.4415355364686238,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 4.349,
+          "contrast": 3.8021984083524267,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 2.355,
+          "contrast": 2.5490308045890218,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-real-dark",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 3,
-      "minimum": 2.886,
+      "minimum": 2.8655880172490886,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-photo-real-dark-diagnostic.png",
       "failedSamples": [
         {
           "text": "允许桌面通知",
-          "contrast": 4.404,
+          "contrast": 4.358434910920544,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 3.913,
+          "contrast": 3.77151698559909,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 2.886,
+          "contrast": 2.8655880172490886,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "text-list",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.386,
+      "minimum": 12.386271659933213,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "chart",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.933,
+      "minimum": 11.933376902873821,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "checker",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 9.33,
+      "minimum": 9.348201792708885,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "split",
       "pressure": true,
       "sampleCount": 9,
-      "failedCount": 7,
-      "minimum": 2.506,
+      "failedCount": 8,
+      "minimum": 2.5055009438397384,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-split-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 4.422,
+          "contrast": 4.0613488346801425,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 2.988,
+          "contrast": 2.8262087783079215,
           "fontSize": "13px"
         },
         {
           "text": "背景音量",
-          "contrast": 4.172,
+          "contrast": 3.892489252413249,
           "fontSize": "13px"
         },
         {
           "text": "允许桌面通知",
-          "contrast": 3.354,
+          "contrast": 3.3535983636103865,
           "fontSize": "16px"
         },
         {
           "text": "工作区名称",
-          "contrast": 3.354,
+          "contrast": 3.3535983636103865,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 2.506,
+          "contrast": 2.5055009438397384,
+          "fontSize": "13px"
+        },
+        {
+          "text": "Quiet mountains",
+          "contrast": 4.361154280092732,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 2.826,
+          "contrast": 2.7386365500744976,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "white",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 13.14,
+      "minimum": 13.140410702523532,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "glass-clear",
       "background": "black",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 9,
-      "minimum": 1.75,
+      "minimum": 1.7500602054738124,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-glass-clear-black-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 3.329,
+          "contrast": 2.9976294573377573,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 2.044,
+          "contrast": 1.921539591926198,
           "fontSize": "13px"
         },
         {
           "text": "背景音量",
-          "contrast": 3.089,
+          "contrast": 2.820799905383082,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 1.75,
+          "contrast": 1.7500602054738124,
           "fontSize": "13px"
         },
         {
           "text": "允许桌面通知",
-          "contrast": 2.342,
+          "contrast": 2.3424453523862003,
           "fontSize": "16px"
         },
         {
           "text": "工作区名称",
-          "contrast": 2.342,
+          "contrast": 2.3424453523862003,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 1.75,
+          "contrast": 1.7500602054738124,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 3.741,
+          "contrast": 3.2796034152571063,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 1.75,
+          "contrast": 1.7500602054738124,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "photo-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "photo-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "split",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-split-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "white",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "light",
       "material": "solid",
       "background": "black",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.868,
+      "minimum": 8.852458134291894,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-light-solid-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "clear-toolbar",
       "theme": "light",
       "material": "glass-clear (supported media toolbar)",
-      "background": "self-drawn media toolbar sample",
+      "background": "self-drawn media toolbar (registry example)",
       "pressure": false,
       "sampleCount": 4,
       "failedCount": 0,
-      "minimum": 8.414,
+      "minimum": 7.1646314541541845,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-light-self-drawn-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "clear-toolbar",
+      "theme": "light",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: real-bright",
+      "pressure": true,
+      "sampleCount": 3,
+      "failedCount": 1,
+      "minimum": 1.1678326868551476,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-light-real-bright-diagnostic.png",
+      "failedSamples": [
+        {
+          "text": "▶",
+          "contrast": 1.1678326868551476,
+          "fontSize": "18px"
+        }
+      ]
+    },
+    {
+      "kind": "clear-toolbar",
+      "theme": "light",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: real-dark",
+      "pressure": true,
+      "sampleCount": 3,
+      "failedCount": 2,
+      "minimum": 1.765412980057088,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-light-real-dark-diagnostic.png",
+      "failedSamples": [
+        {
+          "text": "▶",
+          "contrast": 1.765412980057088,
+          "fontSize": "18px"
+        },
+        {
+          "text": "Clear：媒体上的轻工具栏",
+          "contrast": 3.581316901211574,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "kind": "clear-toolbar",
+      "theme": "light",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: split",
+      "pressure": true,
+      "sampleCount": 3,
+      "failedCount": 3,
+      "minimum": 2.512304049170415,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-light-split-diagnostic.png",
+      "failedSamples": [
+        {
+          "text": "▶",
+          "contrast": 2.9900660412179394,
+          "fontSize": "18px"
+        },
+        {
+          "text": "明暗之间",
+          "contrast": 3.892489252413249,
+          "fontSize": "14px"
+        },
+        {
+          "text": "Clear：媒体上的轻工具栏",
+          "contrast": 2.512304049170415,
+          "fontSize": "13px"
+        }
+      ]
+    },
+    {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 4.678,
+      "minimum": 4.6775116948622735,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "photo-light",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 1,
-      "minimum": 4.487,
+      "minimum": 4.438152181263823,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-photo-light-diagnostic.png",
       "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "contrast": 4.487,
+          "contrast": 4.438152181263823,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "photo-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.517,
+      "minimum": 11.516910033645773,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 5.185,
+      "minimum": 5.191513977786544,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.009,
+      "minimum": 6.1156971759916425,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.015,
+      "minimum": 11.014529685296647,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.023,
+      "minimum": 8.022742839508837,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 4.862,
+      "minimum": 4.862097872828103,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "split",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 4.869,
+      "minimum": 4.86904122389171,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-split-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "white",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 3,
-      "minimum": 3.91,
+      "minimum": 3.9103393034307135,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-white-diagnostic.png",
       "failedSamples": [
         {
           "text": "专注于此刻的工作",
-          "contrast": 4.026,
+          "contrast": 4.026219449248123,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 4.487,
+          "contrast": 4.486743288586858,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.91,
+          "contrast": 3.9103393034307135,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass",
       "background": "black",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.409,
+      "minimum": 12.409494062587486,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.403,
+      "minimum": 7.40332440816417,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "photo-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.301,
+      "minimum": 7.301021003266053,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "photo-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.455,
+      "minimum": 11.45486007378971,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.041,
+      "minimum": 8.065730368873197,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 9.355,
+      "minimum": 8.708745065441459,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.168,
+      "minimum": 11.167505062645128,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 10.818,
+      "minimum": 10.81824400168456,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 7.492,
+      "minimum": 7.4919709624694155,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "split",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 8.352,
+      "minimum": 8.351620784333928,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-split-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "white",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.667,
+      "minimum": 6.666591459818521,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "frosted",
       "background": "black",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 11.892,
+      "minimum": 11.89225656523793,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-frosted-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "landscape",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 3,
-      "minimum": 3.511,
+      "minimum": 3.5113059163480904,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-landscape-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 4.337,
+          "contrast": 4.313666172197632,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 3.511,
+          "contrast": 3.5113059163480904,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.948,
+          "contrast": 3.9475364040661036,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-light",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 4,
-      "minimum": 3.284,
+      "minimum": 3.242614571689091,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-photo-light-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 4.193,
+          "contrast": 4.172546866449702,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 3.284,
+          "contrast": 3.242614571689091,
           "fontSize": "13px"
         },
         {
           "text": "背景音量",
-          "contrast": 3.996,
+          "contrast": 3.9960730734473935,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 3.935,
+          "contrast": 3.934709436043844,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-dark",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 13.463,
+      "minimum": 13.463108481682246,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-real-light",
       "pressure": true,
       "sampleCount": 9,
-      "failedCount": 2,
-      "minimum": 3.789,
+      "failedCount": 1,
+      "minimum": 3.865139652868295,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-photo-real-light-diagnostic.png",
       "failedSamples": [
         {
-          "text": "让界面轻一点。",
-          "contrast": 4.495,
-          "fontSize": "15px"
-        },
-        {
           "text": "专注于此刻的工作",
-          "contrast": 3.789,
+          "contrast": 3.865139652868295,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-real-dark",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 5.102,
+      "minimum": 5.010728820121083,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "text-list",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 12.401,
+      "minimum": 12.247636031965573,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "chart",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 5.77,
+      "minimum": 5.76968199832891,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "checker",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 6,
-      "minimum": 3.764,
+      "minimum": 3.7638242231558703,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-checker-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 4.377,
+          "contrast": 4.377110745741588,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 3.915,
+          "contrast": 3.9149307999163923,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 4.354,
+          "contrast": 4.35381071164217,
           "fontSize": "13px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 4.34,
+          "contrast": 4.340092129305251,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 4.364,
+          "contrast": 4.363754666061842,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.764,
+          "contrast": 3.7638242231558703,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "split",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 4,
-      "minimum": 3.582,
+      "minimum": 3.582017174675966,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-split-diagnostic.png",
       "failedSamples": [
         {
           "text": "64%",
-          "contrast": 3.644,
+          "contrast": 3.644478899247091,
           "fontSize": "13px"
         },
         {
           "text": "工作区名称",
-          "contrast": 4.238,
+          "contrast": 4.238319009262162,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 3.644,
+          "contrast": 3.644478899247091,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 3.582,
+          "contrast": 3.582017174675966,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "white",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 9,
-      "minimum": 2.875,
+      "minimum": 2.8752425849535186,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-white-diagnostic.png",
       "failedSamples": [
         {
           "text": "让界面轻一点。",
-          "contrast": 3.344,
+          "contrast": 3.3437414897822864,
           "fontSize": "15px"
         },
         {
           "text": "专注于此刻的工作",
-          "contrast": 2.914,
+          "contrast": 2.914114528689067,
           "fontSize": "13px"
         },
         {
           "text": "背景音量",
-          "contrast": 3.435,
+          "contrast": 3.434946094001982,
           "fontSize": "13px"
         },
         {
           "text": "64%",
-          "contrast": 3.206,
+          "contrast": 3.2060896234810388,
           "fontSize": "13px"
         },
         {
           "text": "允许桌面通知",
-          "contrast": 3.627,
+          "contrast": 3.627191450762733,
           "fontSize": "16px"
         },
         {
           "text": "工作区名称",
-          "contrast": 3.627,
+          "contrast": 3.627191450762733,
           "fontSize": "16px"
         },
         {
           "text": "当前模式：专注",
-          "contrast": 3.206,
+          "contrast": 3.2060896234810388,
           "fontSize": "13px"
         },
         {
           "text": "Quiet mountains",
-          "contrast": 3.299,
+          "contrast": 3.29931308930937,
           "fontSize": "13px"
         },
         {
           "text": "一段静谧的工作时光",
-          "contrast": 2.875,
+          "contrast": 2.8752425849535186,
           "fontSize": "13px"
         }
       ]
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "glass-clear",
       "background": "black",
       "pressure": true,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 14.549,
+      "minimum": 14.548767749856289,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-glass-clear-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "landscape",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-landscape-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "photo-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-photo-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "photo-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-photo-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "photo-real-light",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-photo-real-light-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "photo-real-dark",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-photo-real-dark-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "text-list",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-text-list-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "chart",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-chart-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "checker",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-checker-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "split",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-split-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "white",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-white-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "lab",
       "theme": "dark",
       "material": "solid",
       "background": "black",
       "pressure": false,
       "sampleCount": 9,
       "failedCount": 0,
-      "minimum": 6.303,
+      "minimum": 6.302699316105244,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/lab-dark-solid-black-diagnostic.png",
       "failedSamples": []
     },
     {
+      "kind": "clear-toolbar",
       "theme": "dark",
       "material": "glass-clear (supported media toolbar)",
-      "background": "self-drawn media toolbar sample",
+      "background": "self-drawn media toolbar (registry example)",
       "pressure": false,
       "sampleCount": 4,
       "failedCount": 0,
-      "minimum": 13.437,
+      "minimum": 7.656746220172033,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-dark-self-drawn-diagnostic.png",
       "failedSamples": []
+    },
+    {
+      "kind": "clear-toolbar",
+      "theme": "dark",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: real-bright",
+      "pressure": false,
+      "sampleCount": 3,
+      "failedCount": 0,
+      "minimum": 4.623591117424969,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-dark-real-bright-diagnostic.png",
+      "failedSamples": []
+    },
+    {
+      "kind": "clear-toolbar",
+      "theme": "dark",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: real-dark",
+      "pressure": false,
+      "sampleCount": 3,
+      "failedCount": 0,
+      "minimum": 5.190811392705172,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-dark-real-dark-diagnostic.png",
+      "failedSamples": []
+    },
+    {
+      "kind": "clear-toolbar",
+      "theme": "dark",
+      "material": "glass-clear (supported media toolbar)",
+      "background": "real-media stage: split",
+      "pressure": true,
+      "sampleCount": 3,
+      "failedCount": 1,
+      "minimum": 3.644478899247091,
+      "diagnostic": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-contrast-46rqTM/clear-toolbar-dark-split-diagnostic.png",
+      "failedSamples": [
+        {
+          "text": "Clear：媒体上的轻工具栏",
+          "contrast": 3.644478899247091,
+          "fontSize": "13px"
+        }
+      ]
     }
   ],
   "pressureDetails": [
@@ -1301,222 +1594,223 @@
       "theme": "light",
       "material": "glass",
       "background": "photo-dark",
-      "minimum": 3.972,
+      "minimum": 3.9717316879766718,
       "failedCount": 4,
-      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+      "guidance": "regular 压力背景；安全替代：frosted/solid 或局部实色底面。"
     },
     {
       "theme": "light",
       "material": "glass",
       "background": "split",
-      "minimum": 4.469,
+      "minimum": 4.46863592213685,
       "failedCount": 1,
-      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+      "guidance": "regular 压力背景；安全替代：frosted/solid 或局部实色底面。"
     },
     {
       "theme": "light",
       "material": "glass",
       "background": "black",
-      "minimum": 3.543,
+      "minimum": 3.5433984317995173,
       "failedCount": 4,
-      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+      "guidance": "regular 压力背景；安全替代：frosted/solid 或局部实色底面。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "landscape",
-      "minimum": 3.493,
+      "minimum": 3.4927305084066287,
       "failedCount": 1,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-light",
-      "minimum": 7.42,
+      "minimum": 7.419996432750873,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-dark",
-      "minimum": 2.088,
+      "minimum": 2.0881959975200868,
       "failedCount": 9,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-real-light",
-      "minimum": 2.355,
+      "minimum": 2.5490308045890218,
       "failedCount": 3,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "photo-real-dark",
-      "minimum": 2.886,
+      "minimum": 2.8655880172490886,
       "failedCount": 3,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "text-list",
-      "minimum": 12.386,
+      "minimum": 12.386271659933213,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "chart",
-      "minimum": 11.933,
+      "minimum": 11.933376902873821,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "checker",
-      "minimum": 9.33,
+      "minimum": 9.348201792708885,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "split",
-      "minimum": 2.506,
-      "failedCount": 7,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "minimum": 2.5055009438397384,
+      "failedCount": 8,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "white",
-      "minimum": 13.14,
+      "minimum": 13.140410702523532,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "light",
       "material": "glass-clear",
       "background": "black",
-      "minimum": 1.75,
+      "minimum": 1.7500602054738124,
       "failedCount": 9,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass",
       "background": "photo-light",
-      "minimum": 4.487,
+      "minimum": 4.438152181263823,
       "failedCount": 1,
-      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+      "guidance": "regular 压力背景；安全替代：frosted/solid 或局部实色底面。"
     },
     {
       "theme": "dark",
       "material": "glass",
       "background": "white",
-      "minimum": 3.91,
+      "minimum": 3.9103393034307135,
       "failedCount": 3,
-      "guidance": "regular 副文字压力背景；正文与控件标签仍达标。安全替代：frosted/solid 或局部实色底面。"
+      "guidance": "regular 压力背景；安全替代：frosted/solid 或局部实色底面。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "landscape",
-      "minimum": 3.511,
+      "minimum": 3.5113059163480904,
       "failedCount": 3,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-light",
-      "minimum": 3.284,
+      "minimum": 3.242614571689091,
       "failedCount": 4,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-dark",
-      "minimum": 13.463,
+      "minimum": 13.463108481682246,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-real-light",
-      "minimum": 3.789,
-      "failedCount": 2,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "minimum": 3.865139652868295,
+      "failedCount": 1,
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "photo-real-dark",
-      "minimum": 5.102,
+      "minimum": 5.010728820121083,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "text-list",
-      "minimum": 12.401,
+      "minimum": 12.247636031965573,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "chart",
-      "minimum": 5.77,
+      "minimum": 5.76968199832891,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "checker",
-      "minimum": 3.764,
+      "minimum": 3.7638242231558703,
       "failedCount": 6,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "split",
-      "minimum": 3.582,
+      "minimum": 3.582017174675966,
       "failedCount": 4,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "white",
-      "minimum": 2.875,
+      "minimum": 2.8752425849535186,
       "failedCount": 9,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     },
     {
       "theme": "dark",
       "material": "glass-clear",
       "background": "black",
-      "minimum": 14.549,
+      "minimum": 14.548767749856289,
       "failedCount": 0,
-      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见受支持样张场景）。"
+      "guidance": "Clear 全表单为刻意压力负例；正式用法是媒体轻工具栏（见 Clear 工具栏场景）。"
     }
   ],
   "limitations": [
     "Backdrop screening only: glyphs are hidden and the minimum ratio over each label's bounding box is measured; not a per-glyph WCAG conformance audit.",
     "Excludes button text, focus rings and control boundaries; axe and manual review cover those separately.",
-    "Chromium-only measurement; Firefox/WebKit compositing is not covered by this script."
+    "Chromium-only measurement; Firefox/WebKit compositing is not covered by this script.",
+    "Clear media toolbar samples cover bright/dark real photos and a split backdrop; not an exhaustive media set."
   ]
 }

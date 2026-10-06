@@ -97,6 +97,20 @@ export const routes: SiteRoute[] = [
     ["动效", "motion", "spring", "手势"],
   ),
   page(
+    "/design/glass-candidates/",
+    "玻璃候选对照",
+    "79168ce Token 与 0.1.0-alpha.3 候选的同条件 A/B：真实照片、滚动文字、三种材质。",
+    "design",
+    ["玻璃", "候选", "A/B", "Token"],
+  ),
+  page(
+    "/design/glass-candidates/",
+    "玻璃候选对照",
+    "79168ce Token 与 0.1.0-alpha.3 候选的同条件 A/B：真实照片、滚动文字、三种材质。",
+    "design",
+    ["玻璃", "候选", "A/B", "Token"],
+  ),
+  page(
     "/design/accessibility/",
     "无障碍设计",
     "可访问名称、键盘操作、焦点、表单关联与用户偏好的使用规范。",

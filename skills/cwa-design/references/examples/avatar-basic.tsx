@@ -3,6 +3,10 @@ import { Avatar, Stack } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Stack direction="row" gap={3}><Avatar fallback="林" size="sm" /><Avatar fallback="陈" /><Avatar fallback="周" size="lg" /></Stack>
+    <Stack direction="row" gap={3}>
+      <Avatar fallback="林" size="sm" />
+      <Avatar fallback="陈" />
+      <Avatar fallback="周" size="lg" />
+    </Stack>
   );
 }

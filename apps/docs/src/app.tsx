@@ -1,12 +1,12 @@
 import { CwaProvider, type ThemePreference } from "@cwa-design/react";
 import { useEffect, useState } from "react";
+import { SearchPage } from "./components/search";
 import { SiteShell } from "./layouts/site-shell";
 import { ArticlePage, PageIntro } from "./pages/articles";
 import { ComponentPage, ComponentsPage } from "./pages/components";
 import { HomePage } from "./pages/home";
-import { ThemesPage } from "./pages/themes";
 import { PatternsPage } from "./pages/patterns";
-import { SearchPage } from "./components/search";
+import { ThemesPage } from "./pages/themes";
 import { getRoute, href } from "./routes";
 
 const componentToc = [

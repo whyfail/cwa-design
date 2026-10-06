@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/react",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Apple-style glass material web components for React. CWA Design.",
   "license": "MIT",
   "type": "module",

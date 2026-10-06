@@ -1,14 +1,19 @@
 // T29 测试：当前 SDK client（2.2.0）与 legacy client（1.31.0）分别连接 stdio server，
 // 覆盖 8 个只读工具、错误码、分页。任一失败 exit 1。
+
+import { strict as assert } from "node:assert";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createHash } from "node:crypto";
-import { strict as assert } from "node:assert";
 import { currentLibraryVersion, loadSnapshots, readArtifact } from "@cwa-design/registry/snapshot";
 
 const VERSION = currentLibraryVersion();
 const snapshot = loadSnapshots().find((entry) => entry.manifest.libraryVersion === VERSION);
 const digest = (source) => `sha256:${createHash("sha256").update(source).digest("hex")}`;
+
+function exactVersionLabel(version) {
+  return `exact-version query should answer as ${version}`;
+}
 
 const serverPath = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -55,6 +60,35 @@ async function withCurrentClient() {
         assert.ok(Buffer.byteLength(item.text) <= 12 * 1024, `${name} response exceeds budget`);
     return result;
   }
+
+  // V07：按精确版本查询——冻结的 alpha.2 与当前版本各自返回自己的身份与契约。
+  const capsVersions = caps.structuredContent.data.registryVersions;
+  assert.ok(Array.isArray(capsVersions), "capabilities lists registryVersions");
+  for (const expectedVersion of ["0.1.0-alpha.2", VERSION]) {
+    const component = await call("get_component", { id: "surface", version: expectedVersion });
+    assert.equal(
+      component.structuredContent.libraryVersion,
+      expectedVersion,
+      exactVersionLabel(expectedVersion),
+    );
+    if (expectedVersion === VERSION) {
+      const material = JSON.stringify(
+        component.structuredContent.data ?? component.structuredContent,
+      );
+      assert.ok(
+        material.includes("3.910"),
+        "current surface contract carries the measured dark-white pressure note",
+      );
+    }
+  }
+  const alpha2Surface = await call("get_component", { id: "surface", version: "0.1.0-alpha.2" });
+  const alpha2Notes = JSON.stringify(
+    alpha2Surface.structuredContent.data ?? alpha2Surface.structuredContent,
+  );
+  assert.ok(
+    !alpha2Notes.includes("3.910"),
+    "frozen alpha.2 content is not rewritten by the newer candidate",
+  );
 
   const search = await client.callTool({
     name: "cwa_design_search_components",

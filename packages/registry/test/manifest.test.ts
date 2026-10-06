@@ -14,11 +14,11 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { afterAll, describe, expect, it } from "vitest";
 import {
+  type ArtifactRecord,
+  type ComponentRecord,
   componentRecordSchema,
   getComponent,
   getManifest,
-  type ArtifactRecord,
-  type ComponentRecord,
   type RegistryManifest,
 } from "../src/index.js";
 import {
@@ -26,9 +26,9 @@ import {
   currentLibraryVersion,
   loadSnapshots,
   manifestDigest,
+  type RegistrySnapshot,
   readArtifact,
   readSnapshot,
-  type RegistrySnapshot,
 } from "../src/snapshot.js";
 
 const pkgRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -179,7 +179,7 @@ describe("clean checkout Registry release inputs", () => {
 
 describe("current version manifest artifacts", () => {
   it("30 components, 32 compiled examples, 3 recipes and a verified manifest digest", () => {
-    expect(version).toBe("0.1.0-alpha.2");
+    expect(version).toBe(currentLibraryVersion(pkgRoot));
     expect(manifest.libraryVersion).toBe(version);
     expect(manifest.schemaVersion).toBe("1.1.0");
     expect(manifest.components).toHaveLength(30);

@@ -1,5 +1,5 @@
-import { type ComponentType, useEffect, useState } from "react";
 import data from "virtual:cwa-site-data";
+import { type ComponentType, useEffect, useState } from "react";
 import { CodeBlock } from "../components/code-block";
 import { href, type SiteRoute } from "../routes";
 import { PageIntro } from "./articles";

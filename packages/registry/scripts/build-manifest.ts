@@ -4,8 +4,8 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
-  readFileSync,
   readdirSync,
+  readFileSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -14,13 +14,13 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import ts from "typescript";
 import { z } from "zod";
 import {
+  type ArtifactRecord,
+  type ComponentRecord,
   componentRecordSchema,
+  type ExampleRecord,
   exampleRecordSchema,
   manifestSchema,
   REGISTRY_SCHEMA_VERSION,
-  type ArtifactRecord,
-  type ComponentRecord,
-  type ExampleRecord,
   type RecipeRecord,
 } from "../src/index.js";
 import { contentDigest, manifestDigest, readArtifact, readSnapshot } from "../src/snapshot.js";

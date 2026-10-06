@@ -1,5 +1,6 @@
 import data from "virtual:cwa-site-data";
 import { CodeBlock } from "../components/code-block";
+import { GlassCandidatesPage } from "../components/glass-candidates";
 import { Icon } from "../components/icons";
 import { href, type SiteRoute } from "../routes";
 
@@ -417,6 +418,8 @@ function DesignContent({ path }: { path: string }) {
         </div>
       </section>
     </>
+  ) : path === "/design/glass-candidates/" ? (
+    <GlassCandidatesPage />
   ) : path === "/design/materials/" ? (
     <>
       <section id="hierarchy">
@@ -485,24 +488,33 @@ function DesignContent({ path }: { path: string }) {
         </p>
         <a className="text-link" href={href("/themes/")}>
           用真实组件比较材质 →
+        </a>{" "}
+        <a className="text-link" href={href("/design/glass-candidates/")}>
+          查看玻璃候选 A/B 对照 →
         </a>
       </section>
       <section id="background-readability">
         <h2>背景可读性策略</h2>
         <p>
-          以 2 主题 × 9 背景 × 4 材质的实测矩阵（逐文字包围框采样，阈值 4.5:1）为准：
-          <strong>正文与控件标签</strong>（不透明正文色）在 regular 下全部验证背景达标；
-          <strong>副文字</strong>（<code>--cwa-design-color-glass-text-muted</code>）在 regular
-          下仅保证中等亮度背景（山水、文字列表、图表、棋盘）与同向极端背景（浅色×纯白、深色×纯黑）。
+          以默认 Token 的实测矩阵为准（2 主题 × 11 背景 × 4 材质，Chromium 1440×1000， 未取整
+          4.5:1，逐文字包围框采样）。支持状态分四类，不得互相概括：
+          <strong>supported</strong>（默认实测全部 ≥4.5:1）、
+          <strong>pressure</strong>（默认实测存在 &lt;4.5:1 样本）、
+          <strong>not-recommended</strong>（用途本身不推荐，不等于每个背景都低对比）、
+          <strong>explicit-override-unverified</strong>（显式 tint/accent 覆盖后默认结论不适用）。
         </p>
         <p>
-          跨亮度媒体（浅色主题×暗照片、深色主题×亮照片）、明暗分区与反向极端背景是已知的压力负例：
-          请改用 frosted 或 solid（两者在全部验证背景达标），或给控件局部实色底面。
-          媒体前景策略看媒体本身的亮暗，而不是系统主题——系统深色也会遇到亮照片。
+          regular 的正文与控件标签除“深色×纯白”（正文样本实测最低 3.910:1，&lt;4.5）外全部 ≥4.5:1；
+          副文字仅保证中等亮度背景（山水、文字列表、图表、棋盘）与同向极端背景（浅色×纯白、深色×纯黑）。
+          默认已测压力背景：浅色×{"{暗插画, 明暗分区, 纯黑}"}、深色×{"{亮插画, 纯白}"}—— 改用
+          frosted 或 solid（两者默认矩阵全部背景实测达标），或给控件局部实色底面。
+          媒体前景策略看媒体本身的亮暗与内容用途，而不是系统主题。
         </p>
         <p>
-          clear 只用于媒体上的轻量工具栏：浅色配亮调媒体、深色配暗调媒体，只放少量大号短标签；
-          表单与长文禁用。压力组合不能通过换有利底图或删样本来隐藏。
+          clear 用于媒体轻工具栏且按媒体逐个验证：深色主题的真实亮/暗照片实测通过；
+          浅色主题的真实照片（混合亮暗区域实测最低 1.134:1）与明暗分区实测失败。 clear
+          用于完整表单是不推荐用途（同向极端背景仍可达标）。
+          压力组合不能通过换有利底图或删样本来隐藏。
         </p>
       </section>
       <section id="fallback">

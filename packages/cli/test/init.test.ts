@@ -3,9 +3,9 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { currentLibraryVersion } from "@cwa-design/registry/snapshot";
 import { afterAll, describe, expect, it } from "vitest";
 import { applyInit, planInit } from "../src/init.js";
-import { currentLibraryVersion } from "@cwa-design/registry/snapshot";
 
 const cli = new URL("../dist/index.js", import.meta.url).pathname;
 const VERSION = currentLibraryVersion();

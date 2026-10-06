@@ -1,8 +1,9 @@
+import { createRequire } from "node:module";
+import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import path from "node:path";
-import { createRequire } from "node:module";
 import { siteDataPlugin } from "./scripts/site-data.mjs";
+
 const require = createRequire(import.meta.url);
 
 export default defineConfig({

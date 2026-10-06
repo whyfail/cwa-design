@@ -3,6 +3,13 @@ import { Badge, Stack } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Stack direction="row" gap={2} wrap><Badge>草稿</Badge><Badge tone="success">已保存</Badge><Badge tone="warning">待处理</Badge><Badge tone="danger" max={99}>{120}</Badge></Stack>
+    <Stack direction="row" gap={2} wrap>
+      <Badge>草稿</Badge>
+      <Badge tone="success">已保存</Badge>
+      <Badge tone="warning">待处理</Badge>
+      <Badge tone="danger" max={99}>
+        {120}
+      </Badge>
+    </Stack>
   );
 }

@@ -3,6 +3,8 @@ import { Surface, Text } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Surface material="glass" style={{ padding: "1.5rem" }}><Text>浮动层的 regular glass 表面</Text></Surface>
+    <Surface material="glass" style={{ padding: "1.5rem" }}>
+      <Text>浮动层的 regular glass 表面</Text>
+    </Surface>
   );
 }

@@ -3,6 +3,8 @@ import { Switch } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Switch name="notifications" defaultChecked>桌面通知</Switch>
+    <Switch name="notifications" defaultChecked>
+      桌面通知
+    </Switch>
   );
 }

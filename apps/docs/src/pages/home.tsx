@@ -1,10 +1,10 @@
+import data from "virtual:cwa-site-data";
 import { Surface } from "@cwa-design/react";
 import { useState } from "react";
-import data from "virtual:cwa-site-data";
 import { CodeBlock } from "../components/code-block";
 import { GlassPlayground } from "../components/glass-playground";
 import { Icon } from "../components/icons";
-import { categories, catalog } from "../data/catalog";
+import { catalog, categories } from "../data/catalog";
 import { href } from "../routes";
 
 export function HomePage() {

@@ -25,6 +25,8 @@ export interface CwaContextValue {
   locale: string | undefined;
   /** overlay portal 挂载容器；null 表示尚未在客户端就绪。 */
   portalContainer: HTMLElement | null;
+  /** Provider 根元素（ADR 0001）：Portal 作用域从它同步实际生效的 Token 覆盖。 */
+  providerElement: HTMLElement | null;
 }
 
 const CwaContext = createContext<CwaContextValue | null>(null);
@@ -74,6 +76,7 @@ export function CwaProvider({
   children,
 }: CwaProviderProps) {
   const [resolvedSystemTheme, setResolvedSystemTheme] = useState<"light" | "dark" | null>(null);
+  const [providerElement, setProviderElement] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     if (theme !== "system") {
@@ -101,8 +104,18 @@ export function CwaProvider({
       density,
       locale,
       portalContainer,
+      providerElement,
     }),
-    [theme, resolvedSystemTheme, material, motion, density, locale, portalContainer],
+    [
+      theme,
+      resolvedSystemTheme,
+      material,
+      motion,
+      density,
+      locale,
+      portalContainer,
+      providerElement,
+    ],
   );
 
   const attributes: Record<string, string> = {};
@@ -117,7 +130,7 @@ export function CwaProvider({
 
   return (
     <CwaContext.Provider value={value}>
-      <div className={classNames.join(" ")} style={style} {...attributes}>
+      <div ref={setProviderElement} className={classNames.join(" ")} style={style} {...attributes}>
         {children}
       </div>
     </CwaContext.Provider>

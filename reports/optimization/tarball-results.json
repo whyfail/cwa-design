@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-10-03T21:02:19.332Z",
+  "generatedAt": "2026-10-06T02:35:41.030Z",
   "status": "passed",
   "node": "v24.21.0",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "archive": {
-    "path": "/Users/wulei/Desktop/wl/cwa/cwa-design/apps/docs/dist/downloads/cwa-design-react-0.1.0-alpha.2.tgz",
-    "bytes": 52363,
-    "contentDigest": "sha256:c664147d2d93d4131f6ec4dd202b1880681f754a0b021e3c3e63252e1ed412d5",
+    "path": "/Users/wulei/Desktop/wl/cwa/cwa-design/apps/docs/dist/downloads/cwa-design-react-0.1.0-alpha.3.tgz",
+    "bytes": 53554,
+    "contentDigest": "sha256:ef0a89a1605a2cd1f8394a25049b06a00731521b011264ca7cd5b3c68d848cb3",
     "entryCount": 108,
     "publicEntriesPresent": true,
     "includesWorkspaceSource": false
   },
   "consumer": {
-    "directory": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-s3tA3s",
+    "directory": "/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd",
     "dependencies": {
-      "@cwa-design/react": "file:./cwa-design-react-0.1.0-alpha.2.tgz",
+      "@cwa-design/react": "file:./cwa-design-react-0.1.0-alpha.3.tgz",
       "react": "19.3.0",
       "react-dom": "19.3.0"
     },
@@ -35,7 +35,7 @@
     "install": {
       "passed": true,
       "lockfile": "pnpm-lock.yaml",
-      "lockDigest": "sha256:85a78bf41b47362d87ab6e1a98c1cab40443cbb5e5440ad6ed054ec76e99976a",
+      "lockDigest": "sha256:d346f868c2fe7048135a4b101ef37c709b6acdb2c7f3e9f251f07bbee3567fb2",
       "noWorkspaceReferences": true
     },
     "typecheck": {
@@ -53,9 +53,9 @@
       ]
     },
     "installedPublicExportsAndSsrServer": {
-      "installedPackageRoot": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-s3tA3s/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.2.tgz_@types+react@19.3.0_react-dom_45926988f92d8039cfd768f34cdb13c7/node_modules/@cwa-design/react",
-      "installedPackageVersion": "0.1.0-alpha.2",
-      "publicCssPath": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-s3tA3s/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.2.tgz_@types+react@19.3.0_react-dom_45926988f92d8039cfd768f34cdb13c7/node_modules/@cwa-design/react/dist/styles.css",
+      "installedPackageRoot": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react",
+      "installedPackageVersion": "0.1.0-alpha.3",
+      "publicCssPath": "/private/var/folders/pp/qgd6q8mx2bl6nld2scn3p29r0000gn/T/cwa-tarball-consumer-q555sd/node_modules/.pnpm/@cwa-design+react@file+cwa-design-react-0.1.0-alpha.3.tgz_@types+react@19.3.0_react-dom_d072cac9532ba6c2704ddfa56d0b5d22/node_modules/@cwa-design/react/dist/styles.css",
       "packageIsWorkspaceLinked": false,
       "publicExports": [
         "AccountPanelRecipe",
@@ -111,20 +111,42 @@
         "useToastManager"
       ],
       "requiredExportsVerified": 50,
-      "ssrMarkupCharacters": 5802,
+      "ssrMarkupCharacters": 9857,
       "http": {
         "status": 200,
         "missingStatus": 404,
         "cssAssets": [
-          "/assets/index-CoKtIiUj.css"
+          "/assets/index-kFx-a7XO.css"
         ],
         "scriptAssets": [
-          "/assets/index-wrb2tf1d.js"
+          "/assets/index-jbh-qSWz.js"
         ]
       },
       "computedStyles": {
         "scopedFill": "rgba(28, 29, 34, 0.67)",
         "unscopedDarkFill": "rgba(28, 29, 34, 0.68)",
+        "portalChecks": {
+          "bodyPortal": {
+            "fill": "rgba(28, 29, 34, 0.67)"
+          },
+          "customContainer": {
+            "inside": true,
+            "fill": "rgba(28, 29, 34, 0.67)"
+          },
+          "outer": {
+            "fill": "rgba(255, 255, 255, 0.52)"
+          },
+          "inner": {
+            "fill": "rgba(28, 29, 34, 0.67)",
+            "accent": "#087a6a"
+          }
+        },
+        "selectTrigger": {
+          "className": "cwa-design-select__trigger",
+          "background": "color(srgb 0.172549 0.172549 0.180392 / 0.9)",
+          "borderRadius": "12px",
+          "minHeight": "44px"
+        },
         "engine": "chromium"
       },
       "passed": true
@@ -139,17 +161,17 @@
   "assets": {
     "files": [
       {
-        "file": "index-CoKtIiUj.css",
-        "bytes": 56749,
-        "gzipBytes": 6946
+        "file": "index-jbh-qSWz.js",
+        "bytes": 434731,
+        "gzipBytes": 138295
       },
       {
-        "file": "index-wrb2tf1d.js",
-        "bytes": 346093,
-        "gzipBytes": 109567
+        "file": "index-kFx-a7XO.css",
+        "bytes": 56745,
+        "gzipBytes": 6948
       }
     ],
-    "ssrBytes": 2094
+    "ssrBytes": 7161
   },
-  "elapsedMs": 4777
+  "elapsedMs": 5300
 }

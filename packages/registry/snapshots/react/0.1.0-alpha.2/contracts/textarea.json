@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.2",
+  "framework": "react",
+  "id": "textarea",
+  "name": "Textarea",
+  "description": "原生多行输入；value/defaultValue/onChange 与 IME 由浏览器处理。",
+  "typeName": "TextareaProps",
+  "sourceTypePath": "packages/react/src/textarea/textarea.tsx#TextareaProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Textarea"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "invalid": {
+      "type": "boolean",
+      "defaultSummary": "显式值优先；否则由 Field error 推导，无 error 时为 false"
+    },
+    "ref": {
+      "type": "ref",
+      "summary": "React.Ref<HTMLTextAreaElement>"
+    }
+  },
+  "extends": [
+    "React.TextareaHTMLAttributes<HTMLTextAreaElement>；value/defaultValue/onChange/name/required/id/aria-* 等；id 缺省读取 Field 关联"
+  ],
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "正文输入填充，不独立 blur；默认 CSS resize 为 vertical。",
+  "a11y": [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "textarea-basic"
+  ],
+  "runtimeDependencies": [],
+  "deprecated": false
+}

@@ -1,6 +1,6 @@
-import { CwaProvider, useCwaContext, type ThemePreference } from "@cwa-design/react";
-import { Component, type ComponentType, type ReactNode, useEffect, useRef, useState } from "react";
 import data from "virtual:cwa-site-data";
+import { CwaProvider, type ThemePreference, useCwaContext } from "@cwa-design/react";
+import { Component, type ComponentType, type ReactNode, useEffect, useRef, useState } from "react";
 import type { ExampleDoc } from "../data/types";
 import { CodeBlock } from "./code-block";
 import { Icon } from "./icons";

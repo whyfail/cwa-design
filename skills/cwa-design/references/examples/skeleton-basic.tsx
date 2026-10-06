@@ -3,6 +3,10 @@ import { Skeleton, Stack } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Stack gap={3} style={{ width: "16rem" }}><Skeleton width="60%" height="1.25rem" /><Skeleton width="100%" /><Skeleton width="80%" /></Stack>
+    <Stack gap={3} style={{ width: "16rem" }}>
+      <Skeleton width="60%" height="1.25rem" />
+      <Skeleton width="100%" />
+      <Skeleton width="80%" />
+    </Stack>
   );
 }

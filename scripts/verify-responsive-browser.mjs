@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 
-const { chromium } = await import(process.env.CWA_PLAYWRIGHT_MODULE || "playwright");
 const root = path.resolve(import.meta.dirname, "..");
+const qaRequire = createRequire(path.join(root, "packages/qa/package.json"));
+const { chromium } = process.env.CWA_PLAYWRIGHT_MODULE
+  ? await import(process.env.CWA_PLAYWRIGHT_MODULE)
+  : qaRequire("playwright");
 const base = process.env.CWA_DOCS_URL || "http://127.0.0.1:4173/cwa-design/";
 await mkdir(path.join(root, "reports/screenshots"), { recursive: true });
 const browser = await chromium.launch({
@@ -11,10 +15,22 @@ const browser = await chromium.launch({
   channel: process.env.CWA_CHROMIUM_CHANNEL || "chrome",
 });
 const results = [];
-// N04 矩阵：视口 × 根字号。音乐条与状态文字曾在大字号下垂直交叠 42.9px，
-// 且 scrollWidth 断言不能发现这种遮挡——这里逐对测量几何交叠。
-const WIDTHS = [320, 390, 768, 1440];
+// V01 矩阵：视口 × 根字号。除页面溢出与面板间交叠外，逐个功能控件相对
+// overflow 裁切祖先与视口测裁切边界，并对按钮做中心/四角命中测试。
+const WIDTHS = [320, 360, 390, 768, 1440];
 const FONT_SCALES = [100, 150, 200];
+// 首页实验室中的功能元素：容器、输入、全部按钮与状态反馈。
+const FUNCTIONAL_SELECTORS = [
+  ".glass-control-panel",
+  ".glass-music-bar",
+  ".glass-playground .cwa-design-input",
+  ".glass-playground .cwa-design-segmented",
+  ".glass-playground .cwa-design-switch",
+  ".glass-playground .cwa-design-slider",
+  ".glass-playground .cwa-design-field",
+  ".panel-status",
+  ".scene-caption",
+];
 try {
   for (const theme of ["light", "dark"]) {
     const context = await browser.newContext({ colorScheme: theme });
@@ -38,7 +54,7 @@ try {
         await page.evaluate(() => document.fonts.ready);
         const playground = page.locator(".glass-playground").first();
         await playground.scrollIntoViewIfNeeded();
-        const geometry = await page.evaluate(() => {
+        const geometry = await page.evaluate((selectors) => {
           const rect = (selector) => {
             const el = document.querySelector(selector);
             if (!el) return null;
@@ -57,6 +73,123 @@ try {
             const height = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
             return width > 0 && height > 0 ? Math.round(width * height * 100) / 100 : 0;
           };
+          // V01 门禁：相对每个 overflow 裁切祖先与视口的裁切边界 + 命中测试。
+          const clipsAt = (el) => {
+            const cs = getComputedStyle(el);
+            return ["hidden", "clip"].some(
+              (value) => cs.overflowX === value || cs.overflowY === value,
+            );
+          };
+          const clipAgainst = (element) => {
+            const box = element.getBoundingClientRect();
+            // 视口只断言水平边界：纵向超出视口属于正常文档滚动可达内容；
+            // overflow:hidden 祖先的四边都是真实裁切。
+            const bounds = [
+              {
+                name: "viewport",
+                left: 0,
+                top: Number.NEGATIVE_INFINITY,
+                right: document.documentElement.clientWidth,
+                bottom: Number.POSITIVE_INFINITY,
+              },
+            ];
+            for (
+              let parent = element.parentElement;
+              parent && parent !== document.documentElement;
+              parent = parent.parentElement
+            ) {
+              if (clipsAt(parent)) {
+                const parentBox = parent.getBoundingClientRect();
+                bounds.push({
+                  name: `ancestor:${(parent.className || parent.tagName).toString().slice(0, 60)}`,
+                  left: parentBox.left,
+                  top: parentBox.top,
+                  right: parentBox.right,
+                  bottom: parentBox.bottom,
+                });
+              }
+            }
+            let worst = { clippedPx: 0, by: "", side: "" };
+            for (const bound of bounds) {
+              const sides = {
+                right: Math.max(0, box.right - bound.right),
+                left: Math.max(0, bound.left - box.left),
+                bottom: Math.max(0, box.bottom - bound.bottom),
+                top: Math.max(0, bound.top - box.top),
+              };
+              for (const [side, value] of Object.entries(sides)) {
+                if (value > worst.clippedPx)
+                  worst = { clippedPx: Math.round(value * 100) / 100, by: bound.name, side };
+              }
+            }
+            return worst;
+          };
+          const hitTest = (element) => {
+            const box = element.getBoundingClientRect();
+            const points = [
+              ["center", box.left + box.width / 2, box.top + box.height / 2],
+              ["top-left", box.left + 3, box.top + 3],
+              ["top-right", box.right - 3, box.top + 3],
+              ["bottom-left", box.left + 3, box.bottom - 3],
+              ["bottom-right", box.right - 3, box.bottom - 3],
+            ];
+            for (const [name, x, y] of points) {
+              const hit = document.elementFromPoint(x, y);
+              if (!hit || !(hit === element || element.contains(hit) || hit.contains(element)))
+                return {
+                  hittable: false,
+                  point: name,
+                  hit: hit ? String(hit.className || hit.tagName).slice(0, 50) : "none",
+                };
+            }
+            return { hittable: true };
+          };
+          const clipping = [];
+          const interactives = [];
+          for (const selector of selectors) {
+            for (const element of document.querySelectorAll(selector)) {
+              const box = element.getBoundingClientRect();
+              if (box.width === 0 && box.height === 0) continue;
+              const clip = clipAgainst(element);
+              clipping.push({
+                selector,
+                label: (element.getAttribute("aria-label") || element.textContent || "")
+                  .trim()
+                  .slice(0, 24),
+                clip,
+              });
+              if (element.matches("button, input, [role=slider], [role=switch], [role=radio]")) {
+                // 命中测试前滚动到视口内：视口外的点 elementFromPoint 取不到是正常滚动行为。
+                element.scrollIntoView({ block: "center", behavior: "instant" });
+                const hit = hitTest(element);
+                interactives.push({
+                  label: (element.getAttribute("aria-label") || element.textContent || "")
+                    .trim()
+                    .slice(0, 24),
+                  ...hit,
+                });
+              }
+            }
+          }
+          // 焦点可达：Tab 遍历实验室内的可聚焦元素，焦点落点必须完整落在裁切边界内。
+          const focusIssues = [];
+          const focusables = [
+            ...document.querySelectorAll(
+              ".glass-playground button:not([disabled]), .glass-playground input:not([disabled]), .glass-playground [role=slider]",
+            ),
+          ];
+          for (const element of focusables) {
+            element.focus();
+            if (document.activeElement !== element) continue;
+            const clip = clipAgainst(element);
+            if (clip.clippedPx > 0)
+              focusIssues.push({
+                label: (element.getAttribute("aria-label") || element.textContent || "")
+                  .trim()
+                  .slice(0, 24),
+                clip,
+              });
+          }
           const panel = rect(".glass-control-panel");
           const music = rect(".glass-music-bar");
           const status = rect(".panel-status");
@@ -77,19 +210,14 @@ try {
               "music-vs-panel": overlapArea(music, panel),
               "music-vs-caption": overlapArea(music, caption),
             },
+            clipping,
+            unhittable: interactives.filter((item) => !item.hittable),
+            focusIssues,
             captionFontSize: caption
               ? getComputedStyle(document.querySelector(".hero-visual-caption")).fontSize
               : null,
-            interactiveBelowFold: [
-              ...document.querySelectorAll(
-                ".glass-playground button, .glass-playground input, .glass-playground [role=slider]",
-              ),
-            ].filter((el) => {
-              const box = el.getBoundingClientRect();
-              return box.height > 0 && (box.bottom > viewport.height || box.top < 0);
-            }).length,
           };
-        });
+        }, FUNCTIONAL_SELECTORS);
         assert(geometry.music && geometry.panel && geometry.status, "playground landmarks render");
         for (const [pair, area] of Object.entries(geometry.overlaps)) {
           assert.equal(
@@ -98,6 +226,22 @@ try {
             `${pair} overlap at ${width}px/${fontScale}%: ${area}px² — content occlusion`,
           );
         }
+        const clippedElements = geometry.clipping.filter((item) => item.clip.clippedPx > 0);
+        assert.deepEqual(
+          clippedElements,
+          [],
+          `functional elements clipped at ${width}px/${fontScale}%: ${JSON.stringify(clippedElements)}`,
+        );
+        assert.deepEqual(
+          geometry.unhittable,
+          [],
+          `interactive elements not hittable at ${width}px/${fontScale}%: ${JSON.stringify(geometry.unhittable)}`,
+        );
+        assert.deepEqual(
+          geometry.focusIssues,
+          [],
+          `focusable elements clipped at ${width}px/${fontScale}%: ${JSON.stringify(geometry.focusIssues)}`,
+        );
         assert(
           geometry.scrollWidth <= geometry.viewport.width + 1,
           `horizontal overflow at ${width}px/${fontScale}%: ${geometry.scrollWidth}`,

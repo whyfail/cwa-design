@@ -1,5 +1,6 @@
 import data from "virtual:cwa-site-data";
 import { useState } from "react";
+import { ClearMediaStage } from "../components/clear-media-stage";
 import { CodeBlock } from "../components/code-block";
 import { DemoCard } from "../components/demo-card";
 import { Icon } from "../components/icons";
@@ -265,6 +266,16 @@ export function ComponentPage({ id }: { id: string }) {
             <h3>媒体对照舞台</h3>
             <p>打开浮层，检查玻璃透色、边缘与阴影在真实亮/暗照片上的表现。</p>
             <OverlayMaterialStage id={id} />
+          </>
+        ) : null}
+        {id === "surface" ? (
+          <>
+            <h3>真实媒体上的 Clear 工具栏</h3>
+            <p>
+              Clear 的受支持用法是媒体上的轻工具栏；逐媒体检查可读性，
+              不把自绘渐变样张的结论推广到所有媒体。
+            </p>
+            <ClearMediaStage />
           </>
         ) : null}
         <p>适用的状态与行为见示例及本页 API；系统减少透明与显式 solid 配置会启用回退。</p>

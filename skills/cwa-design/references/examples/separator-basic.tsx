@@ -3,6 +3,10 @@ import { Separator, Stack, Text } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Stack gap={3}><Text>工作区</Text><Separator decorative={false} /><Text>个人设置</Text></Stack>
+    <Stack gap={3}>
+      <Text>工作区</Text>
+      <Separator decorative={false} />
+      <Text>个人设置</Text>
+    </Stack>
   );
 }

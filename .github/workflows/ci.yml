@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+      - name: Enable corepack (pnpm 12.8.1)
+        run: corepack enable
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Install Chromium for browser gates
+        run: corepack pnpm --filter @cwa-design/qa exec playwright install --with-deps chromium
+      - name: Install Pillow (contrast sampling)
+        run: pip3 install pillow
+      - name: Full gate (build, typecheck, tests, lint, format, browser gates)
+        run: corepack pnpm verify
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-reports
+          path: reports/optimization/
+          if-no-files-found: ignore

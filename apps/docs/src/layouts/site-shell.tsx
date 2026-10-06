@@ -1,10 +1,10 @@
+import data from "virtual:cwa-site-data";
 import { Dialog, IconButton, Surface, useCwaContext } from "@cwa-design/react";
 import { type ReactNode, useEffect, useState } from "react";
-import data from "virtual:cwa-site-data";
-import { categories, catalog, navItems } from "../data/catalog";
-import { href, type SiteRoute } from "../routes";
 import { Icon } from "../components/icons";
 import { SearchDialog } from "../components/search";
+import { catalog, categories, navItems } from "../data/catalog";
+import { href, type SiteRoute } from "../routes";
 
 const guideLinks = [
   [

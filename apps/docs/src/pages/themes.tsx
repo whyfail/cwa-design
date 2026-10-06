@@ -1,6 +1,6 @@
 import { type SurfaceMaterial, useCwaContext } from "@cwa-design/react";
 import { useState } from "react";
-import { pressureReason, SAFE_ALTERNATIVE_HINT } from "../background-policy";
+import { SAFE_ALTERNATIVE_HINT, supportState } from "../background-policy";
 import { CodeBlock } from "../components/code-block";
 import { GlassPlayground } from "../components/glass-playground";
 import { type SiteRoute } from "../routes";
@@ -44,7 +44,14 @@ export function ThemesPage({ route }: { route: SiteRoute }) {
   const [tint, setTint] = useState<number | null>(null);
   const [accent, setAccent] = useState("");
   const effectiveTint = tint ?? themeTint;
-  const pressure = pressureReason(theme, solid ? "solid" : material, background);
+  // V04：支持状态四分类，感知显式 tint/accent（显式覆盖不继承默认矩阵结论）。
+  const support = supportState({
+    theme,
+    material: solid ? "solid" : material,
+    background,
+    tint,
+    accent,
+  });
   // 唯一覆盖来源：预览变量、TSX/CSS 代码与 JSON 导出共用 buildThemeOverrides 结果。
   const overrides = buildThemeOverrides({ theme, tint, accent });
   const code = `<CwaProvider theme="${theme}" material="${solid ? "solid" : "auto"}"${providerClassNameAttribute(overrides.hasOverrides)}>\n  <Surface material="${material}">\n    {/* 你的控件 */}\n  </Surface>\n</CwaProvider>`;
@@ -140,13 +147,27 @@ export function ThemesPage({ route }: { route: SiteRoute }) {
         {...(tint !== null && { tint })}
         {...(accent && { accent })}
       />
-      {pressure ? (
-        <p className="doc-note pressure-note" role="status">
-          {pressure}
-          <button type="button" className="site-text-button" onClick={() => setMaterial("frosted")}>
-            改用 Thick Frosted
-          </button>
-          {SAFE_ALTERNATIVE_HINT}
+      {support.message ? (
+        <p className="doc-note pressure-note" role="status" data-support-state={support.state}>
+          <strong className="support-state-label">
+            {support.state === "pressure"
+              ? "压力"
+              : support.state === "not-recommended"
+                ? "不推荐此用途"
+                : "显式覆盖未验证"}
+            ：
+          </strong>
+          {support.message}
+          {support.state !== "explicit-override-unverified" ? (
+            <button
+              type="button"
+              className="site-text-button"
+              onClick={() => setMaterial("frosted")}
+            >
+              改用 Thick Frosted
+            </button>
+          ) : null}
+          {support.state !== "explicit-override-unverified" ? SAFE_ALTERNATIVE_HINT : null}
         </p>
       ) : null}
       <p className="doc-note">

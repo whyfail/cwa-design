@@ -2,11 +2,44 @@
 
 import type { SelectRootProps } from "@base-ui/react/select";
 import { Select as BaseSelect } from "@base-ui/react/select";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { FocusGuardScope, OverlayPortalScope } from "../overlay/overlay-scope";
 import { useCwaContext } from "../provider/provider";
 
 export type SelectRootPropsAlias<Value extends string = string> = SelectRootProps<Value>;
+
+export type SelectTriggerProps = ComponentProps<typeof BaseSelect.Trigger>;
+
+/**
+ * SelectTrigger：默认视觉的触发器（V05）。class/ref/render 等 Base UI 行为
+ * 全部保留：className 以函数或字符串传入都会与默认类合并；render 仍完全
+ * 接管渲染；未提供 children 图标时追加默认展开指示。
+ */
+function SelectTrigger({ className, children, ...rest }: SelectTriggerProps) {
+  return (
+    <BaseSelect.Trigger
+      {...rest}
+      className={(state) => {
+        const own = typeof className === "function" ? className(state) : className;
+        return `cwa-design-select__trigger${own ? ` ${own}` : ""}`;
+      }}
+    >
+      {children}
+      <BaseSelect.Icon className="cwa-design-select__icon">
+        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" width="12" height="12">
+          <path
+            d="M2.5 4.5L6 8l3.5-3.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </BaseSelect.Icon>
+    </BaseSelect.Trigger>
+  );
+}
 
 /**
  * Select：基础单选（T18）。
@@ -25,7 +58,7 @@ export const Select = Object.assign(
     );
   },
   {
-    Trigger: BaseSelect.Trigger,
+    Trigger: SelectTrigger,
     Value: BaseSelect.Value,
     Icon: BaseSelect.Icon,
     Portal: BaseSelect.Portal,

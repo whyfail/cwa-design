@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-10-03T21:08:10.523Z",
+  "generatedAt": "2026-10-06T02:35:40.881Z",
   "browserVersion": "154.0.8037.97",
   "matrix": {
     "widths": [
       320,
+      360,
       390,
       768,
       1440
@@ -61,6 +62,45 @@
       },
       "captionFontSize": "12px",
       "scrollWidth": 320
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
     },
     {
       "theme": "light",
@@ -481,6 +521,45 @@
       },
       "captionFontSize": "12px",
       "scrollWidth": 320
+    },
+    {
+      "theme": "dark",
+      "width": 360,
+      "fontScale": 100,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
+    },
+    {
+      "theme": "dark",
+      "width": 360,
+      "fontScale": 150,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
+    },
+    {
+      "theme": "dark",
+      "width": 360,
+      "fontScale": 200,
+      "passed": true,
+      "overlaps": {
+        "music-vs-status": 0,
+        "music-vs-panel": 0,
+        "music-vs-caption": 0
+      },
+      "captionFontSize": "12px",
+      "scrollWidth": 360
     },
     {
       "theme": "dark",

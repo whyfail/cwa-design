@@ -15,8 +15,10 @@ import {
 import { type ReactElement, useState } from "react";
 
 /**
- * 浮层材质对照舞台（N07）：Popover / DropdownMenu / Select / Dialog / Sheet
- * 共用同一块真实媒体背景，打开后覆盖选中、禁用、焦点等适用状态。
+ * 浮层材质对照舞台（N07/V05）：Popover / DropdownMenu / Select / Dialog / Sheet
+ * 共用同一块真实媒体背景。非模态浮层锚定在舞台内打开；Dialog/Sheet 额外提供
+ * 全视口媒体预览——整个视口被所选照片占据，模态浮层与遮罩压在其上（真实
+ * Portal/scrim/focus/Escape 不变，关闭回触发点并退出全视口）。
  * 只有非模态 Popover 默认打开；菜单/选择器/模态浮层由用户触发，避免劫持页面焦点。
  * 背景素材与来源记录见 public/media/MEDIA-SOURCES.md；自绘分区是可复现基线。
  */
@@ -117,9 +119,14 @@ function SelectScene() {
   );
 }
 
-function DialogScene() {
+interface SceneControl {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+function DialogScene({ open, onOpenChange }: SceneControl) {
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <Dialog.Trigger render={<Button>新建工作区</Button>} />
       <Dialog.Content>
         <Dialog.Title>媒体上的对话框</Dialog.Title>
@@ -130,9 +137,9 @@ function DialogScene() {
   );
 }
 
-function SheetScene() {
+function SheetScene({ open, onOpenChange }: SceneControl) {
   return (
-    <Sheet placement="bottom">
+    <Sheet placement="bottom" open={open} onOpenChange={onOpenChange}>
       <Sheet.Trigger render={<Button variant="secondary">查看详细信息</Button>} />
       <Sheet.Content>
         <Sheet.Title>媒体上的抽屉</Sheet.Title>
@@ -143,30 +150,55 @@ function SheetScene() {
   );
 }
 
-const SCENES: Record<string, () => ReactElement> = {
+const ANCHORED_SCENES: Record<string, () => ReactElement> = {
   popover: PopoverScene,
   "dropdown-menu": MenuScene,
   select: SelectScene,
+};
+
+const MODAL_SCENES: Record<string, (control: SceneControl) => ReactElement> = {
   dialog: DialogScene,
   sheet: SheetScene,
 };
 
 export function OverlayMaterialStage({ id }: { id: string }) {
   const [media, setMedia] = useState<StageMedia>("real-bright");
-  const Scene = SCENES[id];
-  if (!Scene) return null;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [immersive, setImmersive] = useState(false);
+  const AnchoredScene = ANCHORED_SCENES[id];
+  const ModalScene = MODAL_SCENES[id];
+  if (!AnchoredScene && !ModalScene) return null;
+  const closeImmersive = (next: boolean) => {
+    setModalOpen(next);
+    if (!next) setImmersive(false);
+  };
   return (
-    <div className="overlay-stage" data-overlay-stage={id}>
+    <div className="overlay-stage" data-overlay-stage={id} data-immersive={immersive || undefined}>
       <div className="overlay-stage-toolbar">
         <OverlayMediaPicker media={media} onChange={setMedia} />
         <Text variant="caption" tone="muted" as="span">
           打开、选中、禁用与焦点状态叠加在同一背景上；Tab 检查焦点可见性。
         </Text>
+        {ModalScene ? (
+          <button
+            type="button"
+            className="overlay-stage-immersive-button"
+            onClick={() => {
+              setImmersive(true);
+              setModalOpen(true);
+            }}
+          >
+            全视口媒体预览
+          </button>
+        ) : null}
       </div>
-      <div className="overlay-stage-canvas">
+      <div
+        className={`overlay-stage-canvas${immersive && ModalScene ? " overlay-stage-canvas--immersive" : ""}`}
+      >
         <StageBackdrop media={media} />
         <div className="overlay-stage-anchor">
-          <Scene />
+          {AnchoredScene ? <AnchoredScene /> : null}
+          {ModalScene ? <ModalScene open={modalOpen} onOpenChange={closeImmersive} /> : null}
         </div>
       </div>
     </div>

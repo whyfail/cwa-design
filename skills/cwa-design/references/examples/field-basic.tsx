@@ -3,6 +3,8 @@ import { Field, Input } from "@cwa-design/react";
 
 export default function Example() {
   return (
-    <Field label="工作区名称" description="用于成员列表和通知。"><Input name="workspace" defaultValue="CWA Studio" /></Field>
+    <Field label="工作区名称" description="用于成员列表和通知。">
+      <Input name="workspace" defaultValue="CWA Studio" />
+    </Field>
   );
 }

@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { manifestSchema, RegistryError } from "./index.js";
+import { manifestSchema, RegistryError, } from "./index.js";
 export function contentDigest(content) {
     return `sha256:${createHash("sha256").update(content).digest("hex")}`;
 }
@@ -23,7 +23,8 @@ export function readSnapshot(directory) {
         if (raw.registryDigest !== manifestDigest(raw))
             throw new Error("manifest digest mismatch");
         const manifest = manifestSchema.parse(raw);
-        if (manifest.components.some((component) => component.libraryVersion !== manifest.libraryVersion || component.framework !== manifest.framework)) {
+        if (manifest.components.some((component) => component.libraryVersion !== manifest.libraryVersion ||
+            component.framework !== manifest.framework)) {
             throw new Error("component version/framework mismatch");
         }
         return { manifest, directory };
@@ -35,8 +36,10 @@ export function readSnapshot(directory) {
 export function loadSnapshots(directory = path.join(registryPackageRoot(), "dist", "manifest", "react")) {
     if (!existsSync(directory))
         throw new RegistryError("REGISTRY_UNAVAILABLE", "本地 Registry 快照缺失；请先构建或安装匹配版本的包。");
-    const snapshots = readdirSync(directory, { withFileTypes: true }).filter((entry) => entry.isDirectory())
-        .sort((a, b) => a.name.localeCompare(b.name)).map((entry) => {
+    const snapshots = readdirSync(directory, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((entry) => {
         const snapshot = readSnapshot(path.join(directory, entry.name));
         if (snapshot.manifest.libraryVersion !== entry.name)
             throw new RegistryError("REGISTRY_UNAVAILABLE", "Registry 目录版本与内容不一致。");

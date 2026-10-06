@@ -17,7 +17,7 @@
     "test:mcp": "pnpm --filter @cwa-design/mcp run test",
     "test:consumers": "pnpm --filter @cwa-design/examples-react-vite run build",
     "registry:build": "node packages/registry/dist-scripts/registry/scripts/build-manifest.js && node packages/registry/dist-scripts/registry/scripts/generate-skill-references.js",
-    "verify": "pnpm run build && pnpm -r --if-present run test && pnpm run lint",
+    "verify": "pnpm run build && pnpm run typecheck && pnpm -r --if-present run test && pnpm run lint && pnpm run format:check && node scripts/run-browser-gates.mjs",
     "build:packages": "pnpm -r --filter !@cwa-design/docs --if-present run build"
   },
   "devDependencies": {

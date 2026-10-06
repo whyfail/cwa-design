@@ -1,0 +1,3468 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.2",
+  "framework": "react",
+  "registryDigest": "sha256:e65a3d1ea71ca13254a3b6986446c1510b173d71284ae2efaec7a63f5a3392ed",
+  "generatedAt": "2026-10-03T17:58:40.072Z",
+  "components": [
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "provider",
+      "name": "CwaProvider",
+      "description": "主题、材质、动效、密度与 Portal 的应用根；将所有需要上下文的组件置于其内。",
+      "typeName": "CwaProviderProps",
+      "sourceTypePath": "packages/react/src/provider/provider.tsx#CwaProviderProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "CwaProvider",
+        "useCwaContext",
+        "useOptionalCwaContext"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "theme": {
+          "type": "enum",
+          "values": [
+            "light",
+            "dark",
+            "system"
+          ],
+          "default": "system"
+        },
+        "material": {
+          "type": "enum",
+          "values": [
+            "auto",
+            "solid"
+          ],
+          "default": "auto"
+        },
+        "motion": {
+          "type": "enum",
+          "values": [
+            "system",
+            "reduced",
+            "full"
+          ],
+          "default": "system",
+          "description": "full 不覆盖系统 reduced-motion"
+        },
+        "density": {
+          "type": "enum",
+          "values": [
+            "comfortable",
+            "compact"
+          ],
+          "default": "comfortable"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "portalContainer": {
+          "type": "element",
+          "summary": "HTMLElement | null",
+          "defaultSummary": "null；客户端 Portal 默认挂到 body"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        },
+        "style": {
+          "type": "record",
+          "summary": "React.CSSProperties"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": true
+        }
+      },
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "不创建玻璃表面；material=\"solid\" 强制组件表面实色。theme=\"system\" 在 SSR/首帧不写解析后的主题，客户端解析系统偏好。",
+      "a11y": [
+        "context-required",
+        "ssr-stable-theme",
+        "system-preference-priority"
+      ],
+      "examples": [
+        "provider-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "surface",
+      "name": "Surface",
+      "description": "通用表面容器；正文用 solid/frosted，浮动层可显式使用 glass。",
+      "typeName": "SurfaceProps",
+      "sourceTypePath": "packages/react/src/surface/surface.tsx#SurfaceProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Surface"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "material": {
+          "type": "enum",
+          "values": [
+            "solid",
+            "frosted",
+            "glass",
+            "glass-clear"
+          ],
+          "default": "solid"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLDivElement>；className/style、DOM 事件、aria-*、data-* 均由原生类型继承"
+      ],
+      "materialPolicy": "solid",
+      "materialNotes": "默认 solid；frosted 轻分离；glass=regular；glass-clear 仅媒体控件显式启用。Provider solid 与系统回退优先。背景可读性边界（2026-10-04 实测矩阵，2 主题 × 9 背景 × 4 材质）：正文与控件标签（不透明正文色）在 regular 下全部验证背景达标；副文字（--cwa-design-color-glass-text-muted）在 regular 下仅保证中等亮度背景（山水/文字列表/图表/棋盘）与同向极端背景（浅色×纯白、深色×纯黑）；跨亮度媒体（浅色×暗图、深色×亮图）、明暗分区与反向极端背景请改 frosted 或 solid，或给控件局部实色底面。glass-clear 只用于媒体上的轻量工具栏：浅色配亮调媒体、深色配暗调媒体，仅放少量大号短标签；表单与长文请用 regular/frosted/solid。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "surface-basic",
+        "surface-clear-toolbar"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "button",
+      "name": "Button",
+      "description": "执行动作的原生按钮；表单提交需显式 type=\"submit\"。",
+      "typeName": "ButtonProps",
+      "sourceTypePath": "packages/react/src/button/button.tsx#ButtonProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Button"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger"
+          ],
+          "default": "primary"
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "loading": {
+          "type": "boolean",
+          "default": false
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "React.Ref<HTMLButtonElement>"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "type": {
+          "type": "enum",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "default": "button",
+          "description": "实现为原生 type 提供 button 默认值",
+          "origin": "inherited"
+        }
+      },
+      "extends": [
+        "React.ButtonHTMLAttributes<HTMLButtonElement>；disabled、onClick、name/value、form、aria-* 等原生属性直接透传"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "控件自身使用 tint/实色填充，不额外叠加 backdrop blur；与父玻璃壳共享光学层。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "button-basic",
+        "button-loading"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "icon-button",
+      "name": "IconButton",
+      "description": "只含图标的原生按钮；必须提供 label 作为可访问名称。",
+      "typeName": "IconButtonProps",
+      "sourceTypePath": "packages/react/src/icon-button/icon-button.tsx#IconButtonProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "IconButton"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger"
+          ],
+          "default": "secondary"
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "loading": {
+          "type": "boolean",
+          "default": false
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "React.Ref<HTMLButtonElement>"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "type": {
+          "type": "enum",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "default": "button",
+          "origin": "inherited"
+        }
+      },
+      "extends": [
+        "React.ButtonHTMLAttributes<HTMLButtonElement>；disabled/onClick/aria-* 等继承"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "图标按钮不独立创建 blur；label 不能只靠图标或 Tooltip 替代。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "icon-button-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "stack",
+      "name": "Stack",
+      "description": "横向或纵向的 Flex 布局；gap 是数值 Token 刻度。",
+      "typeName": "StackProps",
+      "sourceTypePath": "packages/react/src/stack/stack.tsx#StackProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Stack"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "direction": {
+          "type": "enum",
+          "values": [
+            "row",
+            "column"
+          ],
+          "default": "column"
+        },
+        "gap": {
+          "type": "enum",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8
+          ],
+          "default": 4,
+          "description": "实现为 space-1 × gap，不保证与所有命名 space Token 的值一一相等"
+        },
+        "wrap": {
+          "type": "boolean",
+          "default": false
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLDivElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "仅布局，不绘制背景。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "stack-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "text",
+      "name": "Text",
+      "description": "正文或辅助文字；标签语义与视觉样式可分别选择。",
+      "typeName": "TextProps",
+      "sourceTypePath": "packages/react/src/text/text.tsx#TextProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Text"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "variant": {
+          "type": "enum",
+          "values": [
+            "body",
+            "caption"
+          ],
+          "default": "body"
+        },
+        "tone": {
+          "type": "enum",
+          "values": [
+            "default",
+            "muted"
+          ],
+          "default": "default"
+        },
+        "as": {
+          "type": "enum",
+          "values": [
+            "span",
+            "p"
+          ],
+          "default": "span"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "不创建背景；muted 文本依旧需要对比度。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "text-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "heading",
+      "name": "Heading",
+      "description": "语义级别与视觉尺寸独立；level 必填并决定实际 h1–h6。",
+      "typeName": "HeadingProps",
+      "sourceTypePath": "packages/react/src/heading/heading.tsx#HeadingProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Heading"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "level": {
+          "type": "enum",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "required": true
+        },
+        "visualSize": {
+          "type": "enum",
+          "values": [
+            "display",
+            "title",
+            "body"
+          ],
+          "defaultSummary": "level ≤ 2 为 display，其他为 title"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLHeadingElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "无背景；按所在表面保证文本对比度。",
+      "a11y": [
+        "semantic-heading-level-required"
+      ],
+      "examples": [
+        "heading-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "field",
+      "name": "Field",
+      "description": "稳定关联 label/description/error 与 Input/Textarea；required 只控制标记，原生 required 仍传给控件。",
+      "typeName": "FieldProps",
+      "sourceTypePath": "packages/react/src/field/field.tsx#FieldProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Field"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "id": {
+          "type": "string",
+          "defaultSummary": "React.useId() 生成稳定关联 id"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": true
+        }
+      },
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "不创建背景材质；搭配内容层表单控件。",
+      "a11y": [
+        "visible-label",
+        "stable-label-control-association",
+        "error-alert"
+      ],
+      "examples": [
+        "field-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "input",
+      "name": "Input",
+      "description": "原生单行输入；value/defaultValue/onChange 和 IME 使用原生事件。",
+      "typeName": "InputProps",
+      "sourceTypePath": "packages/react/src/input/input.tsx#InputProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Input"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "invalid": {
+          "type": "boolean",
+          "defaultSummary": "显式值优先；否则由 Field error 推导，无 error 时为 false"
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "React.Ref<HTMLInputElement>"
+        }
+      },
+      "extends": [
+        "React.InputHTMLAttributes<HTMLInputElement>；value/defaultValue/onChange/name/type/required/id/aria-* 等原生属性。id 缺省读取 Field 关联；没有 onValueChange API。"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "文本控件为可读填充，不独立 blur。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "input-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "textarea",
+      "name": "Textarea",
+      "description": "原生多行输入；value/defaultValue/onChange 与 IME 由浏览器处理。",
+      "typeName": "TextareaProps",
+      "sourceTypePath": "packages/react/src/textarea/textarea.tsx#TextareaProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Textarea"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "invalid": {
+          "type": "boolean",
+          "defaultSummary": "显式值优先；否则由 Field error 推导，无 error 时为 false"
+        },
+        "ref": {
+          "type": "ref",
+          "summary": "React.Ref<HTMLTextAreaElement>"
+        }
+      },
+      "extends": [
+        "React.TextareaHTMLAttributes<HTMLTextAreaElement>；value/defaultValue/onChange/name/required/id/aria-* 等；id 缺省读取 Field 关联"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "正文输入填充，不独立 blur；默认 CSS resize 为 vertical。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "textarea-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "separator",
+      "name": "Separator",
+      "description": "水平或垂直分隔线；非装饰性时保留 separator 语义。",
+      "typeName": "SeparatorProps",
+      "sourceTypePath": "packages/react/src/separator/separator.tsx#SeparatorProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Separator"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "decorative": {
+          "type": "boolean",
+          "default": true
+        },
+        "orientation": {
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLHRElement | HTMLDivElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "仅边界，不创建光学层。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "separator-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "badge",
+      "name": "Badge",
+      "description": "状态或计数标签；tone 不能替代文本含义。",
+      "typeName": "BadgeProps",
+      "sourceTypePath": "packages/react/src/badge/badge.tsx#BadgeProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Badge"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "tone": {
+          "type": "enum",
+          "values": [
+            "neutral",
+            "accent",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "default": "neutral"
+        },
+        "max": {
+          "type": "number",
+          "description": "数字 children 超过 max 时显示 max+"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLSpanElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "轻 tint，不额外 blur。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "badge-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "avatar",
+      "name": "Avatar",
+      "description": "固定几何头像；无 src 时显示 fallback，图片加载由 Base UI 管理。",
+      "typeName": "AvatarProps",
+      "sourceTypePath": "packages/react/src/avatar/avatar.tsx#AvatarProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Avatar"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "src": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "fallback": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "头像内容不创建背景玻璃。",
+      "a11y": [
+        "image-alt-or-decoration",
+        "fixed-size-fallback"
+      ],
+      "examples": [
+        "avatar-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "card",
+      "name": "Card",
+      "description": "内容卡片；使用显式分区组合标题、正文与操作。",
+      "typeName": "CardProps",
+      "sourceTypePath": "packages/react/src/card/card.tsx#CardProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Card",
+        "CardTitle",
+        "CardDescription",
+        "CardContent",
+        "CardActions"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "material": {
+          "type": "enum",
+          "values": [
+            "solid",
+            "frosted"
+          ],
+          "default": "solid"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLDivElement>"
+      ],
+      "compoundParts": {
+        "CardTitle": {
+          "exportName": "CardTitle",
+          "typeName": "CardSectionProps",
+          "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+          "description": "卡片标题区；自身为 div，不替代 Heading 语义。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            }
+          },
+          "extends": [
+            "React.HTMLAttributes<HTMLElement>"
+          ]
+        },
+        "CardDescription": {
+          "exportName": "CardDescription",
+          "typeName": "CardSectionProps",
+          "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+          "description": "卡片说明区。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            }
+          },
+          "extends": [
+            "React.HTMLAttributes<HTMLElement>"
+          ]
+        },
+        "CardContent": {
+          "exportName": "CardContent",
+          "typeName": "CardSectionProps",
+          "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+          "description": "卡片正文区。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            }
+          },
+          "extends": [
+            "React.HTMLAttributes<HTMLElement>"
+          ]
+        },
+        "CardActions": {
+          "exportName": "CardActions",
+          "typeName": "CardSectionProps",
+          "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+          "description": "卡片操作区。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            }
+          },
+          "extends": [
+            "React.HTMLAttributes<HTMLElement>"
+          ]
+        }
+      },
+      "materialPolicy": "solid",
+      "materialNotes": "内容层默认 solid，仅支持 solid/frosted；Card 不接受 glass。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "card-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "spinner",
+      "name": "Spinner",
+      "description": "不确定进度指示；label 控制可访问名称。",
+      "typeName": "SpinnerProps",
+      "sourceTypePath": "packages/react/src/spinner/spinner.tsx#SpinnerProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Spinner"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "label": {
+          "type": "string"
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLSpanElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "仅进度图形，不创建玻璃；尊重 reduced-motion。",
+      "a11y": [
+        "label-or-decorative",
+        "reduced-motion"
+      ],
+      "examples": [
+        "spinner-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "skeleton",
+      "name": "Skeleton",
+      "description": "固定占位几何；为加载中的内容预留宽高。",
+      "typeName": "SkeletonProps",
+      "sourceTypePath": "packages/react/src/skeleton/skeleton.tsx#SkeletonProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Skeleton"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "width": {
+          "type": "string-number"
+        },
+        "height": {
+          "type": "string-number",
+          "default": "1rem"
+        },
+        "radius": {
+          "type": "string-number"
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLDivElement>"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "使用占位填充；系统 reduced-motion 下停止闪烁。",
+      "a11y": [
+        "aria-hidden-placeholder",
+        "reduced-motion"
+      ],
+      "examples": [
+        "skeleton-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "checkbox",
+      "name": "Checkbox",
+      "description": "二态/不确定复选框；children 在 label 内渲染。",
+      "typeName": "CheckboxProps",
+      "sourceTypePath": "packages/react/src/checkbox/checkbox.tsx#CheckboxProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Checkbox"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": [
+        "@base-ui/react/checkbox#CheckboxRootProps；checked/defaultChecked/onCheckedChange/indeterminate/disabled/name/value 及原生属性完整继承"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "轻填充控件，不独立 blur。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "checkbox-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "radio-group",
+      "name": "RadioGroup",
+      "description": "单选选项组；方向键导航与隐藏表单 input 由 Base UI 提供。",
+      "typeName": "CwaRadioGroupProps",
+      "sourceTypePath": "packages/react/src/radio-group/radio-group.tsx#CwaRadioGroupProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "RadioGroup",
+        "RadioItem"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/radio-group#RadioGroupProps；value/defaultValue/onValueChange/name/disabled/className/aria-* 等完整继承"
+      ],
+      "compoundParts": {
+        "RadioItem": {
+          "exportName": "RadioItem",
+          "typeName": "RadioItemProps",
+          "sourceTypePath": "packages/react/src/radio-group/radio-group.tsx#RadioItemProps",
+          "description": "带 label 的单个选项；value 为字符串。",
+          "props": {
+            "value": {
+              "type": "string",
+              "required": true
+            },
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            }
+          },
+          "extends": []
+        }
+      },
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "选项不创建光学层。",
+      "a11y": [
+        "accessible-name-required-for-controls",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "radio-group-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "switch",
+      "name": "Switch",
+      "description": "即时二态设置；children 在 label 内渲染。",
+      "typeName": "SwitchProps",
+      "sourceTypePath": "packages/react/src/switch/switch.tsx#SwitchProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Switch"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": [
+        "@base-ui/react/switch#SwitchRootProps；checked/defaultChecked/onCheckedChange/disabled/name/value 和原生属性完整继承"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "轻填充，不独立 blur。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "switch-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "select",
+      "name": "Select",
+      "description": "字符串值单选；选择值用 Select，动作菜单用 DropdownMenu。",
+      "typeName": "SelectRootPropsAlias",
+      "sourceTypePath": "packages/react/src/select/select.tsx#SelectRootPropsAlias",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Select",
+        "SelectContent",
+        "SelectItem"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/select#SelectRootProps<Value extends string>；value/defaultValue/onValueChange、open/defaultOpen/onOpenChange、name/items/disabled 等完整继承；Multiple 泛型固定为默认 false"
+      ],
+      "compoundParts": {
+        "Select.Trigger": {
+          "exportName": "Select.Trigger",
+          "typeName": "SelectTriggerProps",
+          "sourceTypePath": "@base-ui/react/select#SelectTriggerProps",
+          "description": "Base UI Trigger 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Value": {
+          "exportName": "Select.Value",
+          "typeName": "SelectValueProps",
+          "sourceTypePath": "@base-ui/react/select#SelectValueProps",
+          "description": "Base UI Value 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectValueProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Icon": {
+          "exportName": "Select.Icon",
+          "typeName": "SelectIconProps",
+          "sourceTypePath": "@base-ui/react/select#SelectIconProps",
+          "description": "Base UI Icon 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectIconProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Portal": {
+          "exportName": "Select.Portal",
+          "typeName": "SelectPortalProps",
+          "sourceTypePath": "@base-ui/react/select#SelectPortalProps",
+          "description": "Base UI Portal 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectPortalProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Positioner": {
+          "exportName": "Select.Positioner",
+          "typeName": "SelectPositionerProps",
+          "sourceTypePath": "@base-ui/react/select#SelectPositionerProps",
+          "description": "Base UI Positioner 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectPositionerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Popup": {
+          "exportName": "Select.Popup",
+          "typeName": "SelectPopupProps",
+          "sourceTypePath": "@base-ui/react/select#SelectPopupProps",
+          "description": "Base UI Popup 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectPopupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.List": {
+          "exportName": "Select.List",
+          "typeName": "SelectListProps",
+          "sourceTypePath": "@base-ui/react/select#SelectListProps",
+          "description": "Base UI List 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectListProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Item": {
+          "exportName": "Select.Item",
+          "typeName": "SelectItemProps",
+          "sourceTypePath": "@base-ui/react/select#SelectItemProps",
+          "description": "Base UI Item 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectItemProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.ItemText": {
+          "exportName": "Select.ItemText",
+          "typeName": "SelectItemTextProps",
+          "sourceTypePath": "@base-ui/react/select#SelectItemTextProps",
+          "description": "Base UI ItemText 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectItemTextProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.ItemIndicator": {
+          "exportName": "Select.ItemIndicator",
+          "typeName": "SelectItemIndicatorProps",
+          "sourceTypePath": "@base-ui/react/select#SelectItemIndicatorProps",
+          "description": "Base UI ItemIndicator 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectItemIndicatorProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.Group": {
+          "exportName": "Select.Group",
+          "typeName": "SelectGroupProps",
+          "sourceTypePath": "@base-ui/react/select#SelectGroupProps",
+          "description": "Base UI Group 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectGroupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Select.GroupLabel": {
+          "exportName": "Select.GroupLabel",
+          "typeName": "SelectGroupLabelProps",
+          "sourceTypePath": "@base-ui/react/select#SelectGroupLabelProps",
+          "description": "Base UI GroupLabel 的直接导出；未自动附加 CWA Content 组合样式。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/select#SelectGroupLabelProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "SelectContent": {
+          "exportName": "SelectContent",
+          "typeName": "SelectContentProps",
+          "sourceTypePath": "packages/react/src/select/select.tsx#SelectContentProps",
+          "description": "主题化 Portal、Positioner 与 Popup 的 CWA 组合。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "material": {
+              "type": "enum",
+              "values": [
+                "glass",
+                "solid"
+              ],
+              "default": "glass"
+            }
+          },
+          "extends": [],
+          "materialPolicy": "glass-regular",
+          "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。"
+        },
+        "SelectItem": {
+          "exportName": "SelectItem",
+          "typeName": "SelectItemProps",
+          "sourceTypePath": "packages/react/src/select/select.tsx#SelectItemProps",
+          "description": "字符串单选项，包含文字与选中标记。",
+          "props": {
+            "value": {
+              "type": "string",
+              "required": true
+            },
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            }
+          },
+          "extends": []
+        }
+      },
+      "materialPolicy": "glass-regular",
+      "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。",
+      "a11y": [
+        "accessible-name-required-for-controls",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "select-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "slider",
+      "name": "Slider",
+      "description": "单 Thumb 数值滑块；箭头/Home/End 为拖拽替代。",
+      "typeName": "CwaSliderProps",
+      "sourceTypePath": "packages/react/src/slider/slider.tsx#CwaSliderProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Slider"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/slider#SliderRootProps；value/defaultValue/onValueChange/min/max/step/disabled、原生属性完整继承；CWA className 施加于内部 Control"
+      ],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "轨道与 Thumb 不独立 blur；当前组合只渲染一个 Thumb，不宣称支持完整范围滑块。",
+      "a11y": [
+        "accessible-name-required-for-controls",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "slider-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "tabs",
+      "name": "Tabs",
+      "description": "切换关联内容面板；小规模互斥设置使用 SegmentedControl。",
+      "typeName": "CwaTabsProps",
+      "sourceTypePath": "packages/react/src/tabs/tabs.tsx#CwaTabsProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Tabs",
+        "TabsList",
+        "TabsTab",
+        "TabsPanel"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/tabs#TabsRootProps；value/defaultValue/onValueChange/orientation、原生属性等完整继承"
+      ],
+      "compoundParts": {
+        "Tabs.List": {
+          "exportName": "Tabs.List",
+          "typeName": "TabsListProps",
+          "sourceTypePath": "@base-ui/react/tabs#TabsListProps",
+          "description": "activateOnFocus（默认 false）/loopFocus（默认 true）在 Tabs.List 上；没有 activationMode Root prop。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/tabs#TabsListProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Tabs.Tab": {
+          "exportName": "Tabs.Tab",
+          "typeName": "TabsTabProps",
+          "sourceTypePath": "@base-ui/react/tabs#TabsTabProps",
+          "description": "Base UI Tab 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/tabs#TabsTabProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Tabs.Panel": {
+          "exportName": "Tabs.Panel",
+          "typeName": "TabsPanelProps",
+          "sourceTypePath": "@base-ui/react/tabs#TabsPanelProps",
+          "description": "Base UI Panel 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/tabs#TabsPanelProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Tabs.Indicator": {
+          "exportName": "Tabs.Indicator",
+          "typeName": "TabsIndicatorProps",
+          "sourceTypePath": "@base-ui/react/tabs#TabsIndicatorProps",
+          "description": "Base UI Indicator 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/tabs#TabsIndicatorProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "TabsList": {
+          "exportName": "TabsList",
+          "typeName": "TabsListProps",
+          "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsListProps",
+          "description": "CWA 样式 List；只接受这里列出的 props。需要 activateOnFocus 时使用 Tabs.List。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "aria-label": {
+              "type": "string"
+            }
+          },
+          "extends": []
+        },
+        "TabsTab": {
+          "exportName": "TabsTab",
+          "typeName": "TabsTabProps",
+          "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsTabProps",
+          "description": "字符串值的 CWA Tab。",
+          "props": {
+            "value": {
+              "type": "string",
+              "required": true
+            },
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            }
+          },
+          "extends": []
+        },
+        "TabsPanel": {
+          "exportName": "TabsPanel",
+          "typeName": "TabsPanelProps",
+          "sourceTypePath": "packages/react/src/tabs/tabs.tsx#TabsPanelProps",
+          "description": "字符串值关联的 CWA Panel。",
+          "props": {
+            "value": {
+              "type": "string",
+              "required": true
+            },
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            }
+          },
+          "extends": []
+        }
+      },
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "选中状态为填充/指示，不创建背景玻璃。",
+      "a11y": [
+        "accessible-name-required-for-controls",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "tabs-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "segmented-control",
+      "name": "SegmentedControl",
+      "description": "2–5 个互斥设置选项；RadioGroup 语义，不是内容 Tabs。",
+      "typeName": "SegmentedControlProps",
+      "sourceTypePath": "packages/react/src/segmented-control/segmented-control.tsx#SegmentedControlProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "SegmentedControl"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "items": {
+          "type": "array",
+          "summary": "SegmentedControlItem[]：{ value: string; label: ReactNode; disabled?: boolean }",
+          "required": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "onValueChange": {
+          "type": "function",
+          "summary": "(value: string) => void"
+        },
+        "aria-label": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": [],
+      "materialPolicy": "inherit-parent-surface",
+      "materialNotes": "分段选中填充，不额外 blur；必须提供组名称。",
+      "a11y": [
+        "accessible-name-required-for-controls",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "segmented-control-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "tooltip",
+      "name": "Tooltip",
+      "description": "hover/focus 的非交互说明；交互内容使用 Popover。",
+      "typeName": "CwaTooltipProps",
+      "sourceTypePath": "packages/react/src/tooltip/tooltip.tsx#CwaTooltipProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Tooltip"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "content": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": true
+        },
+        "children": {
+          "type": "node",
+          "summary": "TS 为 ReactNode；实际用于 Trigger.render，应提供单个可接收事件/ref 的 React 元素"
+        }
+      },
+      "extends": [
+        "@base-ui/react/tooltip#TooltipRootProps；open/defaultOpen/onOpenChange 等 Root 行为完整继承"
+      ],
+      "materialPolicy": "solid",
+      "materialNotes": "文字说明使用 solid 以保证可读性。",
+      "a11y": [
+        "non-interactive-description",
+        "hover-and-focus"
+      ],
+      "examples": [
+        "tooltip-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "popover",
+      "name": "Popover",
+      "description": "锚定的非模态浮层；焦点、外部点击与定位由 Base UI 管理。",
+      "typeName": "PopoverRootProps",
+      "sourceTypePath": "packages/react/src/popover/popover.tsx#PopoverRootProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Popover",
+        "PopoverContent"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/popover#PopoverRootProps；open/defaultOpen/onOpenChange/modal 等完整继承"
+      ],
+      "compoundParts": {
+        "Popover.Trigger": {
+          "exportName": "Popover.Trigger",
+          "typeName": "PopoverTriggerProps",
+          "sourceTypePath": "@base-ui/react/popover#PopoverTriggerProps",
+          "description": "Base UI Trigger 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/popover#PopoverTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Popover.Close": {
+          "exportName": "Popover.Close",
+          "typeName": "PopoverCloseProps",
+          "sourceTypePath": "@base-ui/react/popover#PopoverCloseProps",
+          "description": "Base UI Close 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/popover#PopoverCloseProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Popover.Title": {
+          "exportName": "Popover.Title",
+          "typeName": "PopoverTitleProps",
+          "sourceTypePath": "@base-ui/react/popover#PopoverTitleProps",
+          "description": "Base UI Title 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/popover#PopoverTitleProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Popover.Description": {
+          "exportName": "Popover.Description",
+          "typeName": "PopoverDescriptionProps",
+          "sourceTypePath": "@base-ui/react/popover#PopoverDescriptionProps",
+          "description": "Base UI Description 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/popover#PopoverDescriptionProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "PopoverContent": {
+          "exportName": "PopoverContent",
+          "typeName": "PopoverContentProps",
+          "sourceTypePath": "packages/react/src/popover/popover.tsx#PopoverContentProps",
+          "description": "CWA 主题化 Portal 和锚定 Popup。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "aria-label": {
+              "type": "string"
+            },
+            "material": {
+              "type": "enum",
+              "values": [
+                "glass",
+                "solid"
+              ],
+              "default": "glass"
+            }
+          },
+          "extends": [],
+          "materialPolicy": "glass-regular",
+          "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。"
+        }
+      },
+      "materialPolicy": "glass-regular",
+      "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "popover-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "dropdown-menu",
+      "name": "DropdownMenu",
+      "description": "触发动作的菜单；不是表单选择值控件。",
+      "typeName": "DropdownMenuRootProps",
+      "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuRootProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuContent",
+        "DropdownMenuItem"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/menu#MenuRootProps；open/defaultOpen/onOpenChange 等完整继承"
+      ],
+      "compoundParts": {
+        "DropdownMenu.Trigger": {
+          "exportName": "DropdownMenu.Trigger",
+          "typeName": "MenuTriggerProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuTriggerProps",
+          "description": "Base UI Trigger 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.Group": {
+          "exportName": "DropdownMenu.Group",
+          "typeName": "MenuGroupProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuGroupProps",
+          "description": "Base UI Group 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuGroupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.GroupLabel": {
+          "exportName": "DropdownMenu.GroupLabel",
+          "typeName": "MenuGroupLabelProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuGroupLabelProps",
+          "description": "Base UI GroupLabel 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuGroupLabelProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.SubmenuRoot": {
+          "exportName": "DropdownMenu.SubmenuRoot",
+          "typeName": "MenuSubmenuRootProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuSubmenuRootProps",
+          "description": "Base UI SubmenuRoot 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuSubmenuRootProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.SubmenuTrigger": {
+          "exportName": "DropdownMenu.SubmenuTrigger",
+          "typeName": "MenuSubmenuTriggerProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuSubmenuTriggerProps",
+          "description": "Base UI SubmenuTrigger 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuSubmenuTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.Separator": {
+          "exportName": "DropdownMenu.Separator",
+          "typeName": "MenuSeparatorProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuSeparatorProps",
+          "description": "Base UI Separator 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuSeparatorProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.CheckboxItem": {
+          "exportName": "DropdownMenu.CheckboxItem",
+          "typeName": "MenuCheckboxItemProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuCheckboxItemProps",
+          "description": "Base UI CheckboxItem 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuCheckboxItemProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.RadioGroup": {
+          "exportName": "DropdownMenu.RadioGroup",
+          "typeName": "MenuRadioGroupProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuRadioGroupProps",
+          "description": "Base UI RadioGroup 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuRadioGroupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenu.RadioItem": {
+          "exportName": "DropdownMenu.RadioItem",
+          "typeName": "MenuRadioItemProps",
+          "sourceTypePath": "@base-ui/react/menu#MenuRadioItemProps",
+          "description": "Base UI RadioItem 直接导出。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/menu#MenuRadioItemProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "DropdownMenuContent": {
+          "exportName": "DropdownMenuContent",
+          "typeName": "DropdownMenuContentProps",
+          "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuContentProps",
+          "description": "CWA 主题化 Portal 和菜单 Popup。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "material": {
+              "type": "enum",
+              "values": [
+                "glass",
+                "solid"
+              ],
+              "default": "glass"
+            }
+          },
+          "extends": [],
+          "materialPolicy": "glass-regular",
+          "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。"
+        },
+        "DropdownMenuItem": {
+          "exportName": "DropdownMenuItem",
+          "typeName": "DropdownMenuItemProps",
+          "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuItemProps",
+          "description": "CWA 动作项；事件签名是无参数回调。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "shortcut": {
+              "type": "string",
+              "description": "仅展示，不注册全局快捷键"
+            },
+            "destructive": {
+              "type": "boolean"
+            },
+            "onClick": {
+              "type": "function",
+              "summary": "() => void"
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            }
+          },
+          "extends": []
+        }
+      },
+      "materialPolicy": "glass-regular",
+      "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "dropdown-menu-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "dialog",
+      "name": "Dialog",
+      "description": "模态对话框；焦点陷阱、Escape、滚动锁与恢复由 Base UI 管理。",
+      "typeName": "DialogRootProps",
+      "sourceTypePath": "packages/react/src/dialog/dialog.tsx#DialogRootProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Dialog"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/dialog#DialogRootProps；open/defaultOpen/onOpenChange/modal 等完整继承"
+      ],
+      "compoundParts": {
+        "Dialog.Trigger": {
+          "exportName": "Dialog.Trigger",
+          "typeName": "DialogTriggerProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogTriggerProps",
+          "description": "Base UI Dialog Trigger 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Dialog.Close": {
+          "exportName": "Dialog.Close",
+          "typeName": "DialogCloseProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogCloseProps",
+          "description": "Base UI Dialog Close 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogCloseProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Dialog.Title": {
+          "exportName": "Dialog.Title",
+          "typeName": "DialogTitleProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogTitleProps",
+          "description": "Base UI Dialog Title 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogTitleProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Dialog.Description": {
+          "exportName": "Dialog.Description",
+          "typeName": "DialogDescriptionProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogDescriptionProps",
+          "description": "Base UI Dialog Description 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogDescriptionProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Dialog.Content": {
+          "exportName": "Dialog.Content",
+          "typeName": "DialogContentProps",
+          "sourceTypePath": "packages/react/src/dialog/dialog.tsx#DialogContentProps",
+          "description": "Dialog 的主题化 Portal/Popup 组合；材质只写在此部件。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "material": {
+              "type": "enum",
+              "values": [
+                "glass-thick",
+                "solid"
+              ],
+              "default": "glass-thick"
+            }
+          },
+          "extends": [],
+          "materialPolicy": "glass-thick",
+          "materialNotes": "材质属于 Dialog.Content；默认 glass-thick，嵌套玻璃区域显式 solid。Provider solid 与系统回退优先。"
+        }
+      },
+      "materialPolicy": "glass-thick",
+      "materialNotes": "材质属于 Dialog.Content；默认 glass-thick，嵌套玻璃区域显式 solid。Provider solid 与系统回退优先。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "dialog-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "sheet",
+      "name": "Sheet",
+      "description": "bottom/end 单展开位抽屉；可拖拽关闭并提供关闭按钮作为替代。",
+      "typeName": "SheetProps",
+      "sourceTypePath": "packages/react/src/sheet/sheet.tsx#SheetProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Sheet"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "open": {
+          "type": "boolean"
+        },
+        "defaultOpen": {
+          "type": "boolean",
+          "default": false
+        },
+        "onOpenChange": {
+          "type": "function",
+          "summary": "(open: boolean) => void"
+        },
+        "placement": {
+          "type": "enum",
+          "values": [
+            "bottom",
+            "end"
+          ],
+          "default": "bottom"
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [],
+      "compoundParts": {
+        "Sheet.Trigger": {
+          "exportName": "Sheet.Trigger",
+          "typeName": "DialogTriggerProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogTriggerProps",
+          "description": "Base UI Dialog Trigger 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Sheet.Close": {
+          "exportName": "Sheet.Close",
+          "typeName": "DialogCloseProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogCloseProps",
+          "description": "Base UI Dialog Close 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogCloseProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Sheet.Title": {
+          "exportName": "Sheet.Title",
+          "typeName": "DialogTitleProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogTitleProps",
+          "description": "Base UI Dialog Title 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogTitleProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Sheet.Description": {
+          "exportName": "Sheet.Description",
+          "typeName": "DialogDescriptionProps",
+          "sourceTypePath": "@base-ui/react/dialog#DialogDescriptionProps",
+          "description": "Base UI Dialog Description 类型；CWA 可附加默认样式类。",
+          "props": {},
+          "extends": [
+            "@base-ui/react/dialog#DialogDescriptionProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+          ]
+        },
+        "Sheet.Content": {
+          "exportName": "Sheet.Content",
+          "typeName": "SheetContentProps",
+          "sourceTypePath": "packages/react/src/sheet/sheet.tsx#SheetContentProps",
+          "description": "Sheet 的主题化 Portal/Popup 组合；材质只写在此部件。",
+          "props": {
+            "children": {
+              "type": "node",
+              "summary": "ReactNode；内容由调用方提供",
+              "required": false
+            },
+            "className": {
+              "type": "string",
+              "description": "附加样式类；具体合并行为以实现为准"
+            },
+            "material": {
+              "type": "enum",
+              "values": [
+                "glass-thick",
+                "solid"
+              ],
+              "default": "glass-thick"
+            },
+            "dismissThreshold": {
+              "type": "number",
+              "default": 96,
+              "description": "关闭拖动位移阈值（px）；不代表 snap point"
+            }
+          },
+          "extends": [],
+          "materialPolicy": "glass-thick",
+          "materialNotes": "材质属于 Sheet.Content；默认 glass-thick。当前单展开位，无 snapPoints API；Provider solid/系统回退优先。"
+        }
+      },
+      "materialPolicy": "glass-thick",
+      "materialNotes": "材质属于 Sheet.Content；默认 glass-thick。当前单展开位，无 snapPoints API；Provider solid/系统回退优先。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "sheet-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "toast",
+      "name": "ToastProvider",
+      "description": "应用通知队列；外部触发可创建 manager 并传入 toastManager。",
+      "typeName": "ToastProviderPropsAlias",
+      "sourceTypePath": "packages/react/src/toast/toast.tsx#ToastProviderPropsAlias",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "ToastProvider",
+        "createToastManager",
+        "useToastManager"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "@base-ui/react/toast#ToastProviderProps；timeout 默认 5000ms、limit 默认 3、toastManager 可选；不是原生 div props"
+      ],
+      "materialPolicy": "solid",
+      "materialNotes": "通知为可读 solid 表面，live region 与队列由 Base UI 提供。",
+      "a11y": [
+        "semantic-content",
+        "visible-focus-for-interactive-parts",
+        "keyboard-behavior-from-native-or-base-ui"
+      ],
+      "examples": [
+        "toast-basic"
+      ],
+      "runtimeDependencies": [
+        "@base-ui/react"
+      ],
+      "deprecated": false
+    },
+    {
+      "schemaVersion": "1.1.0",
+      "libraryVersion": "0.1.0-alpha.2",
+      "framework": "react",
+      "id": "alert",
+      "name": "Alert",
+      "description": "页面内的即时状态提示；所有 tone 均渲染 role=\"alert\"。",
+      "typeName": "AlertProps",
+      "sourceTypePath": "packages/react/src/alert/alert.tsx#AlertProps",
+      "status": "stable-in-alpha",
+      "package": "@cwa-design/react",
+      "exports": [
+        "Alert"
+      ],
+      "importPath": "@cwa-design/react",
+      "stylePath": "@cwa-design/react/styles.css",
+      "props": {
+        "tone": {
+          "type": "enum",
+          "values": [
+            "info",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "default": "info"
+        },
+        "title": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "action": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "Omit<React.HTMLAttributes<HTMLDivElement>, \"title\">；title 被 ReactNode 标题取代"
+      ],
+      "materialPolicy": "solid",
+      "materialNotes": "状态块使用轻填充；文本与图标共同表达含义。",
+      "a11y": [
+        "role-alert-all-tones",
+        "text-and-icon-status"
+      ],
+      "examples": [
+        "alert-basic"
+      ],
+      "runtimeDependencies": [],
+      "deprecated": false
+    }
+  ],
+  "examples": [
+    {
+      "id": "provider-basic",
+      "componentId": "provider",
+      "framework": "react",
+      "title": "CwaProvider 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:538d4efb75f56f7df15c49707605e8680816dcbff87e998ab1c3db4d6b72049c",
+      "sourcePath": "packages/registry/examples/provider-basic.tsx",
+      "file": "examples/provider-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": false
+    },
+    {
+      "id": "surface-basic",
+      "componentId": "surface",
+      "framework": "react",
+      "title": "Surface 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:367037a2c3a85f1a9e6eeb75d97e8e32f275e2b8b468fd8bd181077d7c688b4f",
+      "sourcePath": "packages/registry/examples/surface-basic.tsx",
+      "file": "examples/surface-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "surface-clear-toolbar",
+      "componentId": "surface",
+      "framework": "react",
+      "title": "Surface 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react",
+        "react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+      "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+      "file": "examples/surface-clear-toolbar.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "button-basic",
+      "componentId": "button",
+      "framework": "react",
+      "title": "Button 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb",
+      "sourcePath": "packages/react/src/button/examples/button-basic.tsx",
+      "file": "examples/button-basic.tsx",
+      "exportName": "ButtonBasic",
+      "requiresProvider": true
+    },
+    {
+      "id": "button-loading",
+      "componentId": "button",
+      "framework": "react",
+      "title": "Button 加载状态",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react",
+        "react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:d311e0b1d527fb82c8ba571b392f9d2ae1d3d9a9bcba8998df4f5b7584b05e32",
+      "sourcePath": "packages/react/src/button/examples/button-loading.tsx",
+      "file": "examples/button-loading.tsx",
+      "exportName": "ButtonLoading",
+      "requiresProvider": true
+    },
+    {
+      "id": "icon-button-basic",
+      "componentId": "icon-button",
+      "framework": "react",
+      "title": "IconButton 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:02963b83165f4c7af9f3ce17187294b2843b0fa2604f17265b6859e538862454",
+      "sourcePath": "packages/react/src/icon-button/examples/icon-button-basic.tsx",
+      "file": "examples/icon-button-basic.tsx",
+      "exportName": "IconButtonBasic",
+      "requiresProvider": true
+    },
+    {
+      "id": "stack-basic",
+      "componentId": "stack",
+      "framework": "react",
+      "title": "Stack 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:c2579c9bc879f02647387f7f8fd66ce02e612006456439c320380e24debdc0e3",
+      "sourcePath": "packages/registry/examples/stack-basic.tsx",
+      "file": "examples/stack-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "text-basic",
+      "componentId": "text",
+      "framework": "react",
+      "title": "Text 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:e7a1be79dfff82626896bbdc33c0657de5dafa5325e4225eb424f91273827ef4",
+      "sourcePath": "packages/registry/examples/text-basic.tsx",
+      "file": "examples/text-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "heading-basic",
+      "componentId": "heading",
+      "framework": "react",
+      "title": "Heading 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:4bdd1aed13e96a22af3300bc813a0a0dd83c751e4501ef758b4b6555cf953991",
+      "sourcePath": "packages/registry/examples/heading-basic.tsx",
+      "file": "examples/heading-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "field-basic",
+      "componentId": "field",
+      "framework": "react",
+      "title": "Field 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:dae28f72df885cfb1c08bae8483827ddd96ba157ef5133c1eacda75773fd666b",
+      "sourcePath": "packages/registry/examples/field-basic.tsx",
+      "file": "examples/field-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "input-basic",
+      "componentId": "input",
+      "framework": "react",
+      "title": "Input 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:fb1437a85bb8396b56552477fb033d1228860e0d2cd952e840d0969f8d300fdc",
+      "sourcePath": "packages/registry/examples/input-basic.tsx",
+      "file": "examples/input-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "textarea-basic",
+      "componentId": "textarea",
+      "framework": "react",
+      "title": "Textarea 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:1c0785718370bef8afc77589eb123a08a46bf01380ef2b5d19c75f0456bf7f63",
+      "sourcePath": "packages/registry/examples/textarea-basic.tsx",
+      "file": "examples/textarea-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "separator-basic",
+      "componentId": "separator",
+      "framework": "react",
+      "title": "Separator 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:7091930f173d7b0ed71c842433aff8a0408d08f32bd52dadc09516f2f0c5c685",
+      "sourcePath": "packages/registry/examples/separator-basic.tsx",
+      "file": "examples/separator-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "badge-basic",
+      "componentId": "badge",
+      "framework": "react",
+      "title": "Badge 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:71b8f0844a8ebd10d3c80373bd88b5535a441514596ef59043117624cbc1b9d0",
+      "sourcePath": "packages/registry/examples/badge-basic.tsx",
+      "file": "examples/badge-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "avatar-basic",
+      "componentId": "avatar",
+      "framework": "react",
+      "title": "Avatar 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:7581d91a49586efa804aeb0c2bd2eeed6759f0d0b27ed889c20a69b640f9b439",
+      "sourcePath": "packages/registry/examples/avatar-basic.tsx",
+      "file": "examples/avatar-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "card-basic",
+      "componentId": "card",
+      "framework": "react",
+      "title": "Card 基础用法",
+      "compiled": true,
+      "imports": [
+        "react",
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:8f26ddb6bfa1fdcc1f3a12919654325d2acdcd2b780d4c2a8c0df76376edeada",
+      "sourcePath": "packages/registry/examples/card-basic.tsx",
+      "file": "examples/card-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "spinner-basic",
+      "componentId": "spinner",
+      "framework": "react",
+      "title": "Spinner 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:57865a2ac699e33b555f86c255a142b22191db6700f06a995b6ee1a4d6b2ef4f",
+      "sourcePath": "packages/registry/examples/spinner-basic.tsx",
+      "file": "examples/spinner-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "skeleton-basic",
+      "componentId": "skeleton",
+      "framework": "react",
+      "title": "Skeleton 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:33cd07e001f7da3303c238e49f94c9b6f8844674c0e43143022ce7f4844fdc6c",
+      "sourcePath": "packages/registry/examples/skeleton-basic.tsx",
+      "file": "examples/skeleton-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "checkbox-basic",
+      "componentId": "checkbox",
+      "framework": "react",
+      "title": "Checkbox 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:7a4c8f8a8e00659f5a1e5b4adc32ca8dd51c18245b11d05ed5f12745f3641567",
+      "sourcePath": "packages/registry/examples/checkbox-basic.tsx",
+      "file": "examples/checkbox-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "radio-group-basic",
+      "componentId": "radio-group",
+      "framework": "react",
+      "title": "RadioGroup 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:6bce709a270ff5ebb188c77444c26e8c458b412fc95e4793586a2da833a68315",
+      "sourcePath": "packages/registry/examples/radio-group-basic.tsx",
+      "file": "examples/radio-group-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "switch-basic",
+      "componentId": "switch",
+      "framework": "react",
+      "title": "Switch 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:a55d77071a6b0f3276629ed6ba4191d64cd8c818ed66d4641c6f85844e921026",
+      "sourcePath": "packages/registry/examples/switch-basic.tsx",
+      "file": "examples/switch-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "select-basic",
+      "componentId": "select",
+      "framework": "react",
+      "title": "Select 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:68399256d11aa624223d7068d5b245cc80945db708d46470677d578a4e57a4db",
+      "sourcePath": "packages/registry/examples/select-basic.tsx",
+      "file": "examples/select-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "slider-basic",
+      "componentId": "slider",
+      "framework": "react",
+      "title": "Slider 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:6a679ef47000b78f21067954dee3bcc76b6071d05bace6cc05435f62f489ba96",
+      "sourcePath": "packages/registry/examples/slider-basic.tsx",
+      "file": "examples/slider-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "tabs-basic",
+      "componentId": "tabs",
+      "framework": "react",
+      "title": "Tabs 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:d536a84857210a58108cb7270b2dc49e168bbaa38d506dbfb170947e5afbcb48",
+      "sourcePath": "packages/registry/examples/tabs-basic.tsx",
+      "file": "examples/tabs-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "segmented-control-basic",
+      "componentId": "segmented-control",
+      "framework": "react",
+      "title": "SegmentedControl 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:fac4d1751018aabc8b7228be2f6a606d2641f4858cbd896547c5ec4028636614",
+      "sourcePath": "packages/registry/examples/segmented-control-basic.tsx",
+      "file": "examples/segmented-control-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "tooltip-basic",
+      "componentId": "tooltip",
+      "framework": "react",
+      "title": "Tooltip 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:c4a9fe18f1f7461993345122dad231b07d43c6bc270dde0ebc35b6a7d1862e82",
+      "sourcePath": "packages/registry/examples/tooltip-basic.tsx",
+      "file": "examples/tooltip-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "popover-basic",
+      "componentId": "popover",
+      "framework": "react",
+      "title": "Popover 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:23d7a9c400a3534c225c3993cbabecddc81e6a27e0c7abb2985d2820c8f7b931",
+      "sourcePath": "packages/registry/examples/popover-basic.tsx",
+      "file": "examples/popover-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "dropdown-menu-basic",
+      "componentId": "dropdown-menu",
+      "framework": "react",
+      "title": "DropdownMenu 基础用法",
+      "compiled": true,
+      "imports": [
+        "react",
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:6c200bc9aa887ba927898d9bac2c0bbc7757ebde1b0db39498d11c2948c91c3e",
+      "sourcePath": "packages/registry/examples/dropdown-menu-basic.tsx",
+      "file": "examples/dropdown-menu-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "dialog-basic",
+      "componentId": "dialog",
+      "framework": "react",
+      "title": "Dialog 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:9d0730ce8deb836b49f728760a03e0ce834be02a13edeff42edf958f25d12f51",
+      "sourcePath": "packages/registry/examples/dialog-basic.tsx",
+      "file": "examples/dialog-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "sheet-basic",
+      "componentId": "sheet",
+      "framework": "react",
+      "title": "Sheet 基础用法",
+      "compiled": true,
+      "imports": [
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:e033a206c6f1fcd9aab74bc78bb509dca38b00d06ac8a07265019dfaf482df14",
+      "sourcePath": "packages/registry/examples/sheet-basic.tsx",
+      "file": "examples/sheet-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "toast-basic",
+      "componentId": "toast",
+      "framework": "react",
+      "title": "ToastProvider 基础用法",
+      "compiled": true,
+      "imports": [
+        "react",
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:e5a9bf4af893199b0d02144f3526d60c726a0fa97e661827a5900c900f229a6d",
+      "sourcePath": "packages/registry/examples/toast-basic.tsx",
+      "file": "examples/toast-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    },
+    {
+      "id": "alert-basic",
+      "componentId": "alert",
+      "framework": "react",
+      "title": "Alert 基础用法",
+      "compiled": true,
+      "imports": [
+        "react",
+        "@cwa-design/react"
+      ],
+      "needsStyles": true,
+      "contentDigest": "sha256:b4d4f3f55288057f02c7c4c2e44bdf112857c8bd7909b8f4fdfd0cc62ea33ee0",
+      "sourcePath": "packages/registry/examples/alert-basic.tsx",
+      "file": "examples/alert-basic.tsx",
+      "exportName": "default",
+      "requiresProvider": true
+    }
+  ],
+  "recipes": [
+    {
+      "id": "settings",
+      "framework": "react",
+      "title": "个人设置表单",
+      "components": [
+        "provider",
+        "field",
+        "input",
+        "switch",
+        "button",
+        "card",
+        "dialog",
+        "toast",
+        "stack"
+      ],
+      "files": [
+        "recipes/settings.tsx",
+        "recipes/recipe-scope.tsx"
+      ],
+      "sourcePath": "packages/react/src/recipes/settings.tsx",
+      "exportName": "SettingsRecipe",
+      "compiled": true,
+      "limitations": [
+        "本地表单演示；onSave 由业务接入，未连接持久化服务。"
+      ]
+    },
+    {
+      "id": "account-panel",
+      "framework": "react",
+      "title": "账户面板",
+      "components": [
+        "provider",
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "tabs",
+        "dropdown-menu",
+        "skeleton",
+        "stack",
+        "text"
+      ],
+      "files": [
+        "recipes/account-panel.tsx",
+        "recipes/recipe-scope.tsx"
+      ],
+      "sourcePath": "packages/react/src/recipes/account-panel.tsx",
+      "exportName": "AccountPanelRecipe",
+      "compiled": true,
+      "limitations": [
+        "活动与账单为静态 fixture；业务操作可通过回调接入，默认只给本地反馈。"
+      ]
+    },
+    {
+      "id": "ai-workspace",
+      "framework": "react",
+      "title": "AI 工作台界面组合",
+      "components": [
+        "provider",
+        "sheet",
+        "popover",
+        "tabs",
+        "text",
+        "button",
+        "badge",
+        "card",
+        "stack"
+      ],
+      "files": [
+        "recipes/ai-workspace.tsx",
+        "recipes/recipe-scope.tsx"
+      ],
+      "sourcePath": "packages/react/src/recipes/ai-workspace.tsx",
+      "exportName": "AiWorkspaceRecipe",
+      "compiled": true,
+      "limitations": [
+        "消息与工具记录为静态 fixture；未连接模型服务。",
+        "发送与附件选择提供本地演示，可通过回调接入业务；没有文件上传服务。"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "examples/provider-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:538d4efb75f56f7df15c49707605e8680816dcbff87e998ab1c3db4d6b72049c",
+      "byteSize": 332,
+      "sourcePath": "packages/registry/examples/provider-basic.tsx",
+      "sourceDigest": "sha256:538d4efb75f56f7df15c49707605e8680816dcbff87e998ab1c3db4d6b72049c"
+    },
+    {
+      "path": "examples/surface-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:367037a2c3a85f1a9e6eeb75d97e8e32f275e2b8b468fd8bd181077d7c688b4f",
+      "byteSize": 317,
+      "sourcePath": "packages/registry/examples/surface-basic.tsx",
+      "sourceDigest": "sha256:367037a2c3a85f1a9e6eeb75d97e8e32f275e2b8b468fd8bd181077d7c688b4f"
+    },
+    {
+      "path": "examples/surface-clear-toolbar.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af",
+      "byteSize": 2415,
+      "sourcePath": "packages/registry/examples/surface-clear-toolbar.tsx",
+      "sourceDigest": "sha256:56e225a98ce1e6793f74adedb765f3a2794cb7a2af67e1510b74d497e54928af"
+    },
+    {
+      "path": "examples/button-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb",
+      "byteSize": 324,
+      "sourcePath": "packages/react/src/button/examples/button-basic.tsx",
+      "sourceDigest": "sha256:0c141d8dad240e263db64a298a1543bf478ed5674e9a2137598005124a7689eb"
+    },
+    {
+      "path": "examples/button-loading.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:d311e0b1d527fb82c8ba571b392f9d2ae1d3d9a9bcba8998df4f5b7584b05e32",
+      "byteSize": 488,
+      "sourcePath": "packages/react/src/button/examples/button-loading.tsx",
+      "sourceDigest": "sha256:d311e0b1d527fb82c8ba571b392f9d2ae1d3d9a9bcba8998df4f5b7584b05e32"
+    },
+    {
+      "path": "examples/icon-button-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:02963b83165f4c7af9f3ce17187294b2843b0fa2604f17265b6859e538862454",
+      "byteSize": 469,
+      "sourcePath": "packages/react/src/icon-button/examples/icon-button-basic.tsx",
+      "sourceDigest": "sha256:02963b83165f4c7af9f3ce17187294b2843b0fa2604f17265b6859e538862454"
+    },
+    {
+      "path": "examples/stack-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:c2579c9bc879f02647387f7f8fd66ce02e612006456439c320380e24debdc0e3",
+      "byteSize": 319,
+      "sourcePath": "packages/registry/examples/stack-basic.tsx",
+      "sourceDigest": "sha256:c2579c9bc879f02647387f7f8fd66ce02e612006456439c320380e24debdc0e3"
+    },
+    {
+      "path": "examples/text-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:e7a1be79dfff82626896bbdc33c0657de5dafa5325e4225eb424f91273827ef4",
+      "byteSize": 359,
+      "sourcePath": "packages/registry/examples/text-basic.tsx",
+      "sourceDigest": "sha256:e7a1be79dfff82626896bbdc33c0657de5dafa5325e4225eb424f91273827ef4"
+    },
+    {
+      "path": "examples/heading-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:4bdd1aed13e96a22af3300bc813a0a0dd83c751e4501ef758b4b6555cf953991",
+      "byteSize": 353,
+      "sourcePath": "packages/registry/examples/heading-basic.tsx",
+      "sourceDigest": "sha256:4bdd1aed13e96a22af3300bc813a0a0dd83c751e4501ef758b4b6555cf953991"
+    },
+    {
+      "path": "examples/field-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:dae28f72df885cfb1c08bae8483827ddd96ba157ef5133c1eacda75773fd666b",
+      "byteSize": 340,
+      "sourcePath": "packages/registry/examples/field-basic.tsx",
+      "sourceDigest": "sha256:dae28f72df885cfb1c08bae8483827ddd96ba157ef5133c1eacda75773fd666b"
+    },
+    {
+      "path": "examples/input-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:fb1437a85bb8396b56552477fb033d1228860e0d2cd952e840d0969f8d300fdc",
+      "byteSize": 320,
+      "sourcePath": "packages/registry/examples/input-basic.tsx",
+      "sourceDigest": "sha256:fb1437a85bb8396b56552477fb033d1228860e0d2cd952e840d0969f8d300fdc"
+    },
+    {
+      "path": "examples/textarea-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:1c0785718370bef8afc77589eb123a08a46bf01380ef2b5d19c75f0456bf7f63",
+      "byteSize": 401,
+      "sourcePath": "packages/registry/examples/textarea-basic.tsx",
+      "sourceDigest": "sha256:1c0785718370bef8afc77589eb123a08a46bf01380ef2b5d19c75f0456bf7f63"
+    },
+    {
+      "path": "examples/separator-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:7091930f173d7b0ed71c842433aff8a0408d08f32bd52dadc09516f2f0c5c685",
+      "byteSize": 316,
+      "sourcePath": "packages/registry/examples/separator-basic.tsx",
+      "sourceDigest": "sha256:7091930f173d7b0ed71c842433aff8a0408d08f32bd52dadc09516f2f0c5c685"
+    },
+    {
+      "path": "examples/badge-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:71b8f0844a8ebd10d3c80373bd88b5535a441514596ef59043117624cbc1b9d0",
+      "byteSize": 390,
+      "sourcePath": "packages/registry/examples/badge-basic.tsx",
+      "sourceDigest": "sha256:71b8f0844a8ebd10d3c80373bd88b5535a441514596ef59043117624cbc1b9d0"
+    },
+    {
+      "path": "examples/avatar-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:7581d91a49586efa804aeb0c2bd2eeed6759f0d0b27ed889c20a69b640f9b439",
+      "byteSize": 339,
+      "sourcePath": "packages/registry/examples/avatar-basic.tsx",
+      "sourceDigest": "sha256:7581d91a49586efa804aeb0c2bd2eeed6759f0d0b27ed889c20a69b640f9b439"
+    },
+    {
+      "path": "examples/card-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:8f26ddb6bfa1fdcc1f3a12919654325d2acdcd2b780d4c2a8c0df76376edeada",
+      "byteSize": 679,
+      "sourcePath": "packages/registry/examples/card-basic.tsx",
+      "sourceDigest": "sha256:8f26ddb6bfa1fdcc1f3a12919654325d2acdcd2b780d4c2a8c0df76376edeada"
+    },
+    {
+      "path": "examples/spinner-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:57865a2ac699e33b555f86c255a142b22191db6700f06a995b6ee1a4d6b2ef4f",
+      "byteSize": 350,
+      "sourcePath": "packages/registry/examples/spinner-basic.tsx",
+      "sourceDigest": "sha256:57865a2ac699e33b555f86c255a142b22191db6700f06a995b6ee1a4d6b2ef4f"
+    },
+    {
+      "path": "examples/skeleton-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:33cd07e001f7da3303c238e49f94c9b6f8844674c0e43143022ce7f4844fdc6c",
+      "byteSize": 347,
+      "sourcePath": "packages/registry/examples/skeleton-basic.tsx",
+      "sourceDigest": "sha256:33cd07e001f7da3303c238e49f94c9b6f8844674c0e43143022ce7f4844fdc6c"
+    },
+    {
+      "path": "examples/checkbox-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:7a4c8f8a8e00659f5a1e5b4adc32ca8dd51c18245b11d05ed5f12745f3641567",
+      "byteSize": 269,
+      "sourcePath": "packages/registry/examples/checkbox-basic.tsx",
+      "sourceDigest": "sha256:7a4c8f8a8e00659f5a1e5b4adc32ca8dd51c18245b11d05ed5f12745f3641567"
+    },
+    {
+      "path": "examples/radio-group-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:6bce709a270ff5ebb188c77444c26e8c458b412fc95e4793586a2da833a68315",
+      "byteSize": 459,
+      "sourcePath": "packages/registry/examples/radio-group-basic.tsx",
+      "sourceDigest": "sha256:6bce709a270ff5ebb188c77444c26e8c458b412fc95e4793586a2da833a68315"
+    },
+    {
+      "path": "examples/switch-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:a55d77071a6b0f3276629ed6ba4191d64cd8c818ed66d4641c6f85844e921026",
+      "byteSize": 263,
+      "sourcePath": "packages/registry/examples/switch-basic.tsx",
+      "sourceDigest": "sha256:a55d77071a6b0f3276629ed6ba4191d64cd8c818ed66d4641c6f85844e921026"
+    },
+    {
+      "path": "examples/select-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:68399256d11aa624223d7068d5b245cc80945db708d46470677d578a4e57a4db",
+      "byteSize": 557,
+      "sourcePath": "packages/registry/examples/select-basic.tsx",
+      "sourceDigest": "sha256:68399256d11aa624223d7068d5b245cc80945db708d46470677d578a4e57a4db"
+    },
+    {
+      "path": "examples/slider-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:6a679ef47000b78f21067954dee3bcc76b6071d05bace6cc05435f62f489ba96",
+      "byteSize": 279,
+      "sourcePath": "packages/registry/examples/slider-basic.tsx",
+      "sourceDigest": "sha256:6a679ef47000b78f21067954dee3bcc76b6071d05bace6cc05435f62f489ba96"
+    },
+    {
+      "path": "examples/tabs-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:d536a84857210a58108cb7270b2dc49e168bbaa38d506dbfb170947e5afbcb48",
+      "byteSize": 566,
+      "sourcePath": "packages/registry/examples/tabs-basic.tsx",
+      "sourceDigest": "sha256:d536a84857210a58108cb7270b2dc49e168bbaa38d506dbfb170947e5afbcb48"
+    },
+    {
+      "path": "examples/segmented-control-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:fac4d1751018aabc8b7228be2f6a606d2641f4858cbd896547c5ec4028636614",
+      "byteSize": 382,
+      "sourcePath": "packages/registry/examples/segmented-control-basic.tsx",
+      "sourceDigest": "sha256:fac4d1751018aabc8b7228be2f6a606d2641f4858cbd896547c5ec4028636614"
+    },
+    {
+      "path": "examples/tooltip-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:c4a9fe18f1f7461993345122dad231b07d43c6bc270dde0ebc35b6a7d1862e82",
+      "byteSize": 304,
+      "sourcePath": "packages/registry/examples/tooltip-basic.tsx",
+      "sourceDigest": "sha256:c4a9fe18f1f7461993345122dad231b07d43c6bc270dde0ebc35b6a7d1862e82"
+    },
+    {
+      "path": "examples/popover-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:23d7a9c400a3534c225c3993cbabecddc81e6a27e0c7abb2985d2820c8f7b931",
+      "byteSize": 679,
+      "sourcePath": "packages/registry/examples/popover-basic.tsx",
+      "sourceDigest": "sha256:23d7a9c400a3534c225c3993cbabecddc81e6a27e0c7abb2985d2820c8f7b931"
+    },
+    {
+      "path": "examples/dropdown-menu-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:6c200bc9aa887ba927898d9bac2c0bbc7757ebde1b0db39498d11c2948c91c3e",
+      "byteSize": 852,
+      "sourcePath": "packages/registry/examples/dropdown-menu-basic.tsx",
+      "sourceDigest": "sha256:6c200bc9aa887ba927898d9bac2c0bbc7757ebde1b0db39498d11c2948c91c3e"
+    },
+    {
+      "path": "examples/dialog-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:9d0730ce8deb836b49f728760a03e0ce834be02a13edeff42edf958f25d12f51",
+      "byteSize": 616,
+      "sourcePath": "packages/registry/examples/dialog-basic.tsx",
+      "sourceDigest": "sha256:9d0730ce8deb836b49f728760a03e0ce834be02a13edeff42edf958f25d12f51"
+    },
+    {
+      "path": "examples/sheet-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:e033a206c6f1fcd9aab74bc78bb509dca38b00d06ac8a07265019dfaf482df14",
+      "byteSize": 629,
+      "sourcePath": "packages/registry/examples/sheet-basic.tsx",
+      "sourceDigest": "sha256:e033a206c6f1fcd9aab74bc78bb509dca38b00d06ac8a07265019dfaf482df14"
+    },
+    {
+      "path": "examples/toast-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:e5a9bf4af893199b0d02144f3526d60c726a0fa97e661827a5900c900f229a6d",
+      "byteSize": 507,
+      "sourcePath": "packages/registry/examples/toast-basic.tsx",
+      "sourceDigest": "sha256:e5a9bf4af893199b0d02144f3526d60c726a0fa97e661827a5900c900f229a6d"
+    },
+    {
+      "path": "examples/alert-basic.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:b4d4f3f55288057f02c7c4c2e44bdf112857c8bd7909b8f4fdfd0cc62ea33ee0",
+      "byteSize": 512,
+      "sourcePath": "packages/registry/examples/alert-basic.tsx",
+      "sourceDigest": "sha256:b4d4f3f55288057f02c7c4c2e44bdf112857c8bd7909b8f4fdfd0cc62ea33ee0"
+    },
+    {
+      "path": "recipes/settings.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:f25757de8e572a08d7be8e26f2bf3d8fc51a7963099b43199b7405aff12eb96c",
+      "byteSize": 4579,
+      "sourcePath": "packages/react/src/recipes/settings.tsx",
+      "sourceDigest": "sha256:c200641a2de75db6bd6a8fb67fd66dba2154597430401eaa3d103c67f00fd8af"
+    },
+    {
+      "path": "recipes/recipe-scope.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:d519dbcb586cd5b5690205b9da5b07aa14d937f17b59c800862b72dca272e05d",
+      "byteSize": 294,
+      "sourcePath": "packages/react/src/recipes/recipe-scope.tsx",
+      "sourceDigest": "sha256:3b59a8ec18e5bb0cb9209978aefad0175391f1b4637fe3759acc6717be3cd280"
+    },
+    {
+      "path": "recipes/account-panel.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:c9495a67818b341e1fc056826d48cf48c63b77351056ed896d2d55b106e6b59c",
+      "byteSize": 5792,
+      "sourcePath": "packages/react/src/recipes/account-panel.tsx",
+      "sourceDigest": "sha256:c7beeebec832dd5d3edef828e0f6a8fa60c747786d49fde7b28c9fe5a00bb2db"
+    },
+    {
+      "path": "recipes/ai-workspace.tsx",
+      "mimeType": "text/plain",
+      "contentDigest": "sha256:06388ccbac3b26b044f6ca0563491aef5351d2bb34b0f1781b2e28ece795513d",
+      "byteSize": 9742,
+      "sourcePath": "packages/react/src/recipes/ai-workspace.tsx",
+      "sourceDigest": "sha256:bc8280a8220e16d65fe591e396e5a3271eac99a40f7496498cf2e279dbf9a648"
+    },
+    {
+      "path": "tokens.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:a092f017087d33bce5a46756760ce9961743b813d377d1d3efb9f1e7ccdfc57d",
+      "byteSize": 15703,
+      "sourcePath": "packages/tokens/src/tokens.json",
+      "sourceDigest": "sha256:8564e5daa0c9b8a8d0daa38f31759bade19fb49ca2d6e7cbd97e7198fd085fe2"
+    },
+    {
+      "path": "contracts/provider.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:341e28e893ed0a3214a7ef4ae21bad8f9032e2e691ffb2ab72199885eb39c890",
+      "byteSize": 2249,
+      "sourcePath": "packages/react/src/provider/provider.meta.ts",
+      "sourceDigest": "sha256:1337b8385436a9f32da89ae479383f20e07a89d037218a1b8880d3d5f0d16e2f"
+    },
+    {
+      "path": "contracts/surface.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:a63f02b2f37779e13dbb17f30583c9b9562b2d111354ec111fcf13b56214bab6",
+      "byteSize": 2104,
+      "sourcePath": "packages/react/src/surface/surface.meta.ts",
+      "sourceDigest": "sha256:a2c9840595e9155c1ba4d101a87a61b8e545c66c84afff88a97b0aa89fc5a2a9"
+    },
+    {
+      "path": "contracts/button.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:00529b48779eded8f99734575a3efd8125e679eebe3ffbe1af0bbbab07d9b776",
+      "byteSize": 1931,
+      "sourcePath": "packages/react/src/button/button.meta.ts",
+      "sourceDigest": "sha256:43f8d2d68bd1ef4c5ede99281dc1ad08be81e8cbeb5d899d7c3da0d6b9f78704"
+    },
+    {
+      "path": "contracts/icon-button.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:b87cb5300efa0ed1f0bc35e13cd9298d95bd82836160bd148e8983df85f7130a",
+      "byteSize": 1884,
+      "sourcePath": "packages/react/src/icon-button/icon-button.meta.ts",
+      "sourceDigest": "sha256:24e71e0561905fc4139149f26dbcfc86b76a7641956eeb9c646822e11f45092c"
+    },
+    {
+      "path": "contracts/stack.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:f1c271d073b3690268179d507cfc73f634c745590d07d1d99db1d58170eef164",
+      "byteSize": 1491,
+      "sourcePath": "packages/react/src/stack/stack.meta.ts",
+      "sourceDigest": "sha256:37c69f8e777df5f456273f741e09bc444fbfd96665e95678ee191e30c06b0811"
+    },
+    {
+      "path": "contracts/text.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:b5f6a881d23bf83e15a483278598f9408831ad37655029247e5fc531e2947e8b",
+      "byteSize": 1421,
+      "sourcePath": "packages/react/src/text/text.meta.ts",
+      "sourceDigest": "sha256:6c1190b1b460c220a8485b6e4e909f6dd74d246ba1231c1e8ab92be11c3178aa"
+    },
+    {
+      "path": "contracts/heading.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:2142abf211286c1926ee0233fabd81e4230f8cc3e0028d5bc56e859529916b0f",
+      "byteSize": 1349,
+      "sourcePath": "packages/react/src/heading/heading.meta.ts",
+      "sourceDigest": "sha256:3b9233d5c477b49f55df4b3198533b2b8f327974591971c0ac96288fe547bc6f"
+    },
+    {
+      "path": "contracts/field.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:38cc0f73a62dd917e866836b28770a7f3fd9e0302d8ff76aac9172685dcef9b3",
+      "byteSize": 1485,
+      "sourcePath": "packages/react/src/field/field.meta.ts",
+      "sourceDigest": "sha256:88749ffbd9143d39d70df14eb3b5928c1629c34b7a9bd0e9a979c13c2efe212c"
+    },
+    {
+      "path": "contracts/input.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:e05207578105107ca0bdc2c739ab750058a6771cd5210eefdab0e005cc0bbc85",
+      "byteSize": 1301,
+      "sourcePath": "packages/react/src/input/input.meta.ts",
+      "sourceDigest": "sha256:9ed7f4b9ca5ea47126a86f51335db717862bb09c033fc2ec93b89f803ac6e5d1"
+    },
+    {
+      "path": "contracts/textarea.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:fc548840f177f6f8e7727447f717f5995513c864bca0f45774022c60fe95bc20",
+      "byteSize": 1311,
+      "sourcePath": "packages/react/src/textarea/textarea.meta.ts",
+      "sourceDigest": "sha256:e92ebf03b684a2e6c5ea6e8782d5dc0494f9bcaf1b16857397e7d5b86e8bfd58"
+    },
+    {
+      "path": "contracts/separator.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:3d50209a3466a9fa04ef43d0ac05ab4886ca52f2c406d723f086ba0284bc4af9",
+      "byteSize": 1169,
+      "sourcePath": "packages/react/src/separator/separator.meta.ts",
+      "sourceDigest": "sha256:ab4555cf6a325b33a1f733916e6b00559ef87ae2d3cbe5f37e4b2b0cc88e1ac0"
+    },
+    {
+      "path": "contracts/badge.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:256b1480aafd9145a8bca787f4bbff4fec09c63e26814b72ed72b3a85379ba9e",
+      "byteSize": 1309,
+      "sourcePath": "packages/react/src/badge/badge.meta.ts",
+      "sourceDigest": "sha256:40bbc57eef52d9ca5e85ceaf2dfee923514fddeef98f2766826b4db7bd1c12ca"
+    },
+    {
+      "path": "contracts/avatar.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:27dbe9a4b7fe10e8c54709fb9bfc1e36eb54a3ecb83de9618b2dc602b0e1dac2",
+      "byteSize": 1318,
+      "sourcePath": "packages/react/src/avatar/avatar.meta.ts",
+      "sourceDigest": "sha256:19bd6348899a094ab8cac68e54fdda4aff019993bbe7fef01c59b3a473ed6953"
+    },
+    {
+      "path": "contracts/card.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:85f9a6bf8bccc654faa9a6cd556659f0b98ad0a54ece10acadcdef060fb1ef1e",
+      "byteSize": 3184,
+      "sourcePath": "packages/react/src/card/card.meta.ts",
+      "sourceDigest": "sha256:9f61da812fb95e6767a50e400439e35064c19b1f1225bdd029e3ae9314753ed8"
+    },
+    {
+      "path": "contracts/spinner.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:47c10f5c0b70dd048de1316a5282998b7e583e2d2993f25651df369f3270a786",
+      "byteSize": 1041,
+      "sourcePath": "packages/react/src/spinner/spinner.meta.ts",
+      "sourceDigest": "sha256:9b59ab8a1d0b803f023855df65190b12e21fee54bea9623f9fb3b00de4b0a216"
+    },
+    {
+      "path": "contracts/skeleton.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:aa46223e02099d07e8bf05174b7d808d1dbc4cbd10351c011e624e39c1d9facb",
+      "byteSize": 1061,
+      "sourcePath": "packages/react/src/skeleton/skeleton.meta.ts",
+      "sourceDigest": "sha256:ab3623afa7ffe703b131069a70926e06abbbca0e7bea977cbc48047eb43a96fa"
+    },
+    {
+      "path": "contracts/checkbox.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:c0de6b2765a5c3170951c2c3eeac64613a80f1004e0b0de684f7f42705fdf762",
+      "byteSize": 1301,
+      "sourcePath": "packages/react/src/checkbox/checkbox.meta.ts",
+      "sourceDigest": "sha256:03d0c748b0a0ef6ddaf3013903f7983f131e4cc5212727c89e480279a2757c59"
+    },
+    {
+      "path": "contracts/radio-group.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:12cd2c5e2d4630c23730ea57b369b89ea27840ed2a5dddf20690221c7ec45890",
+      "byteSize": 1992,
+      "sourcePath": "packages/react/src/radio-group/radio-group.meta.ts",
+      "sourceDigest": "sha256:954fcc1ba2253c60d3494a8bf5c5b6eac887ffc51ef8c787e4633a0d3c7de9cd"
+    },
+    {
+      "path": "contracts/switch.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:3a1d7a6d0359d43c993f02e5fcfc2ccd518ec13ae948d88ef1d2b65d41cf2102",
+      "byteSize": 1254,
+      "sourcePath": "packages/react/src/switch/switch.meta.ts",
+      "sourceDigest": "sha256:22e6455f847fcbf3ccbfe23793d614c36eabc34ddb4ab23e81964aa0527b30c5"
+    },
+    {
+      "path": "contracts/select.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:6f266d013a66a6a15f7525cff850078a1a9b125a0906af2e2334f1df13011d69",
+      "byteSize": 8661,
+      "sourcePath": "packages/react/src/select/select.meta.ts",
+      "sourceDigest": "sha256:1d1bd4c4678eb58ff19652281974ddee787059e1f65d4cbfa3c63419d9ad198e"
+    },
+    {
+      "path": "contracts/slider.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:3b917b65badaa3ba4553673ffa57738b314ba70c83d3257ccb6a873fed2446cb",
+      "byteSize": 1274,
+      "sourcePath": "packages/react/src/slider/slider.meta.ts",
+      "sourceDigest": "sha256:f43a5f71e024b279a11505601ea620ebbb8d9e03a738932ea83f609891a06a66"
+    },
+    {
+      "path": "contracts/tabs.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:5631903cc2b5b81e7f28870428e98cb78ef81b06d86d68734c4de4336ac224e3",
+      "byteSize": 4881,
+      "sourcePath": "packages/react/src/tabs/tabs.meta.ts",
+      "sourceDigest": "sha256:7040ca16f59c37503268685f70bcc913608b0a0c86164f7946f8ec190895b774"
+    },
+    {
+      "path": "contracts/segmented-control.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:472324d31f68c46f0d2e7eb0613191bac9a84bacab23c3439d783b74488de751",
+      "byteSize": 1561,
+      "sourcePath": "packages/react/src/segmented-control/segmented-control.meta.ts",
+      "sourceDigest": "sha256:17449dab69830e3f69fc4c12b81d0c4e3e216837a9248f05457ce85fcad14b45"
+    },
+    {
+      "path": "contracts/tooltip.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:b88eb2d2b37f27d4be2df62fec8b98ef309c00bfdb290f930a5736c428b8d24a",
+      "byteSize": 1234,
+      "sourcePath": "packages/react/src/tooltip/tooltip.meta.ts",
+      "sourceDigest": "sha256:009747f10137b85f20605883f07795a778709bed09247e32267e44c85cc6d2fe"
+    },
+    {
+      "path": "contracts/popover.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:ddeedf5a248135865ffa9ec462c4d39c1cba0d9d82ab4cb4a2eeaa7f45eae276",
+      "byteSize": 4077,
+      "sourcePath": "packages/react/src/popover/popover.meta.ts",
+      "sourceDigest": "sha256:af86602f25cad7c97672cea8e67cfa798528a9aa378349d3587eb15d7f05d902"
+    },
+    {
+      "path": "contracts/dropdown-menu.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:3cb003a8cd16a5574805ec59de65171a3da81bb9cd4b3a25c92a4472208d4fe2",
+      "byteSize": 7218,
+      "sourcePath": "packages/react/src/dropdown-menu/dropdown-menu.meta.ts",
+      "sourceDigest": "sha256:8cdc2c2506c757910e128ef4a4c2fdc5fba7d11c5b4257a87fe0fca098120428"
+    },
+    {
+      "path": "contracts/dialog.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:678553af64485d0e335796ea6ee8b0940c6a9dada261717de270e65a9f1f2cf4",
+      "byteSize": 3976,
+      "sourcePath": "packages/react/src/dialog/dialog.meta.ts",
+      "sourceDigest": "sha256:2c312fe69008b980be67c623151037a7f56ccfd216641e90119928b2be8ebc76"
+    },
+    {
+      "path": "contracts/sheet.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:6d22b68ae059736eac29e6a9707f6e4c8d97860b5bcd9c9947c171443ece9082",
+      "byteSize": 4399,
+      "sourcePath": "packages/react/src/sheet/sheet.meta.ts",
+      "sourceDigest": "sha256:3340106402e3ee99490e71991c5fcf8fba1bd18260cea14fd173ec7c83ac9542"
+    },
+    {
+      "path": "contracts/toast.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:5b1f6a3a60c4fa721ad273e237ab67b025567dc0c204d83a00339eb29b45e0fd",
+      "byteSize": 1264,
+      "sourcePath": "packages/react/src/toast/toast.meta.ts",
+      "sourceDigest": "sha256:c73d844712181f0a2a9a59b404e3d1aecc3329855da7400608cec88b43e0d4ec"
+    },
+    {
+      "path": "contracts/alert.json",
+      "mimeType": "application/json",
+      "contentDigest": "sha256:2f154b6632609599a1b085606d2452f3fa842507b9a87f043410fbeef71c5fdb",
+      "byteSize": 1453,
+      "sourcePath": "packages/react/src/alert/alert.meta.ts",
+      "sourceDigest": "sha256:f74e2d67d76e8536332132a120fd0b02c442fd47ad3356b37520333e758667ec"
+    }
+  ],
+  "tokensFile": "tokens.json",
+  "digestMethod": "sha256-json-2-space-empty-registryDigest"
+}

@@ -1,5 +1,5 @@
-import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
+import { createServer } from "node:http";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "../dist");
