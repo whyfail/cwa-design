@@ -253,8 +253,8 @@ summary { cursor: pointer; padding: 6px 0; width: fit-content; }
 .panel-top > div { flex: 1; min-width: 0; }
 .panel-top strong { font-size: 15px; letter-spacing: -.02em; }
 .panel-top p { font-size: var(--cwa-design-font-size-caption); margin: 2px 0 0; color: var(--cwa-design-color-text-muted); }
-.panel-volume > div { display: flex; justify-content: space-between; font-size: var(--cwa-design-font-size-caption); margin-bottom: 3px; }
-.panel-volume output { color: var(--cwa-design-color-text-muted); }
+.panel-volume__header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--cwa-design-space-2); padding-inline: var(--cwa-design-space-2); font-size: var(--cwa-design-font-size-caption); margin-bottom: 3px; }
+.panel-volume output { color: var(--cwa-design-color-text-muted); font-variant-numeric: tabular-nums; min-width: 4ch; text-align: end; }
 .panel-status { font-size: var(--cwa-design-font-size-caption) !important; margin: -10px 0 0; text-align: center; color: var(--cwa-design-color-text-muted); min-height: 1.4em; }
 .glass-music-bar { position: absolute; z-index: 2; left: 30px; right: 30px; bottom: 26px; border-radius: 18px; padding: 10px 15px; display: flex; gap: 12px; align-items: center; --cwa-design-shadow-contact-y: var(--cwa-design-shadow-elevation-small-contact-y); --cwa-design-shadow-contact-blur: var(--cwa-design-shadow-elevation-small-contact-blur); --cwa-design-shadow-ambient-y: var(--cwa-design-shadow-elevation-small-ambient-y); --cwa-design-shadow-ambient-blur: var(--cwa-design-shadow-elevation-small-ambient-blur); }
 /* 底部预留空间随根字号缩放（2.5rem 覆盖音乐条内容高度），大字下不再与面板交叠。 */

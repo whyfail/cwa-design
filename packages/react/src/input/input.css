@@ -1,15 +1,16 @@
 /* Input / Textarea 共用控件外观。 */
 .cwa-design-input,
 .cwa-design-textarea {
+  --cwa-input-focus-color: var(--cwa-design-color-control-focus);
+  --cwa-input-focus-halo: var(--cwa-design-color-control-focus-halo);
   font-family: var(--cwa-design-font-family);
   font-size: var(--cwa-design-font-size-body);
   color: var(--cwa-design-color-text);
   background-color: color-mix(in srgb, var(--cwa-design-color-surface) 90%, transparent);
   background-image: linear-gradient(160deg, var(--cwa-design-color-glass-reflection), transparent 62%);
-  border: 1px solid var(--cwa-design-color-glass-rim-bottom);
-  border-top-color: var(--cwa-design-color-border-subtle);
+  border: 1px solid var(--cwa-design-color-border-subtle);
   border-radius: var(--cwa-design-radius-control);
-  box-shadow: inset 0 1px 2px var(--cwa-design-color-glass-inner-shade), inset 0 -1px 0 var(--cwa-design-color-glass-inner-highlight);
+  box-shadow: inset 0 1px 1px color-mix(in srgb, var(--cwa-design-color-glass-inner-shade) 50%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--cwa-design-color-glass-inner-highlight) 50%, transparent);
   min-width: 0;
   transition:
     border-color var(--cwa-design-motion-control) ease,
@@ -29,14 +30,23 @@
   color: var(--cwa-design-color-text-muted);
   opacity: 1;
 }
-.cwa-design-input:focus-visible,
-.cwa-design-textarea:focus-visible {
-  outline: var(--cwa-design-focus-width) solid var(--cwa-design-color-focus);
-  outline-offset: var(--cwa-design-focus-offset);
+/* 实体边线负责焦点辨识；微光不承担可访问性提示。文本输入统一 pointer/keyboard 外观。 */
+.cwa-design-input:focus,
+.cwa-design-textarea:focus {
+  border-color: var(--cwa-input-focus-color);
+  outline: none;
+  box-shadow: 0 0 0 var(--cwa-design-focus-control-halo-width) var(--cwa-input-focus-halo), inset 0 1px 0 color-mix(in srgb, var(--cwa-design-color-glass-inner-highlight) 35%, transparent);
 }
 .cwa-design-input[aria-invalid="true"],
 .cwa-design-textarea[aria-invalid="true"] {
+  --cwa-input-focus-color: var(--cwa-design-color-danger);
+  --cwa-input-focus-halo: color-mix(in srgb, var(--cwa-design-color-danger) 12%, transparent);
   border-color: var(--cwa-design-color-danger);
+}
+.cwa-design-input[aria-invalid="true"]:focus,
+.cwa-design-textarea[aria-invalid="true"]:focus {
+  outline: var(--cwa-design-focus-control-width) solid var(--cwa-input-focus-color);
+  outline-offset: var(--cwa-design-focus-control-offset);
 }
 .cwa-design-input:disabled,
 .cwa-design-textarea:disabled {
@@ -58,4 +68,34 @@
     box-shadow: none;
     border-color: var(--cwa-design-color-border-strong);
   }
+}
+@media (prefers-contrast: more) {
+  .cwa-design-input[aria-invalid="true"],
+  .cwa-design-textarea[aria-invalid="true"] { border-color: var(--cwa-design-color-danger); }
+  .cwa-design-input:focus,
+  .cwa-design-textarea:focus,
+  .cwa-design-input[aria-invalid="true"]:focus,
+  .cwa-design-textarea[aria-invalid="true"]:focus {
+    border-color: var(--cwa-input-focus-color);
+    outline: var(--cwa-design-focus-width) solid var(--cwa-input-focus-color);
+    outline-offset: var(--cwa-design-focus-control-offset);
+    box-shadow: none;
+  }
+}
+@media (forced-colors: active) {
+  .cwa-design-input,
+  .cwa-design-textarea,
+  .cwa-design-input[aria-invalid="true"],
+  .cwa-design-textarea[aria-invalid="true"] { border-color: CanvasText; }
+  .cwa-design-input:focus,
+  .cwa-design-textarea:focus,
+  .cwa-design-input[aria-invalid="true"]:focus,
+  .cwa-design-textarea[aria-invalid="true"]:focus {
+    border-color: Highlight;
+    outline: var(--cwa-design-focus-width) solid Highlight;
+    outline-offset: var(--cwa-design-focus-control-offset);
+    box-shadow: none;
+  }
+  .cwa-design-input:disabled,
+  .cwa-design-textarea:disabled { border-color: GrayText; }
 }

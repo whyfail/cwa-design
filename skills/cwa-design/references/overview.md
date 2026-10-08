@@ -6,7 +6,7 @@
 - components: 30
 - examples: 32
 - recipes: 4
-- registryDigest: sha256:6ca8d69f418c5168261df42b64a9d2b7145513fc9a219fcabd1211f33ad02cc6
+- registryDigest: sha256:89fa672035ff6dded40573b81274804d8eb2ed6aa8473a30329912a769c9202a
 - generatedAt: 2026-10-06T03:37:15.675Z
 
 组件契约见 contracts/<id>.json。index.json 对每个参考文件记录原始字节 SHA-256（不包括 index 自身）。

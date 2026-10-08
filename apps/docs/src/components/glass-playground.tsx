@@ -322,7 +322,7 @@ export function GlassPlayground({
             onValueChange={(value) => setMode(String(value))}
           />
           <div className="panel-volume">
-            <div>
+            <div className="panel-volume__header">
               <span>背景音量</span>
               <output>{volume}%</output>
             </div>

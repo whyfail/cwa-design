@@ -2,7 +2,7 @@
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.4",
   "framework": "react",
-  "registryDigest": "sha256:6ca8d69f418c5168261df42b64a9d2b7145513fc9a219fcabd1211f33ad02cc6",
+  "registryDigest": "sha256:89fa672035ff6dded40573b81274804d8eb2ed6aa8473a30329912a769c9202a",
   "generatedAt": "2026-10-06T03:37:15.675Z",
   "components": [
     {
@@ -3248,10 +3248,10 @@
     {
       "path": "tokens.json",
       "mimeType": "application/json",
-      "contentDigest": "sha256:25d73f746de6ccf7af444eac9e68e6b9de8c853b64f01080ae7f2d56ab4111cb",
-      "byteSize": 15703,
+      "contentDigest": "sha256:6588413637df8d40c2c3f198423f5610e3032206e0136e116b89178e95d0888c",
+      "byteSize": 17025,
       "sourcePath": "packages/tokens/src/tokens.json",
-      "sourceDigest": "sha256:ab104fbdfed0282c95e3519fe7b3c975ae04358e03ae7e05a9c77efdf864786a"
+      "sourceDigest": "sha256:bb09e0ef8cb013774ad5061b036a5754c8dc3c56ed44d4568ba17e9d99e528ae"
     },
     {
       "path": "contracts/provider.json",

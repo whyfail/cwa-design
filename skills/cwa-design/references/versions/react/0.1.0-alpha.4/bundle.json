@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
   "libraryVersion": "0.1.0-alpha.4",
-  "registryDigest": "sha256:6ca8d69f418c5168261df42b64a9d2b7145513fc9a219fcabd1211f33ad02cc6",
+  "registryDigest": "sha256:89fa672035ff6dded40573b81274804d8eb2ed6aa8473a30329912a769c9202a",
   "digestMethod": "sha256-raw-file-bytes",
   "files": [
     {
@@ -11,7 +11,7 @@
     },
     {
       "path": "references/index.json",
-      "contentDigest": "sha256:26f3e104ebddff1af5fd42074e3c7ce0d18c11f94b81a2ece56cd89dcfb1e7d9",
+      "contentDigest": "sha256:cb812f84cbfd77ac707d23b6e1d66b062862d52f9938f761f21ccbf92f02f337",
       "byteSize": 12984
     }
   ]

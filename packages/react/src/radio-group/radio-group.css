@@ -13,9 +13,9 @@
   font-size: var(--cwa-design-font-size-body);
   color: var(--cwa-design-color-text);
 }
-.cwa-design-radio:has(> .cwa-design-radio__circle[disabled]) {
+.cwa-design-radio:has(> .cwa-design-radio__circle[data-disabled]) {
   cursor: default;
-  opacity: 0.5;
+  color: color-mix(in srgb, var(--cwa-design-color-text) 58%, var(--cwa-design-color-surface));
 }
 .cwa-design-radio__circle {
   display: inline-flex;
@@ -31,7 +31,7 @@
     border-color var(--cwa-design-motion-control) ease,
     box-shadow var(--cwa-design-motion-control) ease;
 }
-.cwa-design-radio__circle:active {
+.cwa-design-radio__circle:not([data-disabled]):active {
   transform: scale(0.95);
 }
 .cwa-design-radio__circle:focus-visible {
@@ -54,4 +54,34 @@
 }
 .cwa-design-radio__label {
   min-width: 0;
+}
+/* Base UI 将禁用状态输出在可见圆圈的 data-disabled 上，而不是 disabled 属性。 */
+.cwa-design-radio__circle[data-disabled] {
+  cursor: default;
+  border-color: color-mix(in srgb, var(--cwa-design-color-text) 20%, var(--cwa-design-color-surface));
+  background: color-mix(in srgb, var(--cwa-design-color-text) 6%, var(--cwa-design-color-surface));
+  box-shadow: none;
+}
+.cwa-design-radio__circle[data-disabled] .cwa-design-radio__indicator {
+  background: color-mix(in srgb, var(--cwa-design-color-text) 50%, var(--cwa-design-color-surface));
+}
+@media (prefers-contrast: more) {
+  .cwa-design-radio:has(> .cwa-design-radio__circle[data-disabled]) {
+    color: var(--cwa-design-color-text-muted);
+  }
+  .cwa-design-radio__circle[data-disabled] {
+    border-color: var(--cwa-design-color-text-muted);
+    background: var(--cwa-design-color-surface);
+  }
+  .cwa-design-radio__circle[data-disabled] .cwa-design-radio__indicator {
+    background: var(--cwa-design-color-text-muted);
+  }
+}
+@media (forced-colors: active) {
+  .cwa-design-radio:has(> .cwa-design-radio__circle[data-disabled]) { color: GrayText; }
+  .cwa-design-radio__circle[data-disabled] {
+    border-color: GrayText;
+    background: Canvas;
+  }
+  .cwa-design-radio__circle[data-disabled] .cwa-design-radio__indicator { background: GrayText; }
 }
