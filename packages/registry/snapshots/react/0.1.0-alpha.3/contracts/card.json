@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.3",
+  "framework": "react",
+  "id": "card",
+  "name": "Card",
+  "description": "内容卡片；使用显式分区组合标题、正文与操作。",
+  "typeName": "CardProps",
+  "sourceTypePath": "packages/react/src/card/card.tsx#CardProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Card",
+    "CardTitle",
+    "CardDescription",
+    "CardContent",
+    "CardActions"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "material": {
+      "type": "enum",
+      "values": [
+        "solid",
+        "frosted"
+      ],
+      "default": "solid"
+    },
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "React.HTMLAttributes<HTMLDivElement>"
+  ],
+  "compoundParts": {
+    "CardTitle": {
+      "exportName": "CardTitle",
+      "typeName": "CardSectionProps",
+      "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+      "description": "卡片标题区；自身为 div，不替代 Heading 语义。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLElement>"
+      ]
+    },
+    "CardDescription": {
+      "exportName": "CardDescription",
+      "typeName": "CardSectionProps",
+      "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+      "description": "卡片说明区。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLElement>"
+      ]
+    },
+    "CardContent": {
+      "exportName": "CardContent",
+      "typeName": "CardSectionProps",
+      "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+      "description": "卡片正文区。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLElement>"
+      ]
+    },
+    "CardActions": {
+      "exportName": "CardActions",
+      "typeName": "CardSectionProps",
+      "sourceTypePath": "packages/react/src/card/card.tsx#CardSectionProps",
+      "description": "卡片操作区。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        }
+      },
+      "extends": [
+        "React.HTMLAttributes<HTMLElement>"
+      ]
+    }
+  },
+  "materialPolicy": "solid",
+  "materialNotes": "内容层默认 solid，仅支持 solid/frosted；Card 不接受 glass。",
+  "a11y": [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "card-basic"
+  ],
+  "runtimeDependencies": [],
+  "deprecated": false
+}

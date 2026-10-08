@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.3",
+  "framework": "react",
+  "id": "text",
+  "name": "Text",
+  "description": "正文或辅助文字；标签语义与视觉样式可分别选择。",
+  "typeName": "TextProps",
+  "sourceTypePath": "packages/react/src/text/text.tsx#TextProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "Text"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "variant": {
+      "type": "enum",
+      "values": [
+        "body",
+        "caption"
+      ],
+      "default": "body"
+    },
+    "tone": {
+      "type": "enum",
+      "values": [
+        "default",
+        "muted"
+      ],
+      "default": "default"
+    },
+    "as": {
+      "type": "enum",
+      "values": [
+        "span",
+        "p"
+      ],
+      "default": "span"
+    },
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "React.HTMLAttributes<HTMLElement>"
+  ],
+  "materialPolicy": "inherit-parent-surface",
+  "materialNotes": "不创建背景；muted 文本依旧需要对比度。",
+  "a11y": [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "text-basic"
+  ],
+  "runtimeDependencies": [],
+  "deprecated": false
+}

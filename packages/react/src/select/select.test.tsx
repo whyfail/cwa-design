@@ -73,4 +73,64 @@ describe("Select", () => {
     expect(onValueChange).toHaveBeenCalledWith("exp");
     expect(trigger).toHaveTextContent("加急配送");
   });
+
+  it("F04：默认触发器恰好一个展开指示图标", () => {
+    render(
+      <CwaProvider>
+        <Select defaultValue="std" items={{ std: "标准配送" }}>
+          <Select.Trigger aria-label="配送方式">
+            <Select.Value />
+          </Select.Trigger>
+          <SelectContent>
+            <SelectItem value="std">标准配送</SelectItem>
+          </SelectContent>
+        </Select>
+      </CwaProvider>,
+    );
+    const trigger = screen.getByRole("combobox", { name: "配送方式" });
+    expect(trigger.className).toContain("cwa-design-select__trigger");
+    expect(trigger.querySelectorAll(".cwa-design-select__icon")).toHaveLength(1);
+  });
+
+  it("F04：自定义 Select.Icon 时不追加默认图标（避免重复）", () => {
+    render(
+      <CwaProvider>
+        <Select defaultValue="std" items={{ std: "标准配送" }}>
+          <Select.Trigger aria-label="配送方式">
+            <Select.Value />
+            <Select.Icon>
+              <svg data-testid="custom-chevron" width="10" height="10" aria-hidden="true" />
+            </Select.Icon>
+          </Select.Trigger>
+          <SelectContent>
+            <SelectItem value="std">标准配送</SelectItem>
+          </SelectContent>
+        </Select>
+      </CwaProvider>,
+    );
+    const trigger = screen.getByRole("combobox", { name: "配送方式" });
+    // 自定义图标存在且默认 chevron 未注入（协议：自定义一个，不重复）。
+    expect(trigger.querySelectorAll("[data-testid=custom-chevron]")).toHaveLength(1);
+    expect(trigger.innerHTML).not.toContain("M2.5 4.5L6 8l3.5-3.5");
+  });
+
+  it("F04：render 接管时不注入默认图标，函数 className 合并", () => {
+    render(
+      <CwaProvider>
+        <Select defaultValue="std" items={{ std: "标准配送" }}>
+          <Select.Trigger
+            aria-label="配送方式"
+            className={(state) => (state.open ? "is-open" : "")}
+            render={<button type="button" data-testid="custom-trigger" />}
+          />
+          <SelectContent>
+            <SelectItem value="std">标准配送</SelectItem>
+          </SelectContent>
+        </Select>
+      </CwaProvider>,
+    );
+    const trigger = document.querySelector("[data-testid=custom-trigger]")!;
+    expect(trigger.className).toContain("cwa-design-select__trigger");
+    expect(trigger.querySelectorAll(".cwa-design-select__icon")).toHaveLength(0);
+  });
 });

@@ -37,6 +37,12 @@ const EXPECTED_HISTORICAL: Array<{ version: string; digest: string; examples: nu
     digest: "sha256:e65a3d1ea71ca13254a3b6986446c1510b173d71284ae2efaec7a63f5a3392ed",
     examples: 32,
   },
+  {
+    // ead3eba 部署版（第四轮 F07 冻结）：alpha.4 候选改动前从 dist 完整固化。
+    version: "0.1.0-alpha.3",
+    digest: "sha256:c737b9b370db155bf02ec2859cdf3b3b7544363d0bc29c602c076e01f1aa9167",
+    examples: 32,
+  },
 ];
 
 describe("历史 Registry 快照（按版本使用可信）", () => {

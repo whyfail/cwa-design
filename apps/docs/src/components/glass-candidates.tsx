@@ -8,59 +8,55 @@ import {
   useCwaContext,
 } from "@cwa-design/react";
 import { useState } from "react";
+import alpha2Tokens from "../../../../packages/registry/snapshots/react/0.1.0-alpha.2/tokens.json";
+import currentTokens from "../../../../packages/tokens/src/tokens.json";
 
 /**
- * V06：玻璃候选同条件 A/B 对照（79168ce 旧 Token vs 0.1.0-alpha.3 候选）。
- * 同一真实照片、同一布局、同一文字，仅 Token 不同；A 作用域用内联 Token
- * 显式覆盖为旧值，B 使用当前默认（候选）。审美签收 pending，详见 ADR 0002。
+ * F01：玻璃候选同条件 A/B 对照。A = 已部署 79168ce（alpha.2）Token，从冻结的
+ * alpha.2 tokens.json 逐主题构造（不手写、不复制浅色集合）；B = 当前默认候选。
+ * 同一真实照片、同一布局、同一文字、同一打开/焦点状态（默认关闭，交互对比）。
+ * 审美签收 pending，详见 ADR 0002。
  */
 
-/** 旧（79168ce）光学 Token；仅覆盖与本候选有差异的项（深色填充实测后保持 68% 不变）。 */
-const LEGACY_TOKENS: Record<string, string> = {
-  "--cwa-design-color-glass-rim-top": "rgba(255,255,255,0.94)",
-  "--cwa-design-color-glass-reflection": "rgba(255,255,255,0.30)",
-  "--cwa-design-color-glass-contact-shadow": "rgba(24,46,82,0.10)",
-  "--cwa-design-color-glass-ambient-shadow": "rgba(24,46,82,0.15)",
-};
+const semanticOf = (table: unknown, theme: "light" | "dark"): Record<string, { value: string }> =>
+  (table as { semantic: Record<"light" | "dark", Record<string, { value: string }>> }).semantic[
+    theme
+  ] ?? {};
 
-/** 深色主题的旧 rim 值与浅色不同，按主题拆分覆盖集合。 */
-const LEGACY_TOKENS_DARK: Record<string, string> = {
-  ...LEGACY_TOKENS,
-  "--cwa-design-color-glass-rim-top": "rgba(255,255,255,0.38)",
-};
+/** 候选实际改动的光学 Token：A 值逐主题取自冻结 alpha.2，B 值取自当前默认。 */
+const CHANGED_OPTICAL_TOKENS = [
+  "glass-rim-top",
+  "glass-reflection",
+  "glass-contact-shadow",
+  "glass-ambient-shadow",
+] as const;
 
-const CANDIDATE_NOTES: Array<{ token: string; old: string; next: string; reason: string }> = [
-  {
-    token: "glass-rim-top（浅色）",
-    old: "rgba(255,255,255,0.94)",
-    next: "rgba(255,255,255,0.80)",
-    reason: "顶部亮缘过强整圈读作白描边；方向性高光仍由渐变+内高光保留",
-  },
-  {
-    token: "glass-rim-top（深色）",
-    old: "rgba(255,255,255,0.38)",
-    next: "rgba(255,255,255,0.28)",
-    reason: "同上（深色）",
-  },
-  {
-    token: "glass-reflection（浅色）",
-    old: "rgba(255,255,255,0.30)",
-    next: "rgba(255,255,255,0.22)",
-    reason: "反射更轻，不盖正文",
-  },
-  {
-    token: "glass-contact-shadow（浅色）",
-    old: "rgba(24,46,82,0.10)",
-    next: "rgba(24,46,82,0.14)",
-    reason: "接触投影更实，与环境投影分工",
-  },
-  {
-    token: "glass-ambient-shadow（浅色）",
-    old: "rgba(24,46,82,0.15)",
-    next: "rgba(24,46,82,0.20)",
-    reason: "环境投影略深，浮起感由两层表达",
-  },
-];
+function legacyTokensFor(theme: "light" | "dark"): Record<string, string> {
+  const frozen = semanticOf(alpha2Tokens, theme);
+  const current = semanticOf(currentTokens, theme);
+  const overrides: Record<string, string> = {};
+  for (const token of CHANGED_OPTICAL_TOKENS) {
+    const frozenValue = frozen[token]?.value;
+    const currentValue = current[token]?.value;
+    // 仅当候选确实修改了该 Token 时才注入旧值（A 与 B 的真实差异集）。
+    if (frozenValue && currentValue && frozenValue !== currentValue) {
+      overrides[`--cwa-design-color-${token}`] = frozenValue;
+    }
+  }
+  return overrides;
+}
+
+const CANDIDATE_NOTES: Array<{ token: string; old: string; next: string }> = (
+  ["light", "dark"] as const
+)
+  .flatMap((theme) =>
+    CHANGED_OPTICAL_TOKENS.map((token) => ({
+      token: `${token}（${theme === "light" ? "浅色" : "深色"}）`,
+      old: semanticOf(alpha2Tokens, theme)[token]?.value ?? "（无）",
+      next: semanticOf(currentTokens, theme)[token]?.value ?? "（无）",
+    })),
+  )
+  .filter((note) => note.old !== note.next);
 
 /** 实测否决的候选：写入记录防止再次盲目尝试。 */
 const REJECTED_CANDIDATES = [
@@ -105,13 +101,13 @@ function CandidatePane({
       motion={context.motion}
       density={context.density}
       className="ab-scope"
-      style={legacy ? (theme === "dark" ? LEGACY_TOKENS_DARK : LEGACY_TOKENS) : {}}
+      style={legacy ? legacyTokensFor(theme) : {}}
     >
       <div className="ab-pane" data-ab-variant={legacy ? "legacy" : "candidate"}>
         <div className="ab-pane-head">
           <strong>{label}</strong>
           <Text variant="caption" tone="muted" as="span">
-            {legacy ? "A · 79168ce Token" : "B · alpha.3 候选"}
+            {legacy ? "A · 79168ce Token" : "B · alpha.4 候选"}
           </Text>
         </div>
         <div className={`ab-media ab-media--${media}`}>
@@ -122,13 +118,17 @@ function CandidatePane({
             loading="eager"
             decoding="sync"
           />
+          {/* F01：滚动文字层在玻璃层背后并穿过采样区域（reduced-motion 时静止）。 */}
+          <div className="ab-scroll-layer" aria-hidden="true">
+            <ScrollTextStrip />
+          </div>
           <div className="ab-stacks">
             <Surface material="glass" className="ab-card">
               <strong>Regular 浮动层</strong>
               <Text variant="caption" tone="muted" as="p">
                 副文字观察 rim 与透色
               </Text>
-              <Popover defaultOpen>
+              <Popover>
                 <Popover.Trigger
                   render={
                     <Button variant="secondary" size="sm">
@@ -152,10 +152,6 @@ function CandidatePane({
             </div>
           </div>
         </div>
-        <ScrollTextStrip />
-        <Surface material="glass" className="ab-card ab-card--strip">
-          <strong>滚动文字上的 Regular</strong>
-        </Surface>
       </div>
     </CwaProvider>
   );
@@ -167,9 +163,10 @@ export function GlassCandidatesPage() {
     <>
       {/* 页面 h1 与引言由 ArticlePage 的 PageIntro 提供；此处只放待签收标注与对照内容。 */}
       <p className="doc-note">
-        <span className="alpha-label">待签收</span> A = 已部署 79168ce 的 Token；B = 0.1.0-alpha.3
-        候选（默认已应用）。同一真实照片、同一布局、同一文字，仅 Token 不同；推荐 B
-        为默认候选，审美签收 pending（ADR 0002）。
+        <span className="alpha-label">待签收</span> A = 已部署 79168ce 的 Token（自冻结 alpha.2
+        快照逐主题构造）；B = alpha.4 候选（默认已应用）。同一真实照片、同一布局、同一文字，仅 Token
+        不同；推荐 B 为默认候选，审美签收 pending（ADR 0002）；打开状态由交互触发，A/B
+        初始状态一致。
       </p>
       <div className="ab-controls" role="group" aria-label="对照背景">
         <button
@@ -213,7 +210,13 @@ export function GlassCandidatesPage() {
                   <td>
                     <code>{note.next}</code>
                   </td>
-                  <td>{note.reason}</td>
+                  <td>
+                    {note.token.includes("rim-top")
+                      ? "顶部亮缘过强整圈读作白描边；方向性高光仍由渐变+内高光保留"
+                      : note.token.includes("reflection")
+                        ? "反射更轻，不盖正文"
+                        : "接触/环境投影分工更清晰（浅色）"}
+                  </td>
                 </tr>
               ))}
             </tbody>

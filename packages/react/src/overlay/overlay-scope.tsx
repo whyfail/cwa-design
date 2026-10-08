@@ -30,7 +30,9 @@ function useTokenScopeSync(
       const providerComputed = getComputedStyle(providerElement);
       const scopeComputed = getComputedStyle(scope);
       // 候选名：Provider 计算样式枚举（真实浏览器覆盖 class+inline）∪ 根元素
-      // 内联样式名（jsdom 等不枚举自定义属性时的可靠来源）。
+      // 内联样式名（jsdom 等不枚举自定义属性时补齐候选名）。F02：值一律取
+      // computed 解析结果——内联的 `var(--app-brand)` 或被 class!important
+      // 击败的值都必须以实际生效值传递，绝不搬运未解析字符串。
       const names = new Set<string>();
       for (let index = 0; index < providerComputed.length; index += 1) {
         const name = providerComputed[index]!;
@@ -41,9 +43,7 @@ function useTokenScopeSync(
         if (name.startsWith("--cwa-design-")) names.add(name);
       }
       for (const name of names) {
-        const providerValue =
-          providerElement.style.getPropertyValue(name).trim() ||
-          providerComputed.getPropertyValue(name).trim();
+        const providerValue = providerComputed.getPropertyValue(name).trim();
         const scopeValue = scopeComputed.getPropertyValue(name).trim();
         if (providerValue && providerValue !== scopeValue) {
           scope.style.setProperty(name, providerValue);

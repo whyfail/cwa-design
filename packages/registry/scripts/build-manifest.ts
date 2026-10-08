@@ -428,6 +428,20 @@ export function buildManifest(outputDirectory = registryDist): {
           "发送与附件选择提供本地演示，可通过回调接入业务；没有文件上传服务。",
         ],
       },
+      {
+        id: "media-toolbar",
+        framework: "react",
+        title: "媒体工具栏可读配方",
+        components: ["provider", "surface", "icon-button", "button", "text"],
+        files: ["recipes/media-toolbar.tsx"],
+        sourcePath: "packages/react/src/recipes/media-toolbar.tsx",
+        exportName: "MediaToolbarRecipe",
+        compiled: true,
+        limitations: [
+          "媒体背景为样式化占位（无真实照片依赖）；接入时用应用实际媒体验证对比度。",
+          "Clear 仅在媒体与主题方向一致且文字/必要图标有实色底面时使用；混合亮度请用 Thick/Solid。",
+        ],
+      },
     ];
     for (const recipe of recipes) {
       const original = readFileSync(path.join(repoRoot, recipe.sourcePath!), "utf8");

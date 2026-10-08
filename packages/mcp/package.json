@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/mcp",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Read-only MCP server for the CWA Design registry (local stdio).",
   "license": "MIT",
   "type": "module",

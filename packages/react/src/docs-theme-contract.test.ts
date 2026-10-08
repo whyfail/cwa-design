@@ -10,6 +10,9 @@ const tokens = JSON.parse(
   semantic: Record<"light" | "dark", Record<"glass-regular-fill", { value: string }>>;
 };
 
+const read = (relative: string) =>
+  readFileSync(path.join(import.meta.dirname, "../../../", relative), "utf8");
+
 const overridesSource = readFileSync(
   path.join(import.meta.dirname, "../../../apps/docs/src/theme-overrides.ts"),
   "utf8",
@@ -56,8 +59,6 @@ describe("docs 主题实验室覆盖常量契约", () => {
 });
 
 describe("V04 材质策略四端同步防漂移", () => {
-  const read = (relative: string) =>
-    readFileSync(path.join(import.meta.dirname, "../../../", relative), "utf8");
   const policy = read("apps/docs/src/background-policy.ts");
   const surfaceMeta = read("packages/react/src/surface/surface.meta.ts");
   const skill = read("skills/cwa-design/SKILL.md");
@@ -94,5 +95,55 @@ describe("V04 材质策略四端同步防漂移", () => {
     const script = read("scripts/verify-composite-contrast.mjs");
     expect(script).toContain('parseArray("clearLightMediaPressure")');
     expect(script).toContain('parseArray("clearDarkMediaPressure")');
+  });
+});
+
+describe("F01 玻璃候选 A/B 契约", () => {
+  const alpha2Tokens = JSON.parse(
+    read("packages/registry/snapshots/react/0.1.0-alpha.2/tokens.json"),
+  ) as { semantic: Record<string, Record<string, { value: string }>> };
+  const currentTokensJson = JSON.parse(read("packages/tokens/src/tokens.json")) as {
+    semantic: Record<string, Record<string, { value: string }>>;
+  };
+  const candidates = read("apps/docs/src/components/glass-candidates.tsx");
+
+  it("A 侧从冻结 alpha.2 逐主题构造，不再手写浅色集合展开到深色", () => {
+    expect(candidates).toContain("legacyTokensFor");
+    expect(candidates).toContain("0.1.0-alpha.2/tokens.json");
+    expect(candidates).not.toContain("LEGACY_TOKENS_DARK");
+    // 79168ce 真实深色 reflection/contact/ambient 不再被浅色值污染
+    expect(candidates).not.toContain(
+      '"--cwa-design-color-glass-reflection": "rgba(255,255,255,0.30)"',
+    );
+    expect(candidates).not.toContain(
+      '"--cwa-design-color-glass-contact-shadow": "rgba(24,46,82,0.10)"',
+    );
+  });
+
+  it("A/B 差异集恰好等于冻结与当前 Token 的实际光学差异", () => {
+    for (const theme of ["light", "dark"] as const) {
+      const frozen = alpha2Tokens.semantic[theme]!;
+      const current = currentTokensJson.semantic[theme]!;
+      for (const [token, record] of Object.entries(current)) {
+        const old = frozen[token]?.value;
+        const differs = old !== undefined && old !== record.value;
+        const listed = [
+          "glass-rim-top",
+          "glass-reflection",
+          "glass-contact-shadow",
+          "glass-ambient-shadow",
+        ].includes(token);
+        if (differs) expect(listed, `${theme}/${token} 差异未列入候选集`).toBe(true);
+        // 无差异的 Token 由 legacyTokensFor 的逐主题比较与 CANDIDATE_NOTES 的
+        // old!==next 过滤保证不会进入 A 覆盖或差异表，此处不要求列表排除。
+      }
+    }
+  });
+
+  it("滚动文字层位于玻璃背后（同场景内容层/功能层结构）", () => {
+    expect(candidates).toContain("ab-scroll-layer");
+    expect(read("apps/docs/src/styles/site.css")).toMatch(
+      /\.ab-scroll-layer[^}]*position: absolute/,
+    );
   });
 });

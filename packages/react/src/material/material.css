@@ -32,15 +32,23 @@
   background-image: linear-gradient(160deg, var(--cwa-design-color-glass-reflection), transparent 62%);
   box-shadow: inset 0 1px 0 var(--cwa-design-color-glass-inner-highlight), inset 0 -1px 0 var(--cwa-design-color-glass-inner-shade), 0 2px 6px var(--cwa-design-color-glass-contact-shadow);
 }
-/* An explicit or system fallback drops the sampling layer, not merely its blur. */
+/* An explicit or system fallback drops the sampling layer, not merely its blur.
+   F02：回退必须产生可靠实色底面——直接在材质元素上重定义填充变量，
+   任何来自 Provider/Portal 的内联或类玻璃填充覆盖（继承值）都无法绕过；
+   正常 auto 玻璃不受影响。 */
 [data-cwa-material="solid"] .cwa-design-material {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
+  background-image: none;
+  --cwa-material-fill: var(--cwa-design-color-surface);
+  --cwa-design-color-glass-regular-fill: var(--cwa-design-color-surface);
 }
 @media (prefers-reduced-transparency: reduce) {
   .cwa-design-material {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+    --cwa-material-fill: var(--cwa-design-color-surface);
+    --cwa-design-color-glass-regular-fill: var(--cwa-design-color-surface);
   }
 }
 @media (prefers-contrast: more), (forced-colors: active) {
@@ -51,5 +59,16 @@
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+  }
+  .cwa-design-material {
+    --cwa-material-fill: var(--cwa-design-color-surface);
+    --cwa-design-color-glass-regular-fill: var(--cwa-design-color-surface);
+  }
+}
+/* 声明不支持 backdrop 采样能力的环境同样得到实色底面。 */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .cwa-design-material {
+    --cwa-material-fill: var(--cwa-design-color-surface);
+    --cwa-design-color-glass-regular-fill: var(--cwa-design-color-surface);
   }
 }

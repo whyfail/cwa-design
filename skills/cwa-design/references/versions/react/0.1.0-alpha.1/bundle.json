@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.1",
+  "registryDigest": "sha256:26fc17e480ae582f1defb1ec332034ee9e15e5e9a58f273468ea93ba1f678a48",
+  "digestMethod": "sha256-raw-file-bytes",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "contentDigest": "sha256:0d53ee4a9be2b78f95c90f291cf642939c96732be2a797719494acc2f4dafe40",
+      "byteSize": 4962
+    },
+    {
+      "path": "references/index.json",
+      "contentDigest": "sha256:4b4275c005a02556302d067f54b82cbdc012b8e5258257e3fc9fbdb546efa1aa",
+      "byteSize": 12621
+    }
+  ]
+}

@@ -178,13 +178,13 @@ describe("clean checkout Registry release inputs", () => {
 });
 
 describe("current version manifest artifacts", () => {
-  it("30 components, 32 compiled examples, 3 recipes and a verified manifest digest", () => {
+  it("30 components, 32 compiled examples, 4 recipes and a verified manifest digest", () => {
     expect(version).toBe(currentLibraryVersion(pkgRoot));
     expect(manifest.libraryVersion).toBe(version);
     expect(manifest.schemaVersion).toBe("1.1.0");
     expect(manifest.components).toHaveLength(30);
     expect(manifest.examples).toHaveLength(32);
-    expect(manifest.recipes).toHaveLength(3);
+    expect(manifest.recipes).toHaveLength(4);
     expect(manifest.registryDigest).toBe(manifestDigest(manifest));
     expect(new Set(manifest.components.map((component) => component.id)).size).toBe(30);
     for (const component of manifest.components) expect(component.libraryVersion).toBe(version);

@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/registry",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Schema, validation and version rules for the CWA Design component registry.",
   "license": "MIT",
   "type": "module",

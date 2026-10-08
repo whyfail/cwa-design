@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.1.0",
+  "libraryVersion": "0.1.0-alpha.3",
+  "framework": "react",
+  "id": "dropdown-menu",
+  "name": "DropdownMenu",
+  "description": "触发动作的菜单；不是表单选择值控件。",
+  "typeName": "DropdownMenuRootProps",
+  "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuRootProps",
+  "status": "stable-in-alpha",
+  "package": "@cwa-design/react",
+  "exports": [
+    "DropdownMenu",
+    "DropdownMenuContent",
+    "DropdownMenuItem"
+  ],
+  "importPath": "@cwa-design/react",
+  "stylePath": "@cwa-design/react/styles.css",
+  "props": {
+    "children": {
+      "type": "node",
+      "summary": "ReactNode；内容由调用方提供",
+      "required": false
+    }
+  },
+  "extends": [
+    "@base-ui/react/menu#MenuRootProps；open/defaultOpen/onOpenChange 等完整继承"
+  ],
+  "compoundParts": {
+    "DropdownMenu.Trigger": {
+      "exportName": "DropdownMenu.Trigger",
+      "typeName": "MenuTriggerProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuTriggerProps",
+      "description": "Base UI Trigger 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.Group": {
+      "exportName": "DropdownMenu.Group",
+      "typeName": "MenuGroupProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuGroupProps",
+      "description": "Base UI Group 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuGroupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.GroupLabel": {
+      "exportName": "DropdownMenu.GroupLabel",
+      "typeName": "MenuGroupLabelProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuGroupLabelProps",
+      "description": "Base UI GroupLabel 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuGroupLabelProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.SubmenuRoot": {
+      "exportName": "DropdownMenu.SubmenuRoot",
+      "typeName": "MenuSubmenuRootProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuSubmenuRootProps",
+      "description": "Base UI SubmenuRoot 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuSubmenuRootProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.SubmenuTrigger": {
+      "exportName": "DropdownMenu.SubmenuTrigger",
+      "typeName": "MenuSubmenuTriggerProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuSubmenuTriggerProps",
+      "description": "Base UI SubmenuTrigger 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuSubmenuTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.Separator": {
+      "exportName": "DropdownMenu.Separator",
+      "typeName": "MenuSeparatorProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuSeparatorProps",
+      "description": "Base UI Separator 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuSeparatorProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.CheckboxItem": {
+      "exportName": "DropdownMenu.CheckboxItem",
+      "typeName": "MenuCheckboxItemProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuCheckboxItemProps",
+      "description": "Base UI CheckboxItem 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuCheckboxItemProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.RadioGroup": {
+      "exportName": "DropdownMenu.RadioGroup",
+      "typeName": "MenuRadioGroupProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuRadioGroupProps",
+      "description": "Base UI RadioGroup 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuRadioGroupProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenu.RadioItem": {
+      "exportName": "DropdownMenu.RadioItem",
+      "typeName": "MenuRadioItemProps",
+      "sourceTypePath": "@base-ui/react/menu#MenuRadioItemProps",
+      "description": "Base UI RadioItem 直接导出。",
+      "props": {},
+      "extends": [
+        "@base-ui/react/menu#MenuRadioItemProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）"
+      ]
+    },
+    "DropdownMenuContent": {
+      "exportName": "DropdownMenuContent",
+      "typeName": "DropdownMenuContentProps",
+      "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuContentProps",
+      "description": "CWA 主题化 Portal 和菜单 Popup。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        },
+        "material": {
+          "type": "enum",
+          "values": [
+            "glass",
+            "solid"
+          ],
+          "default": "glass"
+        }
+      },
+      "extends": [],
+      "materialPolicy": "glass-regular",
+      "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。"
+    },
+    "DropdownMenuItem": {
+      "exportName": "DropdownMenuItem",
+      "typeName": "DropdownMenuItemProps",
+      "sourceTypePath": "packages/react/src/dropdown-menu/dropdown-menu.tsx#DropdownMenuItemProps",
+      "description": "CWA 动作项；事件签名是无参数回调。",
+      "props": {
+        "children": {
+          "type": "node",
+          "summary": "ReactNode；内容由调用方提供",
+          "required": false
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "shortcut": {
+          "type": "string",
+          "description": "仅展示，不注册全局快捷键"
+        },
+        "destructive": {
+          "type": "boolean"
+        },
+        "onClick": {
+          "type": "function",
+          "summary": "() => void"
+        },
+        "className": {
+          "type": "string",
+          "description": "附加样式类；具体合并行为以实现为准"
+        }
+      },
+      "extends": []
+    }
+  },
+  "materialPolicy": "glass-regular",
+  "materialNotes": "默认 glass；Provider material=\"solid\" 优先。实际玻璃背景重叠时使用 solid；系统减少透明、增强对比、forced-colors 或不支持 blur 时按公共材质规则降级。",
+  "a11y": [
+    "semantic-content",
+    "visible-focus-for-interactive-parts",
+    "keyboard-behavior-from-native-or-base-ui"
+  ],
+  "examples": [
+    "dropdown-menu-basic"
+  ],
+  "runtimeDependencies": [
+    "@base-ui/react"
+  ],
+  "deprecated": false
+}

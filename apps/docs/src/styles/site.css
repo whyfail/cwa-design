@@ -237,7 +237,8 @@ summary { cursor: pointer; padding: 6px 0; width: fit-content; }
 .ab-card strong { font-size: 14px; }
 .ab-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .ab-card--small { padding: 14px; }
-.ab-scroll-strip { position: relative; overflow: hidden; border-block: 1px solid var(--cwa-design-color-border-subtle); background: var(--cwa-design-color-surface); }
+.ab-scroll-layer { position: absolute; inset: auto 0 34% 0; z-index: 0; }
+.ab-scroll-strip { overflow: hidden; border-block: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.12); }
 .ab-scroll-track { display: flex; white-space: nowrap; width: max-content; animation: ab-scroll 24s linear infinite; }
 .ab-scroll-track span { display: flex; }
 .ab-scroll-track em { font-style: normal; font-size: 13px; color: var(--cwa-design-color-text-muted); padding: 8px 0; }

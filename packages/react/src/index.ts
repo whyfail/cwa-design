@@ -58,6 +58,11 @@ export {
   AccountSkeletonRecipe,
 } from "./recipes/account-panel";
 export { AiWorkspaceRecipe, type AiWorkspaceRecipeProps } from "./recipes/ai-workspace";
+export {
+  MediaToolbarRecipe,
+  type MediaToolbarRecipeProps,
+  type MediaToolbarTone,
+} from "./recipes/media-toolbar";
 export { SettingsRecipe, type SettingsRecipeProps, type SettingsValues } from "./recipes/settings";
 export {
   SegmentedControl,

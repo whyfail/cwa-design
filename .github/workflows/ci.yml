@@ -1,9 +1,13 @@
+# F06：CI 只保留 PR 与手动验证；push main 的发布链统一走 deploy-pages.yml
+# 的 gate → build → deploy 依赖（同 SHA），避免 CI 失败仍部署的双轨。
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -24,14 +28,14 @@ jobs:
         run: corepack pnpm install --frozen-lockfile
       - name: Install Chromium for browser gates
         run: corepack pnpm --filter @cwa-design/qa exec playwright install --with-deps chromium
-      - name: Install Pillow (contrast sampling)
-        run: pip3 install pillow
-      - name: Full gate (build, typecheck, tests, lint, format, browser gates)
+      - name: Install Pillow (pinned in packages/qa/requirements.txt)
+        run: pip3 install -r packages/qa/requirements.txt
+      - name: Full gate (build, typecheck, tests, lint, format, browser gates, static checks)
         run: corepack pnpm verify
-      - name: Upload verification reports
+      - name: Upload this run's verification evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: verification-reports
-          path: reports/optimization/
+          name: verification-evidence-${{ github.sha }}
+          path: reports/optimization/runs/
           if-no-files-found: ignore

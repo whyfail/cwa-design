@@ -64,8 +64,10 @@
   height: 3.25rem;
 }
 
-/* 按压凹入与 Button 一致；:active 同时覆盖键盘按住。 */
-.cwa-design-icon-button:not([disabled]):active {
+/* 按压凹入与 Button 一致：:active 覆盖指针按下，data-pressed 接管键盘
+   Space/Enter 按住（浏览器不维持键盘 :active）；两者共享同一视觉配方。 */
+.cwa-design-icon-button:not([disabled]):active,
+.cwa-design-icon-button:not([disabled])[data-pressed="true"] {
   transform: scale(0.95);
   box-shadow: inset 0 1px 3px var(--cwa-design-color-glass-inner-shade);
 }
@@ -76,11 +78,13 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cwa-design-icon-button:not([disabled]):active {
+  .cwa-design-icon-button:not([disabled]):active,
+  .cwa-design-icon-button:not([disabled])[data-pressed="true"] {
     transform: none;
   }
 }
-[data-cwa-motion="reduced"] .cwa-design-icon-button:not([disabled]):active {
+[data-cwa-motion="reduced"] .cwa-design-icon-button:not([disabled]):active,
+[data-cwa-motion="reduced"] .cwa-design-icon-button:not([disabled])[data-pressed="true"] {
   transform: none;
 }
 [data-cwa-material="solid"] .cwa-design-icon-button--secondary {

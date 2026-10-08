@@ -1,4 +1,6 @@
-name: Deploy Pages
+# F06：发布必须依赖同 SHA 的完整 gate 成功；构建产物来自同一次运行。
+# ci.yml 仅保留 PR 验证（不与 push main 重复）；push main 只跑本工作流。
+name: Release Gate and Deploy
 
 on:
   push:
@@ -14,11 +16,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: release-gate-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+      - name: Enable corepack (pnpm 12.8.1)
+        run: corepack enable
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Install Chromium for browser gates
+        run: corepack pnpm --filter @cwa-design/qa exec playwright install --with-deps chromium
+      - name: Install Pillow (pinned in packages/qa/requirements.txt)
+        run: pip3 install -r packages/qa/requirements.txt
+      - name: Full gate (build, typecheck, tests, lint, format, browser gates, static checks)
+        run: corepack pnpm verify
+      - name: Publish gate conclusion
+        run: echo "gate passed for $(git rev-parse HEAD)"
+
   build:
+    needs: [gate]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,7 +75,8 @@ jobs:
           path: apps/docs/dist
 
   deploy:
-    needs: build
+    # F06：同 SHA 的 gate 失败或取消时，deploy 不执行（needs 链保证）。
+    needs: [gate, build]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

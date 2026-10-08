@@ -1,6 +1,6 @@
 {
   "name": "@cwa-design/tokens",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Design tokens for CWA Design: framework-agnostic JSON source and generated CSS variables.",
   "license": "MIT",
   "type": "module",

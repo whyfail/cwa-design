@@ -41,7 +41,7 @@ export const selectMeta = {
       typeName: "SelectTriggerProps",
       sourceTypePath: "@base-ui/react/select#SelectTriggerProps",
       description:
-        "默认样式的触发器：自动附加 cwa-design-select__trigger 类与展开指示；className（含函数）/render/ref 等 Base UI 行为保留并可合并。",
+        "默认样式的触发器：自动附加 cwa-design-select__trigger 类；children 未含 <Select.Icon> 时追加一个默认展开指示，已含自定义 Icon 时不追加（可关闭重复）；render 接管时由调用方负责；className（含函数）/ref 合并保留。",
       props: {},
       extends: [
         "@base-ui/react/select#SelectTriggerProps；直接使用 Base UI 1.8.0 完整类型（含原生属性、render/ref）",

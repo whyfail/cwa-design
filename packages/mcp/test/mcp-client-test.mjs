@@ -47,7 +47,7 @@ async function withCurrentClient() {
   if (caps.structuredContent?.data?.components !== 30)
     throw new Error("capabilities 组件数应为 30");
   assert.equal(caps.structuredContent.libraryVersion, VERSION);
-  assert.equal(caps.structuredContent.data.recipes, 3);
+  assert.equal(caps.structuredContent.data.recipes, 4);
   assert.equal(caps.structuredContent.data.responseBudgetBytes, 12 * 1024);
   async function call(name, args = {}) {
     const result = await client.callTool({ name: `cwa_design_${name}`, arguments: args });

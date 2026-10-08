@@ -1,0 +1,37 @@
+{
+  "startedAt": "2026-10-08T01:24:55.658Z",
+  "headSha": "ead3ebaf8415827927e0f1bf23c33e48fb552413",
+  "commit": "ead3ebaf8415827927e0f1bf23c33e48fb552413",
+  "version": "0.1.0-alpha.4",
+  "registryDigest": "sha256:6ca8d69f418c5168261df42b64a9d2b7145513fc9a219fcabd1211f33ad02cc6",
+  "homepageFingerprint": "sha256:abc1dc11c6b517c1349e02c7f2179c70f6fb201e19e1f6c11b9e665d7bcd6664",
+  "base": "http://127.0.0.1:4173/cwa-design/",
+  "port": 4173,
+  "engines": "chromium",
+  "stages": [
+    {
+      "name": "docs harness",
+      "status": "passed",
+      "startedAt": "2026-10-08T01:24:56.194Z",
+      "endedAt": "2026-10-08T01:25:16.102Z"
+    },
+    {
+      "name": "contrast matrix",
+      "status": "passed",
+      "startedAt": "2026-10-08T01:25:16.103Z",
+      "endedAt": "2026-10-08T01:25:44.771Z"
+    },
+    {
+      "name": "responsive geometry",
+      "status": "passed",
+      "startedAt": "2026-10-08T01:25:44.771Z",
+      "endedAt": "2026-10-08T01:25:57.535Z"
+    },
+    {
+      "name": "tarball consumer",
+      "status": "passed",
+      "startedAt": "2026-10-08T01:25:57.536Z",
+      "endedAt": "2026-10-08T01:26:02.875Z"
+    }
+  ]
+}

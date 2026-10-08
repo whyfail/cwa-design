@@ -1,5 +1,6 @@
 // T28 校验：Skill 可移植（无个人路径）、references 与 manifest 同源一致。
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   cpSync,
   existsSync,
@@ -160,6 +161,78 @@ describe("CWA Design Skill（T28）", () => {
         }
       }
     }
+  });
+
+  // F07：历史版本主 SKILL 逐字节锁定，bundle.json 纳入 hash 索引，
+  // 防止生成器把当前模板复制进历史版本（已在 alpha.2/alpha.0/alpha.1 发生）。
+  const FROZEN_MAIN_SKILL_SHA256: Record<string, string> = {
+    // 逐字节取自各版本发布 commit 的 skills/cwa-design/SKILL.md。
+    "0.1.0-alpha.0": "sha256:0d53ee4a9be2b78f95c90f291cf642939c96732be2a797719494acc2f4dafe40",
+    "0.1.0-alpha.1": "sha256:0d53ee4a9be2b78f95c90f291cf642939c96732be2a797719494acc2f4dafe40",
+    "0.1.0-alpha.2": "sha256:957fadec2bb37a7e82c52ab658ecd851cd1730ea9e646cbc9908f89ee4c6dc2e",
+    "0.1.0-alpha.3": "sha256:0dc7fb787657f33c19644704106c4e7e8fba626c40a31f4ea9f0beddd025203d",
+    // 0.1.0-alpha.4 是当前可编辑版本，不进入历史锚点。
+  };
+
+  function mainSkillSha256(version: string, base: string): string {
+    return `sha256:${createHash("sha256")
+      .update(readFileSync(path.join(base, "SKILL.md")))
+      .digest("hex")}`;
+  }
+
+  it("F07：历史版本主 SKILL 与发布源逐字节一致，且不等于当前模板", () => {
+    const currentMain = readFileSync(path.join(skillDir, "SKILL.md"));
+    for (const [version, expectedDigest] of Object.entries(FROZEN_MAIN_SKILL_SHA256)) {
+      const bundleDir = path.join(skillDir, "references", "versions", "react", version);
+      const packagedDir = path.join(pkgRoot, "dist", "skills", "react", version);
+      for (const base of [bundleDir, packagedDir]) {
+        expect(mainSkillSha256(version, base), `${version} ${base}`).toBe(expectedDigest);
+      }
+      const lockedSource = readFileSync(
+        path.join(skillDir, "references", "versions", "react", version, "SKILL.md"),
+      );
+      if (version !== currentLibraryVersion(pkgRoot) && !lockedSource.equals(currentMain)) {
+        expect(
+          readFileSync(path.join(bundleDir, "SKILL.md")).equals(currentMain),
+          `${version} main SKILL must not be the current template`,
+        ).toBe(false);
+      }
+    }
+  });
+
+  it("F07：bundle.json 把主文档与 references 索引纳入版本包 hash 清单", () => {
+    for (const versionSnapshot of loadSnapshots(path.join(pkgRoot, "dist", "manifest", "react"))) {
+      const version = versionSnapshot.manifest.libraryVersion;
+      const bundleDir = path.join(skillDir, "references", "versions", "react", version);
+      const bundle = JSON.parse(readFileSync(path.join(bundleDir, "bundle.json"), "utf8")) as {
+        libraryVersion: string;
+        registryDigest: string;
+        digestMethod: string;
+        files: Array<{ path: string; contentDigest: string; byteSize: number }>;
+      };
+      expect(bundle.libraryVersion).toBe(version);
+      expect(bundle.registryDigest).toBe(versionSnapshot.manifest.registryDigest);
+      expect(bundle.files.map((file) => file.path)).toEqual(["SKILL.md", "references/index.json"]);
+      for (const entry of bundle.files) {
+        const bytes = readFileSync(path.join(bundleDir, entry.path));
+        expect(bytes.byteLength, `${version}/${entry.path}`).toBe(entry.byteSize);
+        expect(contentDigest(bytes), `${version}/${entry.path}`).toBe(entry.contentDigest);
+      }
+    }
+  });
+
+  it("F07：负向夹具——把当前主模板放进旧版本必须被检测", () => {
+    const version = "0.1.0-alpha.2";
+    const currentMain = readFileSync(path.join(skillDir, "SKILL.md"));
+    const historical = readFileSync(
+      path.join(skillDir, "references", "versions", "react", version, "SKILL.md"),
+    );
+    // 模拟漂移：历史槽位内容被当前模板替换时，hash 锚定必须判否。
+    const drifted = currentMain.equals(historical) ? historical : currentMain;
+    expect(drifted.equals(historical)).toBe(false);
+    expect(`sha256:${createHash("sha256").update(drifted).digest("hex")}`).not.toBe(
+      FROZEN_MAIN_SKILL_SHA256[version],
+    );
   });
 
   it("可下载 recipe 与 helper 在自有临时目录组合编译", () => {

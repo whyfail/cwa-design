@@ -14,17 +14,10 @@ React 组件库的应用开发技能。先确认已安装版本，再查同版�
 3. 从 references/components.md 选组件；按需读取 contracts/<id>.json。props 是 CWA 自有属性及明确标注的实现默认值，extends 是完整继承类型；compoundParts 单独描述子部件。完整 TS 声明仍是类型权威。
 4. 复用 examples.json 指向的已编译 TSX；读取 examples/<id>.tsx 的实际代码，并用 index.json 的 SHA-256 校验原始文件字节。配方见 recipes.json 与 recipes/*.tsx，先读 limitations；静态 fixture 不代表接好业务。
 5. 不发明 exports、props、默认值、业务后端或已完成的验证。material 写在有此属性的部件上，例如 Dialog.Content 或 PopoverContent，不能写在 Root。
-6. Provider material="solid" 与系统回退优先；保留 reduced-motion/reduced-transparency/forced-colors、可见焦点、label 与键盘操作。motion="full" 不能覆盖系统减少动态偏好。
-7. 生成可审查补丁，沿用现有工程包管理器。先说明具体改动范围与会运行的检查；只有 CLI init --apply 会写配置，MCP 工具只读。
-8. 运行相关类型、构建、行为与浏览器检查。如实报告失败和未运行项；不得把自动检查通过写成维护者视觉或宿主人工验收通过。
-
-## 材质与背景可读性
-
-1. floating toolbar/navigation/独立 Popover 用 regular glass；正文、表单与 Card 用 solid/frosted。控件共享玻璃壳而不独立叠 blur；覆盖实际玻璃背景时依据可读性加厚或显式 solid。clear 只在媒体控件显式启用。
-2. 玻璃上的正文与控件标签使用不透明正文色；副文字用 `--cwa-design-color-glass-text-muted`（浅 #2b3039 / 深 #e4e4ea）。给玻璃层加副文字前，先确认媒体亮暗与主题方向一致。
-3. 背景可读性状态分四类，不得互相概括（默认 Token 实测：2 主题 × 11 背景 × 4 材质，Chromium 1440×1000，未取整 4.5:1，逐包围框采样）：supported=默认实测全部 ≥4.5:1；pressure=默认实测存在 <4.5:1 样本；not-recommended=用途本身不推荐（如 Clear 用于完整表单，同向极端背景仍可达标）；explicit-override-unverified=用户设置显式 tint/accent 后默认结论不适用，需实际复查。regular 的正文与控件标签除“深色×纯白”（正文样本实测最低 3.910:1，<4.5）外全部 ≥4.5:1；regular 副文字仅保证中等亮度背景（山水、文字列表、图表、棋盘）与同向极端背景（浅色×纯白、深色×纯黑）。默认已测压力：浅色×{暗插画, 明暗分区, 纯黑}、深色×{亮插画, 纯白}——改用 frosted/solid 或局部实色底面；媒体前景看媒体本身的亮暗与内容用途，不看系统主题。
-4. clear 用于媒体上的轻量工具栏且按媒体逐个验证：深色主题的真实亮/暗照片实测通过；浅色主题的真实照片（混合亮暗区域实测最低 1.134）与明暗分区实测失败。clear 用于表单/长文/设置面板为不推荐用途。frosted 与 solid 在默认矩阵全部背景实测达标，是可复制粘贴的安全替代。
-5. 压力组合不能通过换有利底图或删样本来隐藏；实验室把已知的弱对比组合明确标为压力负例，并展示通过的替代配置。
+6. floating toolbar/navigation/独立 Popover 用 regular glass；正文、表单与 Card 用 solid/frosted。控件共享玻璃壳而不独立叠 blur；覆盖实际玻璃背景时依据可读性加厚或显式 solid。clear 只在媒体控件显式启用。
+7. Provider material="solid" 与系统回退优先；保留 reduced-motion/reduced-transparency/forced-colors、可见焦点、label 与键盘操作。motion="full" 不能覆盖系统减少动态偏好。
+8. 生成可审查补丁，沿用现有工程包管理器。先说明具体改动范围与会运行的检查；只有 CLI init --apply 会写配置，MCP 工具只读。
+9. 运行相关类型、构建、行为与浏览器检查。如实报告失败和未运行项；不得把自动检查通过写成维护者视觉或宿主人工验收通过。
 
 ## 安装与样式
 

@@ -76,13 +76,13 @@ describe("OverlayPortalScope token override sync (ADR 0001)", () => {
   }
 
   it("copies Provider-root --cwa-design-* overrides onto a body-level portal scope", async () => {
-    function Demo({ fill }: { fill?: string }) {
+    // F02：PortalHost 在 rerender 之间保持挂载——"移除覆盖"必须作用在
+    // 同一个已打开的 scope 上，而不是卸载后读取旧引用。
+    function Demo({ fill }: { fill: string }) {
       return (
         <CwaProvider
           theme="dark"
-          style={
-            fill ? ({ "--cwa-design-color-glass-regular-fill": fill } as React.CSSProperties) : {}
-          }
+          style={{ "--cwa-design-color-glass-regular-fill": fill } as React.CSSProperties}
         >
           <PortalHost>
             <OverlayPortalScope>
@@ -100,6 +100,7 @@ describe("OverlayPortalScope token override sync (ADR 0001)", () => {
         "rgba(28,29,34,0.67)",
       ),
     );
+    expect(scope.isConnected).toBe(true);
     // 动态更新：Provider style 变化（attribute mutation）在打开期间重同步。
     rerender(<Demo fill="rgba(28,29,34,0.8)" />);
     await waitFor(() =>
@@ -107,19 +108,75 @@ describe("OverlayPortalScope token override sync (ADR 0001)", () => {
         "rgba(28,29,34,0.8)",
       ),
     );
-    // 移除覆盖后恢复自然解析（不留陈旧内联值）。
-    rerender(
-      <CwaProvider theme="dark">
+    expect(scope.isConnected).toBe(true);
+    // 移除覆盖后恢复自然解析（不留陈旧内联值），且 scope 仍连接同一 DOM。
+    rerender(<Demo fill="" />);
+    await waitFor(() =>
+      expect(scope.style.getPropertyValue("--cwa-design-color-glass-regular-fill")).toBe(""),
+    );
+    expect(scope.isConnected).toBe(true);
+    expect(scope.contains(popup)).toBe(true);
+  });
+
+  it("F02：同步 Provider 上实际生效的 computed 值，而非原始内联字符串", async () => {
+    // class !important 在 Provider 根上击败内联——jsdom 会解析该 cascade：
+    // computed = #087a6a；旧实现搬运内联 #005fbe，新实现必须搬运 computed。
+    const styleHandle = document.createElement("style");
+    styleHandle.textContent = ".themed-accent { --cwa-design-color-accent: #087a6a !important; }";
+    document.head.appendChild(styleHandle);
+    try {
+      render(
+        <CwaProvider
+          theme="dark"
+          className="themed-accent"
+          style={{ "--cwa-design-color-accent": "#005fbe" } as React.CSSProperties}
+        >
+          <PortalHost>
+            <OverlayPortalScope>
+              <span data-testid="important-popup" />
+            </OverlayPortalScope>
+          </PortalHost>
+        </CwaProvider>,
+      );
+      const scope = screen.getByTestId("important-popup").parentElement!;
+      await waitFor(() =>
+        expect(scope.style.getPropertyValue("--cwa-design-color-accent")).toBe("#087a6a"),
+      );
+    } finally {
+      styleHandle.remove();
+    }
+  });
+
+  it("F02：var() 链以 Provider computed 值为同步源（未解析字符串不放大）", async () => {
+    // --app-brand 定义在 Provider 自身：jsdom 的 computed 不解析 var() 引用
+    // （返回原始 var 字符串），但同步契约是"搬运 computed 值"——无论引擎
+    // 是否解析，scope 收到的必须与 Provider computed 逐字相同；真实解析
+    // 行为由浏览器页面验证覆盖。
+    render(
+      <CwaProvider
+        theme="dark"
+        style={
+          {
+            "--app-brand": "#123456",
+            "--cwa-design-color-accent": "var(--app-brand)",
+          } as React.CSSProperties
+        }
+      >
         <PortalHost>
           <OverlayPortalScope>
-            <span data-testid="popup" />
+            <span data-testid="var-popup" />
           </OverlayPortalScope>
         </PortalHost>
       </CwaProvider>,
     );
-    await waitFor(() =>
-      expect(scope.style.getPropertyValue("--cwa-design-color-glass-regular-fill")).toBe(""),
-    );
+    const scope = screen.getByTestId("var-popup").parentElement!;
+    const provider = scope.ownerDocument.querySelector(".cwa-design-provider")!;
+    await waitFor(() => {
+      const providerComputed = getComputedStyle(provider)
+        .getPropertyValue("--cwa-design-color-accent")
+        .trim();
+      expect(scope.style.getPropertyValue("--cwa-design-color-accent")).toBe(providerComputed);
+    });
   });
 
   it("uses the nearest nested Provider as sync source", async () => {
